@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore.Modules\Wd3eCore.Roles\Wd3eCore.Roles.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
