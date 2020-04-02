@@ -1,0 +1,5 @@
+@model Wd3eCore.Users.Workflows.ViewModels.UserEventViewModel<Wd3eCore.Users.Workflows.Activities.UserDisabledEvent>
+
+<header>
+    <h4><i class="fa fa-user"></i>@Model.Activity.GetTitleOrDefault(() => T["User Disabled"])</h4>
+</header>

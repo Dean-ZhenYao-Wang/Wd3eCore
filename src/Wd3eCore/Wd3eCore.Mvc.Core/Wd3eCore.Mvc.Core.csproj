@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <RootNamespace>Wd3eCore.Mvc</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" ExcludeAssets="build" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Abstractions\Wd3eCore.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement.Abstractions\Wd3eCore.DisplayManagement.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.ContentManagement.Abstractions\Wd3eCore.ContentManagement.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+  </ItemGroup>
+
+</Project>

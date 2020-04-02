@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
+  </ItemGroup>
+
+</Project>

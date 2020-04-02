@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Deployment.Abstractions\Wd3eCore.Deployment.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Recipes.Abstractions\Wd3eCore.Recipes.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ResourceManagement\Wd3eCore.ResourceManagement.csproj" />
+
+    <ProjectReference Include="..\Wd3eCore.Settings\Wd3eCore.Settings.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+  </PropertyGroup>
+
+  <!-- Add ".props" and ".targets" files in the package specific to the "Cms.Core" bundle -->
+  <ItemGroup>
+    <None Include="Wd3eCore.Application.Cms.Core.Targets.props" Pack="true">
+      <PackagePath>build\$(TargetFramework)\Wd3eCore.Application.Cms.Core.Targets.props</PackagePath>
+    </None>
+    <None Include="Wd3eCore.Application.Cms.Core.Targets.targets" Pack="true">
+      <PackagePath>build\$(TargetFramework)\Wd3eCore.Application.Cms.Core.Targets.targets</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <!--
+    When a package is not directly referenced, e.g only through the reference of this bundle package,
+    the files in its build folder are not evaluated on building if this folder is marked as private.
+    This can be defined by using the 'PrivateAssets' attribute.
+    
+    Here, only project references are used but when packing the bundle they become package references,
+    and with the same 'PrivateAssets' attribute.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Application.Targets\Wd3eCore.Application.Targets.csproj" PrivateAssets="none" />
+
+    <!-- 
+      When adding a reference to this list, please keep it ordered alphabetically, and set PrivateAssets="none" 
+    -->
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Admin\Wd3eCore.Admin.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Diagnostics\Wd3eCore.Diagnostics.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.DynamicCache\Wd3eCore.DynamicCache.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Features\Wd3eCore.Features.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.HealthChecks\Wd3eCore.HealthChecks.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.HomeRoute\Wd3eCore.HomeRoute.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Localization\Wd3eCore.Localization.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Navigation\Wd3eCore.Navigation.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Recipes\Wd3eCore.Recipes.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Resources\Wd3eCore.Resources.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.ResponseCompression\Wd3eCore.ResponseCompression.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Roles\Wd3eCore.Roles.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Scripting\Wd3eCore.Scripting.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Settings\Wd3eCore.Settings.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Setup\Wd3eCore.Setup.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Tenants\Wd3eCore.Tenants.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Themes\Wd3eCore.Themes.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Users\Wd3eCore.Users.csproj" PrivateAssets="none" />
+
+    <ProjectReference Include="..\..\Wd3eCore.Themes\TheAdmin\TheAdmin.csproj" PrivateAssets="none" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\Layout - 复制.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Theme.Targets\Wd3eCore.Theme.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ContentManagement\Wd3eCore.ContentManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ResourceManagement\Wd3eCore.ResourceManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Users.Abstractions\Wd3eCore.Users.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Users\Wd3eCore.Users.csproj" />
+  </ItemGroup>
+
+</Project>

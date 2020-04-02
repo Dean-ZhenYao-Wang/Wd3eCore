@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <RootNamespace>Wd3eCore.Workflows</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Liquid.Abstractions\Wd3eCore.Liquid.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

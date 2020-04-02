@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!-- Add the Wd3eCore.Module.props file in the package -->
+  <ItemGroup>
+    <None Include="Wd3eCore.Module.Targets.props" Pack="true">
+      <PackagePath>build\$(TargetFramework)\Wd3eCore.Module.Targets.props</PackagePath>
+    </None>
+    <None Include="Wd3eCore.Module.Targets.targets" Pack="true">
+      <PackagePath>build\$(TargetFramework)\Wd3eCore.Module.Targets.targets</PackagePath>
+    </None>
+    <None Include="Package.Build.props" Pack="true">
+      <PackagePath>build\$(TargetFramework)\Package.Build.props</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Abstractions\Wd3eCore.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

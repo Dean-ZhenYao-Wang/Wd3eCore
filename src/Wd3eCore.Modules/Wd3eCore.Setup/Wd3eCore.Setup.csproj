@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <Compile Include="..\Wd3eCore.Localization\ModularPoFileLocationProvider.cs" Link="ModularPoFileLocationProvider.cs" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Localization.Core\Wd3eCore.Localization.Core.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Data\Wd3eCore.Data.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Recipes.Abstractions\Wd3eCore.Recipes.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Setup.Core\Wd3eCore.Setup.Core.csproj" />
+  </ItemGroup>
+
+</Project>

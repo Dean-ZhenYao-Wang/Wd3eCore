@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ncrontab" />
+    <PackageReference Include="NodaTime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Abstractions\Wd3eCore.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Localization.Abstractions\Wd3eCore.Localization.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

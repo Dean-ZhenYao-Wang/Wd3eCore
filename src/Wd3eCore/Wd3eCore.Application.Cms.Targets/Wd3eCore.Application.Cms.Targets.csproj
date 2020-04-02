@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <!--
+    When a package is not directly referenced, e.g only through the reference of this bundle package,
+    the files in its build folder are not evaluated on building if this folder is marked as private.
+    This can be defined by using the 'PrivateAssets' attribute.
+    
+    Here, only project references are used but when packing the bundle they become package references,
+    and with the same 'PrivateAssets' attribute.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Wd3eCore.Themes\TheAdmin\TheAdmin.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Application.Cms.Core.Targets\Wd3eCore.Application.Cms.Core.Targets.csproj" PrivateAssets="none" />
+
+    <!-- 
+      When adding a reference to this list, please keep it ordered alphabetically, and set PrivateAssets="none" 
+    -->
+    <ProjectReference Include="..\..\Wd3eCore.Themes\SafeMode\SafeMode.csproj" PrivateAssets="none" />
+    <ProjectReference Include="..\..\Wd3eCore.Themes\TheTheme\TheTheme.csproj" PrivateAssets="none" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" />
+    <PackageReference Include="MessagePack" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Data\Wd3eCore.Data.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore\Wd3eCore.csproj" />
+  </ItemGroup>
+
+</Project>

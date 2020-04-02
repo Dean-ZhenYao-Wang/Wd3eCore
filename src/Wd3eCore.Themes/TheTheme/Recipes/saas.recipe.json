@@ -1,0 +1,55 @@
+{
+  "name": "SaaS",
+  "displayName": "Software as a Service",
+  "description": "Provides default SaaS features like managing multiple websites.",
+  "author": "The Wd3e Team",
+  "website": "https://Wd3eproject.net",
+  "version": "2.0",
+  "issetuprecipe": true,
+  "categories": [ "default" ],
+  "tags": [ "developer", "default" ],
+  "steps": [
+    {
+      "name": "feature",
+      "disable": [],
+      "enable": [
+        // SaaS
+        "Wd3eCore.Admin",
+        "Wd3eCore.Diagnostics",
+        "Wd3eCore.DynamicCache",
+        "Wd3eCore.Email",
+        "Wd3eCore.HomeRoute",
+        "Wd3eCore.Localization",
+        "Wd3eCore.Features",
+        "Wd3eCore.Navigation",
+        "Wd3eCore.Recipes",
+        "Wd3eCore.Resources",
+        "Wd3eCore.Roles",
+        "Wd3eCore.Settings",
+        "Wd3eCore.Tenants",
+        "Wd3eCore.Themes",
+        "Wd3eCore.Users",
+        "Wd3eCore.HealthChecks",
+        "Wd3eCore.ResponseCompression",
+        "Wd3eCore.Tenants.FileProvider",
+        // Themes
+        "TheTheme",
+        "TheAdmin",
+        "SafeMode"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": "TheTheme"
+    },
+    {
+      "name": "settings",
+      "HomeRoute": {
+        "Action": "Index",
+        "Controller": "Home",
+        "Area": "TheTheme"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!-- Add a ".props" file in the package specific to the "Theme" module type -->
+  <ItemGroup>
+    <None Include="Wd3eCore.Theme.Targets.props" Pack="true">
+      <PackagePath>build\$(TargetFramework)\Wd3eCore.Theme.Targets.props</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" PrivateAssets="none" />
+  </ItemGroup>
+
+</Project>
