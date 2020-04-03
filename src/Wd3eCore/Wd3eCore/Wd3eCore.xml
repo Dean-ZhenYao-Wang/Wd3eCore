@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore</name>
+    </assembly>
+    <members>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.ServiceProviderExtensions.CreateChildContainer(System.IServiceProvider,Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Creates a child container.
+            </summary>
+            <param name="serviceProvider">The service provider to create a child container for.</param>
+            <param name="serviceCollection">The services to clone.</param>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection">
+            <summary>
+            A service collection that keeps track of the <see cref="T:Wd3eCore.Environment.Extensions.Features.IFeatureInfo"/> for each added service.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection.FeatureCollections">
+            <summary>
+            A collection of services grouped by their feature information.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection.SetCurrentFeature(Wd3eCore.Environment.Extensions.Features.IFeatureInfo)">
+            <summary>
+            Sets the current feature that services will be assigned when added to this collection.
+            </summary>
+            <param name="feature">The feature for services to be assigned.</param>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContextFactory.MinimumShellDescriptor">
+            <summary>
+            The minimum shell descriptor is used to bootstrap the first container that will be used
+            to call all module IStartup implementation. It's composed of module names that reference
+            core components necessary for the desired scenario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.StartupBaseMock.Order">
+            <inheritdoc />
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.StartupBaseMock.ConfigureOrder">
+            <inheritdoc />
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.AllFeaturesShellDescriptorManager">
+            <summary>
+            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by returning a single tenant with all the available
+            extensions.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.ConfiguredFeaturesShellDescriptorManager">
+            <summary>
+            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by returning the features from configuration.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.SetFeaturesShellDescriptorManager">
+            <summary>
+            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by returning a single tenant with a specified set
+            of features. This class can be registered as a singleton as its state never changes.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellDescriptorFeaturesManager.GetFeaturesToEnable(Wd3eCore.Environment.Extensions.Features.IFeatureInfo,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Enables a feature.
+            </summary>
+            <param name="featureInfo">The info of the feature to be enabled.</param>
+            <param name="enabledFeatureIds">The list of feature ids which are currently enabled.</param>
+            <param name="force">Boolean parameter indicating if the feature should enable it's dependencies.</param>
+            <returns>An enumeration of the features to disable, empty if 'force' = true and a dependency is disabled</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellDescriptorFeaturesManager.GetFeaturesToDisable(Wd3eCore.Environment.Extensions.Features.IFeatureInfo,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Disables a feature.
+            </summary>
+            <param name="featureInfo">The info of the feature to be disabled.</param>
+            <param name="enabledFeatureIds">The list of feature ids which are currently enabled.</param>
+            <param name="force">Boolean parameter indicating if the feature should disable it's dependents.</param>
+            <returns>An enumeration of the features to enable, empty if 'force' = true and a dependent is enabled</returns>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.ShellHost">
+            <summary>
+            All <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> object are loaded when <see cref="M:Wd3eCore.Environment.Shell.ShellHost.InitializeAsync"/> is called. They can be removed when the
+            tenant is removed, but are necessary to match an incoming request, even if they are not initialized.
+            Each <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> is activated (its service provider is built) on the first request.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.AddAndRegisterShell(Wd3eCore.Environment.Shell.Builders.ShellContext)">
+            <summary>
+            Adds the shell and registers its settings in RunningShellTable
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.CanRegisterShell(Wd3eCore.Environment.Shell.Builders.ShellContext)">
+            <summary>
+            Whether or not a shell can be activated and added to the running shells.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.RegisterShellSettings(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Registers the shell settings in RunningShellTable
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.CreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Creates a shell context based on shell settings
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.CreateSetupContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Creates a transient shell for the default tenant's setup.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.Wd3eCore#Environment#Shell#IShellDescriptorManagerEventHandler#Changed(Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor,System.String)">
+            <summary>
+            A feature is enabled / disabled, the tenant needs to be restarted
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.ReloadShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Marks the specific tenant as released, such that a new shell is created for subsequent requests,
+            while existing requests get flushed.
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.TryGetSettings(System.String,Wd3eCore.Environment.Shell.ShellSettings@)">
+            <summary>
+            Tries to retrieve the shell settings associated with the specified tenant.
+            </summary>
+            <returns><c>true</c> if the settings could be found, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.GetAllSettings">
+            <summary>
+            Retrieves all shell settings.
+            </summary>
+            <returns>All shell settings.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.CanCreateShell(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Whether or not a shell can be added to the list of available shells.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHost.CanRegisterShell(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Whether or not a shell can be activated and added to the running shells.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.ShellOptionsSetup">
+            <summary>
+            Sets up default options for <see cref="T:Wd3eCore.Environment.Shell.ShellOptions"/>.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.State.ContextState`1">
+            <summary>
+            Holds some state for the current HttpContext or thread
+            </summary>
+            <typeparam name="T">The type of data to store</typeparam>
+        </member>
+        <member name="T:Wd3eCore.Environment.Cache.Signal">
+            <summary>
+            This component is a singleton and holds all the existing signal token for a tenant.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Localization.DefaultCalendarManager">
+            <summary>
+            Represents a default implementation to manage the calendars.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.DefaultCalendarManager.#ctor(System.Collections.Generic.IEnumerable{Wd3eCore.Localization.ICalendarSelector})">
+            <summary>
+            Creates a new instance of <see cref="T:Wd3eCore.Localization.DefaultCalendarManager"/>.
+            </summary>
+            <param name="calendarSelectors">A list of <see cref="T:Wd3eCore.Localization.ICalendarSelector"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Localization.DefaultCalendarManager.GetCurrentCalendar">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Localization.DefaultCalendarSelector">
+            <summary>
+            Represents a default implementation for <see cref="T:Wd3eCore.Localization.ICalendarSelector"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.DefaultCalendarSelector.GetCalendarAsync">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Localization.DefaultLocalizationService">
+            <summary>
+            Represents a default implementation for <see cref="T:Wd3eCore.Localization.ILocalizationService"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.DefaultLocalizationService.GetDefaultCultureAsync">
+            <inheritdocs />
+        </member>
+        <member name="M:Wd3eCore.Localization.DefaultLocalizationService.GetSupportedCulturesAsync">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Localization.NullHtmlLocalizerFactory">
+            Represensts a null <see cref="T:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizerFactory"/> which is used by default when the localization module is disabled.
+            <remarks>
+            LocalizedHtmlString's arguments will be HTML encoded and not the main string. So the result
+            should just contain the localized string containing the formatting placeholders {0...} as is.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.Localization.NullHtmlLocalizerFactory.Create(System.String,System.String)">
+            <inheritdocs />
+        </member>
+        <member name="M:Wd3eCore.Localization.NullHtmlLocalizerFactory.Create(System.Type)">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Localization.NullStringLocalizerFactory">
+            Represents a null <see cref="T:Microsoft.Extensions.Localization.IStringLocalizerFactory"/> which is used by default when the localization module is disabled.
+            <remarks>
+            A LocalizedString is not encoded, so it can contain the formatted string
+            including the argument values.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.Localization.NullStringLocalizerFactory.Create(System.Type)">
+            <inheritdocs />
+        </member>
+        <member name="M:Wd3eCore.Localization.NullStringLocalizerFactory.Create(System.String,System.String)">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Modules.ModularTenantContainerMiddleware">
+            <summary>
+            This middleware replaces the default service provider by the one for the current tenant
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ModularTenantRouterMiddleware">
+            <summary>
+            Handles a request by forwarding it to the tenant specific "IRouter" instance.
+            It also initializes the middlewares for the requested tenant on the first request.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.PoweredByMiddleware">
+            <summary>
+            Adds the X-Powered-By header with values Wd3eCore.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Clock.UtcNow">
+            <summary>
+            Returns a Datetime Kind.Utc that is "Now"
+            </summary>
+            <inheritdoc />
+        </member>
+        <member name="M:Wd3eCore.Modules.Clock.GetTimeZones">
+            <summary>
+            Returns a list of valid timezones as a ITimeZone[], where the key is
+            the timezone id(string), and the value can be used for display. The list is filtered to contain only
+            choices that are reasonably valid for the present and near future for real places. The list is
+            also sorted first by UTC Offset and then by timezone name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.UseWd3eCore(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder})">
+            <summary>
+            Enables multi-tenant requests support for the current path.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.PoweredByWd3eCoreExtensions.UsePoweredByWd3eCore(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Boolean)">
+            <summary>
+            Configures whether use or not the Header X-Powered-By.
+            Default value is Wd3eCore.
+            </summary>
+            <param name="app">The modular application builder</param>
+            <param name="enabled">Boolean indicating if the header should be included in the response or not</param>
+            <returns>The modular application builder</returns>
+        </member>
+        <member name="M:Microsoft.AspNetCore.Builder.PoweredByWd3eCoreExtensions.UsePoweredBy(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Boolean,System.String)">
+            <summary>
+            Configures wethere use or not the Header X-Powered-By and its value.
+            Default value is Wd3eCore.
+            </summary>
+            <param name="app">The modular application builder</param>
+            <param name="enabled">Boolean indicating if the header should be included in the response or not</param>
+            <param name="headerValue">Header's value</param>
+            <returns>The modular application builder</returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddGlobalFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
+            <summary>
+            Registers at the host level a set of features which are always enabled for any tenant.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddTenantFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
+            <summary>
+            Registers at the tenant level a set of features which are always enabled.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddSetupFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
+            <summary>
+            Registers a default tenant with a set of features that are used to setup and configure the actual tenants.
+            For instance you can use this to add a custom Setup module.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.WithTenants(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Registers tenants defined in configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.WithFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
+            <summary>
+            Registers a single tenant with the specified set of features.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddBackgroundService(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Registers and configures a background hosted service to manage tenant background tasks.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddWd3eCore(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds Wd3eCore services to the host service collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddWd3eCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder})">
+            <summary>
+            Adds Wd3eCore services to the host service collection and let the app change
+            the default behavior and set of features through a configure action.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddStaticFiles(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds tenant level configuration to serve static files from modules
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddRouting(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds isolated tenant level routing services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddAntiForgery(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds host and tenant level antiforgery services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddSameSiteCookieBackwardsCompatibility(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds backwards compatibility to the handling of SameSite cookies.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddAuthentication(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds host and tenant level authentication services and configuration.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddDataProtection(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds tenant level data protection services.
+            </summary>
+        </member>
+    </members>
+</doc>

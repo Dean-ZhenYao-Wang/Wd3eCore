@@ -16,7 +16,7 @@ using Wd3eCore.Environment.Shell.Scope;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// Handles a request by forwarding it to the tenant specific <see cref="IRouter"/> instance.
+    /// Handles a request by forwarding it to the tenant specific "IRouter" instance.
     /// It also initializes the middlewares for the requested tenant on the first request.
     /// </summary>
     public class ModularTenantRouterMiddleware
