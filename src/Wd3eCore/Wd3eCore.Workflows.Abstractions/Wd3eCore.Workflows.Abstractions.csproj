@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <RootNamespace>Wd3eCore.Workflows</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

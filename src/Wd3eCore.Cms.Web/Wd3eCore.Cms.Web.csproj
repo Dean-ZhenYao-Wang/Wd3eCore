@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore\Wd3eCore.Application.Cms.Targets\Wd3eCore.Application.Cms.Targets.csproj" />
     <ProjectReference Include="..\Wd3eCore\Wd3eCore.Logging.NLog\Wd3eCore.Logging.NLog.csproj" />
   </ItemGroup>
 
