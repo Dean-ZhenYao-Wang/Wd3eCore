@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Recipes.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="P:Wd3eCore.Recipes.Models.RecipeDescriptor.BasePath">
+            <summary>
+            The path of the recipe file for the <see cref="P:Wd3eCore.Recipes.Models.RecipeDescriptor.FileProvider"/> property
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Recipes.Services.IRecipeStepHandler">
+            <summary>
+            An implementation of this interface will be used everytime a recipe step is processed.
+            Each implementation is reponsible for processing only the steps that it targets.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Recipes.Services.IRecipeStepHandler.ExecuteAsync(Wd3eCore.Recipes.Models.RecipeExecutionContext)">
+            <summary>
+            Processes a recipe step.
+            </summary>
+            <param name="context">The context object representing the processed step.</param>
+        </member>
+        <member name="M:Wd3eCore.Recipes.Services.IRecipeHarvester.HarvestRecipesAsync">
+            <summary>
+            Returns a collection of all recipes.
+            </summary>
+        </member>
+    </members>
+</doc>
