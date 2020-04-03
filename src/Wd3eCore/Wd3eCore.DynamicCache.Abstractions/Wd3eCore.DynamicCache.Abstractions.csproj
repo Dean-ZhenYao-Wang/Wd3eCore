@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.DynamicCache.Abstractions\Wd3eCore.DynamicCache.Abstractions.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
   </ItemGroup>
 </Project>
