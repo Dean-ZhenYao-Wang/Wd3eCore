@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Apis.GraphQL.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Apis.GraphQL.ISchemaBuilder">
+            <summary>
+            Implementations of this interface can participate in building the <see cref="T:GraphQL.Types.ISchema"/> instance that is used for GraphQL requests.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Apis.GraphQL.ISchemaBuilder.BuildAsync(GraphQL.Types.ISchema)">
+            <summary>
+            Updates <paramref name="schema"/>.
+            </summary>
+            <param name="schema">The <see cref="T:GraphQL.Types.ISchema"/> instance to update.</param>
+            <returns>A <see cref="T:Microsoft.Extensions.Primitives.IChangeToken"/> instance that is invalidated when the data that is used in the <see cref="T:GraphQL.Types.ISchema"/>
+            instance has changed, or <c>null</c> if it has no dependencies.</returns>
+        </member>
+        <member name="T:Wd3eCore.Apis.GraphQL.ISchemaFactory">
+            <summary>
+            Represents a service that provides the <see cref="T:GraphQL.Types.ISchema"/> instance that is used in a GraphQL request.
+            The result should be cached and reused when possible.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Apis.ServiceCollectionExtensions.AddInputObjectGraphType``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a type describing input arguments
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Wd3eCore.Apis.ServiceCollectionExtensions.AddObjectGraphType``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a type describing output arguments
+            </summary>
+            <typeparam name="TInput"></typeparam>
+            <typeparam name="TInputType"></typeparam>
+            <param name="services"></param>
+        </member>
+    </members>
+</doc>
