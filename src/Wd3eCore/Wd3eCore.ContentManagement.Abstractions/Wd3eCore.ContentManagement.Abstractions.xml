@@ -26,7 +26,7 @@
             Gets a content element by its name.
             </summary>
             <typeparam name="TElement">The expected type of the content element.</typeparam>
-            <typeparam name="name">The name of the content element.</typeparam>
+            <param name="name">The name of the content element.</param>
             <returns>The content element instance or <code>null</code> if it doesn't exist.</returns>
         </member>
         <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Has``1(Wd3eCore.ContentManagement.ContentElement)">
