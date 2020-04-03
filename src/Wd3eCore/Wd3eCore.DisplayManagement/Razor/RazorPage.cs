@@ -243,7 +243,7 @@ namespace Wd3eCore.DisplayManagement.Razor
             return Shape.GetTagBuilder(shape, tag);
         }
 
-        // <summary>
+        /// <summary>
         /// In a Razor layout page, renders the portion of a content page that is not within a named zone.
         /// </summary>
         /// <returns>The HTML content to render.</returns>

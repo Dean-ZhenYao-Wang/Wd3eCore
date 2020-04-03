@@ -1,0 +1,885 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.DisplayManagement</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.DefaultShapeTableManager">
+            <summary>
+            This class needs to use a cache which is a singleton per tenant as it can contain different shapes
+            for each tenant, even if they share the same theme.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.IShapeAttributeProvider">
+            <summary>
+            Represents a marker interface for classes that have Shape methods tagged with <see cref="T:Wd3eCore.DisplayManagement.ShapeAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.PlacementInfo.GetZones">
+            <summary>
+            Returns the list of zone names.
+            e.g., <code>Content.Metadata:1</code> will return 'Content', 'Metadata'
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.PlacementInfo.GetGroup">
+            <summary>
+            Extracts the group information from a location string, or <c>null</c> if it is not present.
+            e.g., Content:12@search
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnCreating(System.Action{Wd3eCore.DisplayManagement.Implementation.ShapeCreatingContext})">
+            <summary>
+            Called when the shape is being created.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnCreating(System.Func{Wd3eCore.DisplayManagement.Implementation.ShapeCreatingContext,System.Threading.Tasks.Task})">
+            <summary>
+            Called when the shape is being created.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnCreated(System.Action{Wd3eCore.DisplayManagement.Implementation.ShapeCreatedContext})">
+            <summary>
+            Called when the shape is created.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnCreated(System.Func{Wd3eCore.DisplayManagement.Implementation.ShapeCreatedContext,System.Threading.Tasks.Task})">
+            <summary>
+            Called when the shape is being created.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnDisplaying(System.Action{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext})">
+            <summary>
+            Called whenever the shape is displayed, even if it's content is cached.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnDisplaying(System.Func{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext,System.Threading.Tasks.Task})">
+            <summary>
+            Called whenever the shape is displayed, even if it's content is cached.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnProcessing(System.Action{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext})">
+            <summary>
+            Called when the shape is actually rendered and state needs to be loaded.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnProcessing(System.Func{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext,System.Threading.Tasks.Task})">
+            <summary>
+            Called when the shape is actually rendered and state needs to be loaded.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnDisplayed(System.Action{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext})">
+            <summary>
+            Called when the shape is done being rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeAlterationBuilder.OnDisplayed(System.Func{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext,System.Threading.Tasks.Task})">
+            <summary>
+            Called when the shape is done being rendered.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Descriptors.ShapePlacementContext.Source">
+            <summary>
+            Debug information explaining where the final placement is coming from.
+            Used by tooling.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Descriptors.ShapeDescriptorIndex.BindingSource">
+            <summary>
+            The BindingSource is informational text about the source of the Binding delegate. Not used except for
+            troubleshooting.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Descriptors.ShapeDescriptor.BindingSource">
+            <summary>
+            The BindingSource is informational text about the source of the Binding delegate. Not used except for
+            troubleshooting.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.ShapePlacementStrategy.ShapePlacementParsingStrategy">
+            <summary>
+            This component discovers and announces the shape alterations implied by the contents of the Placement.info files
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateFileProviderAccessor">
+            <summary>
+            Accessor to the <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> used by <see cref="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateBindingStrategy"/>.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateFileProviderAccessor.FileProvider">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> used to look up Template files.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.IShapeTemplateHarvester">
+            <summary>
+            This service determines which paths to examine, and provides
+            the shape type based on the template file paths discovered
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateFileProviderAccessor">
+            <summary>
+            Default implementation of <see cref="!:ITemplateFileProviderAccessor"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateFileProviderAccessor.#ctor(Microsoft.Extensions.Options.IOptions{Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateOptions})">
+            <summary>
+            Initializes a new instance of <see cref="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateFileProviderAccessor"/>.
+            </summary>
+            <param name="optionsAccessor">Accessor to <see cref="!:FluidViewOptions"/>.</param>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateFileProviderAccessor.FileProvider">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> used to look up Templates files.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateOptions">
+            <summary>
+            Provides programmatic configuration for the <see cref="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateBindingStrategy"/>.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateOptions.FileProviders">
+            <summary>
+            Gets the sequence of <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider" /> instances used by <see cref="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateBindingStrategy"/> to
+            locate Fluid files.
+            </summary>
+            <remarks>
+            At startup, this is initialized to include an instance of <see cref="T:Microsoft.Extensions.FileProviders.PhysicalFileProvider"/> that is
+            rooted at the application root.
+            </remarks>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateOptionsSetup">
+            <summary>
+            Sets up default options for <see cref="!:ShapeTemplateViewOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Descriptors.ShapeTemplateStrategy.ShapeTemplateOptionsSetup.#ctor(Microsoft.Extensions.Hosting.IHostEnvironment,Wd3eCore.Modules.IApplicationContext)">
+            <summary>
+            Initializes a new instance of <see cref="!:ShapeTemplateViewOptions"/>.
+            </summary>
+            <param name="hostingEnvironment"><see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/> for the application.</param>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Entities.SectionDisplayDriver`2">
+            <summary>
+            A concrete implementation of this class will be able to take part in the rendering of an <see cref="T:Wd3eCore.Entities.IEntity"/>
+            shape instance for a specific section of the object. A section represents a property of an entity instance
+            where the name of the property is the type of the section.
+            </summary>
+            <typeparam name="TSection">The type of the section this driver handles.</typeparam>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Entities.SectionDisplayDriver`2.PropertyName">
+            <summary>
+            Gets the property name that the <typeparamref name="TSection"/> is stored on the <typeparamref name="TModel"/>.
+            </summary>
+            <remarks>
+            Overriding this property allows changing the name of the property that the section is stored in from the
+            default, which is <c>typeof(TSection).Name</c>.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriver`4.CanHandleModel(`0)">
+            <summary>
+            Returns <c>true</c> if the model can be handle by the current driver.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriver`5.CanHandleModel(`0)">
+            <summary>
+            Returns <c>true</c> if the model can be handle by the current driver.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Initialize``1(System.Action{``0})">
+            <summary>
+            Creates a new strongly typed shape and initializes it if it needs to be rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Initialize``1(System.Func{``0,System.Threading.Tasks.ValueTask})">
+            <summary>
+            Creates a new strongly typed shape and initializes it if it needs to be rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Initialize``1(System.String,System.Func{``0,System.Threading.Tasks.ValueTask})">
+            <summary>
+            Creates a new strongly typed shape and initializes it if it needs to be rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Copy``1(System.String,``0)">
+            <summary>
+            Creates a dynamic proxy for the specified model. Properties are copied to the new object.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Initialize``1(System.String,System.Action{``0})">
+            <summary>
+            Creates a new strongly typed shape and initializes it if it needs to be rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Dynamic(System.String,System.Func{System.Object,System.Threading.Tasks.Task})">
+            <summary>
+            Creates a new loosely typed shape and initializes it if it needs to be rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Dynamic(System.String,System.Action{System.Object})">
+            <summary>
+            Creates a new loosely typed shape and initializes it if it needs to be rendered.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Dynamic(System.String)">
+            <summary>
+            If the shape needs to be rendered, it is created automatically from its type name.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.View``1(System.String,``0)">
+            <summary>
+            Creates a <see cref="T:Wd3eCore.DisplayManagement.Views.ShapeViewModel`1"/> for the specific model.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Shape(System.String,Wd3eCore.DisplayManagement.IShape)">
+            <summary>
+            If the shape needs to be rendered, it is created automatically from its type name and initialized with a [see param name="model"]
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Factory(System.String,System.Func{Wd3eCore.DisplayManagement.Handlers.IBuildShapeContext,System.Threading.Tasks.ValueTask{Wd3eCore.DisplayManagement.IShape}})">
+            <summary>
+            Creates a shape lazily.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Factory(System.String,System.Func{Wd3eCore.DisplayManagement.Handlers.IBuildShapeContext,Wd3eCore.DisplayManagement.IShape})">
+            <summary>
+            Creates a shape lazily.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Handlers.DisplayDriverBase.Factory(System.String,System.Func{Wd3eCore.DisplayManagement.Handlers.IBuildShapeContext,System.Threading.Tasks.ValueTask{Wd3eCore.DisplayManagement.IShape}},System.Func{Wd3eCore.DisplayManagement.IShape,System.Threading.Tasks.Task})">
+            <summary>
+            If the shape needs to be rendered, it is created by the delegate.
+            </summary>
+            <remarks>
+            This method is ultimately called by all drivers to create a shape. It's made virtual
+            so that any concrete driver can use it as a way to alter any returning shape from the drivers.
+            </remarks>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Handlers.FindPlacementDelegate">
+            <summary>
+            A function that provides a <see cref="T:Wd3eCore.DisplayManagement.Descriptors.PlacementInfo"/> instance for a shape.
+            </summary>
+            <param name="shapeType">The shape to render.</param>
+            <param name="differentiator">
+            A discriminator that differentiates this specific shape to the others of the same type.
+            For instance multiple field shape smight be displayed in different locations even though
+            they are of the same type.
+            </param>
+            <param name="displayType">The display type the content item owning the shape is rendered with.</param>
+            <returns>The <see cref="T:Wd3eCore.DisplayManagement.Descriptors.PlacementInfo"/> to use or <see cref="!:Null"/> if this function is not concerned.</returns>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Handlers.IBuildShapeContext">
+            <summary>
+            Represents a context object that is used to build and place a list of shape representing
+            something that has to be displayed.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Implementation.IHtmlDisplay">
+            <summary>
+            Coordinates the rendering of shapes.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Implementation.IShapeDisplayEvents.DisplayingFinalizedAsync(Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext)">
+            <summary>
+            Guaranteed to be called, even in the event of an exception when rendering the shape.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.IShape">
+            <summary>
+            Interface present on dynamic shapes.
+            May be used to access attributes in a strongly typed fashion.
+            Note: Anything on this interface is a reserved word for the purpose of shape properties
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.IShapeBindingResolver">
+            <summary>
+            An implementation of this interface is called whenever a shape template
+            is seeked. it can be used to provide custom dynamic templates, for instance to override
+            any view engine based ones.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.IShapeFactory">
+            <summary>
+            Service that creates new instances of dynamic shape objects
+            This may be used directly, or through the IShapeHelperFactory.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.ShapeFactoryExtensions.CreateAsync``1(Wd3eCore.DisplayManagement.IShapeFactory,System.String,``0)">
+            <summary>
+            Creates a new shape by copying the properties of the specific model.
+            </summary>
+            <param name="shapeType">The type of shape to create.</param>
+            <param name="model">The model to copy.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.ShapeFactoryExtensions.CreateAsync``1(Wd3eCore.DisplayManagement.IShapeFactory,System.String,System.Func{``0,System.Threading.Tasks.ValueTask})">
+            <summary>
+            Creates a dynamic proxy instance for the <see cref="!:TModel"/> type and initializes it.
+            </summary>
+            <typeparam name="TModel">The type to instantiate.</typeparam>
+            <param name="shapeType">The shape type to create.</param>
+            <param name="initializeAsync">The initialization method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.ShapeFactoryExtensions.CreateAsync``1(Wd3eCore.DisplayManagement.IShapeFactory,System.String,System.Action{``0})">
+            <summary>
+            Creates a dynamic proxy instance for the <see cref="!:TModel"/> type and initializes it.
+            </summary>
+            <typeparam name="TModel">The type to instantiate.</typeparam>
+            <param name="shapeType">The shape type to create.</param>
+            <param name="initialize">The initialization method.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.LocationExpander.ThemeViewLocationExpanderProvider.PopulateValues(Microsoft.AspNetCore.Mvc.Razor.ViewLocationExpanderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.LocationExpander.ThemeViewLocationExpanderProvider.ExpandViewLocations(Microsoft.AspNetCore.Mvc.Razor.ViewLocationExpanderContext,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Manifest.ThemeAttribute">
+            <summary>
+            Defines a Theme which is a dedicated Module for theming purposes.
+            If the Theme has only one default feature, it may be defined there.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Manifest.ThemeAttribute.BaseTheme">
+            <Summary>The base theme if the theme is derived from an existing one.</Summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Notify.INotifier">
+            <summary>
+            Notification manager for UI notifications
+            </summary>
+            <remarks>
+            Where such notifications are displayed depends on the theme used. Default themes contain a
+            Messages zone for this.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Notify.INotifier.Add(Wd3eCore.DisplayManagement.Notify.NotifyType,Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString)">
+            <summary>
+            Adds a new UI notification
+            </summary>
+            <param name="type">
+            The type of the notification (notifications with different types can be displayed differently)</param>
+            <param name="message">A localized message to display</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Notify.INotifier.List">
+            <summary>
+            Get all notifications added
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Notify.NotifierExtensions.Information(Wd3eCore.DisplayManagement.Notify.INotifier,Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString)">
+            <summary>
+            Adds a new UI notification of type Information
+            </summary>
+            <seealso cref="!:INotifier.Add()"/>
+            <param name="message">A localized message to display</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Notify.NotifierExtensions.Warning(Wd3eCore.DisplayManagement.Notify.INotifier,Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString)">
+            <summary>
+            Adds a new UI notification of type Warning
+            </summary>
+            <seealso cref="!:INotifier.Add()"/>
+            <param name="message">A localized message to display</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Notify.NotifierExtensions.Error(Wd3eCore.DisplayManagement.Notify.INotifier,Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString)">
+            <summary>
+            Adds a new UI notification of type Error
+            </summary>
+            <seealso cref="!:INotifier.Add()"/>
+            <param name="message">A localized message to display</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Notify.NotifierExtensions.Success(Wd3eCore.DisplayManagement.Notify.INotifier,Microsoft.AspNetCore.Mvc.Localization.LocalizedHtmlString)">
+            <summary>
+            Adds a new UI notification of type Success
+            </summary>
+            <seealso cref="!:INotifier.Add()"/>
+            <param name="message">A localized message to display</param>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.ObjectPool`1">
+             <summary>
+             Generic implementation of object pooling pattern with predefined pool size limit. The main
+             purpose is that limited number of frequently used objects can be kept in the pool for
+             further recycling.
+            
+             Notes:
+             1) it is not the goal to keep all returned objects. Pool is not meant for storage. If there
+                is no space in the pool, extra returned objects will be dropped.
+            
+             2) it is implied that if object was obtained from a pool, the caller will return it back in
+                a relatively short time. Keeping checked out objects for long durations is ok, but
+                reduces usefulness of pooling. Just new up your own.
+            
+             Not returning objects to the pool in not detrimental to the pool's work, but is a bad practice.
+             Rationale:
+                If there is no intent for reusing the object, do not use pool - just use "new".
+             </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.ObjectPool`1.Factory">
+            <remarks>
+            Not using System.Func{T} because this file is linked into the (debugger) Formatter,
+            which does not have that type (since it compiles against .NET 2.0).
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.ObjectPool`1.Allocate">
+            <summary>
+            Produces an instance.
+            </summary>
+            <remarks>
+            Search strategy is a simple linear probing which is chosen for it cache-friendliness.
+            Note that Free will try to store recycled objects close to the start thus statistically
+            reducing how far we will typically search.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.ObjectPool`1.Free(`0)">
+            <summary>
+            Returns objects to the pool.
+            </summary>
+            <remarks>
+            Search strategy is a simple linear probing which is chosen for it cache-friendliness.
+            Note that Free will try to store recycled objects close to the start thus statistically
+            reducing how far we will typically search in Allocate.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.ObjectPool`1.ForgetTrackedObject(`0,`0)">
+             <summary>
+             Removes an object from leak tracking.
+            
+             This is called when an object is returned to the pool.  It may also be explicitly
+             called if an object allocated from the pool is intentionally not being returned
+             to the pool.  This can be of use with pooled arrays if the consumer wants to
+             return a larger array to the pool than was originally allocated.
+             </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.StringBuilderPool">
+            <summary>
+            The usage is:
+                   var inst = PooledStringBuilder.GetInstance();
+                   var sb = inst.builder;
+                   ... Do Stuff...
+                   ... sb.ToString() ...
+                   inst.Free();
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.StringBuilderPool.CreatePool(System.Int32)">
+            <summary>
+            If someone need to create a private pool
+            </summary>
+            <param name="size">The size of the pool.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorPage`1.New">
+            <summary>
+            Gets a dynamic shape factory to create new shapes.
+            </summary>
+            <example>
+            Usage:
+            <code>
+            await New.MyShape()
+            await New.MyShape(A: 1, B: "Some text")
+            (await New.MyShape()).A(1).B("Some text")
+            </code>
+            </example>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorPage`1.Factory">
+            <summary>
+            Gets an <see cref="T:Wd3eCore.DisplayManagement.IShapeFactory"/> to create new shapes.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.DisplayAsync(System.Object)">
+            <summary>
+            Renders a shape.
+            </summary>
+            <param name="shape">The shape.</param>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorPage`1.T">
+            <summary>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer"/> instance for the current view.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderTitleSegments(Microsoft.AspNetCore.Html.IHtmlContent,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Adds a segment to the title and returns all segments.
+            </summary>
+            <param name="segment">The segment to add to the title.</param>
+            <param name="position">Optional. The position of the segment in the title.</param>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderTitleSegments(System.String,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Adds a segment to the title and returns all segments.
+            </summary>
+            <param name="segment">The segment to add to the title.</param>
+            <param name="position">Optional. The position of the segment in the title.</param>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderLayoutBody">
+            <summary>
+            Renders the content zone of the layout.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.Tag(System.Object)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/> to render a shape.
+            </summary>
+            <param name="shape">The shape.</param>
+            <returns>A new <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/>.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderBodyAsync">
+            <summary>
+            In a Razor layout page, renders the portion of a content page that is not within a named zone.
+            </summary>
+            <returns>The HTML content to render.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.IsSectionDefined(System.String)">
+            <summary>
+            Check if a zone is defined in the layout or it has items.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderSection(System.String)">
+            <summary>
+            Renders a zone from the layout.
+            </summary>
+            <param name="name">The name of the zone to render.</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderSection(System.String,System.Boolean)">
+            <summary>
+            Renders a zone from the layout.
+            </summary>
+            <param name="name">The name of the zone to render.</param>
+            <param name="required">Whether the zone is required or not.</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderSectionAsync(System.String)">
+            <summary>
+            Renders a zone from the layout.
+            </summary>
+            <param name="name">The name of the zone to render.</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Razor.RazorPage`1.RenderSectionAsync(System.String,System.Boolean)">
+            <summary>
+            Renders a zone from the layout.
+            </summary>
+            <param name="name">The name of the zone to render.</param>
+            <param name="required">Whether the zone is required or not.</param>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorPage`1.FullRequestPath">
+            <summary>
+            Returns the full escaped path of the current request.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorPage`1.Site">
+            <summary>
+            Gets the <see cref="T:Wd3eCore.Settings.ISite"/> instance.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Razor.RazorViewActionFilter">
+            <summary>
+            Inject commonly used data through an HttpContext feature <see cref="T:Wd3eCore.DisplayManagement.Razor.RazorViewFeature"/> such that
+            e.g a <see cref="T:Wd3eCore.DisplayManagement.Razor.RazorPage"/> can reuse them when it's executed.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Razor.RazorViewFeature">
+            <summary>
+            Used to capture commonly used data that can be retrieved e.g by a <see cref="T:Wd3eCore.DisplayManagement.Razor.RazorPage"/>.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorViewFeature.Site">
+            <summary>
+            The <see cref="T:Wd3eCore.Settings.ISite"/> instance.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorViewFeature.ThemeLayout">
+            <summary>
+            The current theme layout.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Razor.RazorViewFeature.Theme">
+            <summary>
+            The current theme.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.New">
+            <summary>
+            Gets a dynamic shape factory to create new shapes.
+            </summary>
+            <example>
+            Usage:
+            <code>
+            await New.MyShape()
+            await New.MyShape(A: 1, B: "Some text")
+            (await New.MyShape()).A(1).B("Some text")
+            </code>
+            </example>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.Factory">
+            <summary>
+            Gets an <see cref="T:Wd3eCore.DisplayManagement.IShapeFactory"/> to create new shapes.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.DisplayAsync(System.Object)">
+            <summary>
+            Renders a shape.
+            </summary>
+            <param name="shape">The shape.</param>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.T">
+            <summary>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer"/> instance for the current view.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.RenderTitleSegments(Microsoft.AspNetCore.Html.IHtmlContent,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Adds a segment to the title and returns all segments.
+            </summary>
+            <param name="segment">The segment to add to the title.</param>
+            <param name="position">Optional. The position of the segment in the title.</param>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.RenderTitleSegments(System.String,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Adds a segment to the title and returns all segments.
+            </summary>
+            <param name="segment">The segment to add to the title.</param>
+            <param name="position">Optional. The position of the segment in the title.</param>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.Tag(System.Object)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/> to render a shape.
+            </summary>
+            <param name="shape">The shape.</param>
+            <returns>A new <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/>.</returns>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.FullRequestPath">
+            <summary>
+            Returns the full escaped path of the current request.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.Site">
+            <summary>
+            Gets the <see cref="T:Wd3eCore.Settings.ISite"/> instance.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Shapes.AlternatesCollection">
+            <summary>
+            An ordered collection optimized for lookups.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Shapes.ShapeMetadata.Displaying">
+            <summary>
+            Event use for a specific shape instance.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Shapes.ShapeMetadata.ProcessingAsync">
+            <summary>
+            Event use for a specific shape instance.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.Shapes.ShapeMetadata.Displayed">
+            <summary>
+            Event use for a specific shape instance.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Shapes.ShapeMetadata.Cache(System.String)">
+            <summary>
+            Marks this shape to be cached
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Shapes.ShapeMetadata.Cache">
+            <summary>
+            Returns the <see cref="!:ShapeMetadataCacheContext"/> instance if the shape is cached.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.TagHelpers.BaseShapeTagHelper.Properties">
+            <summary>
+            Additional properties for the shape.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.TagHelpers.ValidationMessageTagHelper">
+            <summary>
+            <see cref="T:Microsoft.AspNetCore.Razor.TagHelpers.ITagHelper"/> implementation targeting any HTML element with an <c>asp-validation-for</c>
+            attribute.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.TagHelpers.ValidationMessageTagHelper.Order">
+            <inheritdoc />
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.TagHelpers.ValidationMessageTagHelper.For">
+            <summary>
+            Name to be validated on the current model.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.TagHelpers.ValidationMessageTagHelper.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <inheritdoc />
+            <remarks>Does nothing if <see cref="P:Wd3eCore.DisplayManagement.TagHelpers.ValidationMessageTagHelper.For"/> is <c>null</c>.</remarks>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Theming.IThemeSelector">
+            <summary>
+            When implemented, defines a way to provide specific themes for the current request.
+            The results of all implementations are then ordered by priority, and the result
+            with the highest priority is selected as the current theme.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Theming.IThemeSelector.GetThemeAsync">
+            <summary>
+            Returns a <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeSelectorResult"/> representing a specific theme
+            and a priority order. The highest priority value will be used.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Theming.ThemeLayout">
+             <summary>
+             This class represents a precompiled _Layout.cshtml view that renders a
+             Layout shape and the View's body in its Content zone.
+            
+             1- Views look for any _ViewStart.cshtml
+             2- <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemingViewsFeatureProvider"/> has registered <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeViewStart"/> as the top one
+             3- <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeViewStart"/> then set a special Layout filename as the default View's Layout.
+             4- <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemingViewsFeatureProvider"/> has registered <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeLayout"/> for this special filename.
+             5- <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeLayout"/> evaluates the Body of the view, and renders a Layout shape with this Body in the Content zone.
+             </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Theming.ThemeViewStart">
+            <summary>
+            A precompiled view that resets the View's Layout to the <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeLayout"/>
+            class to ensure the Layout shape is used.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Theming.ThemingViewsFeatureProvider">
+            <summary>
+            Provides Theming precompiled views when specific Layout and ViewStart files are seeked on the filesystem.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Title.IPageTitleBuilder.Clear">
+            <summary>
+            Clears the current list of segments.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Title.IPageTitleBuilder.AddSegment(Microsoft.AspNetCore.Html.IHtmlContent,System.String)">
+            <summary>
+            Adds a segment to the title.
+            </summary>
+            <param name="segment">A segments to add at the specific location in the title.</param>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Title.IPageTitleBuilder.GenerateTitle(Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Concatenates every title segments using the separator defined in settings.
+            </summary>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>A string representing the aggregate title for the current page.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Title.PageTitleBuilderExtensions.GenerateTitle(Wd3eCore.DisplayManagement.Title.IPageTitleBuilder)">
+            <summary>
+            Concatenates every title segments using the separator defined in settings.
+            </summary>
+            <returns>A string representing the aggregate title for the current page.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.Prefix(System.String)">
+            <summary>
+            Sets the prefix of the form elements rendered in the shape.
+            </summary>
+            <remarks>
+            The goal is to isolate each shape when edited together.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.Location(System.String)">
+            <summary>
+            Sets the default location of the shape when no specific placement applies.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.Location(System.String,System.String)">
+            <summary>
+            Sets the location to use for a matching display type.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.Displaying(System.Action{Wd3eCore.DisplayManagement.Implementation.ShapeDisplayContext})">
+            <summary>
+            Sets the location to use for a matching display type.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.Differentiator(System.String)">
+            <summary>
+            Sets a discriminator that is used to find the location of the shape when two shapes of the same type are displayed.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.OnGroup(System.String)">
+            <summary>
+            Sets the group identifier the shape will be rendered in.
+            </summary>
+            <param name="groupId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.Views.ShapeResult.Cache(System.String,System.Action{Wd3eCore.Environment.Cache.CacheContext})">
+            <summary>
+            Sets the caching properties of the shape to render.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Zones.ZoneHolding">
+             <summary>
+             Provides the behavior of shapes that have a Zones property.
+             Examples include Layout and Item
+            
+             * Returns a fake parent object for zones
+             Foo.Zones
+            
+             *
+             Foo.Zones.Alpha :
+             Foo.Zones["Alpha"]
+             Foo.Alpha :same
+            
+             </summary>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Zones.Zones">
+            <remarks>
+            InterfaceProxyBehavior()
+            ZonesBehavior(_zoneFactory, self, _layoutShape) => Create ZoneOnDemand if member access
+            </remarks>
+        </member>
+        <member name="T:Wd3eCore.DisplayManagement.Zones.ZoneOnDemand">
+            <remarks>
+            InterfaceProxyBehavior()
+            NilBehavior() => return Nil on GetMember and GetIndex in all cases
+            ZoneOnDemandBehavior(_zoneFactory, _parent, name)  => when a zone (Shape) is
+            created, replace itself with the zone so that Layout.ZoneName is no more equal to Nil
+            </remarks>
+        </member>
+        <member name="M:RazorHelperExtensions.CultureDir(Wd3eCore.IWd3eHelper)">
+            <summary>
+            Returns the text writing directionality or the current request.
+            </summary>
+            <returns><c>"rtl"</c> if the current culture is Left To Right, <c>"ltr"</c> otherwise.</returns>
+        </member>
+        <member name="M:RazorHelperExtensions.CultureName(Wd3eCore.IWd3eHelper)">
+            <summary>
+            Returns the current culture name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTagHelpers(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Adds tag helper services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddTagHelpers``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds tag helper services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddTheming(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds host and tenant level services for managing themes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddThemingHost(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds host level services for managing themes.
+            </summary>
+        </member>
+    </members>
+</doc>

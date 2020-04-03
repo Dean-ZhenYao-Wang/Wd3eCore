@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.ContentManagement.Display\Wd3eCore.ContentManagement.Display.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.ContentManagement.Display\Wd3eCore.ContentManagement.Display.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -14,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.ContentManagement.Abstractions\Wd3eCore.ContentManagement.Abstractions.csproj" />
-    <ProjectReference Include="..\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <PackageReference Include="Wd3eCore.ContentManagement.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>
