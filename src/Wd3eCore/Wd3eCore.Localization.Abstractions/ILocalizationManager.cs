@@ -10,7 +10,7 @@ namespace Wd3eCore.Localization
         /// <summary>
         /// Retrieves a dictionary for a specified culture.
         /// </summary>
-        /// <param name="culture">The <see cref="CulureInfo"/>.</param>
+        /// <param name="culture">The "CulureInfo".</param>
         /// <returns>A <see cref="CultureDictionary"/> for the specified culture.</returns>
         CultureDictionary GetDictionary(CultureInfo culture);
     }
