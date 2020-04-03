@@ -17,10 +17,7 @@
     <PackageReference Include="ncrontab" />
     <PackageReference Include="NodaTime" />
     <PackageReference Include="Wd3eCore.Abstractions" Version="1.0.0-rc1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.Localization.Abstractions\Wd3eCore.Localization.Abstractions.csproj" />
+    <PackageReference Include="Wd3eCore.Localization.Abstractions" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>
