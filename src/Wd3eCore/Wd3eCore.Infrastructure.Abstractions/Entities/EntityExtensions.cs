@@ -22,7 +22,9 @@ namespace Wd3eCore.Entities
         /// <typeparam name="T">The type of the property to extract.</typeparam>
         /// <param name="name">The name of the property to extract.</param>
         /// <returns>A new instance of the requested type if the property was not found.</returns>
+#pragma warning disable CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         public static T As<T>(this IEntity entity, string name) where T : new()
+#pragma warning restore CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         {
             JToken value;
 
@@ -50,7 +52,9 @@ namespace Wd3eCore.Entities
         /// </summary>
         /// <param name="name">The name of the property to check.</param>
         /// <returns>True if the property was found, otherwise false.</returns>
+#pragma warning disable CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         public static bool Has(this IEntity entity, string name)
+#pragma warning restore CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         {
             return entity.Properties[name] != null;
         }
@@ -69,10 +73,12 @@ namespace Wd3eCore.Entities
         /// <summary>
         /// Modifies or create an aspect.
         /// </summary>
-        /// <typeparam name="name">The name of the aspect.</typeparam>
-        /// <typeparam name="action">An action to apply on the aspect.</typeparam>
+        /// <param name="name">The name of the aspect.</param>
+        /// <param name="action">An action to apply on the aspect.</param>
         /// <returns>The current <see cref="IEntity"/> instance.</returns>
+#pragma warning disable CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         public static IEntity Alter<TAspect>(this IEntity entity, string name, Action<TAspect> action) where TAspect : new()
+#pragma warning restore CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         {
             JToken value;
             TAspect obj;

@@ -1,0 +1,223 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Infrastructure.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="M:Wd3eCore.Environment.Cache.CacheContext.WithExpiryOn(System.DateTimeOffset)">
+            <summary>
+            Defines the absolute time the value should be cached for.
+            If not called a sliding value will be used.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.CacheContext.WithExpiryAfter(System.TimeSpan)">
+            <summary>
+            Defines the absolute time (relative from now) the value should be cached for.
+            If not called a sliding value will be used.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.CacheContext.WithExpirySliding(System.TimeSpan)">
+            <summary>
+            Defines the sliding expiry time the value should be cached for.
+            If not called a default sliding value will be used (unless an absolute expiry time has been specified).
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.CacheContext.AddContext(System.String[])">
+            <summary>
+            Defines a dimension to cache the shape for. For instance by using <code>"user"</code>
+            each user will get a different value.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.CacheContext.RemoveContext(System.String)">
+            <summary>
+            Removes a specific context.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.ICacheContextManager.GetDiscriminatorsAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Provides the discriminator for a specific cache context by requesting all <see cref="T:Wd3eCore.Environment.Cache.ICacheContextProvider"/>
+            implementations.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Cache.ICacheContextProvider">
+            <summary>
+            Returns a set of values describing the discriminators of the context and a value
+            which changes whenever the state of the discriminator changes, for instance a serial
+            number of a timestamp.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.ICacheScopeManager.AddDependencies(System.String[])">
+            <summary>
+            Adds the given dependencies to the current innermost cache context
+            </summary>
+            <param name="dependencies">The dependencies to add</param>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.ICacheScopeManager.AddContexts(System.String[])">
+            <summary>
+            Adds the given contexts to the current innermost cache context
+            </summary>
+            <param name="contexts">The contexts to add</param>
+        </member>
+        <member name="T:Wd3eCore.Infrastructure.Cache.IScopedDistributedCache">
+            <summary>
+            Provides a distributed cache service that can return existing references in the current scope.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Email.IEmailAddressValidator">
+            <summary>
+            Contract for e-mail address validation service.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Email.IEmailAddressValidator.Validate(System.String)">
+            <summary>
+            Validates an e-mail address.
+            </summary>
+            <param name="emailAddress">The e-mail address to be validated.</param>
+            <returns><c>true</c> if the email is valid, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Wd3eCore.Entities.EntityExtensions.As``1(Wd3eCore.Entities.IEntity)">
+            <summary>
+            Extracts the specified type of property.
+            </summary>
+            <typeparam name="T">The type of the property to extract.</typeparam>
+            <returns>A new instance of the requested type if the property was not found.</returns>
+        </member>
+        <member name="M:Wd3eCore.Entities.EntityExtensions.As``1(Wd3eCore.Entities.IEntity,System.String)">
+            <summary>
+            Extracts the specified named property.
+            </summary>
+            <typeparam name="T">The type of the property to extract.</typeparam>
+            <param name="name">The name of the property to extract.</param>
+            <returns>A new instance of the requested type if the property was not found.</returns>
+        </member>
+        <member name="M:Wd3eCore.Entities.EntityExtensions.Has``1(Wd3eCore.Entities.IEntity)">
+            <summary>
+            Indicates if the specified type of property is attached to the <see cref="T:Wd3eCore.Entities.IEntity"/> instance.
+            </summary>
+            <typeparam name="T">The type of the property to check.</typeparam>
+            <returns>True if the property was found, otherwise false.</returns>
+        </member>
+        <member name="M:Wd3eCore.Entities.EntityExtensions.Has(Wd3eCore.Entities.IEntity,System.String)">
+            <summary>
+            Indicates if the specified property is attached to the <see cref="T:Wd3eCore.Entities.IEntity"/> instance.
+            </summary>
+            <param name="name">The name of the property to check.</param>
+            <returns>True if the property was found, otherwise false.</returns>
+        </member>
+        <member name="M:Wd3eCore.Entities.EntityExtensions.Alter``1(Wd3eCore.Entities.IEntity,System.String,System.Action{``0})">
+            <summary>
+            Modifies or create an aspect.
+            </summary>
+            <param name="name">The name of the aspect.</param>
+            <param name="action">An action to apply on the aspect.</param>
+            <returns>The current <see cref="T:Wd3eCore.Entities.IEntity"/> instance.</returns>
+        </member>
+        <member name="T:Wd3eCore.Scripting.IGlobalMethodProvider">
+            <summary>
+            An implementation of <see cref="T:Wd3eCore.Scripting.IGlobalMethodProvider"/> provides custom methods for
+            an <see cref="T:Wd3eCore.Scripting.IScriptingManager"/> intance.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Scripting.IGlobalMethodProvider.GetMethods">
+            <summary>
+            Gets the list of methods to provide to the <see cref="T:Wd3eCore.Scripting.IScriptingManager"/>.
+            </summary>
+            <returns>A list of <see cref="T:Wd3eCore.Scripting.GlobalMethod"/> instances.</returns>
+        </member>
+        <member name="T:Wd3eCore.Scripting.IScriptingManager">
+            <summary>
+            An implementation of <see cref="T:Wd3eCore.Scripting.IScriptingManager"/> provides services to evaluate
+            custom scripts.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Scripting.IScriptingManager.GetScriptingEngine(System.String)">
+            <summary>
+            Gets the scripting engine with the specified prefix.
+            </summary>
+            <param name="prefix">A string representing the engine to return.</param>
+            <returns>A scripting engine or <code>null</code> if it couldn't be found.</returns>
+        </member>
+        <member name="M:Wd3eCore.Scripting.IScriptingManager.Evaluate(System.String,Microsoft.Extensions.FileProviders.IFileProvider,System.String,System.Collections.Generic.IEnumerable{Wd3eCore.Scripting.IGlobalMethodProvider})">
+            <summary>
+            Executes some prefixed script by looking for a matching scripting engine.
+            </summary>
+            <param name="directive">The directive to execute. A directive is made of a </param>
+            <param name="fileProvider">An optional <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> instance.</param>
+            <param name="basePath"></param>
+            <param name="scopedMethodProviders">A list of method providers scoped to the script evaluation.</param>
+            <returns>The result of the script if any.</returns>
+        </member>
+        <member name="P:Wd3eCore.Scripting.IScriptingManager.GlobalMethodProviders">
+            <summary>
+            The list of available method providers for this <see cref="T:Wd3eCore.Scripting.IScriptingManager"/>
+            instance.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Security.Permissions.IPermissionProvider">
+            <summary>
+            Implemented by modules to enumerate the types of permissions
+            the which may be granted
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Security.RoleClaim">
+            <summary>
+            Represents a claim that is granted to all users within a role.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Security.RoleClaim.ClaimType">
+            <summary>
+            Gets or sets the claim type for this claim.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Security.RoleClaim.ClaimValue">
+            <summary>
+            Gets or sets the claim value for this claim.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Settings.ISiteService">
+            <summary>
+            Provides services to manage the sites settings.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Settings.ISiteService.LoadSiteSettingsAsync">
+            <summary>
+            Returns the site settings for udpate.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Settings.ISiteService.GetSiteSettingsAsync">
+            <summary>
+            Return the site settings for the current tenant in read-only.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Settings.ISiteService.UpdateSiteSettingsAsync(Wd3eCore.Settings.ISite)">
+            <summary>
+            Persists the changes to the site settings.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Settings.ISiteService.ChangeToken">
+            <summary>
+            Gets a change token that is set when site settings have changed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.FileProviders.FileProviderExtensions.GetRelativeFileInfo(Microsoft.Extensions.FileProviders.IFileProvider,System.String,System.String)">
+            <summary>
+            Locate a file at the give relative paths
+            </summary>
+        </member>
+        <member name="M:System.IO.PathExtensions.Combine(System.String,System.String)">
+            <summary>
+            Combines two path parts
+            </summary>
+        </member>
+        <member name="M:System.IO.PathExtensions.Combine(System.String,System.String[])">
+            <summary>
+            Combines multiple path parts
+            </summary>
+        </member>
+        <member name="M:System.IO.PathExtensions.ResolvePath(System.String)">
+            <summary>
+            Resolves relative segments in a path
+            </summary>
+        </member>
+    </members>
+</doc>
