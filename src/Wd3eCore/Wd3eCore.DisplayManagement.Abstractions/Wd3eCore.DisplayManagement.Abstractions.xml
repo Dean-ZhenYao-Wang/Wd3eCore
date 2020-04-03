@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.DisplayManagement.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="M:Wd3eCore.Mvc.ModelBinding.ModelStateDictionaryExtensions.AddModelError(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary,System.String,System.String,System.String)">
+            <summary>
+            Adds the specified error message to the errors collection for the model-state dictionary that is associated with the specified key.
+            </summary>
+            <param name="modelState">The model state.</param>
+            <param name="prefix">The prefix of the key.</param>
+            <param name="key">The key.</param>
+            <param name="errorMessage">The error message.</param>
+        </member>
+    </members>
+</doc>

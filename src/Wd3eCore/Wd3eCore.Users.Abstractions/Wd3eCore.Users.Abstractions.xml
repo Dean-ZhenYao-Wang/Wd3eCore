@@ -1,0 +1,357 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Users.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Users.ClaimsPrincipalExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Security.Claims.ClaimsPrincipal"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.ClaimsPrincipalExtensions.GetSerializableClaims(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Gets a serialized version of the claims.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Claims.ClaimsPrincipal"/>.</param>
+            <returns>A list of <see cref="T:Wd3eCore.Users.SerializableClaim"/>.</returns>
+        </member>
+        <member name="T:Wd3eCore.Users.Events.ILoginFormEvent">
+            <summary>
+            Contract for login events.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.ILoginFormEvent.LoggingInAsync(System.String,System.Action{System.String,System.String})">
+            <summary>
+            Occurs when the user is logging.
+            </summary>
+            <param name="userName">The username.</param>
+            <param name="reportError">The reported error if failure happened during the login process.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.ILoginFormEvent.LoggingInFailedAsync(System.String)">
+            <summary>
+            Occurs when the user login has failed.
+            </summary>
+            <param name="userName">The username.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.ILoginFormEvent.LoggedInAsync(System.String)">
+            <summary>
+            Occurs when the user is logged in.
+            </summary>
+            <param name="userName">The username.</param>
+        </member>
+        <member name="T:Wd3eCore.Users.Events.IPasswordRecoveryFormEvents">
+            <summary>
+            Contract for password recovery events.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.IPasswordRecoveryFormEvents.ResettingPasswordAsync(System.Action{System.String,System.String})">
+            <summary>
+            Occurs during the user password is being reset.
+            </summary>
+            <param name="reportError">The reported error if failure happened during the rest process.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.IPasswordRecoveryFormEvents.PasswordResetAsync">
+            <summary>
+            Occurs after the user password has been reset.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.IPasswordRecoveryFormEvents.RecoveringPasswordAsync(System.Action{System.String,System.String})">
+            <summary>
+            Occurs during the user password recovery.
+            </summary>
+            <param name="reportError">The reported error if failure happened during the recovery process.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.IPasswordRecoveryFormEvents.PasswordRecoveredAsync">
+            <summary>
+            Occurs after the user password has been recovered.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.Events.IRegistrationFormEvents">
+            <summary>
+            Contract for user registration events.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.IRegistrationFormEvents.RegistrationValidationAsync(System.Action{System.String,System.String})">
+            <summary>
+            Occurs during the user registration.
+            </summary>
+            <param name="reportError">The reported error if failure happened in validation process.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Events.IRegistrationFormEvents.RegisteredAsync(Wd3eCore.Users.IUser)">
+            <summary>
+            Occurs when user has been registered.
+            </summary>
+            <param name="user">The <see cref="T:Wd3eCore.Users.IUser"/></param>
+        </member>
+        <member name="T:Wd3eCore.Users.Handlers.IExternalLoginEventHandler">
+            <summary>
+            Contract for external login events, this occurs when a tenant is set up.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.IExternalLoginEventHandler.GenerateUserName(System.String,System.Collections.Generic.IEnumerable{Wd3eCore.Users.SerializableClaim})">
+            <summary>
+            Occurs when the username is generated.
+            </summary>
+            <param name="provider">The login provider.</param>
+            <param name="claims">A <see cref="T:Wd3eCore.Users.SerializableClaim"/>s.</param>
+            <return>A username.</return>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.IExternalLoginEventHandler.UpdateRoles(Wd3eCore.Users.Handlers.UpdateRolesContext)">
+            <summary>
+            Occurs when the user roles are updated.
+            </summary>
+            <param name="context">The <see cref="T:Wd3eCore.Users.Handlers.UpdateRolesContext"/>.</param>
+        </member>
+        <member name="T:Wd3eCore.Users.Handlers.IUserEventHandler">
+            <summary>
+            Contract for user events.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.IUserEventHandler.CreatedAsync(Wd3eCore.Users.Handlers.UserContext)">
+            <summary>
+            Occurs when the user created.
+            </summary>
+            <param name="context">The <see cref="T:Wd3eCore.Users.Handlers.UserContext"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.IUserEventHandler.DisabledAsync(Wd3eCore.Users.Handlers.UserContext)">
+            <summary>
+            Occurs when the user disabled.
+            </summary>
+            <param name="context">The <see cref="T:Wd3eCore.Users.Handlers.UserContext"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.IUserEventHandler.EnabledAsync(Wd3eCore.Users.Handlers.UserContext)">
+            <summary>
+            Occurs when the user enabled.
+            </summary>
+            <param name="context">The <see cref="T:Wd3eCore.Users.Handlers.UserContext"/>.</param>
+        </member>
+        <member name="T:Wd3eCore.Users.Handlers.UpdateRolesContext">
+            <summary>
+            Represents a <see cref="T:Wd3eCore.Users.Handlers.UserContextBase"/> for updated user roles.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.UpdateRolesContext.#ctor(Wd3eCore.Users.IUser,System.String,System.Collections.Generic.IEnumerable{Wd3eCore.Users.SerializableClaim},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new instance of <see cref="T:Wd3eCore.Users.Handlers.UpdateRolesContext"/>.
+            </summary>
+            <param name="user">The <see cref="T:Wd3eCore.Users.IUser"/>.</param>
+            <param name="loginProvider">The login provider.</param>
+            <param name="externalClaims">The user claims.</param>
+            <param name="userRoles">The user roles</param>
+        </member>
+        <member name="P:Wd3eCore.Users.Handlers.UpdateRolesContext.LoginProvider">
+            <summary>
+            Gets the login provider.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Handlers.UpdateRolesContext.ExternalClaims">
+            <summary>
+            Gets a list of external claims.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Handlers.UpdateRolesContext.UserRoles">
+            <summary>
+            Gets the user's roles.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Handlers.UpdateRolesContext.RolesToAdd">
+            <summary>
+            Gets the roles to be added to the user roles.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Handlers.UpdateRolesContext.RolesToRemove">
+            <summary>
+            Gets the roles to be removed from the user roles.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.Handlers.UserContext">
+            <summary>
+            Represents a context for a user.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.UserContext.#ctor(Wd3eCore.Users.IUser)">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Users.Handlers.UserContextBase">
+            <summary>
+            Represents a base context for a user.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Handlers.UserContextBase.#ctor(Wd3eCore.Users.IUser)">
+            <summary>
+            Creates a new instance of <see cref="T:Wd3eCore.Users.Handlers.UserContextBase"/>.
+            </summary>
+            <param name="user">The <see cref="T:Wd3eCore.Users.IUser"/>.</param>
+        </member>
+        <member name="P:Wd3eCore.Users.Handlers.UserContextBase.User">
+            <summary>
+            Gets the user.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.IUser">
+            <summary>
+            Contract for ASP.NET Core Identity services.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.IUser.UserName">
+            <summary>
+            Gets the user name.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.SerializableClaim">
+            <summary>
+            Represents a serialized version for the claim.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.Subject">
+            <summary>
+            Gets or sets the claim subject.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.Issuer">
+            <summary>
+            Gets or sets the claim issuer.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.OriginalIssuer">
+            <summary>
+            Gets or sets the claim original issuer for the claim.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.Properties">
+            <summary>
+            Gets or sets the claim properties.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.Type">
+            <summary>
+            Gets or sets the claim type.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.Value">
+            <summary>
+            Gets or sets the claim value.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.SerializableClaim.ValueType">
+            <summary>
+            Gets or sets the type of the claim value.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.Services.IMembershipService">
+            <summary>
+            Contract for membership services.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IMembershipService.GetUserAsync(System.String)">
+            <summary>
+            Get the user with the specified username.
+            </summary>
+            <param name="userName">The username for the retrieved user.</param>
+            <returns>The <see cref="T:Wd3eCore.Users.IUser"/>.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IMembershipService.CheckPasswordAsync(System.String,System.String)">
+            <summary>
+            Checks the user password.
+            </summary>
+            <param name="userName">The username.</param>
+            <param name="password">The user password</param>
+            <returns>Returns<c>true</c> if the password is correct, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IMembershipService.CreateClaimsPrincipal(Wd3eCore.Users.IUser)">
+            <summary>
+            Creates a <see cref="T:System.Security.Claims.ClaimsPrincipal"/> for the specified user.
+            </summary>
+            <param name="user">The <see cref="T:Wd3eCore.Users.IUser"/>.</param>
+            <returns>A user <see cref="T:System.Security.Claims.ClaimsPrincipal"/>s.</returns>
+        </member>
+        <member name="T:Wd3eCore.Users.Services.IUserService">
+            <summary>
+            Contract that provides an abstraction for common user operations.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.AuthenticateAsync(System.String,System.String,System.Action{System.String,System.String})">
+            <summary>
+            Authenticates the user credentials.
+            </summary>
+            <param name="userName">The username.</param>
+            <param name="password">The user password.</param>
+            <param name="reportError">The error reported in case failure happened during the authntication process.</param>
+            <returns>A <see cref="T:Wd3eCore.Users.IUser"/> that represents an authenticated user.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.CreateUserAsync(Wd3eCore.Users.IUser,System.String,System.Action{System.String,System.String})">
+            <summary>
+            Creates a user.
+            </summary>
+            <param name="user">The <see cref="T:Wd3eCore.Users.IUser"/>.</param>
+            <param name="password">The user password.</param>
+            <param name="reportError">The error reported in case failure happened during the creation process.</param>
+            <returns>A <see cref="T:Wd3eCore.Users.IUser"/> represents a created user.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.ChangeEmailAsync(Wd3eCore.Users.IUser,System.String,System.Action{System.String,System.String})">
+            <summary>
+            Change a user email.
+            </summary>
+            <param name="user">The user</param>
+            <param name="newEmail">The new email</param>
+            <param name="reportError">The error reported in case failure happened during the creation process.</param>
+            <returns>Returns <c>true</c> if the email has been changed, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.ChangePasswordAsync(Wd3eCore.Users.IUser,System.String,System.String,System.Action{System.String,System.String})">
+            <summary>
+            Change a user password.
+            </summary>
+            <param name="user">The user</param>
+            <param name="currentPassword">The current password</param>
+            <param name="newPassword">The new password</param>
+            <param name="reportError"></param>
+            <returns>Returns <c>true</c> if the password has been changed, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.GetAuthenticatedUserAsync(System.Security.Claims.ClaimsPrincipal)">
+            <summary>
+            Gets the authenticated user from a given <see cref="T:System.Security.Claims.ClaimsPrincipal"/>.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Claims.ClaimsPrincipal"/>.</param>
+            <returns>A <see cref="T:Wd3eCore.Users.IUser"/> represents the authenticated user.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.GetUserAsync(System.String)">
+            <summary>
+            Gets the user with a specified username.
+            </summary>
+            <param name="userName">The username.</param>
+            <returns>The <see cref="T:Wd3eCore.Users.IUser"/> represents the retrieved user.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.GetUserByUniqueIdAsync(System.String)">
+            <summary>
+            Gets the user with a specified ID.
+            </summary>
+            <param name="userIdentifier">The user ID.</param>
+            <returns>A <see cref="T:Wd3eCore.Users.IUser"/> represents a retrieved user.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.GetForgotPasswordUserAsync(System.String)">
+            <summary>
+            Get a forgotten password for a specified user ID.
+            </summary>
+            <param name="userIdentifier">The user ID.</param>
+            <returns>A <see cref="T:Wd3eCore.Users.IUser"/> represents a user with forgotton password.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.ResetPasswordAsync(System.String,System.String,System.String,System.Action{System.String,System.String})">
+            <summary>
+            Resets the user password.
+            </summary>
+            <param name="userIdentifier">The user ID.</param>
+            <param name="resetToken">The token used to reset the password.</param>
+            <param name="newPassword">The new password.</param>
+            <param name="reportError">The error reported in case failure happened during the reset process.</param>
+            <returns>Returns <c>true</c> if the password reset, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.IUserService.CreatePrincipalAsync(Wd3eCore.Users.IUser)">
+            <summary>
+            Creates a <see cref="T:System.Security.Claims.ClaimsPrincipal"/> for a given user.
+            </summary>
+            <param name="user">The <see cref="T:Wd3eCore.Users.IUser"/>.</param>
+            <returns>The <see cref="T:System.Security.Claims.ClaimsPrincipal"/>.</returns>
+        </member>
+    </members>
+</doc>

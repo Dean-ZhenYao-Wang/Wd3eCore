@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Data.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Data.Migration.DataMigration">
+            <summary>
+            Represents a database migration.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Data.Migration.DataMigration.SchemaBuilder">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Data.Migration.IDataMigration">
+            <summary>
+            Represents a contract for a database migration.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Data.Migration.IDataMigration.SchemaBuilder">
+            <summary>
+            Gets or sets the database schema builder.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Data.Migration.IDataMigrationManager">
+            <summary>
+            Represents a contract to manage database migrations.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.GetFeaturesThatNeedUpdateAsync">
+            <summary>
+            Returns the features which have at least one Data Migration class with a corresponding Upgrade method to be called
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.UpdateAllFeaturesAsync">
+            <summary>
+            Run all migrations that need to be updated.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.UpdateAsync(System.String)">
+            <summary>
+            Updates the database to the latest version for the specified feature
+            </summary>
+            <param name="feature">The feature to be uninstalled.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.UpdateAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Updates the database to the latest version for the specified features
+            </summary>
+            <param name="features">The features to be updated.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.Uninstall(System.String)">
+            <summary>
+            Execute a script to delete any information relative to the feature
+            </summary>
+            <param name="feature">The feature to be uninstalled.</param>
+        </member>
+        <member name="T:Wd3eCore.Data.IDbConnectionAccessor">
+            <summary>
+            Represents a contract to access the <see cref="T:System.Data.Common.DbConnection"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.IDbConnectionAccessor.CreateConnection">
+            <summary>
+            Creats a database connection.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Data.IScopedIndexProvider">
+            <summary>
+            Represents a contract that used to denote an <see cref="T:YesSql.Indexes.IIndexProvider"/> that needs to be resolved by the DI and registered
+            at the <see cref="T:YesSql.ISession"/> level.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Data.ISessionHelper">
+            <summary>
+            Represents a contract that provides helper methods for <see cref="T:YesSql.ISession"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.ISessionHelper.LoadForUpdateAsync``1(System.Func{``0})">
+            <summary>
+            Loads a single document (or create a new one) for updating and that should not be cached.
+            For a full isolation, it needs to be used in pair with <see cref="M:Wd3eCore.Data.ISessionHelper.GetForCachingAsync``1(System.Func{``0})"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="factory">A factory methods to load or create a document.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.ISessionHelper.GetForCachingAsync``1(System.Func{``0})">
+            <summary>
+            Gets a single document (or create a new one) for caching and that should not be updated.
+            For a full isolation, it needs to be used in pair with <see cref="M:Wd3eCore.Data.ISessionHelper.LoadForUpdateAsync``1(System.Func{``0})"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="factory">A factory method to get or create a document for caching.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Wd3eCore.Data.ServiceCollectionExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add YesSQL <see cref="T:Wd3eCore.Data.DatabaseProvider"/>s.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.ServiceCollectionExtensions.TryAddDataProvider(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
+             <param name="name">The database provider name.</param>
+             <param name="value">The database provider value, i.e. SQL Server, MySQL.</param>
+             <param name="hasConnectionString">Whether the database contains a connection string.</param>
+             <param name="hasTablePrefix">The table prefix.</param>
+             <param name="isDefault">Whether the data provider is the default one.</param>
+             <param name="sampleConnectionString">A sample connection string, e.g. Server={Server Name};Database={Database Name};IntegratedSecurity=true</param>
+             <returns></returns>
+        </member>
+    </members>
+</doc>

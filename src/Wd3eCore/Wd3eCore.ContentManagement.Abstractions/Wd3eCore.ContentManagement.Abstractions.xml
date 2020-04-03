@@ -1,0 +1,709 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.ContentManagement.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.ContentManagement.ContentElement">
+            <summary>
+            Common traits of <see cref="P:Wd3eCore.ContentManagement.ContentElement.ContentItem"/>, <see cref="T:Wd3eCore.ContentManagement.ContentPart"/>
+            and <see cref="T:Wd3eCore.ContentManagement.ContentField"/>
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentElement.Has(System.String)">
+            <summary>
+            Whether the content has a named property or not.
+            </summary>
+            <param name="name">The name of the property to look for.</param>
+        </member>
+        <member name="F:Wd3eCore.ContentManagement.ContentExtensions.JsonMergeSettings">
+            <summary>
+            These settings instruct merge to replace current value, even for null values.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Get``1(Wd3eCore.ContentManagement.ContentElement,System.String)">
+            <summary>
+            Gets a content element by its name.
+            </summary>
+            <typeparam name="TElement">The expected type of the content element.</typeparam>
+            <typeparam name="name">The name of the content element.</typeparam>
+            <returns>The content element instance or <code>null</code> if it doesn't exist.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Has``1(Wd3eCore.ContentManagement.ContentElement)">
+            <summary>
+            Gets whether a content element has a specific element attached.
+            </summary>
+            <typeparam name="TElement">The expected type of the content element.</typeparam>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Get(Wd3eCore.ContentManagement.ContentElement,System.Type,System.String)">
+            <summary>
+            Gets a content element by its name.
+            </summary>
+            <typeparam name="contentElementType">The expected type of the content element.</typeparam>
+            <typeparam name="name">The name of the content element.</typeparam>
+            <returns>The content element instance or <code>null</code> if it doesn't exist.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.GetOrCreate``1(Wd3eCore.ContentManagement.ContentElement,System.String)">
+            <summary>
+            Gets a content element by its name or create a new one.
+            </summary>
+            <typeparam name="TElement">The expected type of the content element.</typeparam>
+            <typeparam name="name">The name of the content element.</typeparam>
+            <returns>The content element instance or a new one if it doesn't exist.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Weld(Wd3eCore.ContentManagement.ContentElement,System.String,Wd3eCore.ContentManagement.ContentElement)">
+            <summary>
+            Adds a content element by name.
+            </summary>
+            <typeparam name="name">The name of the content element.</typeparam>
+            <typeparam name="element">The element to add to the <see cref="T:Wd3eCore.ContentManagement.ContentItem"/>.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentItem"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Weld``1(Wd3eCore.ContentManagement.ContentElement,System.Object)">
+            <summary>
+            Welds a new part to the content item. If a part of the same type is already welded nothing is done.
+            This part can be not defined in Content Definitions.
+            </summary>
+            <typeparam name="TPart">The type of the part to be welded.</typeparam>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Apply(Wd3eCore.ContentManagement.ContentElement,System.String,Wd3eCore.ContentManagement.ContentElement)">
+            <summary>
+            Updates the content element with the specified name.
+            </summary>
+            <typeparam name="name">The name of the element to update.</typeparam>
+            <typeparam name="element">The content element instance to update.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentItem"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Apply(Wd3eCore.ContentManagement.ContentElement,Wd3eCore.ContentManagement.ContentElement)">
+            <summary>
+            Updates the whole content.
+            </summary>
+            <typeparam name="element">The content element instance to update.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentItem"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Alter``1(Wd3eCore.ContentManagement.ContentElement,System.String,System.Action{``0})">
+            <summary>
+            Modifies a new or existing content element by name.
+            </summary>
+            <typeparam name="name">The name of the content element to update.</typeparam>
+            <typeparam name="action">An action to apply on the content element.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentElement"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.Apply(Wd3eCore.ContentManagement.ContentPart)">
+            <summary>
+            Updates the content item data.
+            </summary>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentPart"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.IsPublished(Wd3eCore.ContentManagement.IContent)">
+            <summary>
+            Whether the content element is published or not.
+            </summary>
+            <param name="content">The content to check.</param>
+            <returns><c>True</c> if the content is published, <c>False</c> otherwise.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.HasDraft(Wd3eCore.ContentManagement.IContent)">
+            <summary>
+            Whether the content element has a draft or not.
+            </summary>
+            <param name="content">The content to check.</param>
+            <returns><c>True</c> if the content has a draft, <c>False</c> otherwise.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentExtensions.OfType``1(Wd3eCore.ContentManagement.ContentElement)">
+            <summary>
+            Gets all content elements of a specific type.
+            </summary>
+            <typeparam name="TElement">The expected type of the content elements.</typeparam>
+            <returns>The content element instances or empty sequence if no entries exist.</returns>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.ContentItem">
+            <summary>
+            Represents a content item version.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.Id">
+            <summary>
+            The primary key in the database.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.ContentItemId">
+            <summary>
+            The logical identifier of the content item across versions.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.ContentItemVersionId">
+            <summary>
+            The logical identifier of the versioned content item.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.ContentType">
+            <summary>
+            The content type of the content item.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.Published">
+            <summary>
+            Whether the version is published or not.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.Latest">
+            <summary>
+            Whether the version is the latest version of the content item.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.ModifiedUtc">
+            <summary>
+            When the content item version has been updated.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.PublishedUtc">
+            <summary>
+            When the content item has been published.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.CreatedUtc">
+            <summary>
+            When the content item has been created or first published.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.Owner">
+            <summary>
+            The name of the user who first created this content item version
+            and owns content rigths.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.Author">
+            <summary>
+            The name of the user who last modified this content item version.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ContentItem.DisplayText">
+            <summary>
+            The text representing this content item.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.As``1(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Gets a content part by its type.
+            </summary>
+            <returns>The content part or <code>null</code> if it doesn't exist.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.GetOrCreate``1(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Gets a content part by its type or create a new one.
+            </summary>
+            <typeparam name="TPart">The type of the content part.</typeparam>
+            <returns>The content part instance or a new one if it doesn't exist.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.Weld``1(Wd3eCore.ContentManagement.ContentItem,``0)">
+            <summary>
+            Adds a content part by its type.
+            </summary>
+            <typeparam name="part">The part to add to the <see cref="T:Wd3eCore.ContentManagement.ContentItem"/>.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentItem"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.Apply``1(Wd3eCore.ContentManagement.ContentItem,``0)">
+            <summary>
+            Updates the content part with the specified type.
+            </summary>
+            <typeparam name="TPart">The type of the part to update.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentItem"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.Alter``1(Wd3eCore.ContentManagement.ContentItem,System.Action{``0})">
+            <summary>
+            Modifies a new or existing content part by name.
+            </summary>
+            <typeparam name="name">The name of the content part to update.</typeparam>
+            <typeparam name="action">An action to apply on the content part.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentPart"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.AlterAsync``1(Wd3eCore.ContentManagement.ContentItem,System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+            Modifies a new or existing content part by name.
+            </summary>
+            <typeparam name="name">The name of the content part to update.</typeparam>
+            <typeparam name="action">An action to apply on the content part.</typeparam>
+            <returns>The current <see cref="T:Wd3eCore.ContentManagement.ContentPart"/> instance.</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentItemExtensions.Merge(Wd3eCore.ContentManagement.ContentItem,System.Object,Newtonsoft.Json.Linq.JsonMergeSettings)">
+            <summary>
+            Merges properties to the contents of a content item.
+            </summary>
+            <typeparam name="properties">The object to merge.</typeparam>
+            <returns>The modified <see cref="T:Wd3eCore.ContentManagement.ContentItem"/> instance.</returns>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.ContentOptions">
+            <summary>
+            Provides a way to register code based content parts and fields.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.GroupInfo">
+            <summary>
+            Describes a group and its position relative to other groups.
+            It's used in <see cref="T:Wd3eCore.ContentManagement.ContentItemMetadata"/> to describe the potential
+            groups that a content item can be displayed in.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Handlers.ContentItemAspectContext.ForAsync``1(System.Func{``0,System.Threading.Tasks.Task})">
+            <summary>
+            Provides a value for a specific aspect type.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Handlers.ContentItemBuilder">
+            <summary>
+            Builds a contentitem based on its the type definition (<seealso cref="T:Wd3eCore.ContentManagement.Metadata.Models.ContentTypeDefinition"/>).
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Handlers.ContentItemBuilder.#ctor(Wd3eCore.ContentManagement.Metadata.Models.ContentTypeDefinition)">
+            <summary>
+            Constructs a new Content Item Builder instance.
+            </summary>
+            <param name="definition">The definition for the content item to be built.</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Handlers.ContentItemBuilder.Weld(Wd3eCore.ContentManagement.ContentPart)">
+            <summary>
+            Welds a part to the content item.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Handlers.ContentItemBuilder.Weld(System.String,Wd3eCore.ContentManagement.ContentPart)">
+            <summary>
+            Welds a named part to the content item.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Handlers.IContentPartHandler">
+            <summary>
+            An implementation of this class is called for all the parts of a content item.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Metadata.IContentDefinitionManager">
+            <summary>
+            This interface provides each client with
+            a different copy of <see cref="T:Wd3eCore.ContentManagement.Metadata.Models.ContentTypeDefinition"/> to work with in case
+            multiple clients do modifications.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Metadata.IContentDefinitionManager.GetTypesHashAsync">
+            <summary>
+            Returns a serial number representing the list of types and settings for the current tenant.
+            </summary>
+            <returns>
+            An <see cref="T:System.Int32"/> value that changes every time the list of types changes.
+            The implementation is efficient in order to be called frequently.
+            </returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Metadata.ContentDefinitionManagerExtensions.MigratePartSettings``2(Wd3eCore.ContentManagement.Metadata.IContentDefinitionManager)">
+            <summary>
+            Migrate existing ContentPart settings to WithSettings<typeparamref name="TSettings"/>
+            This method will be removed in a future release.
+            </summary>
+            <typeparam name="TPart"></typeparam>
+            <typeparam name="TSettings"></typeparam>
+            <param name="manager"></param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Metadata.ContentDefinitionManagerExtensions.MigrateFieldSettings``2(Wd3eCore.ContentManagement.Metadata.IContentDefinitionManager)">
+            <summary>
+            Migrate existing ContentField settings to WithSettings<typeparamref name="TSettings"/>
+            This method will be removed in a future release.
+            </summary>
+            <typeparam name="TField"></typeparam>
+            <typeparam name="TSettings"></typeparam>
+            <param name="manager"></param>
+        </member>
+        <member name="F:Wd3eCore.ContentManagement.Metadata.Builders.ContentBuilderSettings.JsonMergeSettings">
+            <summary>
+            Replace current value, even for null values, union arrays.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.ContentManagement.Metadata.Builders.ContentBuilderSettings.IgnoreDefaultValuesSerializer">
+            <summary>
+            A Json serializer that ignores properties which have their default values.
+            To be able to have a default value : use [DefaultValue(true)] on a class property for example.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Models.ContentDefinition.Settings">
+            <summary>
+            Do not access this property directly. Migrate to use GetSettings and PopulateSettings.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Metadata.Models.ContentTypeDefinition.ToString">
+            <summary>
+            Returns the <see cref="P:Wd3eCore.ContentManagement.Metadata.Models.ContentTypeDefinition.DisplayName"/> value of the type if defined,
+            or the <see cref="!:Name"/> otherwise.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Metadata.Models.MetaDataExtensions.Populate(Newtonsoft.Json.Linq.JObject,System.Object)">
+            <summary>
+            Populates an object with the values from a <see cref="T:Newtonsoft.Json.Linq.JObject"/> instance.
+            </summary>
+            <param name="settings"></param>
+            <param name="target"></param>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Metadata.Records.ContentFieldDefinitionRecord">
+            <summary>
+            Reprensents a field name.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentPartDefinitionRecord.Settings">
+            <summary>
+            Gets or sets the settings of a part, like description, or any property that a module would attach
+            to a part.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Metadata.Records.ContentPartFieldDefinitionRecord">
+            <summary>
+            Represents a field and its settings in a part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentPartFieldDefinitionRecord.FieldName">
+            <summary>
+            Gets or set the field name, e.g. BooleanField.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentPartFieldDefinitionRecord.Name">
+            <summary>
+            Gets or sets the name of the field, e.g. Age.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentPartFieldDefinitionRecord.Settings">
+            <summary>
+            Gets or sets the settings of the field for this part.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Metadata.Records.ContentTypePartDefinitionRecord">
+            <summary>
+            Represents a part and its settings in a type.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentTypePartDefinitionRecord.PartName">
+            <summary>
+            Gets or sets the part name.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentTypePartDefinitionRecord.Name">
+            <summary>
+            Gets or sets the name of the part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Records.ContentTypePartDefinitionRecord.Settings">
+            <summary>
+            Gets or sets the settings of the part for this type.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartFieldSettings.DisplayName">
+            <summary>
+            Gets or sets the displayed name of the part field.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartFieldSettings.Description">
+            <summary>
+            Gest or set the description of the part field.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartFieldSettings.Editor">
+            <summary>
+            Gest or set the editor of the part field.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartFieldSettings.DisplayMode">
+            <summary>
+            Gest or set the display mode of the part field.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartFieldSettings.Position">
+            <summary>
+            Gets or sets the position of the part field in the editor.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartSettings.Attachable">
+            <summary>
+            Gets or sets whether this part can be manually attached to a content type.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartSettings.Reusable">
+            <summary>
+            Gets or sets whether the part can be attached multiple times to a content type.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartSettings.DisplayName">
+            <summary>
+            Gets or sets the displayed name of the part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartSettings.Description">
+            <summary>
+            Gest or set the description of the part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentPartSettings.DefaultPosition">
+            <summary>
+            Gest or set the default position of the part when attached to a type.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypePartSettings.DisplayName">
+            <summary>
+            Gets or sets the displayed name of the type part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypePartSettings.Description">
+            <summary>
+            Gets or sets the description name of the type part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypePartSettings.Position">
+            <summary>
+            Gets or sets the position of the type part in the editor.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypePartSettings.DisplayMode">
+            <summary>
+            Gest or set the display mode of the type part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypePartSettings.Editor">
+            <summary>
+            Gest or set the editor of the type part.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypeSettings.Creatable">
+            <summary>
+            Used to determine if an instance of this content type can be created through the UI
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypeSettings.Listable">
+            <summary>
+            Used to determine if an instance of this content type can be listed in the contents page
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypeSettings.Draftable">
+            <summary>
+            Used to determine if this content type supports draft versions
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypeSettings.Versionable">
+            <summary>
+            Used to determine if this content type supports versioning
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypeSettings.Stereotype">
+            <summary>
+            Defines the stereotype of the type
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Metadata.Settings.ContentTypeSettings.Securable">
+            <summary>
+            Used to determine if this content type supports custom permissions
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentDefinitionStore.LoadContentDefinitionAsync">
+            <summary>
+            Loads a single document (or create a new one) for updating and that should not be cached.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentDefinitionStore.GetContentDefinitionAsync">
+            <summary>
+            Gets a single document (or create a new one) for caching and that should not be updated.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.IContentManager">
+            <summary>
+            Content management functionality to deal with Wd3e content items and their parts
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.NewAsync(System.String)">
+            <summary>
+            Creates a new content item with the specified type
+            </summary>
+            <remarks>
+            The content item is not yet persisted!
+            </remarks>
+            <param name="contentType">The name of the content type</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.UpdateAsync(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Updates a content item without creating a new version.
+            </summary>
+            <param name="contentItem">The existing content item with updated data</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.CreateAsync(Wd3eCore.ContentManagement.ContentItem,Wd3eCore.ContentManagement.VersionOptions)">
+            <summary>
+            Creates (persists) a new content item with the specified version
+            </summary>
+            <param name="contentItem">The content instance filled with all necessary data</param>
+            <param name="options">The version to create the item with</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.GetAsync(System.String)">
+            <summary>
+            Gets the published content item with the specified id
+            </summary>
+            <param name="id">The content item id to load</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.GetAsync(System.String,Wd3eCore.ContentManagement.VersionOptions)">
+            <summary>
+            Gets the content item with the specified id and version
+            </summary>
+            <param name="id">The id content item id to load</param>
+            <param name="options">The version option</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.GetAsync(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Gets the published content items with the specified ids
+            </summary>
+            <param name="contentItemIds">The content item ids to load</param>
+            <param name="latest">Whether a draft should be loaded if available. <c>false</c> by default.</param>
+            <remarks>
+            This method will always issue a database query.
+            This means that it should be used only to get a list of content items that have not been loaded.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.GetVersionAsync(System.String)">
+            <summary>
+            Gets the content item with the specified version id
+            </summary>
+            <param name="contentItemVersionId">The content item version id</param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.LoadAsync(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Triggers the Load events for a content item that was queried directly from the database.
+            </summary>
+            <param name="contentItem">The content item </param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.RemoveAsync(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Removes <see cref="P:Wd3eCore.ContentManagement.ContentItem.Latest"/> and <see cref="P:Wd3eCore.ContentManagement.ContentItem.Published"/> flags
+            from a content item, making it invisible from the system. It doesn't physically delete
+            the content item.
+            </summary>
+            <param name="contentItem"></param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.DiscardDraftAsync(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Deletes the draft version of a content item.
+            </summary>
+            <param name="contentItem"></param>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.IContentManager.CloneAsync(Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Makes a clone of the content item
+            </summary>
+            <param name="contentItem">The content item to clone</param>
+            <returns>Clone of the item</returns>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentManagerExtensions.CreateAsync(Wd3eCore.ContentManagement.IContentManager,Wd3eCore.ContentManagement.ContentItem)">
+            <summary>
+            Creates (persists) a new Published content item
+            </summary>
+            <param name="contentItem">The content instance filled with all necessary data</param>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.VersionOptions.Latest">
+            <summary>
+            Gets the latest version.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.VersionOptions.Published">
+            <summary>
+            Gets the latest published version.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.VersionOptions.Draft">
+            <summary>
+            Gets the latest draft version.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.VersionOptions.DraftRequired">
+            <summary>
+            Gets the latest version and creates a new version draft based on it.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.VersionOptions.AllVersions">
+            <summary>
+            Gets all versions.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.ITypeActivatorFactory`1">
+            <summary>
+            Represents a service that can provide an <see cref="T:Wd3eCore.ContentManagement.ITypeActivator`1"/> instance for a
+            <see cref="!:TInstance"/> name.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.ITypeActivator`1">
+            <summary>
+            Represents the type information for a content element.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.ITypeActivator`1.Type">
+            <summary>
+            The <see cref="P:Wd3eCore.ContentManagement.ITypeActivator`1.Type"/> of the content element represented by the activator.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ITypeActivator`1.CreateInstance">
+            <summary>
+            Creates an instance of the content element type represented by the activator.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.Models.FullTextAspect.Segments">
+            <summary>
+            Gets the list of all string segments the aspect is made of.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.AddContentPart``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a content part type. This method may be called multiple times safely,
+            to reconfigure an existing part.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.AddContentPart(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Registers a content part type. This method may be called multiple times safely,
+            to reconfigure an existing part.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.AddContentField``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a content field type. This method may be called multiple times safely,
+            to reconfigure an existing part.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.AddContentField(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Registers a content field type. This method may be called multiple times safely,
+            to reconfigure an existing part.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.AddHandler``1(Wd3eCore.ContentManagement.ContentPartOptionBuilder)">
+            <summary>
+            Register a handler for use with a content part.
+            </summary>
+            <typeparam name="TContentPartHandler"></typeparam>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.AddHandler(Wd3eCore.ContentManagement.ContentPartOptionBuilder,System.Type)">
+            <summary>
+            Register a handler for use with a content part.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.RemoveHandler``1(Wd3eCore.ContentManagement.ContentPartOptionBuilder)">
+            <summary>
+            Remove a handler registration from a content part.
+            </summary>
+            <typeparam name="TContentPartHandler"></typeparam>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ServiceCollectionExtensions.RemoveHandler(Wd3eCore.ContentManagement.ContentPartOptionBuilder,System.Type)">
+            <summary>
+            Remove a handler registration from a content part.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Utilities.StringExtensions.ToSafeName(System.String)">
+            <summary>
+            Generates a valid technical name.
+            </summary>
+            <remarks>
+            Uses a white list set of chars.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.Utilities.StringExtensions.IsLetter(System.Char)">
+            <summary>
+            Whether the char is a letter between A and Z or not
+            </summary>
+        </member>
+    </members>
+</doc>

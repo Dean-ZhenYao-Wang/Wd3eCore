@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Liquid.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Liquid.ILiquidTemplateManager">
+            <summary>
+            Provides services to render Liquid templates.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Liquid.ILiquidTemplateManager.Context">
+            <summary>
+            Gets the current <see cref="T:Wd3eCore.Liquid.LiquidTemplateContext"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Liquid.ILiquidTemplateManager.RenderAsync(System.String,System.Text.Encodings.Web.TextEncoder,System.Object,System.Action{Fluid.Scope})">
+            <summary>
+            Renders a Liquid template as a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Liquid.ILiquidTemplateManager.RenderAsync(System.String,System.IO.TextWriter,System.Text.Encodings.Web.TextEncoder,System.Object,System.Action{Fluid.Scope})">
+            <summary>
+            Renders a Liquid template on a <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Liquid.ILiquidTemplateManager.Validate(System.String,System.Collections.Generic.IEnumerable{System.String}@)">
+            <summary>
+            Validates a Liquid template.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Liquid.ISlugService.Slugify(System.String)">
+            <summary>
+            Transforms specified text to the form suitable for URL slugs.
+            </summary>
+            <param name="text">The text to transform.</param>
+            <returns>The slug created from the input text.</returns>
+        </member>
+        <member name="T:Wd3eCore.Liquid.LiquidContentAccessor">
+            <summary>
+            This is a placeholder class that allows modules to extend the `Content` property in the current Liquid scope
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Liquid.LiquidPropertyAccessor">
+             <summary>
+             Can be used to provide a factory to return a value based on a property name
+             that is unknown at registration time.
+            
+             e.g. {{ LiquidPropertyAccessor.MyPropertyName }} (MyPropertyName will be passed as the identifier argument to the factory)
+             </summary>
+        </member>
+    </members>
+</doc>

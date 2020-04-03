@@ -1,0 +1,1038 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="P:Wd3eCore.BackgroundTasks.BackgroundTaskSettings.IsReadonly">
+            <summary>
+            True if the object can't be used to update the database.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Extensions.Features.IFeatureHash">
+            <summary>
+            An implementation of this interface provide efficient access to the state
+            of the enabled feature in order to provide hashes used for caching.
+            Because its state should be cached, the instance should not have any state
+            thus is declared as transient.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Extensions.Features.IFeatureHash.GetFeatureHashAsync">
+            <summary>
+            Returns a serial number representing the list of available features for the current tenant.
+            </summary>
+            <returns>
+            An <see cref="T:System.Int32"/> value that changes every time the list of features changes.
+            The implementation is efficient in order to be called frequently.
+            </returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Extensions.Features.IFeatureHash.GetFeatureHashAsync(System.String)">
+            <summary>
+            Returns a serial number representing the list of available features for the current tenant.
+            </summary>
+            <returns>
+            A <see cref="T:System.Int32"/> value that changes every time a specific feature is enabled.
+            The implementation is efficient in order to be called frequently.
+            </returns>
+        </member>
+        <member name="T:Wd3eCore.Environment.Extensions.ITypeFeatureProvider">
+            <summary>
+            An implementation of this service is able to provide the <see cref="!:Feature"/> that
+            any services was harvested from.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.Id">
+            <summary>
+            The id of the extension
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.SubPath">
+            <summary>
+            The path to the extension
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.Manifest">
+            <summary>
+            The manifest info of the extension
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.Features">
+            <summary>
+            List of features in extension
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Extensions.Utility.DependencyOrdering.OrderByDependenciesAndPriorities``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean},System.Func{``0,System.Int32})">
+            <summary>
+            Linearizes a dependency graph so that items are positioned after their dependencies.
+            This by using a function which determines if an item has a direct dependency on another.
+            Then, items are moved up whenever it is possible without breaking the dependency graph.
+            This by using a function which gives for each item a priority used as an order value.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Cache.SignalExtensions.DeferredSignalToken(Wd3eCore.Environment.Cache.ISignal,System.String)">
+            <summary>
+            Adds a Signal (if not already present) to be sent at the end of the shell scope.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Builders.ICompositionStrategy">
+            <summary>
+            Service at the host level to transform the cachable descriptor into the loadable blueprint.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.ICompositionStrategy.ComposeAsync(Wd3eCore.Environment.Shell.ShellSettings,Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor)">
+            <summary>
+            Using information from the IExtensionManager, transforms and populates all of the
+            blueprint model the shell builders will need to correctly initialize a tenant IoC container.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Builders.IShellContextFactory">
+            <summary>
+            High-level coordinator that exercises other component capabilities to
+            build all of the artifacts for a running shell given a tenant settings.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.IShellContextFactory.CreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Builds a shell context given a specific tenant settings structure
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.IShellContextFactory.CreateSetupContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Builds a shell context for an uninitialized Wd3e instance. Needed
+            to display setup user interface.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.IShellContextFactory.CreateDescribedContextAsync(Wd3eCore.Environment.Shell.ShellSettings,Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor)">
+            <summary>
+            Builds a shell context given a specific description of features and parameters.
+            Shell's actual current descriptor has no effect. Does not use or update descriptor cache.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.IShellPipeline.Invoke(System.Object)">
+            <summary>
+            Executes this shell pipeline.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Builders.Models.ShellBlueprint">
+            <summary>
+            Contains the information necessary to initialize an IoC container
+            for a particular tenant. This model is created by the ICompositionStrategy
+            and is passed into the IShellContainerFactory.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Builders.ShellContext">
+            <summary>
+            The shell context represents the shell's state that is kept alive
+            for the whole life of the application
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.IsActivated">
+            <summary>
+            Whether the shell is activated.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.Pipeline">
+            <summary>
+            The Pipeline built for this shell.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContext.PlaceHolder.#ctor">
+            <summary>
+            Used as a place holder for a shell that will be lazily created.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.Released">
+            <summary>
+            Whether the <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> instance is not yet built or has been released, for instance when a tenant is changed.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.ActiveScopes">
+            <summary>
+            Returns the number of active scopes on this tenant.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContext.Release">
+            <summary>
+            Mark the <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> has a candidate to be released.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContext.AddDependentShell(Wd3eCore.Environment.Shell.Builders.ShellContext)">
+            <summary>
+            Registers the specified shellContext as a dependency such that they are also reloaded when the current shell context is reloaded.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Configuration.ShellConfiguration">
+            <summary>
+            Holds the tenant <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> which is lazily built
+            from the application configuration 'appsettings.json', the 'App_Data/appsettings.json'
+            file and then the 'App_Data/Sites/{tenant}/appsettings.json' file.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Configuration.ShellConfiguration.Configuration">
+            <summary>
+            The tenant lazily built <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager">
+            <summary>
+            Service resolved out of the shell container. Primarily used by host.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager.GetShellDescriptorAsync">
+            <summary>
+            Uses shell-specific database or other resources to return
+            the current "correct" configuration. The host will use this information
+            to reinitialize the shell.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager.UpdateShellDescriptorAsync(System.Int32,System.Collections.Generic.IEnumerable{Wd3eCore.Environment.Shell.Descriptor.Models.ShellFeature},System.Collections.Generic.IEnumerable{Wd3eCore.Environment.Shell.Descriptor.Models.ShellParameter})">
+            <summary>
+            Alters databased information to match information passed as arguments.
+            Prior SerialNumber used for optimistic concurrency, and an exception
+            should be thrown if the number in storage doesn't match what's provided.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor">
+            <summary>
+            Contains a snapshot of a tenant's enabled features.
+            The information is drawn out of the shell via IShellDescriptorManager
+            and is passed to the ICompositionStrategy to build the ShellBlueprint.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor.SerialNumber">
+            <summary>
+            Gets or sets the version number of the shell descriptor.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor.Features">
+            <summary>
+            Gets or sets the list of features in the shell.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor.Parameters">
+            <summary>
+            Gets or sets the list of parameters specific to this shell.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Descriptor.Models.ShellParameter">
+            <summary>
+            A shell parameter is a custom value that can be assigned to a specific component in a shell.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHostExtensions.GetSettings(Wd3eCore.Environment.Shell.IShellHost,System.String)">
+            <summary>
+            Retrieves the shell settings associated with the specified tenant.
+            </summary>
+            <returns>The shell settings associated with the tenant.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.ShellHostExtensions.GetScopeAsync(Wd3eCore.Environment.Shell.IShellHost,System.String)">
+            <summary>
+            Creates a standalone service scope that can be used to resolve local services.
+            </summary>
+            <param name="tenant">The tenant name related to the service scope to get.</param>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.IShellDescriptorManagerEventHandler">
+            <summary>
+            Represent an event handler for shell descriptor.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellDescriptorManagerEventHandler.Changed(Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor,System.String)">
+            <summary>
+            Triggered whenever a shell descriptor has changed.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.InitializeAsync">
+            <summary>
+            Ensure that all the <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> are pre-created and available to process requests.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.GetOrCreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Returns an existing <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> or creates a new one if necessary.
+            </summary>
+            <param name="settings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/> object representing the shell to get.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.GetScopeAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Creates a standalone service scope that can be used to resolve local services.
+            </summary>
+            <param name="settings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/> object representing the shell to get.</param>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.UpdateShellSettingsAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Updates an existing shell configuration.
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.ReloadShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Reloads a shell.
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.CreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Creates a new <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>.
+            </summary>
+            <param name="settings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/> object representing the shell to create.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.ListShellContexts">
+            <summary>
+            Lists all available <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> instances.
+            A shell might have been released or not yet built, if so 'shell.Released' is true and
+            'shell.CreateScope()' return null, but you can still use 'GetScopeAsync(shell.Settings)'.
+            </summary>
+            <remarks>A shell might not be listed if it hasn't been created yet, for instance if it has been removed and not yet recreated.</remarks>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.TryGetSettings(System.String,Wd3eCore.Environment.Shell.ShellSettings@)">
+            <summary>
+            Tries to retrieve the shell settings associated with the specified tenant.
+            </summary>
+            <returns><c>true</c> if the settings could be found, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellHost.GetAllSettings">
+            <summary>
+            Retrieves all shell settings.
+            </summary>
+            <returns>All shell settings.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.CreateDefaultSettings">
+            <summary>
+            Creates a default shell settings based on the configuration.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.LoadSettingsAsync">
+            <summary>
+            Retrieves all shell settings stored.
+            </summary>
+            <returns>All shell settings.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.LoadSettingsAsync(System.String)">
+            <summary>
+            Retrieves the settings of a given tenant
+            </summary>
+            <returns>The shell settings.</returns>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.SaveSettingsAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Persists shell settings to the storage.
+            </summary>
+            <param name="settings">The shell settings to store.</param>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Models.TenantState">
+            <summary>
+            The different states of a Tenant.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Uninitialized">
+            <summary>
+            The tenant is not yet intialized.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Initializing">
+            <summary>
+            The tenant is being initialized.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Running">
+            <summary>
+            The tenant is initialized and running.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Disabled">
+            <summary>
+            The tenant is initialized and disabled.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Invalid">
+            <summary>
+            The tenant settings are invalid.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Scope.ShellScope">
+            <summary>
+            Custom 'IServiceScope' managing the shell state and the execution flow.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Scope.ShellScope.Context">
+            <summary>
+            Retrieve the 'ShellContext' of the current shell scope.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Scope.ShellScope.Services">
+            <summary>
+            Retrieve the 'IServiceProvider' of the current shell scope.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.Scope.ShellScope.Current">
+            <summary>
+            Retrieve the current shell scope from the async flow.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.Set(System.Object,System.Object)">
+            <summary>
+            Sets a shared item to the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.Get(System.Object)">
+            <summary>
+            Gets a shared item from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.Get``1(System.Object)">
+            <summary>
+            Gets a shared item of a given type from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreate``1(System.Object,System.Func{``0})">
+            <summary>
+            Gets (or creates) a shared item of a given type from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreate``1(System.Object)">
+            <summary>
+            Gets (or creates) a shared item of a given type from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.SetFeature``1(``0)">
+            <summary>
+            Sets a shared feature to the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetFeature``1">
+            <summary>
+            Gets a shared feature from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreateFeature``1(System.Func{``0})">
+            <summary>
+            Gets (or creates) a shared feature from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreateFeature``1">
+            <summary>
+            Gets (or creates) a shared feature from the current shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.CreateChildScopeAsync">
+            <summary>
+            Creates a child scope from the current one.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.CreateChildScopeAsync(Wd3eCore.Environment.Shell.ShellSettings)">
+            <summary>
+            Creates a child scope from the current one.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.CreateChildScopeAsync(System.String)">
+            <summary>
+            Creates a child scope from the current one.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingChildScopeAsync(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Execute a delegate using a child scope created from the current one.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingChildScopeAsync(Wd3eCore.Environment.Shell.ShellSettings,System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Execute a delegate using a child scope created from the current one.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingChildScopeAsync(System.String,System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Execute a delegate using a child scope created from the current one.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.StartAsyncFlow">
+            <summary>
+            Start holding this shell scope along the async flow.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingAsync(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Execute a delegate using this shell scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.ActivateShellAsync">
+            <summary>
+            Activate the shell, if not yet done, by calling the related tenant event handlers.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.BeforeDispose(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Registers a delegate to be invoked when 'BeforeDisposeAsync()' is called on this scope.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.DeferredSignal(System.String)">
+            <summary>
+            Adds a Signal (if not already present) to be sent just after 'BeforeDisposeAsync()'.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.DeferredTask(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Adds a Task to be executed in a new scope after 'BeforeDisposeAsync()'.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.RegisterBeforeDispose(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Registers a delegate to be invoked before the current shell scope will be disposed.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.AddDeferredSignal(System.String)">
+            <summary>
+            Adds a Signal (if not already present) to be sent just before the current shell scope will be disposed.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.AddDeferredTask(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
+            <summary>
+            Adds a Task to be executed in a new scope once the current shell scope has been disposed.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.TerminateShellAsync">
+            <summary>
+            Terminate the shell, if released and in its last scope, by calling the related event handlers.
+            Returns true if the shell context should be disposed consequently to this scope being released.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScopeServices.#ctor(System.IServiceProvider)">
+            <summary>
+            Makes an 'IServiceProvider' aware of the current 'ShellScope'.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.ShellContextFeature">
+            <summary>
+            Used to capture the shell context and original path infos.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.ShellContextFeature.ShellContext">
+            <summary>
+            The current shell context.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.ShellContextFeature.OriginalPathBase">
+            <summary>
+            The original path base.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.ShellContextFeature.OriginalPath">
+            <summary>
+            The original path.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.ShellOptions.ShellsApplicationDataPath">
+            <summary>
+            The root container
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Environment.Shell.ShellOptions.ShellsContainerName">
+            <summary>
+            The container for shells
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.ShellSettings">
+            <summary>
+            Represents the minimalistic set of fields stored for each tenant. This model
+            is obtained from the 'IShellSettingsManager', which by default reads this
+            from the 'App_Data/tenants.json' file.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.State.ShellFeatureState">
+            <summary>
+            Represents the state of a feature in a tenant.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.State.ShellState">
+            <summary>
+            Represents the transitive list of features a tenant is made of at a specific moment.
+            It's used to differentiate new features from existing ones in order to trigger events like
+            Installed/Unistalled compared to only Enabled/Disabled.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Localization.CalendarName">
+            <summary>
+            Represents an enum for calendar names
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Localization.CalendarSelectorResult">
+            <summary>
+            Represents a result for the selected calendar.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Localization.CalendarSelectorResult.Priority">
+            <summary>
+            Gets or sets the priority.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Localization.CalendarSelectorResult.CalendarName">
+            <summary>
+            Gets or sets a calendar name.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Localization.ICalendarManager">
+            <summary>
+            Represents a contract for manage calendars.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.ICalendarManager.GetCurrentCalendar">
+            <summary>
+            Gets the current calendar.
+            </summary>
+            <returns>The current calendar name.</returns>
+        </member>
+        <member name="T:Wd3eCore.Localization.ICalendarSelector">
+            <summary>
+            Represents a contract for selection a calendar.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.ICalendarSelector.GetCalendarAsync">
+            <summary>
+            Gets a calendar.
+            </summary>
+            <returns>The selected calendar.</returns>
+        </member>
+        <member name="T:Wd3eCore.Localization.ILocalizationService">
+            <summary>
+            Represents a contract for a localization service.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.ILocalizationService.GetDefaultCultureAsync">
+            <summary>
+            Returns the default culture of the site.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Localization.ILocalizationService.GetSupportedCulturesAsync">
+            <summary>
+            Returns all the supported cultures of the site. It also contains the default culture.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.StartupActionsStartup">
+            <summary>
+            Represents a fake Startup class that is composed of Configure and ConfigureServices lambdas.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.HttpContextExtensions.UseShellScopeServices(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Makes <see cref="P:Microsoft.AspNetCore.Http.HttpContext.RequestServices"/> aware of the current <see cref="T:Wd3eCore.Environment.Shell.Scope.ShellScope"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.Invoke``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.Invoke``2(System.Collections.Generic.IEnumerable{``0},System.Action{``0,``1},``1,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task},Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,System.Threading.Tasks.Task},``1,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,System.Threading.Tasks.Task},``1,``2,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``4(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,``3,System.Threading.Tasks.Task},``1,``2,``3,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``5(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,``3,``4,System.Threading.Tasks.Task},``1,``2,``3,``4,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``6(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,``3,``4,``5,System.Threading.Tasks.Task},``1,``2,``3,``4,``5,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Safely invoke methods by catching non fatal exceptions and logging them
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.FeatureAttribute">
+            <summary>
+            An attribute that can associate a service or component with
+            a specific feature by its name. This component will only
+            be used if the feature is enabled.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.FeatureAttribute.FeatureName">
+            <summary>
+            The name of the feaure to assign the component to.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo">
+            <summary>
+            Represents a directory on a physical filesystem
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.#ctor(System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo"/>
+            </summary>
+            <param name="info">The directory</param>
+        </member>
+        <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Exists">
+            <summary>
+            Always true.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Length">
+            <summary>
+            Always equals -1.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.PhysicalPath">
+            <summary>
+            Always null.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.LastModified">
+            <summary>
+            The time when the directory was last written to.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.IsDirectory">
+            <summary>
+            Always true.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.CreateReadStream">
+            <summary>
+            Always throws an exception because read streams are not support on directories.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Always thrown</exception>
+            <returns>Never returns</returns>
+        </member>
+        <member name="T:Wd3eCore.Modules.FileProviders.IStaticFileProvider">
+            <summary>
+            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides Di registration identification
+            for IStaticFileProviders that should be served via UseStaticFiles.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.FileProviders.NormalizedPaths.ResolveFolderContents(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String}@,System.Collections.Generic.IEnumerable{System.String}@)">
+            <summary>
+            Use a collection of file paths to resolve files and subfolders directly under a given folder.
+            Paths need to be normalized by using '/' for the directory separator and with no leading '/'.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.IModuleStaticFileProvider">
+            <summary>
+            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides Di registration identification
+            for IStaticFileProviders that should be served via UseStaticFiles.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.IStartup">
+            <summary>
+            An implementation of this interface is used to initialize the services and HTTP request
+            pipeline of a module.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.IStartup.Order">
+            <summary>
+            Get the value to use to order startups to configure services. The default is 0.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.IStartup.ConfigureOrder">
+            <summary>
+            Get the value to use to order startups to build the pipeline. The default is the 'Order' property.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.IStartup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+            </summary>
+            <param name="services">The collection of service descriptors.</param>
+        </member>
+        <member name="M:Wd3eCore.Modules.IStartup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.IServiceProvider)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="builder"></param>
+            <param name="routes"></param>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="T:Wd3eCore.Modules.Manifest.FeatureAttribute">
+            <summary>
+            Defines a Feature in a Module, can be used multiple times.
+            If at least one Feature is defined, the Module default feature is ignored.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Id">
+            <Summary>The identifier of the feature.</Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Name">
+            <Summary>
+            Human-readable name of the feature. If not provided, the identifier will be used.
+            </Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Description">
+            <Summary>A brief summary of what the feature does.</Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Dependencies">
+            <Summary>
+            A list of features that the feature depends on.
+            So that its drivers / handlers are invoked after those of dependencies.
+            </Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Priority">
+            <Summary>
+            The priority of the feature without breaking the dependencies order.
+            higher is the priority, later the drivers / handlers are invoked.
+            </Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Category">
+            <Summary>
+            The group (by category) that the feature belongs.
+            If not provided, defaults to 'Uncategorized'.
+            </Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.DefaultTenantOnly">
+            <summary>
+            Set to <c>true</c> to only allow the Default tenant to enable / disable the feature.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.IsAlwaysEnabled">
+            <summary>
+            Once enabled, check whether the feature can't be disabled. Defaults to false.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.Manifest.ModuleAssetAttribute">
+            <summary>
+            Maps a module asset to its project location while in debug mode, auto generated on building.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleAssetAttribute.Asset">
+            <Summary>
+            A module asset in the form of '{ModuleAssetPath}|{ProjectAssetPath}'.
+            </Summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.Manifest.ModuleAttribute">
+            <summary>
+            Defines a Module which is composed of features.
+            If the Module has only one default feature, it may be defined there.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Id">
+            <Summary>
+            Logical id allowing a module project to change its 'AssemblyName' without
+            having to update the code. If not provided, the assembly name will be used.
+            </Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Author">
+            <Summary>The name of the developer.</Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Website">
+            <Summary>The URL for the website of the developer.</Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Version">
+            <Summary>The version number in SemVer format.</Summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Tags">
+            <Summary>A list of tags.</Summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.Manifest.ModuleMarkerAttribute">
+            <summary>
+            Marks an assembly as a module of a given type, auto generated on building.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.Manifest.ModuleNameAttribute">
+            <summary>
+            Enlists the package or project name of a referenced module, auto generated on building.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.Manifest.ModuleNameAttribute.Name">
+            <Summary>
+            The package or project name of the referenced module.
+            </Summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ITimeZone">
+            <summary>
+            Represents a time zone.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ModuleCompositeStaticFileProvider">
+            <summary>
+            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides Di registration identification
+            for IStaticFileProviders that should be served via UseStaticFiles.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ModuleEmbeddedFileProvider">
+            <summary>
+            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides the file contents
+            of embedded files in Module assemblies.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ModuleEmbeddedStaticFileProvider">
+            <summary>
+            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides the file contents
+            of embedded files in Module assemblies whose path is under a Module 'wwwroot' folder.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ModuleProjectStaticFileProvider">
+            <summary>
+            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides the file contents of files
+            whose path is under a Module Project 'wwwroot' folder, and while in a development environment.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.RequireFeaturesAttribute">
+            <summary>
+            When used on a class, it will include the service only
+            if the specific features are enabled.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.RequireFeaturesAttribute.RequiredFeatureNames">
+            <summary>
+            The names of the required features.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.ClockExtensions.ConvertToTimeZone(Wd3eCore.Modules.IClock,System.DateTime,Wd3eCore.Modules.ITimeZone)">
+            <summary>
+            Converts a <see cref="T:System.DateTime" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.ClockExtensions.ConvertToLocalAsync(Wd3eCore.Modules.ILocalClock,System.DateTime)">
+            <summary>
+            Converts a <see cref="T:System.DateTime" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.IClock">
+            <summary>
+            Provides the current Utc <see cref="T:System.DateTime"/>, and timezone related methods.
+            This service should be used whenever the current date and time are needed, instead of <seealso cref="T:System.DateTime"/> directly.
+            If local date time and timezones are needed use <see cref="T:Wd3eCore.Modules.ILocalClock" /> instead.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.IClock.UtcNow">
+            <summary>
+            Gets the current <see cref="T:System.DateTime"/> of the system, expressed in Utc.!--
+            </summary>
+            <remarks>
+            A <see cref="T:System.DateTime"/> as this property is usually used to store the current date time in UTC and a <see cref="T:System.DateTimeOffset" />
+            would affect usability.
+            </remarks>
+        </member>
+        <member name="M:Wd3eCore.Modules.IClock.GetTimeZones">
+            <summary>
+            Returns the list of all available <see cref="T:Wd3eCore.Modules.ITimeZone" />.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.IClock.GetTimeZone(System.String)">
+            <summary>
+            Returns a <see cref="T:Wd3eCore.Modules.ITimeZone" /> from a time zone id or the local system's one if not found.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.IClock.GetSystemTimeZone">
+            <summary>
+            Returns a default <see cref="T:Wd3eCore.Modules.ITimeZone" /> for the system.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.IClock.ConvertToTimeZone(System.DateTimeOffset,Wd3eCore.Modules.ITimeZone)">
+            <summary>
+            Converts a <see cref="T:System.DateTimeOffset" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ILocalClock">
+            <summary>
+            Provides local values of the current time and time zone.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.ILocalClock.LocalNowAsync">
+            <summary>
+            Gets the time for the local time zone.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.ILocalClock.GetLocalTimeZoneAsync">
+            <summary>
+            Returns the local time zone.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.ILocalClock.ConvertToLocalAsync(System.DateTimeOffset)">
+            <summary>
+            Converts a <see cref="T:System.DateTimeOffset" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.ILocalClock.ConvertToUtcAsync(System.DateTime)">
+            <summary>
+            Converts a <see cref="T:System.DateTime" /> representing a local time to the UTC value.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Modules.ITimeZoneSelector">
+            <summary>
+            Provides the timezone for the current request.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Modules.StartupBase.Order">
+            <inheritdoc />
+        </member>
+        <member name="P:Wd3eCore.Modules.StartupBase.ConfigureOrder">
+            <inheritdoc />
+        </member>
+        <member name="M:Wd3eCore.Modules.StartupBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wd3eCore.Modules.StartupBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.IServiceProvider)">
+            <inheritdoc />
+        </member>
+        <member name="T:Wd3eCore.Routing.IShellRouteValuesAddressScheme">
+            <summary>
+            Marker interface to retrieve tenant 'RouteValuesAddress' schemes used for link generation.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Routing.ShellRouteValuesAddressScheme">
+            <summary>
+            Allows a tenant to add its own 'RouteValuesAddress' schemes used for link generation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.ConfigureServices(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection,System.IServiceProvider},System.Int32)">
+            <summary>
+            This method gets called for each tenant. Use this method to add services to the container.
+            For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+            </summary>
+            <param name="configure">The action to execute when configuring the services for a tenant.</param>
+            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.ConfigureServices(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Int32)">
+            <summary>
+            This method gets called for each tenant. Use this method to add services to the container.
+            For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+            </summary>
+            <param name="configure">The action to execute when configuring the services for a tenant.</param>
+            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.Configure(System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.IServiceProvider},System.Int32)">
+            <summary>
+            This method gets called for each tenant. Use this method to configure the request's pipeline.
+            </summary>
+            <param name="configure">The action to execute when configuring the request's pipeling for a tenant.</param>
+            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.Configure(System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder},System.Int32)">
+            <summary>
+            This method gets called for each tenant. Use this method to configure the request's pipeline.
+            </summary>
+            <param name="configure">The action to execute when configuring the request's pipeling for a tenant.</param>
+            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.Configure(System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder},System.Int32)">
+            <summary>
+            This method gets called for each tenant. Use this method to configure the request's pipeline.
+            </summary>
+            <param name="configure">The action to execute when configuring the request's pipeling for a tenant.</param>
+            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+        </member>
+    </members>
+</doc>
