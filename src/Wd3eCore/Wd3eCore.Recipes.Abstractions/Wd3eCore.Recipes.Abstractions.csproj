@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <RootNamespace>Wd3eCore.Recipes</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
+    <PackageReference Include="Wd3eCore.Data.Abstractions" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>
