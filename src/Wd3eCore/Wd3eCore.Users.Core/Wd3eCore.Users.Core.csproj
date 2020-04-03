@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <RootNamespace>Wd3eCore.Users</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.Users.Core\Wd3eCore.Users.Core.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,11 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.Infrastructure\Wd3eCore.Infrastructure.csproj" />
-    <ProjectReference Include="..\Wd3eCore.Users.Abstractions\Wd3eCore.Users.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Wd3eCore.Infrastructure" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Users.Abstractions" Version="1.0.0-rc1" />
     <PackageReference Include="YesSql.Abstractions" />
   </ItemGroup>
 
