@@ -27,7 +27,6 @@ namespace Wd3eCore.Mvc
         /// <summary>
         /// Initalizes a new <see cref="AssemblyPart"/> instance.
         /// </summary>
-        /// <param name="assembly"></param>
         public ShellFeatureApplicationPart()
         {
         }
