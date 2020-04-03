@@ -37,7 +37,7 @@
         </member>
         <member name="T:Wd3eCore.Environment.Extensions.ITypeFeatureProvider">
             <summary>
-            An implementation of this service is able to provide the <see cref="!:Feature"/> that
+            An implementation of this service is able to provide the "Feature" that
             any services was harvested from.
             </summary>
         </member>
@@ -679,7 +679,7 @@
             <summary>
             Initializes an instance of <see cref="T:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo"/>
             </summary>
-            <param name="info">The directory</param>
+            <param name="name">The directory</param>
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Exists">
             <summary>

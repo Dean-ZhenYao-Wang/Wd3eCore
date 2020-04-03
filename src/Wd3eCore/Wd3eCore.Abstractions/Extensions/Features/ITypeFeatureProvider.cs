@@ -4,7 +4,7 @@ using Wd3eCore.Environment.Extensions.Features;
 namespace Wd3eCore.Environment.Extensions
 {
     /// <summary>
-    /// An implementation of this service is able to provide the <see cref="Feature"/> that
+    /// An implementation of this service is able to provide the "Feature" that
     /// any services was harvested from.
     /// </summary>
     public interface ITypeFeatureProvider

@@ -24,7 +24,9 @@ namespace Wd3eCore.Environment.Shell
         /// Creates a standalone service scope that can be used to resolve local services.
         /// </summary>
         /// <param name="tenant">The tenant name related to the service scope to get.</param>
+#pragma warning disable CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         public static Task<ShellScope> GetScopeAsync(this IShellHost shellHost, string tenant)
+#pragma warning restore CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         {
             return shellHost.GetScopeAsync(shellHost.GetSettings(tenant));
         }
