@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,15 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
-    <ProjectReference Include="..\Wd3eCore.DisplayManagement.Abstractions\Wd3eCore.DisplayManagement.Abstractions.csproj" />
-    <ProjectReference Include="..\Wd3eCore.Liquid.Abstractions\Wd3eCore.Liquid.Abstractions.csproj" />
-    <ProjectReference Include="..\Wd3eCore.Localization.Abstractions\Wd3eCore.Localization.Abstractions.csproj" />
-    <ProjectReference Include="..\Wd3eCore.Mvc.Core\Wd3eCore.Mvc.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Castle.Core" />
+    <PackageReference Include="Wd3eCore.DisplayManagement.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Liquid.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Localization.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Mvc.Core" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>
