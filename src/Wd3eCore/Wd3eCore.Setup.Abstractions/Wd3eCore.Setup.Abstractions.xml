@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Setup.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Setup.Events.ISetupEventHandler">
+            <summary>
+            Contract that is called when a tenant is set up.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Setup.Services.ISetupService">
+            <summary>
+            Contract that represents the setup service.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Setup.Services.ISetupService.GetSetupRecipesAsync">
+            <summary>
+            Gets the setup recipes.
+            </summary>
+            <returns>A list of <see cref="T:Wd3eCore.Recipes.Models.RecipeDescriptor"/>s.</returns>
+        </member>
+        <member name="M:Wd3eCore.Setup.Services.ISetupService.SetupAsync(Wd3eCore.Setup.Services.SetupContext)">
+            <summary>
+            Set up the tenant.
+            </summary>
+            <param name="context">The <see cref="T:Wd3eCore.Setup.Services.SetupContext"/>.</param>
+            <returns> A GUID string the represents a setup execution identifier.</returns>
+        </member>
+        <member name="T:Wd3eCore.Setup.Services.SetupContext">
+            <summary>
+            Represents a class that contains a set up information.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.ShellSettings">
+            <summary>
+            Gets or sets the settings shell.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.SiteName">
+            <summary>
+            Gets or sets the site name.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.AdminUsername">
+            <summary>
+            Gets or sets the administrator username.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.AdminEmail">
+            <summary>
+            Gets or sets the administrator email.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.AdminPassword">
+            <summary>
+            Gets or sets the administrator password.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.DatabaseProvider">
+            <summary>
+            Gets or sets the database provider.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.DatabaseConnectionString">
+            <summary>
+            Gets or sets the database connection string.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.DatabaseTablePrefix">
+            <summary>
+            Gets or sets the database table prefix.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.SiteTimeZone">
+            <summary>
+            Gets or sets the time zone for the site.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.EnabledFeatures">
+            <summary>
+            Gets or sets the features that will be enable when the set up finished.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.Recipe">
+            <summary>
+            Gets or sets the site recipe.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Setup.Services.SetupContext.Errors">
+            <summary>
+            Gets or sets the errors during set up if there is.
+            </summary>
+        </member>
+    </members>
+</doc>
