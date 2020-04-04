@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Features</name>
+    </assembly>
+    <members>
+        <member name="M:Wd3eCore.Features.Controllers.AdminController.FeatureIsAllowed(Wd3eCore.Environment.Extensions.Features.IFeatureInfo)">
+            <summary>
+            Checks whether the feature is allowed for the current tenant
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Features.Deployment.AllFeaturesDeploymentStep">
+            <summary>
+            Adds enabled and disabled features to a <see cref="T:Wd3eCore.Deployment.DeploymentPlanResult"/>.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Features.Models.ModuleEntry">
+            <summary>
+            Represents a module.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Features.Models.ModuleEntry.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleEntry.Descriptor">
+            <summary>
+            The module's extension descriptor.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleEntry.NeedsVersionUpdate">
+            <summary>
+            Boolean value indicating if the module needs a version update.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleEntry.IsRecentlyInstalled">
+            <summary>
+            Boolean value indicating if the feature was recently installed.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleEntry.Notifications">
+            <summary>
+            List of module notifications.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleEntry.CanUninstall">
+            <summary>
+            Indicates whether the module can be uninstalled by the user.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Features.Models.ModuleFeature">
+            <summary>
+            Represents a module's feature.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.Descriptor">
+            <summary>
+            The feature descriptor.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.IsEnabled">
+            <summary>
+            Boolean value indicating if the feature is enabled.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.IsAlwaysEnabled">
+            <summary>
+            Boolean value indicating if the feature is always enabled.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.NeedsUpdate">
+            <summary>
+            Boolean value indicating if the feature needs a data update / migration.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.NeedsVersionUpdate">
+            <summary>
+            Boolean value indicating if the module needs a version update.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.IsRecentlyInstalled">
+            <summary>
+            Boolean value indicating if the feature was recently installed.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.EnabledDependentFeatures">
+            <summary>
+            List of enabled features that depend on this feature.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Features.Models.ModuleFeature.FeatureDependencies">
+            <summary>
+            List of features that this feature depends on.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Features.Recipes.Executors.FeatureStep">
+            <summary>
+            This recipe step enables or disables a set of features.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.IModuleService.GetAvailableFeaturesAsync">
+            <summary>
+            Retrieves an enumeration of the available features together with its state (enabled / disabled).
+            </summary>
+            <returns>An enumeration of the available features together with its state (enabled / disabled).</returns>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.IModuleService.EnableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Enables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be enabled.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.IModuleService.EnableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Enables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be enabled.</param>
+            <param name="force">Boolean parameter indicating if the feature should enable it's dependencies if required or fail otherwise.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.IModuleService.DisableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Disables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be disabled.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.IModuleService.DisableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Disables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be disabled.</param>
+            <param name="force">Boolean parameter indicating if the feature should disable the features which depend on it if required or fail otherwise.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.ModuleService.GetAvailableFeaturesAsync">
+            <summary>
+            Retrieves an enumeration of the available features together with its state (enabled / disabled).
+            </summary>
+            <returns>An enumeration of the available features together with its state (enabled / disabled).</returns>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.ModuleService.EnableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Enables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be enabled.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.ModuleService.EnableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Enables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be enabled.</param>
+            <param name="force">Boolean parameter indicating if the feature should enable it's dependencies if required or fail otherwise.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.ModuleService.DisableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Disables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be disabled.</param>
+        </member>
+        <member name="M:Wd3eCore.Features.Services.ModuleService.DisableFeaturesAsync(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+            <summary>
+            Disables a list of features.
+            </summary>
+            <param name="featureIds">The IDs for the features to be disabled.</param>
+            <param name="force">Boolean parameter indicating if the feature should disable the features which depend on it if required or fail otherwise.</param>
+        </member>
+        <member name="T:Wd3eCore.Features.Startup">
+            <summary>
+            These services are registered on the tenant service collection
+            </summary>
+        </member>
+    </members>
+</doc>
