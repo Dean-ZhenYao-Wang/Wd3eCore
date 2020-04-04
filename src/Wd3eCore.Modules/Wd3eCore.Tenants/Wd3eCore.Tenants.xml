@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Tenants</name>
+    </assembly>
+    <members>
+        <member name="F:Wd3eCore.Tenants.FileProviderStartup.AssetsPath">
+            <summary>
+            The path in the tenant's App_Data folder containing the files
+            </summary>
+        </member>
+    </members>
+</doc>
