@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Users</name>
+    </assembly>
+    <members>
+        <member name="M:Wd3eCore.Users.Controllers.ControllerExtensions.RegisterUser(Microsoft.AspNetCore.Mvc.Controller,Wd3eCore.Users.ViewModels.RegisterViewModel,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Returns the created user, otherwise returns null
+            </summary>
+            <param name="controller"></param>
+            <param name="model"></param>
+            <param name="confirmationEmailSubject"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Wd3eCore.Users.Services.SetupEventHandler">
+            <summary>
+            During setup, creates the admin user account.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.Services.UsersThemeSelector">
+            <summary>
+            Provides the theme defined in the site configuration for the current scope (request).
+            This selector provides AdminTheme as default or fallback for Account|Registration|ResetPassword
+            controllers based on SiteSettings.
+            The same <see cref="T:Wd3eCore.DisplayManagement.Theming.ThemeSelectorResult"/> is returned if called multiple times
+            during the same scope.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.TimeZone.Services.UserTimeZoneSelector">
+            <summary>
+            Provides the timezone defined for the currently logged-in user for the current scope (request).
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Workflows.Activities.UserActivity.User">
+            <summary>
+            An expression that evaluates to an <see cref="P:Wd3eCore.Users.Workflows.Activities.UserActivity.User"/> item.
+            </summary>
+        </member>
+    </members>
+</doc>
