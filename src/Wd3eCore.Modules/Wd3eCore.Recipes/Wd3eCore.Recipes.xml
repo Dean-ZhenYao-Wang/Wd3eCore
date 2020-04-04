@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Recipes</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Recipes.RecipeSteps.CommandStep">
+            <summary>
+            This recipe step executes a set of commands.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Recipes.RecipeSteps.RecipesStep">
+            <summary>
+            This recipe step executes a set of external recipes.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Recipes.Startup">
+            <summary>
+            These services are registered on the tenant service collection
+            </summary>
+        </member>
+    </members>
+</doc>
