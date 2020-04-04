@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.DynamicCache</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.DynamicCache.EventHandlers.DynamicCacheShapeDisplayEvents">
+            <summary>
+            Caches shapes in the default <see cref="T:Wd3eCore.DynamicCache.IDynamicCacheService"/> implementation.
+            It uses the shape's metadata cache context to define the cache parameters.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DynamicCache.Models.CacheContextModel">
+            <summary>
+            A serialiazable and deserializable model to represent a <see cref="T:Wd3eCore.Environment.Cache.CacheContext"/>
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.DynamicCache.Startup">
+            <summary>
+            These services are registered on the tenant service collection
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.DefaultExpiration">
+            <summary>
+            The default duration, from the time the cache entry was added, when it should be evicted.
+            This default duration will only be used if no other expiration criteria is specified.
+            The default expiration time is a sliding expiration of 30 seconds.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.HtmlEncoder">
+            <summary>
+            Gets the <see cref="T:System.Text.Encodings.Web.HtmlEncoder"/> which encodes the content to be cached.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.CacheId">
+            <summary>
+            Gets or sets a <see cref="T:System.String" /> identifying this cache entry.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.VaryBy">
+            <summary>
+            Gets or sets a <see cref="T:System.String" /> to vary the cached result by.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.Dependencies">
+            <summary>
+            Gets or sets a <see cref="T:System.String" /> with the dependencies to invalidate the cache with.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.ExpiresOn">
+            <summary>
+            Gets or sets the exact <see cref="T:System.DateTimeOffset"/> the cache entry should be evicted.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.ExpiresAfter">
+            <summary>
+            Gets or sets the duration, from the time the cache entry was added, when it should be evicted.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.ExpiresSliding">
+            <summary>
+            Gets or sets the duration from last access that the cache entry should be evicted.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.Enabled">
+            <summary>
+            Gets or sets the value which determines if the tag helper is enabled or not.
+            </summary>
+        </member>
+        <member name="F:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.CacheKeyPrefix">
+            <summary>
+            Prefix used by <see cref="!:CacheTagHelper"/> instances when creating entries in <see cref="T:Wd3eCore.DynamicCache.IDynamicCacheService"/>.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.MemoryCache">
+            <summary>
+            Gets the <see cref="T:Microsoft.Extensions.Caching.Memory.IMemoryCache"/> instance used to cache entries.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.Priority">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.Extensions.Caching.Memory.CacheItemPriority"/> policy for the cache entry.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DynamicCache.TagHelpers.DynamicCacheTagHelper.ProcessAsync(Microsoft.AspNetCore.Razor.TagHelpers.TagHelperContext,Microsoft.AspNetCore.Razor.TagHelpers.TagHelperOutput)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
