@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Logging.NLog</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Logging.TenantLayoutRenderer">
+            <summary>
+            Print the tenant name
+            </summary>
+        </member>
+    </members>
+</doc>

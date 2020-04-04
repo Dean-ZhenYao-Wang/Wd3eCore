@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.ContentManagement</name>
+    </assembly>
+    <members>
+        <member name="M:Wd3eCore.ContentManagement.ContentDefinitionManager.LoadContentDefinitionRecord">
+            <summary>
+            Returns the document from the store to be updated.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.ContentFieldFactory">
+            <summary>
+            Implements <see cref="T:Wd3eCore.ContentManagement.ITypeActivatorFactory`1"/> by resolving all registered <see cref="T:Wd3eCore.ContentManagement.ContentField"/> types
+            and memoizing a statically typed <see cref="T:Wd3eCore.ContentManagement.ITypeActivator`1"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentFieldFactory.GetTypeActivator(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.ContentPartFactory">
+            <summary>
+            Implements <see cref="T:Wd3eCore.ContentManagement.ITypeActivatorFactory`1"/> by resolving all registered <see cref="T:Wd3eCore.ContentManagement.ContentPart"/> types
+            and memoizing a statically typed <see cref="T:Wd3eCore.ContentManagement.ITypeActivator`1"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.ContentPartFactory.GetTypeActivator(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.DatabaseContentDefinitionStore.LoadContentDefinitionAsync">
+            <summary>
+            Loads a single document (or create a new one) for updating and that should not be cached.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.DatabaseContentDefinitionStore.GetContentDefinitionAsync">
+            <summary>
+            Gets a single document (or create a new one) for caching and that should not be updated.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.FileContentDefinitionStore.LoadContentDefinitionAsync">
+            <summary>
+            Loads a single document (or create a new one) for updating and that should not be cached.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.FileContentDefinitionStore.GetContentDefinitionAsync">
+            <summary>
+            Gets a single document (or create a new one) for caching and that should not be updated.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.ContentManagement.GenericTypeActivator`2.Type">
+            <inheritdoc />
+        </member>
+        <member name="M:Wd3eCore.ContentManagement.GenericTypeActivator`2.CreateInstance">
+            <inheritdoc />
+        </member>
+        <member name="T:Wd3eCore.ContentManagement.Handlers.ContentPartHandlerCoordinator">
+            <summary>
+            This component coordinates how parts are affecting content items.
+            </summary>
+        </member>
+    </members>
+</doc>

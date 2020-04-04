@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Infrastructure</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Environment.Cache.CacheContextProviders.KnownValueCacheContextProvider">
+            <summary>
+            Adds all context values as they are to the cache entries. This allows for known value variation
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Commands.CommandReturnCodes">
+            <summary>
+            Different return codes for a command execution.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Environment.Commands.Parameters.CommandParser.SplitArgs(System.String)">
+            <summary>
+            Implement the same logic as found at
+            http://msdn.microsoft.com/en-us/library/17w5ykft.aspx
+            The 3 special characters are quote, backslash and whitespaces, in order
+            of priority.
+            The semantics of a quote is: whatever the state of the lexer, copy
+            all characters verbatim until the next quote or EOF.
+            The semantics of backslash is: If the next character is a backslash or a quote,
+            copy the next character. Otherwise, copy the backslash and the next character.
+            The semantics of whitespace is: end the current argument and move on to the next one.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.Data.Descriptors.ShellDescriptorManager">
+            <summary>
+            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by providing the list of features store in the database.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Environment.Shell.ShellStateManager">
+            <summary>
+            Stores <see cref="T:Wd3eCore.Environment.Shell.State.ShellState"/> in the database.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Email.EmailAddressValidator">
+            <summary>
+            Represents a service for e-mail address validation.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Email.EmailAddressValidator.Validate(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="F:Wd3eCore.Scripting.CommonGeneratorMethods.GZip">
+            <summary>
+            Converts a Base64 encoded gzip stream to an uncompressed Base64 string.
+            See http://www.txtwizard.net/compression
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Scripting.Files.FilesScriptEngine">
+            <summary>
+            Provides
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Security.ApiAuthenticationHandler">
+            <summary>
+            Provides a delegating logic for API authentication.
+            If no specific scheme handler is found it returns an anonymous user.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Security.AuthorizationHandlers.PermissionHandler">
+            <summary>
+            This authorization handler ensures that the user has the required permission.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Security.AuthorizationHandlers.SuperUserHandler">
+            <summary>
+            This authorization handler validates any permission when the user is the site owner.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Security.ServiceCollectionExtensions.AddSecurity(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds tenant level services.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions">
+            <summary>
+            Provides an extension method for <see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddCaching(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds tenant level caching services.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddCommands(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds host level services to provide CLI commands.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddEmailAddressValidator(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds e-mail address validator service.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/>.</param>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DatabaseShellsWd3eCoreBuilderExtensions.AddDatabaseShellsConfiguration(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Host services to load shells settings and configuration from database.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ShellWd3eCoreBuilderExtensions.AddDataStorage(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds services at the host level to load site settings from the file system
+            and tenant level services to store states and descriptors in the database.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ShellWd3eCoreBuilderExtensions.AddSitesFolder(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Host services to load site settings from the file system
+            </summary>
+        </member>
+    </members>
+</doc>

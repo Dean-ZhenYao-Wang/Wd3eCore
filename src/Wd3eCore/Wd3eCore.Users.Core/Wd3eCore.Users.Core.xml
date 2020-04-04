@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Users.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Users.Models.UserClaim">
+            <summary>
+            Represents a claim that is granted to a specific user.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Models.UserClaim.ClaimType">
+            <summary>
+            Gets or sets the claim type for this claim.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Users.Models.UserClaim.ClaimValue">
+            <summary>
+            Gets or sets the claim value for this claim.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.Services.DefaultUserClaimsPrincipalFactory">
+            <summary>
+            Custom implementation of  <see cref="!:IUserClaimsPrincipalFactory"/> adding email claims.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Users.Services.UserService">
+            <summary>
+            Implements <see cref="T:Wd3eCore.Users.Services.IUserService"/> by using the ASP.NET Core Identity packages.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Users.Services.UserService.FindByUsernameOrEmailAsync(System.String)">
+            <summary>
+            Gets the user, if any, associated with the normalized value of the specified identifier, which can refer both to username or email
+            </summary>
+            <param name="userIdentification">The username or email address to refer to</param>
+        </member>
+    </members>
+</doc>

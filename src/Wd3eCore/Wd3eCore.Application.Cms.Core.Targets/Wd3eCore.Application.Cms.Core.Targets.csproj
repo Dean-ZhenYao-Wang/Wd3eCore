@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -11,6 +10,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore\Wd3eCore.Application.Cms.Core.Targets\Wd3eCore.Application.Cms.Core.Targets.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
 
   <!-- Add ".props" and ".targets" files in the package specific to the "Cms.Core" bundle -->
@@ -33,7 +33,6 @@
   -->
 
   <ItemGroup>
-    <ProjectReference Include="..\Wd3eCore.Application.Targets\Wd3eCore.Application.Targets.csproj" PrivateAssets="none" />
 
     <!-- 
       When adding a reference to this list, please keep it ordered alphabetically, and set PrivateAssets="none" 
@@ -58,6 +57,8 @@
     <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Users\Wd3eCore.Users.csproj" PrivateAssets="none" />
 
     <ProjectReference Include="..\..\Wd3eCore.Themes\TheAdmin\TheAdmin.csproj" PrivateAssets="none" />
+
+    <ProjectReference Include="..\Wd3eCore.Application.Targets\Wd3eCore.Application.Targets.csproj" />
   </ItemGroup>
 
 </Project>

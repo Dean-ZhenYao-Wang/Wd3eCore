@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Setup.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Setup.ServiceCollectionExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Setup.ServiceCollectionExtensions.AddSetup(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds tenant level services.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Setup.Services.SetupService">
+            <summary>
+            Represents a setup service.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Setup.Services.SetupService.#ctor(Wd3eCore.Environment.Shell.IShellHost,Microsoft.Extensions.Hosting.IHostEnvironment,Wd3eCore.Environment.Shell.Builders.IShellContextFactory,Wd3eCore.Environment.Shell.IRunningShellTable,System.Collections.Generic.IEnumerable{Wd3eCore.Recipes.Services.IRecipeHarvester},Microsoft.Extensions.Logging.ILogger{Wd3eCore.Setup.Services.SetupService},Microsoft.Extensions.Localization.IStringLocalizer{Wd3eCore.Setup.Services.SetupService},Microsoft.Extensions.Hosting.IHostApplicationLifetime)">
+            <summary>
+            Creates a new instance of <see cref="T:Wd3eCore.Setup.Services.SetupService"/>.
+            </summary>
+            <param name="shellHost">The <see cref="T:Wd3eCore.Environment.Shell.IShellHost"/>.</param>
+            <param name="hostingEnvironment">The <see cref="T:Microsoft.Extensions.Hosting.IHostEnvironment"/>.</param>
+            <param name="shellContextFactory">The <see cref="T:Wd3eCore.Environment.Shell.Builders.IShellContextFactory"/>.</param>
+            <param name="runningShellTable">The <see cref="T:Wd3eCore.Environment.Shell.IRunningShellTable"/>.</param>
+            <param name="recipeHarvesters">A list of <see cref="T:Wd3eCore.Recipes.Services.IRecipeHarvester"/>s.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="stringLocalizer">The <see cref="T:Microsoft.Extensions.Localization.IStringLocalizer"/>.</param>
+            <param name="applicationLifetime">The <see cref="T:Microsoft.Extensions.Hosting.IHostApplicationLifetime"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Setup.Services.SetupService.GetSetupRecipesAsync">
+            <inheridoc />
+        </member>
+        <member name="M:Wd3eCore.Setup.Services.SetupService.SetupAsync(Wd3eCore.Setup.Services.SetupContext)">
+            <inheridoc />
+        </member>
+    </members>
+</doc>

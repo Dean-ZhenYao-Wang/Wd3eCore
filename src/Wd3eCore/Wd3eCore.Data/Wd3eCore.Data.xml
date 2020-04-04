@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Data.DbConnectionAccessor">
+            <summary>
+            Represents an accessor to the database connection.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.DbConnectionAccessor.#ctor(YesSql.IStore)">
+            <summary>
+            Creates a new instance of the <see cref="T:Wd3eCore.Data.DbConnectionAccessor"/>.
+            </summary>
+            <param name="store">The <see cref="T:YesSql.IStore"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.DbConnectionAccessor.CreateConnection">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Data.Migration.AutomaticDataMigrations">
+            <summary>
+            Represents a tenant event that will be registered to Wd3eShell.Activated in order to run migrations automatically.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.AutomaticDataMigrations.#ctor(System.IServiceProvider,Wd3eCore.Environment.Shell.ShellSettings,Microsoft.Extensions.Logging.ILogger{Wd3eCore.Data.Migration.AutomaticDataMigrations})">
+            <summary>
+            Creates a new instance of the <see cref="T:Wd3eCore.Data.Migration.AutomaticDataMigrations"/>.
+            </summary>
+            <param name="serviceProvider">The <see cref="T:System.IServiceProvider"/>.</param>
+            <param name="shellSettings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/>.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.AutomaticDataMigrations.ActivatingAsync">
+            <inheritdocs />
+        </member>
+        <member name="T:Wd3eCore.Data.Migration.DataMigrationManager">
+            <summary>
+            Represents a class that manages the database migrations.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.#ctor(Wd3eCore.Environment.Extensions.ITypeFeatureProvider,System.Collections.Generic.IEnumerable{Wd3eCore.Data.Migration.IDataMigration},YesSql.ISession,YesSql.IStore,Wd3eCore.Environment.Extensions.IExtensionManager,Microsoft.Extensions.Logging.ILogger{Wd3eCore.Data.Migration.DataMigrationManager})">
+            <summary>
+            Creates a new instance of the <see cref="T:Wd3eCore.Data.Migration.DataMigrationManager"/>.
+            </summary>
+            <param name="typeFeatureProvider">The <see cref="T:Wd3eCore.Environment.Extensions.ITypeFeatureProvider"/>.</param>
+            <param name="dataMigrations">A list of <see cref="T:Wd3eCore.Data.Migration.IDataMigration"/>.</param>
+            <param name="session">The <see cref="T:YesSql.ISession"/>.</param>
+            <param name="store">The <see cref="T:YesSql.IStore"/>.</param>
+            <param name="extensionManager">The <see cref="T:Wd3eCore.Environment.Extensions.IExtensionManager"/>.</param>
+            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetDataMigrationRecordAsync">
+            <inheritdocs />
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetDataMigrations(System.String)">
+            <summary>
+            Returns all the available IDataMigration instances for a specific module, and inject necessary builders
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.CreateUpgradeLookupTable(Wd3eCore.Data.Migration.IDataMigration)">
+            <summary>
+            Create a list of all available Update methods from a data migration class, indexed by the version number
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetCreateMethod(Wd3eCore.Data.Migration.IDataMigration)">
+            <summary>
+            Returns the Create method from a data migration class if it's found
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetCreateAsyncMethod(Wd3eCore.Data.Migration.IDataMigration)">
+            <summary>
+            Returns the CreateAsync method from a data migration class if it's found
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetUninstallMethod(Wd3eCore.Data.Migration.IDataMigration)">
+            <summary>
+            Returns the Uninstall method from a data migration class if it's found
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetUninstallAsyncMethod(Wd3eCore.Data.Migration.IDataMigration)">
+            <summary>
+            Returns the UninstallAsync method from a data migration class if it's found
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Data.Migration.Records.DataMigration">
+            <summary>
+            Represents a database migration.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Data.Migration.Records.DataMigration.DataMigrationClass">
+            <summary>
+            Gets or sets a class for the database migration.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Data.Migration.Records.DataMigration.Version">
+            <summary>
+            Gets or sets the version of the database migration.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Data.Migration.Records.DataMigrationRecord">
+            <summary>
+            Represents a record in the database migration.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.Migration.Records.DataMigrationRecord.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Wd3eCore.Data.Migration.Records.DataMigrationRecord"/>.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Data.Migration.Records.DataMigrationRecord.Id">
+            <summary>
+            Gete or sets the record Id.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Data.Migration.Records.DataMigrationRecord.DataMigrations">
+            <summary>
+            Gets or sets the database migrations.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Data.SessionHelper">
+            <summary>
+            Represents a class that provides helper methods for the <see cref="T:YesSql.ISession"/>.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Data.SessionHelper.#ctor(YesSql.ISession)">
+            <summary>
+            Creates a new instance of <see cref="T:Wd3eCore.Data.SessionHelper"/>.
+            </summary>
+            <param name="session">The <see cref="T:YesSql.ISession"/>.</param>
+        </member>
+        <member name="M:Wd3eCore.Data.SessionHelper.LoadForUpdateAsync``1(System.Func{``0})">
+            <inheritdocs/>
+        </member>
+        <member name="M:Wd3eCore.Data.SessionHelper.GetForCachingAsync``1(System.Func{``0})">
+            <inheritdocs/>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/> to add database access functionality.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddDataAccess(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
+            <summary>
+            Adds tenant level data access services.
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/>.</param>
+        </member>
+    </members>
+</doc>

@@ -15,12 +15,15 @@ namespace Wd3eCore.Localization.PortableObject
         private readonly IFileProvider _fileProvider;
         private readonly string _resourcesContainer;
 
+
+#pragma warning disable CS1570 // XML 注释出现 XML 格式错误
         /// <summary>
         /// Creates a new instance of <see cref="ContentRootPoFileLocationProvider"/>.
         /// </summary>
         /// <param name="hostingEnvironment"><see cref="IHostEnvironment"/>.</param>
         /// <param name="localizationOptions">The IOptions<LocalizationOptions>.</param>
         public ContentRootPoFileLocationProvider(IHostEnvironment hostingEnvironment, IOptions<LocalizationOptions> localizationOptions)
+#pragma warning restore CS1570 // XML 注释出现 XML 格式错误
         {
             _fileProvider = hostingEnvironment.ContentRootFileProvider;
             _resourcesContainer = localizationOptions.Value.ResourcesPath;

@@ -10,7 +10,7 @@ namespace Wd3eCore.Navigation
         /// <summary>
         /// Constructs a new pager.
         /// </summary>
-        /// <param name="site">The site settings.</param>
+        /// <param name="defaultPageSize">The site settings.</param>
         /// <param name="pagerParameters">The pager parameters.</param>
         public Pager(PagerParameters pagerParameters, int defaultPageSize)
             : this(pagerParameters.Page, pagerParameters.PageSize, defaultPageSize)
@@ -20,7 +20,7 @@ namespace Wd3eCore.Navigation
         /// <summary>
         /// Constructs a new pager.
         /// </summary>
-        /// <param name="site">The site settings.</param>
+        /// <param name="defaultPageSize">The site settings.</param>
         /// <param name="page">The page parameter.</param>
         /// <param name="pageSize">The page size parameter.</param>
         public Pager(int? page, int? pageSize, int defaultPageSize)

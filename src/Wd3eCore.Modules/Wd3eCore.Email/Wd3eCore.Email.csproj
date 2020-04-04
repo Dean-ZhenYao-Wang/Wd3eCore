@@ -3,29 +3,34 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore.Modules\Wd3eCore.Email\Wd3eCore.Email.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Wd3eCore.Email.xml" />
+  </ItemGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Email.Abstractions\Wd3eCore.Email.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ResourceManagement\Wd3eCore.ResourceManagement.csproj" />
+    <None Include="Wd3eCore.Email.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" />
+    <PackageReference Include="Wd3eCore.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Admin.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Email.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Navigation.Core" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Workflows.Abstractions" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>

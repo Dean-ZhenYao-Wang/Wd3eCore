@@ -130,6 +130,9 @@
             Gets or sets the SMTP server/host.
             </summary>
         </member>
+        <member name="P:Wd3eCore.Email.SmtpSettings.Port">
+            Gets or sets the SMTP port number. Defaults to <c>5</c>.
+        </member>
         <member name="P:Wd3eCore.Email.SmtpSettings.AutoSelectEncryption">
             <summary>
             Gets or sets whether the encryption is automatically selected.

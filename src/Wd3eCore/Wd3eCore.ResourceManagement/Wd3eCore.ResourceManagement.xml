@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.ResourceManagement</name>
+    </assembly>
+    <members>
+        <member name="M:ResourceCdnHelperExtensions.ResourceUrl(Wd3eCore.IWd3eHelper,System.String,System.Nullable{System.Boolean})">
+            <summary>
+            Prefixes the Cdn Base URL to the specified resource path.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ResourceManagement.ResourceManager.GetUpperBoundVersion(System.String)">
+            <summary>
+            Returns the upper bound value of a required version number.
+            For instance, 3.1.0 returns 3.1.1, 4 returns 5.0.0, 6.1 returns 6.2.0
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.ResourceManagement.ResourceManager.GetLowerBoundVersion(System.String)">
+            <summary>
+            Returns the lower bound value of a required version number.
+            For instance, 3.1.0 returns 3.1.0, 4 returns 4.0.0, 6.1 returns 6.1.0
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddResourceManagement(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds services for managing resources.
+            </summary>
+        </member>
+    </members>
+</doc>

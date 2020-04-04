@@ -32,10 +32,8 @@ namespace Wd3eCore.Email
         /// Gets or sets the SMTP server/host.
         /// </summary>
         public string Host { get; set; }
-
-        [Range(0, 65535)]
-
         ///Gets or sets the SMTP port number. Defaults to <c>5</c>.
+        [Range(0, 65535)]        
         public int Port { get; set; } = 25;
 
         /// <summary>

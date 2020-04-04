@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Recipes.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Recipes.Services.ApplicationRecipeHarvester">
+            <summary>
+            Finds recipes in the application content folder.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Recipes.Services.RecipeExecutor.EvaluateScriptNodes(Wd3eCore.Recipes.Models.RecipeExecutionContext,Wd3eCore.Scripting.IScriptingManager)">
+            <summary>
+            Traverse all the nodes of the recipe steps and replaces their value if they are scripted.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Recipes.Services.RecipeExecutor.EvaluateJsonTree(Wd3eCore.Scripting.IScriptingManager,Wd3eCore.Recipes.Models.RecipeExecutionContext,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Traverse all the nodes of the json document and replaces their value if they are scripted.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Recipes.Services.RecipeHarvester.HarvestRecipesAsync(System.String)">
+            <summary>
+            Returns a list of recipes for a content path.
+            </summary>
+            <param name="path">A path string relative to the content root of the application.</param>
+            <returns>The list of <see cref="T:Wd3eCore.Recipes.Models.RecipeDescriptor"/> instances.</returns>
+        </member>
+    </members>
+</doc>

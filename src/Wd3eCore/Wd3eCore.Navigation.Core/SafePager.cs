@@ -5,7 +5,7 @@ namespace Wd3eCore.Navigation
         /// <summary>
         /// Constructs a new pager.
         /// </summary>
-        /// <param name="site">The site settings.</param>
+        /// <param name="pageSize">The site settings.</param>
         /// <param name="pagerParameters">The pager parameters.</param>
         public PagerSlim(PagerSlimParameters pagerParameters, int pageSize)
             : this(pagerParameters.Before, pagerParameters.After, pageSize)
