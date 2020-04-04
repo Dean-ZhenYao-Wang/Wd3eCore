@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore.Modules\Wd3eCore.Settings\Wd3eCore.Settings.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,15 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Deployment.Abstractions\Wd3eCore.Deployment.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Liquid.Abstractions\Wd3eCore.Liquid.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Recipes.Abstractions\Wd3eCore.Recipes.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Setup.Abstractions\Wd3eCore.Setup.Abstractions.csproj" />
+    <PackageReference Include="Wd3eCore.Admin.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Deployment.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Navigation.Core" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Setup.Abstractions" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>

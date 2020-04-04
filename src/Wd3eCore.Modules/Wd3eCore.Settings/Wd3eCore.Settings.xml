@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Settings</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Settings.Deployment.SiteSettingsDeploymentStep">
+            <summary>
+            Adds the current site settings to a <see cref="T:Wd3eCore.Deployment.DeploymentPlanResult"/>.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Settings.Recipes.SettingsStep">
+            <summary>
+            This recipe step updates the site settings.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Settings.Services.DefaultTimeZoneSelector">
+            <summary>
+            Provides the timezone defined in the site configuration for the current scope (request).
+            The same <see cref="T:Wd3eCore.Modules.TimeZoneSelectorResult"/> is returned if called multiple times
+            during the same scope.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Settings.Services.SetupEventHandler">
+            <summary>
+            During setup, registers the Super User.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Settings.Services.SiteService">
+            <summary>
+            Implements <see cref="T:Wd3eCore.Settings.ISiteService"/> by storing the site as a Content Item.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.Settings.Services.SiteService.ChangeToken">
+            <inheritdoc/>
+        </member>
+        <member name="M:Wd3eCore.Settings.Services.SiteService.LoadSiteSettingsAsync">
+            <summary>
+            Returns the document from the database to be updated.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Settings.Services.SiteService.GetSiteSettingsAsync">
+            <summary>
+            Returns the document from the cache or creates a new one. The result should not be updated.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Settings.Services.SiteService.UpdateSiteSettingsAsync(Wd3eCore.Settings.ISite)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Wd3eCore.Settings.SiteSettings.IsReadonly">
+            <summary>
+            True if the object can't be used to update the database.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Settings.Startup">
+            <summary>
+            These services are registered on the tenant service collection
+            </summary>
+        </member>
+    </members>
+</doc>
