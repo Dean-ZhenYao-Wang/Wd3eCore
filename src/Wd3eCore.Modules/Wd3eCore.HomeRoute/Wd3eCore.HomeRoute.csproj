@@ -15,14 +15,17 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Wd3eCore.HomeRoute.xml" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
     <PackageReference Include="Wd3eCore.Module.Targets" Version="1.0.0-rc1" />
     <PackageReference Include="Wd3eCore.Mvc.Core" Version="1.0.0-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Wd3eCore.HomeRoute.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
