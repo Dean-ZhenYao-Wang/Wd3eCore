@@ -3,29 +3,28 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>E:\工作项目\项目库\010_西门子医疗\代码库\Wd3eCore\src\Wd3eCore.Modules\Wd3eCore.Setup\Wd3eCore.Setup.xml</DocumentationFile>
+    <NoWarn>1573;1574;1591;1711;1701;1702;1712;1723;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Wd3eCore.Data" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Localization.Core" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Setup.Abstractions" Version="1.0.0-rc1" />
+    <PackageReference Include="Wd3eCore.Setup.Core" Version="1.0.0-rc1" />
+  </ItemGroup>
+
   <!--<ItemGroup>
     <Compile Include="..\Wd3eCore.Localization\ModularPoFileLocationProvider.cs" Link="ModularPoFileLocationProvider.cs" />
   </ItemGroup>-->
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Localization.Core\Wd3eCore.Localization.Core.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Data\Wd3eCore.Data.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Recipes.Abstractions\Wd3eCore.Recipes.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Setup.Core\Wd3eCore.Setup.Core.csproj" />
-  </ItemGroup>
 
 </Project>
