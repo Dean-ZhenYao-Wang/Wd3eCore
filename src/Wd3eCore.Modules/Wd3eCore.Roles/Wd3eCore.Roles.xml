@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Wd3eCore.Roles</name>
+    </assembly>
+    <members>
+        <member name="T:Wd3eCore.Roles.Deployment.AllRolesDeploymentStep">
+            <summary>
+            Adds roles to a <see cref="T:Wd3eCore.Deployment.DeploymentPlanResult"/>.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Roles.Recipes.RolesStep">
+            <summary>
+            This recipe step creates a set of roles.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Roles.Services.RoleStore.LoadRolesAsync">
+            <summary>
+            Returns the document from the database to be updated.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.Roles.Services.RoleStore.GetRolesAsync">
+            <summary>
+            Returns the document from the cache or creates a new one. The result should not be updated.
+            </summary>
+        </member>
+        <member name="T:Wd3eCore.Roles.RolesPermissionsHandler">
+            <summary>
+            This authorization handler ensures that implied permissions are checked.
+            </summary>
+        </member>
+    </members>
+</doc>
