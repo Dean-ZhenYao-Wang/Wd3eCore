@@ -3,6 +3,9 @@ using Wd3eCore.ResourceManagement.TagHelpers;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class ServiceExtensions
     {
         /// <summary>
