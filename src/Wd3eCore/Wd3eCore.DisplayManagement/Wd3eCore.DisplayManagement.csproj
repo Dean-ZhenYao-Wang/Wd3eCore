@@ -19,12 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement.Abstractions\Wd3eCore.DisplayManagement.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Liquid.Abstractions\Wd3eCore.Liquid.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Localization.Abstractions\Wd3eCore.Localization.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Mvc.Core\Wd3eCore.Mvc.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Castle.Core" />
-    <PackageReference Include="Wd3eCore.DisplayManagement.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Liquid.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Localization.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Mvc.Core" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>

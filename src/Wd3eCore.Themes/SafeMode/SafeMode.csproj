@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Theme.Targets" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Theme.Targets\Wd3eCore.Theme.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
   </ItemGroup>
 
 </Project>

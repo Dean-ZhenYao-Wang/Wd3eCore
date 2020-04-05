@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.Infrastructure" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\Wd3eCore.Infrastructure\Wd3eCore.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

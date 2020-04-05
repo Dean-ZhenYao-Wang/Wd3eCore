@@ -16,9 +16,12 @@
   <ItemGroup>
     <PackageReference Include="MailKit" />
     <PackageReference Include="MessagePack" />
-    <PackageReference Include="Wd3eCore" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Data" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Data\Wd3eCore.Data.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore\Wd3eCore.csproj" />
   </ItemGroup>
 
 </Project>

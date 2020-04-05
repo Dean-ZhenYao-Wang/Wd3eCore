@@ -33,6 +33,7 @@
   -->
 
   <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Application.Targets\Wd3eCore.Application.Targets.csproj" PrivateAssets="none" />
 
     <!-- 
       When adding a reference to this list, please keep it ordered alphabetically, and set PrivateAssets="none" 
@@ -57,8 +58,6 @@
     <ProjectReference Include="..\..\Wd3eCore.Modules\Wd3eCore.Users\Wd3eCore.Users.csproj" PrivateAssets="none" />
 
     <ProjectReference Include="..\..\Wd3eCore.Themes\TheAdmin\TheAdmin.csproj" PrivateAssets="none" />
-
-    <ProjectReference Include="..\Wd3eCore.Application.Targets\Wd3eCore.Application.Targets.csproj" />
   </ItemGroup>
 
 </Project>

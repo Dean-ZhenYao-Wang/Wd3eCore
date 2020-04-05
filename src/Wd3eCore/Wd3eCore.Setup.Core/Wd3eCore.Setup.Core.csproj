@@ -14,9 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Recipes.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Setup.Abstractions" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\Wd3eCore.Abstractions\Wd3eCore.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Recipes.Abstractions\Wd3eCore.Recipes.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Setup.Abstractions\Wd3eCore.Setup.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="YesSql.Abstractions" />
   </ItemGroup>
 </Project>

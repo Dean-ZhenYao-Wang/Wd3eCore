@@ -16,8 +16,11 @@
 
   <ItemGroup>
     <PackageReference Include="GraphQL" />
-    <PackageReference Include="Wd3eCore.DisplayManagement.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement.Abstractions\Wd3eCore.DisplayManagement.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

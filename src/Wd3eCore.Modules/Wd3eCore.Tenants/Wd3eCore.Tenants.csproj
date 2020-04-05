@@ -15,11 +15,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Admin.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Navigation.Core" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Setup.Core" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Workflows.Abstractions" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Localization.Abstractions\Wd3eCore.Localization.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Recipes.Abstractions\Wd3eCore.Recipes.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ResourceManagement\Wd3eCore.ResourceManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Setup.Abstractions\Wd3eCore.Setup.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Setup.Core\Wd3eCore.Setup.Core.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj" />
   </ItemGroup>
   
 </Project>

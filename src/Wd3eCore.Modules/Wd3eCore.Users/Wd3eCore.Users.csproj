@@ -15,12 +15,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Wd3eCore.Admin.Abstractions" Version="1.0.0-rc1" />
-      <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
-      <PackageReference Include="Wd3eCore.Email" Version="1.0.0-rc1" />
-      <PackageReference Include="Wd3eCore.Navigation.Core" Version="1.0.0-rc1" />
-      <PackageReference Include="Wd3eCore.Setup.Abstractions" Version="1.0.0-rc1" />
-      <PackageReference Include="Wd3eCore.Users.Core" Version="1.0.0-rc1" />
-      <PackageReference Include="Wd3eCore.Workflows.Abstractions" Version="1.0.0-rc1" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Abstractions\Wd3eCore.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Setup.Abstractions\Wd3eCore.Setup.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Users.Abstractions\Wd3eCore.Users.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Users.Core\Wd3eCore.Users.Core.csproj" />
+      <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj" />
+      <ProjectReference Include="..\Wd3eCore.Email\Wd3eCore.Email.csproj" />
     </ItemGroup>
 </Project>

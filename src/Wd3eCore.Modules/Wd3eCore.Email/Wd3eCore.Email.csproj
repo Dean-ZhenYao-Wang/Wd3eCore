@@ -11,26 +11,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Wd3eCore.Email.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Wd3eCore.Email.xml" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Admin.Abstractions\Wd3eCore.Admin.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Email.Abstractions\Wd3eCore.Email.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ResourceManagement\Wd3eCore.ResourceManagement.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" />
-    <PackageReference Include="Wd3eCore.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Admin.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Email.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Infrastructure.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Navigation.Core" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Workflows.Abstractions" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>

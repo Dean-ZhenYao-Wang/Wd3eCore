@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
     <RootNamespace>Wd3eCore.Mvc</RootNamespace>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,8 +18,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" ExcludeAssets="build" />
-    <PackageReference Include="Wd3eCore.Abstractions" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.DisplayManagement.Abstractions" Version="1.0.0-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Wd3eCore.Abstractions\Wd3eCore.Abstractions.csproj" />
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement.Abstractions\Wd3eCore.DisplayManagement.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

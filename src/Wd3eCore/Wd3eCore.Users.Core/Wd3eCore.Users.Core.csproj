@@ -15,8 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.Infrastructure" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Users.Abstractions" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\Wd3eCore.Infrastructure\Wd3eCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Users.Abstractions\Wd3eCore.Users.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="YesSql.Abstractions" />
   </ItemGroup>
 

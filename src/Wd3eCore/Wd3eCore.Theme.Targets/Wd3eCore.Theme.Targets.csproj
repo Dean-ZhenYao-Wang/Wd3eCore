@@ -24,7 +24,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.Module.Targets" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" PrivateAssets="none" />
   </ItemGroup>
 
 </Project>

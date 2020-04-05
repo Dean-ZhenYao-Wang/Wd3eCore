@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Wd3eCore.DisplayManagement" Version="1.0.0-rc1" />
-    <PackageReference Include="Wd3eCore.Liquid.Abstractions" Version="1.0.0-rc1" />
+    <ProjectReference Include="..\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Liquid.Abstractions\Wd3eCore.Liquid.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
