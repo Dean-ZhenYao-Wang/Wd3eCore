@@ -8,5 +8,9 @@ namespace Wd3eCore.TheTheme.Controllers
         {
             return View();
         }
+        public IActionResult Welcome()
+        {
+            return View();
+        }
     }
 }

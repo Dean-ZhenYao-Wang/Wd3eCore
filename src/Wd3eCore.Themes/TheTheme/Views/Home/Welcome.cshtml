@@ -1,0 +1,42 @@
+
+@{
+    ViewBag.Title = "首页";
+    Layout = "../Shared/_layoutContent.cshtml";
+}
+
+<div id="app" class="app-content welcome">
+    <div class="metro-group">
+        <div class="metro row" style="width:600px;">
+
+            <div class="col col-6">
+                <a class="metro-link color-6" href="javascript:;"
+                   onclick="openUrl('REPORT.001','报表统计','/home/report')">
+                    <img src="~/assets/app/images/report.svg" width="50" />
+                    <span>报表统计</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            //myOrderCount: 0
+        },
+
+        methods: {
+            //getMyOrderCount: function () {
+            //    var self = this;
+            //    $app.http.get('/api/PM/WorkOrder/GetMyOrderCount').then(function (count) {
+            //        self.myOrderCount = count;
+            //    });
+            //}
+        }
+
+        //created: function () {
+        //    this.getMyOrderCount();
+        //}
+    });
+</script>

@@ -1,0 +1,51 @@
+@{
+
+    //XDXB.APS.SYS.Models.UserIdentity identity = ViewBag.Identity;
+    var adminRoleId = Guid.Parse("E2D6E734-4741-4911-9066-F019E493184A");
+}
+<header class="app-header">
+    <div class="app-logo">
+        <img src="~/app/images/logo.svg" height="16" />
+        <span>APS</span>
+    </div>
+    <div class="nav-menu" ref="menu">
+        <nav class="nav" ref="menuNav" v-bind:style="navStyle">
+            <div class="nav-item" v-for="(tab, index) in tabs" v-bind:class="{active:tab.active}">
+                <a class="nav-link" v-bind:class="{'pr-3':!tab.closable}" v-on:click="active(index)">{{tab.title}}</a>
+                <span v-if="tab.closable" class="tool-icon" v-on:click="remove(index)">
+                    <i class="icon fas fa-times-circle"></i>
+                </span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="nav nav-end">
+            <a class="tool-icon mr-2" v-on:click="moveNav(-200)">
+                <i class="icon fas fa-arrow-circle-left fa-lg"></i>
+            </a>
+            <a class="tool-icon mr-2" v-on:click="moveNav(200)">
+                <i class="icon fas fa-arrow-circle-right fa-lg"></i>
+            </a>
+        <a class="tool-icon mr-2" title="刷新" v-on:click="refresh">
+            <i class="icon fas fa-sync-alt fa-lg"></i>
+        </a>
+        @*<a class="tool-icon remind mr-2" title="消息" v-bind:class="{'is-hidden':messageCount==0}" :data-remind="messageCount" v-on:click="openMessage">
+            <i class="icon fas fa-bell fa-lg"></i>
+        </a>*@
+        <div class="dropdown">
+            <a class="tool-icon" title="" data-toggle="dropdown">
+                <i class="icon fas fa-user fa-lg"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="width:160px">
+                <div class="dropdown-item-text"></div>
+                <div class="dropdown-item-text"></div>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:;" v-on:click="fullScreen">全屏显示</a>
+                <div class="dropdown-divider"></div>
+               
+                <a class="dropdown-item" href="javascript:;" v-on:click="resetPassword">修改密码</a>
+                <a class="dropdown-item" href="javascript:;" v-on:click="logout">退出系统</a>
+            </div>
+        </div>
+    </div>
+</header>

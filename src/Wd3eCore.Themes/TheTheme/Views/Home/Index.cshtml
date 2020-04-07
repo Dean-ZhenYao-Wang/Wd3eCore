@@ -1,3 +1,106 @@
-<div class="message message-success">
-    <h4>@T["Welcome to the Wd3e Framework, your site has been successfully set up."]</h4>
+<div id="app" v-cloak class="app">
+    <aside class="app-sidebar" v-bind:class="{'is-expand':sideExpand}">
+        <a class="nav-link side-toggle" href="javascript:;" v-on:click="toggleSide">
+            <i class="icon fas fa-bars"></i>
+        </a>
+        <ul class="nav main-nav">
+            <li class="nav-item" v-for="menu in menus">
+                <a class="nav-link" href="javascript:;" :title="menu.MenuTitle" v-bind:class="{'active':activeTab.parent==menu.MenuId}">
+                    <img v-bind:src="'/assets/app/images/'+menu.MenuIcon" width="24" height="24" />
+                    <span class="main-text">{{menu.MenuTitle}}</span>
+                </a>
+                <ul class="nav sub-nav">
+                    <li class="nav-item" v-for="(item, index) in menu.Children">
+                        <div class="nav-split" v-if="item.GroupName&&(index==0||(index>0&&item.GroupName!=menu.Children[index-1].GroupName))">{{item.GroupName}}</div>
+                        <a class="nav-link" href="javascript:;" v-bind:class="{'active':activeTab.id==item.MenuId}"
+                           v-on:click="open(item)">{{item.MenuTitle}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+    <div class="app-container">
+        @Html.Partial("_Header")
+        <div class="app-body embed-responsive embed-responsive-1by1">
+            <div class="app-mask" v-bind:class="{'is-loading': tabLoading}"></div>
+            <iframe v-for="tab in tabs" :key="tab.id" v-if="tab.loaded" v-bind:class="{'active':tab.active}"
+                    v-bind:style="{'visibility':tab.active?'visible':'hidden'}"
+                    class="embed-responsive-item" allowfullscreen v-bind:src="tab.url" v-on:load="frameLoad"></iframe>
+        </div>
+    </div>
+
+    <div id="editPasswordModal" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog" style="width:300px;min-width:300px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">修改密码</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editPasswordForm">
+                        <div class="form-group">
+                            <label class="label is-required">原始密码</label>
+                            <div class="field">
+                                <input type="password" name="OldPassword" class="form-control"
+                                       v-model="password.OldPassword" placeholder="请输入原始密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label is-required">新的密码</label>
+                            <div class="field">
+                                <input type="password" id="newPassword" name="NewPassword" class="form-control"
+                                       v-model="password.NewPassword" placeholder="请输入新的密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="label is-required">密码确认</label>
+                            <div class="field">
+                                <input type="password" name="ConfirmPassword" class="form-control"
+                                       v-model="password.ConfirmPassword" placeholder="请再次输入新的密码">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary w-25"
+                            v-bind:class="{'is-loading':password.loading}" v-on:click="savePassword">
+                        保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="switchWorkshopModal" class="modal fade" data-backdrop="static">
+        <div class="modal-dialog" style="width:300px;min-width:300px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">车间切换</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <select class="form-control" v-model="workTeam">
+                            <option v-for="opt in workTeamList" :value="opt.WorkTeamCode">{{opt.WorkTeamName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary w-25" v-on:click="saveWorkTeam">
+                        确定
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    var menuData = @(Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.MenuData)));
+</script>
+<script src="~/app/js/main.js"></script>
