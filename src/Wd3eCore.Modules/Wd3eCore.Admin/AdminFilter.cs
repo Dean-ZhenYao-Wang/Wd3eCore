@@ -28,7 +28,11 @@ namespace Wd3eCore.Admin
 
             if (!await AuthorizeAsync(context.HttpContext))
             {
-                context.Result = context.HttpContext.User.Identity.IsAuthenticated ? (IActionResult)new ForbidResult() : (IActionResult)new ChallengeResult();
+                //仅启用匿名访问时用下面这一行。
+                //context.Result = context.HttpContext.User.Identity.IsAuthenticated ? (IActionResult)new ForbidResult() : (IActionResult)new ChallengeResult();
+
+                //启用windows认证时用下面这一行，不然Admin页面进不去
+                context.Result = !context.HttpContext.User.Identity.IsAuthenticated ? (IActionResult)new ForbidResult() : (IActionResult)new ChallengeResult();
                 return;
             }
 

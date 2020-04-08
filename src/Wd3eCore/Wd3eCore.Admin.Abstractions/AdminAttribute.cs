@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace Wd3eCore.Admin
 {
     /// <summary>
-    /// When applied to an action or a controller or a page model, intercepts any request to check whether it applies to the admin site.
-    /// If so it marks the request as such and ensures the user has the right to access it.
+    /// 当应用到一个动作或控制器或页面模型时，拦截任何请求，以检查它是否适用于管理站点。
+    /// 如果是这样，就会将请求标记为这样的请求，并确保用户有权访问它。
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public class AdminAttribute : Attribute, IAsyncResourceFilter
