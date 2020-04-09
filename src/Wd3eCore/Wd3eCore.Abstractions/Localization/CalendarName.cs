@@ -1,7 +1,7 @@
 namespace Wd3eCore.Localization
 {
     /// <summary>
-    /// Represents an enum for calendar names
+    /// 表示用于日历名称的枚举
     /// </summary>
     public enum CalendarName
     {

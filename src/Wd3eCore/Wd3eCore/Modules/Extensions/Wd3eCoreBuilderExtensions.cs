@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static partial class Wd3eCoreBuilderExtensions
     {
         /// <summary>
-        /// 在主机级注册一组始终为任何租户启用的功能。
+        /// 在主机级注册一组始终为任何租户启用的特性。
         /// </summary>
         public static Wd3eCoreBuilder AddGlobalFeatures(this Wd3eCoreBuilder builder, params string[] featureIds)
         {
@@ -25,7 +25,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// 在租户级别注册一组始终启用的功能。
+        /// 在租户级别注册一组始终启用的特性。
         /// </summary>
         public static Wd3eCoreBuilder AddTenantFeatures(this Wd3eCoreBuilder builder, params string[] featureIds)
         {
@@ -41,7 +41,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// 使用一组用于设置和配置实际租户的功能注册默认租户。
+        /// 使用一组用于设置和配置实际租户的特性注册默认租户。
         /// 例如，可以使用它来添加自定义设置模块。
         /// </summary>
         public static Wd3eCoreBuilder AddSetupFeatures(this Wd3eCoreBuilder builder, params string[] featureIds)
@@ -74,7 +74,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// 使用指定的功能集注册单个租户。
+        /// 使用指定的特性集注册单个租户。
         /// </summary>
         public static Wd3eCoreBuilder WithFeatures(this Wd3eCoreBuilder builder, params string[] featureIds)
         {

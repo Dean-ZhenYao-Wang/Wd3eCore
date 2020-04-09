@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Localization
 {
     /// <summary>
-    /// Represents a contract for selection a calendar.
+    /// 表示用于选择日历的契约。
     /// </summary>
     public interface ICalendarSelector
     {
         /// <summary>
-        /// Gets a calendar.
+        /// 一个日历。
         /// </summary>
-        /// <returns>The selected calendar.</returns>
+        /// <returns>选择的日历。</returns>
         Task<CalendarSelectorResult> GetCalendarAsync();
     }
 }

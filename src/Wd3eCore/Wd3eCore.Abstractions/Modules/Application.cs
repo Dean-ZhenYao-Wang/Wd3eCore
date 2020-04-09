@@ -13,14 +13,14 @@ namespace Wd3eCore.Modules
         public const string ModulesPath = "Areas";
         public const string ModulesRoot = ModulesPath + "/";
 
-        public const string ModuleName = "Application Main Feature";
-        public const string ModuleDescription = "Provides components defined at the application level.";
+        public const string ModuleName = "应用程序的主要特征";
+        public const string ModuleDescription = "提供在应用程序级别定义的组件。";
         public static readonly string ModulePriority = int.MinValue.ToString();
         public const string ModuleCategory = "Application";
 
         public const string DefaultFeatureId = "Application.Default";
-        public const string DefaultFeatureName = "Application Default Feature";
-        public const string DefaultFeatureDescription = "Adds a default feature to the application's module.";
+        public const string DefaultFeatureName = "应用程序的默认功能";
+        public const string DefaultFeatureDescription = "向应用程序模块添加默认特性。";
 
         public Application(IHostEnvironment environment, IEnumerable<Module> modules)
         {

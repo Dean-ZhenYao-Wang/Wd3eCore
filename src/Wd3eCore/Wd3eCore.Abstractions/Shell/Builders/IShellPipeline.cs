@@ -5,7 +5,7 @@ namespace Wd3eCore.Environment.Shell.Builders
     public interface IShellPipeline
     {
         /// <summary>
-        /// Executes this shell pipeline.
+        /// 执行这个shell管道。
         /// </summary>
         Task Invoke(object context);
     }

@@ -7,8 +7,8 @@ namespace Wd3eCore.Modules.FileProviders
     public static class NormalizedPaths
     {
         /// <summary>
-        /// Use a collection of file paths to resolve files and subfolders directly under a given folder.
-        /// Paths need to be normalized by using '/' for the directory separator and with no leading '/'.
+        /// 使用一组文件路径来直接解析给定文件夹下的文件和子文件夹。
+        /// 路径需要用'/'作为目录分隔符，并且没有前导的'/'。
         /// </summary>
         public static void ResolveFolderContents(string folder, IEnumerable<string> normalizedPaths,
             out IEnumerable<string> filePaths, out IEnumerable<string> folderPaths)
@@ -16,7 +16,7 @@ namespace Wd3eCore.Modules.FileProviders
             var files = new HashSet<string>(StringComparer.Ordinal);
             var folders = new HashSet<string>(StringComparer.Ordinal);
 
-            // Ensure a trailing slash.
+            // 确保后面有斜杠。
             if (folder[folder.Length - 1] != '/')
             {
                 folder = folder + '/';
@@ -24,19 +24,19 @@ namespace Wd3eCore.Modules.FileProviders
 
             foreach (var path in normalizedPaths.Where(a => a.StartsWith(folder, StringComparison.Ordinal)))
             {
-                // Resolve the subpath relative to the folder.
+                // 解析相对于文件夹的子路径。
                 var subPath = path.Substring(folder.Length);
                 var index = subPath.IndexOf('/');
 
-                // If no more slash.
+                // 如果没有更多的斜杠。
                 if (index == -1)
                 {
-                    // It's a file.
+                    // 这是一个文件。
                     files.Add(path);
                 }
                 else
                 {
-                    // Otherwise add the 1st subfolder path.
+                    // 否则添加第一个子文件夹路径。
                     folders.Add(subPath.Substring(0, index));
                 }
             }

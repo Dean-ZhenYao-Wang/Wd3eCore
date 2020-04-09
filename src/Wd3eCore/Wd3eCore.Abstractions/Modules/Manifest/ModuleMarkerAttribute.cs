@@ -3,7 +3,7 @@ using System;
 namespace Wd3eCore.Modules.Manifest
 {
     /// <summary>
-    /// Marks an assembly as a module of a given type, auto generated on building.
+    /// 将一个程序集标记为指定类型的模块，在构建时自动生成。
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
     public class ModuleMarkerAttribute : ModuleAttribute

@@ -47,7 +47,7 @@ namespace Wd3eCore.Modules
                     ModuleInfo.Category = Application.ModuleCategory;
                     ModuleInfo.DefaultTenantOnly = true;
 
-                    // Adds the application primary feature.
+                    // 添加应用程序的主要特性。
                     features.Insert(0, new Manifest.FeatureAttribute()
                     {
                         Id = name,
@@ -58,7 +58,7 @@ namespace Wd3eCore.Modules
                         DefaultTenantOnly = true
                     });
 
-                    // Adds the application default feature.
+                    // 添加应用程序默认特性。
                     features.Insert(1, new Manifest.FeatureAttribute()
                     {
                         Id = Application.DefaultFeatureId,
@@ -72,8 +72,8 @@ namespace Wd3eCore.Modules
 
                 ModuleInfo.Features.AddRange(features);
 
-                // The 'ModuleInfo.Id' allows a module project to change its 'AssemblyName'
-                // without to update the code. If not provided, the assembly name is used.
+                // 'ModuleInfo.Id'允许一个模块项目在不更新代码的情况下改变它的 "AssemblyName"。
+                // 如果没有提供，则使用assembly name。
 
                 var logicalName = ModuleInfo.Id ?? name;
 

@@ -6,7 +6,7 @@ namespace Wd3eCore.Modules
     public static class ClockExtensions
     {
         /// <summary>
-        /// Converts a <see cref="DateTime" /> to the specified <see cref="ITimeZone" /> instance.
+        /// 将<see cref="DateTime" />转换为指定的<see cref="ITimeZone" />实例。
         /// </summary>
         public static DateTimeOffset ConvertToTimeZone(this IClock clock, DateTime dateTime, ITimeZone timeZone)
         {
@@ -28,7 +28,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Converts a <see cref="DateTime" /> to the specified <see cref="ITimeZone" /> instance.
+        /// 将<see cref="DateTime" />转换为指定的<see cref="ITimeZone" />实例。
         /// </summary>
         public static Task<DateTimeOffset> ConvertToLocalAsync(this ILocalClock localClock, DateTime dateTime)
         {

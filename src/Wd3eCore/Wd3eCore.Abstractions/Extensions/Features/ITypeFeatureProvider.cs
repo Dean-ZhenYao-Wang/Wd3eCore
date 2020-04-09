@@ -4,8 +4,7 @@ using Wd3eCore.Environment.Extensions.Features;
 namespace Wd3eCore.Environment.Extensions
 {
     /// <summary>
-    /// An implementation of this service is able to provide the "Feature" that
-    /// any services was harvested from.
+    /// 此服务的实现能够提供任何服务的"Feature"。
     /// </summary>
     public interface ITypeFeatureProvider
     {

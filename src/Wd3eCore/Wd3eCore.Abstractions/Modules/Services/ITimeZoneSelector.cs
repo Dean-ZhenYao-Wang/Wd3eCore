@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// Provides the timezone for the current request.
+    /// 为当前请求提供时区。
     /// </summary>
     public interface ITimeZoneSelector
     {

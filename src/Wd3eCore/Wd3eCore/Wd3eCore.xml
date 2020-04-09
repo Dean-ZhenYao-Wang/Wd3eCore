@@ -47,32 +47,32 @@
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.ConfiguredFeaturesShellDescriptorManager">
             <summary>
-            通过返回配置中的功能来实现 <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/>。
+            通过返回配置中的特性来实现 <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/>。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.SetFeaturesShellDescriptorManager">
             <summary>
-            通过返回一个具有指定功能集的单一租户来实现 <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/>。
+            通过返回一个具有指定特性集的单一租户来实现 <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/>。
             这个类可以作为一个单例类注册，因为它的状态永远不会改变。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellDescriptorFeaturesManager.GetFeaturesToEnable(Wd3eCore.Environment.Extensions.Features.IFeatureInfo,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
             <summary>
-            启用一个功能。
+            启用一个特性。
             </summary>
-            <param name="featureInfo">要启用的功能信息。</param>
-            <param name="enabledFeatureIds">目前启用的功能id列表。</param>
-            <param name="force">布尔参数，表示该功能是否应该启用它的依赖关系。</param>
-            <returns>枚举了要禁用的功能，如果'force'=true且依赖关系被禁用，则为空。</returns>
+            <param name="featureInfo">要启用的特性信息。</param>
+            <param name="enabledFeatureIds">目前启用的特性id列表。</param>
+            <param name="force">布尔参数，表示该特性是否应该启用它的依赖关系。</param>
+            <returns>枚举了要禁用的特性，如果'force'=true且依赖关系被禁用，则为空。</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellDescriptorFeaturesManager.GetFeaturesToDisable(Wd3eCore.Environment.Extensions.Features.IFeatureInfo,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
             <summary>
-            禁用一个功能。
+            禁用一个特性。
             </summary>
-            <param name="featureInfo">要禁用的功能信息。</param>
-            <param name="enabledFeatureIds">目前启用的功能id列表。</param>
-            <param name="force">布尔参数，表示该功能是否应该禁用其依赖的功能。</param>
-            <returns>枚举了要启用的功能，如果'force'=true，并且启用了从属关系，则为空。</returns>
+            <param name="featureInfo">要禁用的特性信息。</param>
+            <param name="enabledFeatureIds">目前启用的特性id列表。</param>
+            <param name="force">布尔参数，表示该特性是否应该禁用其依赖的特性。</param>
+            <returns>枚举了要启用的特性，如果'force'=true，并且启用了从属关系，则为空。</returns>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.ShellHost">
             <summary>
@@ -108,7 +108,7 @@
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.Wd3eCore#Environment#Shell#IShellDescriptorManagerEventHandler#Changed(Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor,System.String)">
             <summary>
-            一个功能被启用/禁用，需要重新启动租户
+            一个特性被启用/禁用，需要重新启动租户
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.ReloadShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
@@ -273,17 +273,17 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddGlobalFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            在主机级注册一组始终为任何租户启用的功能。
+            在主机级注册一组始终为任何租户启用的特性。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddTenantFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            在租户级别注册一组始终启用的功能。
+            在租户级别注册一组始终启用的特性。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddSetupFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            使用一组用于设置和配置实际租户的功能注册默认租户。
+            使用一组用于设置和配置实际租户的特性注册默认租户。
             例如，可以使用它来添加自定义设置模块。
             </summary>
         </member>
@@ -294,7 +294,7 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.WithFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            使用指定的功能集注册单个租户。
+            使用指定的特性集注册单个租户。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddBackgroundService(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">

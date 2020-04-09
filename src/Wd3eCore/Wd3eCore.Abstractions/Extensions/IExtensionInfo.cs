@@ -6,24 +6,24 @@ namespace Wd3eCore.Environment.Extensions
     public interface IExtensionInfo
     {
         /// <summary>
-        /// The id of the extension
+        /// 扩展的id
         /// </summary>
         string Id { get; }
 
         /// <summary>
-        /// The path to the extension
+        /// 扩展的路径
         /// </summary>
         string SubPath { get; }
 
         bool Exists { get; }
 
         /// <summary>
-        /// The manifest info of the extension
+        /// 扩展的清单信息
         /// </summary>
         IManifestInfo Manifest { get; }
 
         /// <summary>
-        /// List of features in extension
+        /// 扩展中的特性列表
         /// </summary>
         IEnumerable<IFeatureInfo> Features { get; }
     }

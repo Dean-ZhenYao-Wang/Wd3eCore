@@ -8,7 +8,7 @@ namespace Wd3eCore.Modules
     public static class InvokeExtensions
     {
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static void Invoke<TEvents>(this IEnumerable<TEvents> events, Action<TEvents> dispatch, ILogger logger)
         {
@@ -26,7 +26,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        ///通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static void Invoke<TEvents, T1>(this IEnumerable<TEvents> events, Action<TEvents, T1> dispatch, T1 arg1, ILogger logger)
         {
@@ -104,7 +104,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static async Task InvokeAsync<TEvents>(this IEnumerable<TEvents> events, Func<TEvents, Task> dispatch, ILogger logger)
         {
@@ -122,7 +122,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static async Task InvokeAsync<TEvents, T1>(this IEnumerable<TEvents> events, Func<TEvents, T1, Task> dispatch, T1 arg1, ILogger logger)
         {
@@ -140,7 +140,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static async Task InvokeAsync<TEvents, T1, T2>(this IEnumerable<TEvents> events, Func<TEvents, T1, T2, Task> dispatch, T1 arg1, T2 arg2, ILogger logger)
         {
@@ -158,7 +158,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static async Task InvokeAsync<TEvents, T1, T2, T3>(this IEnumerable<TEvents> events, Func<TEvents, T1, T2, T3, Task> dispatch, T1 arg1, T2 arg2, T3 arg3, ILogger logger)
         {
@@ -176,7 +176,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static async Task InvokeAsync<TEvents, T1, T2, T3, T4>(this IEnumerable<TEvents> events, Func<TEvents, T1, T2, T3, T4, Task> dispatch, T1 arg1, T2 arg2, T3 arg3, T4 arg4, ILogger logger)
         {
@@ -194,7 +194,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// Safely invoke methods by catching non fatal exceptions and logging them
+        /// 通过捕获非致命异常并记录它们来安全地调用方法
         /// </summary>
         public static async Task InvokeAsync<TEvents, T1, T2, T3, T4, T5>(this IEnumerable<TEvents> events, Func<TEvents, T1, T2, T3, T4, T5, Task> dispatch, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5, ILogger logger)
         {
@@ -279,6 +279,10 @@ namespace Wd3eCore.Modules
                     sourceType,
                     method,
                     ex.GetType().Name);
+                logger.LogError(ex, "{Exception}从{Method}抛出{Type}",
+                   sourceType,
+                   method,
+                   ex.GetType().Name);
             }
 
             if (ex.IsFatal())

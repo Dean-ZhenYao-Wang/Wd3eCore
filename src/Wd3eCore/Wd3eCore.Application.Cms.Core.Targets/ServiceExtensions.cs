@@ -50,7 +50,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        ///  在应用程序中添加Wd3e CMS服务，让应用程序通过configure动作改变默认的租户行为和功能集。
+        ///  在应用程序中添加Wd3e CMS服务，让应用程序通过configure动作改变默认的租户行为和特性集。
         /// </summary>
         public static IServiceCollection AddWd3eCms(this IServiceCollection services, Action<Wd3eCoreBuilder> configure)
         {

@@ -5,8 +5,8 @@ using System.Linq;
 namespace Wd3eCore.Modules.Manifest
 {
     /// <summary>
-    /// Defines a Module which is composed of features.
-    /// If the Module has only one default feature, it may be defined there.
+    /// 定义一个由特性组成的模块。
+    /// 如果模块只有一个默认功能，可以在这里定义。
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = false, Inherited = false)]
     public class ModuleAttribute : FeatureAttribute
@@ -19,21 +19,20 @@ namespace Wd3eCore.Modules.Manifest
         public new bool Exists => Id != null;
 
         /// <Summary>
-        /// Logical id allowing a module project to change its 'AssemblyName' without
-        /// having to update the code. If not provided, the assembly name will be used.
+        /// 允许模块项目更改其“AssemblyName”而无需更新代码的逻辑id。如果没有提供，则使用程序集名称。
         /// </Summary>
         public new string Id { get; set; }
 
-        /// <Summary>The name of the developer.</Summary>
+        /// <Summary>开发者的名字。</Summary>
         public string Author { get; set; } = String.Empty;
 
-        /// <Summary>The URL for the website of the developer.</Summary>
+        /// <Summary>开发人员网站的URL。</Summary>
         public string Website { get; set; } = String.Empty;
 
-        /// <Summary>The version number in SemVer format.</Summary>
+        /// <Summary>SemVer格式的版本号。</Summary>
         public string Version { get; set; } = "0.0";
 
-        /// <Summary>A list of tags.</Summary>
+        /// <Summary>标签列表。</Summary>
         public string[] Tags { get; set; } = Enumerable.Empty<string>().ToArray();
 
         public List<FeatureAttribute> Features { get; } = new List<FeatureAttribute>();

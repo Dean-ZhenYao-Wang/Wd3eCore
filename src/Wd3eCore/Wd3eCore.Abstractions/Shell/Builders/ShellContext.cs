@@ -6,8 +6,7 @@ using Wd3eCore.Environment.Shell.Scope;
 namespace Wd3eCore.Environment.Shell.Builders
 {
     /// <summary>
-    /// The shell context represents the shell's state that is kept alive
-    /// for the whole life of the application
+    /// shell上下文代表了shell的状态，在应用的整个生命周期内，shell的状态都是保持的
     /// </summary>
     public class ShellContext : IDisposable
     {
@@ -22,12 +21,12 @@ namespace Wd3eCore.Environment.Shell.Builders
         public IServiceProvider ServiceProvider { get; set; }
 
         /// <summary>
-        /// Whether the shell is activated.
+        /// shell是否被激活。
         /// </summary>
         public bool IsActivated { get; set; }
 
         /// <summary>
-        /// The Pipeline built for this shell.
+        /// 为这个shell建造的管道。
         /// </summary>
         public IShellPipeline Pipeline { get; set; }
 
@@ -36,7 +35,7 @@ namespace Wd3eCore.Environment.Shell.Builders
         public class PlaceHolder : ShellContext
         {
             /// <summary>
-            /// Used as a place holder for a shell that will be lazily created.
+            /// 用作将被延迟创建的shell的占位符。
             /// </summary>
             public PlaceHolder()
             {
@@ -55,7 +54,7 @@ namespace Wd3eCore.Environment.Shell.Builders
 
             var scope = new ShellScope(this);
 
-            // A new scope can be only used on a non released shell.
+            // 新范围只能在未发布的shell上使用。
             if (!_released)
             {
                 return scope;
@@ -67,30 +66,29 @@ namespace Wd3eCore.Environment.Shell.Builders
         }
 
         /// <summary>
-        /// Whether the <see cref="ShellContext"/> instance is not yet built or has been released, for instance when a tenant is changed.
+        /// 是否尚未构建<see cref="ShellContext"/>实例或是否已释放该实例(例如，当租户发生更改时)。
         /// </summary>
         public bool Released => _released;
 
         /// <summary>
-        /// Returns the number of active scopes on this tenant.
+        /// 返回此租户上活动范围的数量。
         /// </summary>
         public int ActiveScopes => _refCount;
 
         /// <summary>
-        /// Mark the <see cref="ShellContext"/> has a candidate to be released.
+        /// 标志着<see cref="ShellContext"/>有一个候选者被释放。
         /// </summary>
         public void Release()
         {
             if (_released == true)
             {
-                // Prevent infinite loops with circular dependencies
+                // 防止循环依赖的无限循环
                 return;
             }
 
-            // When a tenant is changed and should be restarted, its shell context is replaced with a new one,
-            // so that new request can't use it anymore. However some existing request might still be running and try to
-            // resolve or use its services. We then call this method to count the remaining references and dispose it
-            // when the number reached zero.
+            // 当一个租户被更改并且应该重新启动时，它的shell上下文将被替换为一个新的上下文，这样新的请求就不能再使用它了。
+            // 然而，一些现有的请求可能仍然在运行，并试图解析或使用它的服务。
+            // 然后，我们调用这个方法来计数剩余的引用，并在数量达到0时释放它。
 
             lock (_synLock)
             {
@@ -112,8 +110,7 @@ namespace Wd3eCore.Environment.Shell.Builders
                     }
                 }
 
-                // A ShellContext is usually disposed when the last scope is disposed, but if there are no scopes
-                // then we need to dispose it right away.
+                // 当最后一个作用域被释放时，通常会释放一个ShellContext，但是如果没有作用域，我们需要立即释放它。
                 if (_refCount == 0)
                 {
                     Dispose();
@@ -122,20 +119,20 @@ namespace Wd3eCore.Environment.Shell.Builders
         }
 
         /// <summary>
-        /// Registers the specified shellContext as a dependency such that they are also reloaded when the current shell context is reloaded.
+        /// 将指定的Shell上下文注册为依赖项，以便在重新加载当前Shell上下文时也重新加载它们。
         /// </summary>
         public void AddDependentShell(ShellContext shellContext)
         {
-            // If the dependent is released, nothing to do.
+            // 如果被释放，就什么也做不了。
             if (shellContext.Released)
             {
                 return;
             }
 
-            // If the dependency is already released.
+            // 如果依赖项已经释放。
             if (_released)
             {
-                // The dependent is released immediately.
+                // 被依赖者立即被释放。
                 shellContext.Release();
                 return;
             }
@@ -147,7 +144,7 @@ namespace Wd3eCore.Environment.Shell.Builders
                     _dependents = new List<WeakReference<ShellContext>>();
                 }
 
-                // Remove any previous instance that represent the same tenant in case it has been released (restarted).
+                // 删除之前表示同一租户的任何实例，以防它已被释放(重新启动)。
                 _dependents.RemoveAll(x => !x.TryGetTarget(out var shell) || shell.Settings.Name == shellContext.Settings.Name);
 
                 _dependents.Add(new WeakReference<ShellContext>(shellContext));
@@ -167,7 +164,7 @@ namespace Wd3eCore.Environment.Shell.Builders
                 return;
             }
 
-            // Disposes all the services registered for this shell
+            // 配置为该shell注册的所有服务
             if (ServiceProvider != null)
             {
                 (ServiceProvider as IDisposable)?.Dispose();

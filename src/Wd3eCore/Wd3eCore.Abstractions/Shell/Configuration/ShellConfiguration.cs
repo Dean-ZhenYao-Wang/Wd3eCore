@@ -10,9 +10,9 @@ using Wd3eCore.Environment.Shell.Configuration.Internal;
 namespace Wd3eCore.Environment.Shell.Configuration
 {
     /// <summary>
-    /// Holds the tenant <see cref="IConfiguration"/> which is lazily built
-    /// from the application configuration 'appsettings.json', the 'App_Data/appsettings.json'
-    /// file and then the 'App_Data/Sites/{tenant}/appsettings.json' file.
+    /// 持有租户<see cref="IConfiguration"/> ，
+    /// 它是由应用程序配置 "appsettings.json"、"App_Data/appsettings.json "文件
+    /// 和 "App_Data/Sites/{tenant}/appsettings.json "文件延迟建立的。
     /// </summary>
     public class ShellConfiguration : IShellConfiguration
     {
@@ -123,7 +123,7 @@ namespace Wd3eCore.Environment.Shell.Configuration
         }
 
         /// <summary>
-        /// The tenant lazily built <see cref="IConfiguration"/>.
+        /// 租户延迟建立<see cref="IConfiguration"/>.
         /// </summary>
         private IConfiguration Configuration
         {

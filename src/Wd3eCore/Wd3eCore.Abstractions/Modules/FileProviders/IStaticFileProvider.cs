@@ -3,8 +3,7 @@ using Microsoft.Extensions.FileProviders;
 namespace Wd3eCore.Modules.FileProviders
 {
     /// <summary>
-    /// This custom <see cref="IFileProvider"/> implementation provides Di registration identification
-    /// for IStaticFileProviders that should be served via UseStaticFiles.
+    /// 这个自定义<see cref="IFileProvider"/>实现为istaticfileprovider提供Di注册标识，该标识应该通过UseStaticFiles提供。
     /// </summary>
     public interface IStaticFileProvider : IFileProvider
     {

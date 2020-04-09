@@ -6,9 +6,8 @@ using Wd3eCore.Environment.Shell.Descriptor.Models;
 namespace Wd3eCore.Environment.Shell.Builders.Models
 {
     /// <summary>
-    /// Contains the information necessary to initialize an IoC container
-    /// for a particular tenant. This model is created by the ICompositionStrategy
-    /// and is passed into the IShellContainerFactory.
+    /// 包含为特定租户初始化IoC容器所需的信息。
+    /// 这个模型由ICompositionStrategy创建，并传递到IShellContainerFactory。
     /// </summary>
     public class ShellBlueprint
     {

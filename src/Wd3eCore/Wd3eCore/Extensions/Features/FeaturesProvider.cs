@@ -27,7 +27,7 @@ namespace Wd3eCore.Environment.Extensions.Features
         {
             var featuresInfos = new List<IFeatureInfo>();
 
-            // 功能和依赖项包含在本节中
+            // 特性和依赖项包含在本节中
             var features = manifestInfo.ModuleInfo.Features.ToList();
             if (features.Count > 0)
             {

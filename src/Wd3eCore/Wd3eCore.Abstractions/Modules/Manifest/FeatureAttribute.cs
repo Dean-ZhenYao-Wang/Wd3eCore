@@ -4,8 +4,8 @@ using System.Linq;
 namespace Wd3eCore.Modules.Manifest
 {
     /// <summary>
-    /// Defines a Feature in a Module, can be used multiple times.
-    /// If at least one Feature is defined, the Module default feature is ignored.
+    /// 在模块中定义一个特性，可以多次使用。
+    /// 如果至少定义了一个特性，则忽略模块默认特性。
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
     public class FeatureAttribute : Attribute
@@ -16,42 +16,42 @@ namespace Wd3eCore.Modules.Manifest
 
         public bool Exists => Id != null;
 
-        /// <Summary>The identifier of the feature.</Summary>
+        /// <Summary>特性的标识符</Summary>
         public string Id { get; set; }
 
         /// <Summary>
-        /// Human-readable name of the feature. If not provided, the identifier will be used.
+        /// 可读的特性名称。如果没有提供，将使用标识符。
         /// </Summary>
         public string Name { get; set; }
 
-        /// <Summary>A brief summary of what the feature does.</Summary>
+        /// <Summary>简要总结一下这个特性。</Summary>
         public string Description { get; set; } = String.Empty;
 
         /// <Summary>
-        /// A list of features that the feature depends on.
-        /// So that its drivers / handlers are invoked after those of dependencies.
+        /// 特性所依赖的特性列表
+        /// 它的驱动程序/处理程序会在依赖关系的驱动/处理程序之后调用。
         /// </Summary>
         public string[] Dependencies { get; set; } = Enumerable.Empty<string>().ToArray();
 
         /// <Summary>
-        /// The priority of the feature without breaking the dependencies order.
-        /// higher is the priority, later the drivers / handlers are invoked.
+        /// 不破坏依赖顺序的特性的优先级。
+        /// 高者为先 后面的驱动/处理程序被调用。
         /// </Summary>
         public string Priority { get; set; } = "0";
 
         /// <Summary>
-        /// The group (by category) that the feature belongs.
-        /// If not provided, defaults to 'Uncategorized'.
+        /// 特性所属的组(按类别)。
+        /// 如果没有提供，默认为“Uncategorized”。
         /// </Summary>
         public string Category { get; set; }
 
         /// <summary>
-        /// Set to <c>true</c> to only allow the Default tenant to enable / disable the feature.
+        ///设置为<c>true</c>，只允许默认租户启用/禁用该特性。
         /// </summary>
         public bool DefaultTenantOnly { get; set; }
 
         /// <summary>
-        /// Once enabled, check whether the feature can't be disabled. Defaults to false.
+        /// 启用后，检查是否不能禁用该特性。默认值为false。
         /// </summary>
         public bool IsAlwaysEnabled { get; set; } = false;
     }

@@ -6,8 +6,7 @@ using System.Reflection;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// When used on a class, it will include the service only
-    /// if the specific features are enabled.
+    /// 当在一个类上使用时，只有在特定的特性被启用时，它才会包含服务。
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class RequireFeaturesAttribute : Attribute
@@ -26,7 +25,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// The names of the required features.
+        /// 所需特性的名称。
         /// </summary>
         public IList<string> RequiredFeatureNames { get; }
 

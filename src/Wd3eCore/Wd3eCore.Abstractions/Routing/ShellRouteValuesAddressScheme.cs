@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Wd3eCore.Routing
 {
     /// <summary>
-    /// Allows a tenant to add its own 'RouteValuesAddress' schemes used for link generation.
+    /// 允许租户添加自己的“RouteValuesAddress”方案，用于生成链接。
     /// </summary>
     public sealed class ShellRouteValuesAddressScheme : IEndpointAddressScheme<RouteValuesAddress>
     {
@@ -31,7 +31,7 @@ namespace Wd3eCore.Routing
                 throw new ArgumentNullException(nameof(address));
             }
 
-            // Run custom tenant schemes.
+            // 运行自定义租户方案。
             foreach (var scheme in _schemes)
             {
                 var endpoints = scheme.FindEndpoints(address);
@@ -46,7 +46,6 @@ namespace Wd3eCore.Routing
             {
                 lock (this)
                 {
-                    // Try once to get and cache the default scheme but not me.
                     _defaultScheme = _httpContextAccessor.HttpContext?.RequestServices
                         .GetServices<IEndpointAddressScheme<RouteValuesAddress>>()
                         .Where(scheme => scheme.GetType() != GetType())
@@ -56,7 +55,7 @@ namespace Wd3eCore.Routing
                 }
             }
 
-            // Fallback to the default 'RouteValuesAddress' scheme.
+            // 退回到默认的“RouteValuesAddress”方案。
             return _defaultScheme?.FindEndpoints(address) ?? Enumerable.Empty<Endpoint>();
         }
     }

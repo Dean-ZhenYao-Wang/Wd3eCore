@@ -6,30 +6,28 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// An implementation of this interface is used to initialize the services and HTTP request
-    /// pipeline of a module.
+    /// 此接口的实现用于初始化模块的服务和HTTP请求管道。
     /// </summary>
     public interface IStartup
     {
         /// <summary>
-        /// Get the value to use to order startups to configure services. The default is 0.
+        ///获取用于命令启动程序配置服务的值。默认值为0。
         /// </summary>
         int Order { get; }
 
         /// <summary>
-        /// Get the value to use to order startups to build the pipeline. The default is the 'Order' property.
+        /// 获取用于命令启动器构建管道的值。默认值为 "Order "属性。
         /// </summary>
         int ConfigureOrder { get; }
 
         /// <summary>
-        /// This method gets called by the runtime. Use this method to add services to the container.
-        /// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+        /// 此方法由运行时调用。使用此方法将服务添加到容器中。
         /// </summary>
-        /// <param name="services">The collection of service descriptors.</param>
+        /// <param name="services">服务描述符的集合。</param>
         void ConfigureServices(IServiceCollection services);
 
         /// <summary>
-        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// 此方法由运行时调用。使用此方法配置HTTP请求管道。
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="routes"></param>

@@ -66,8 +66,8 @@ namespace Wd3eCore.Environment.Shell.Builders
                 tenantServiceCollection.AddSingleton(typeof(IStartup), dependency.Key);
             }
 
-            // 为了不在由'ShellHost'完成之前，触发功能加载，
-            // 在这里启动应用程序的功能，而不是在构造函数中完成。
+            // 为了不在由'ShellHost'完成之前，触发特性加载，
+            // 在这里启动应用程序的特性，而不是在构造函数中完成。
             EnsureApplicationFeature();
 
             foreach (var rawStartup in blueprint.Dependencies.Keys.Where(t => t.Name == "Startup"))
@@ -147,7 +147,7 @@ namespace Wd3eCore.Environment.Shell.Builders
             {
                 var feature = blueprint.Dependencies.FirstOrDefault(x => x.Key == startup.GetType()).Value?.FeatureInfo;
 
-                // 如果启动不是来自于扩展，则将其与应用功能关联起来。
+                // 如果启动不是来自于扩展，则将其与应用特性关联起来。
                 // 例如，当Startup类在应用程序中用Configure<Startup>()注册时。
                 featureAwareServiceCollection.SetCurrentFeature(feature ?? _applicationFeature);
                 startup.ConfigureServices(featureAwareServiceCollection);

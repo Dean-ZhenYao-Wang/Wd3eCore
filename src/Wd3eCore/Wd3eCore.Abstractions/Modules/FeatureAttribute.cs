@@ -3,9 +3,8 @@ using System;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// An attribute that can associate a service or component with
-    /// a specific feature by its name. This component will only
-    /// be used if the feature is enabled.
+    /// 可以通过名称将服务或组件的属性与特定特性关联。
+    /// 该组件只有在该特性被启用时才会被使用。
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class FeatureAttribute : Attribute
@@ -16,7 +15,7 @@ namespace Wd3eCore.Modules
         }
 
         /// <summary>
-        /// The name of the feaure to assign the component to.
+        /// 要分配组件的属性的名称。
         /// </summary>
         public string FeatureName { get; set; }
     }

@@ -304,7 +304,7 @@ namespace Wd3eCore.Environment.Extensions
 
                     foreach (var feature in extension.ExtensionInfo.Features)
                     {
-                        // 功能可以没有类型
+                        // 特性可以没有类型
                         if (typesByFeature.TryGetValue(feature.Id, out var featureTypes))
                         {
                             foreach (var type in featureTypes)
@@ -321,7 +321,7 @@ namespace Wd3eCore.Environment.Extensions
                     }
                 };
 
-                // 功能信息和条目按优先级和依赖项排序。
+                // 特性信息和条目按优先级和依赖项排序。
                 _featureInfos = Order(loadedFeatures.Values.Select(f => f.FeatureInfo));
                 _features = _featureInfos.ToDictionary(f => f.Id, f => loadedFeatures[f.Id]);
 

@@ -146,7 +146,7 @@ namespace Wd3eCore.Environment.Shell
                 _logger.LogInformation("Start creation of shells");
             }
 
-            // 加载所有的扩展和功能，以便控制器在ITypeFeatureProvider中注册，并在应用程序约定中定义它们的区域。
+            // 加载所有的扩展和特性，以便控制器在ITypeFeatureProvider中注册，并在应用程序约定中定义它们的区域。
             var features = _extensionManager.LoadFeaturesAsync();
 
             // 现在有租客吗?
@@ -295,7 +295,7 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// 一个功能被启用/禁用，需要重新启动租户
+        /// 一个特性被启用/禁用，需要重新启动租户
         /// </summary>
         Task IShellDescriptorManagerEventHandler.Changed(ShellDescriptor descriptor, string tenant)
         {

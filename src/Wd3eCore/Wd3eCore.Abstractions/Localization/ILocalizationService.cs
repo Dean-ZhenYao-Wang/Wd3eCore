@@ -3,17 +3,17 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Localization
 {
     /// <summary>
-    /// Represents a contract for a localization service.
+    /// 表示本地化服务的契约。
     /// </summary>
     public interface ILocalizationService
     {
         /// <summary>
-        /// Returns the default culture of the site.
+        /// 返回站点的默认文化。
         /// </summary>
         Task<string> GetDefaultCultureAsync();
 
         /// <summary>
-        /// Returns all the supported cultures of the site. It also contains the default culture.
+        /// 返回站点支持的所有文化。它还包含默认的区域性。
         /// </summary>
         Task<string[]> GetSupportedCulturesAsync();
     }

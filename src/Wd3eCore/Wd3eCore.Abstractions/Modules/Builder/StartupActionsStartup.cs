@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// Represents a fake Startup class that is composed of Configure and ConfigureServices lambdas.
+    ///  代表一个由Configure和ConfigureServices lambdas组成的伪Startup 类。
     /// </summary>
     internal class StartupActionsStartup : StartupBase
     {

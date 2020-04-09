@@ -13,10 +13,10 @@ namespace Wd3eCore.Environment.Extensions.Utility
         }
 
         /// <summary>
-        /// Linearizes a dependency graph so that items are positioned after their dependencies.
-        /// This by using a function which determines if an item has a direct dependency on another.
-        /// Then, items are moved up whenever it is possible without breaking the dependency graph.
-        /// This by using a function which gives for each item a priority used as an order value.
+        /// 将依赖关系图线性化，使项的位置在其依赖关系之后。
+        /// 这是通过使用一个函数来确定一个项目是否直接依赖于另一个项目。
+        /// 然后，在不破坏依赖关系图的情况下，只要有可能，项目就会向上移动。
+        /// 这是通过使用一个函数来实现的，该函数为每个项目提供一个优先级作为一个订单值。
         /// </summary>
         public static IEnumerable<T> OrderByDependenciesAndPriorities<T>(this IEnumerable<T> items, Func<T, T, bool> hasDependency, Func<T, int> getPriority)
         {

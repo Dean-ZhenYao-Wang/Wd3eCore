@@ -55,7 +55,7 @@ namespace Wd3eCore.Environment.Shell
                     if (_logger.IsEnabled(LogLevel.Information))
                     {
                         _logger.LogInformation("Feature '{FeatureName}' was disabled", feature.Id);
-                        _logger.LogInformation("功能 '{FeatureName}' 已被禁用", feature.Id);
+                        _logger.LogInformation("特性 '{FeatureName}' 已被禁用", feature.Id);
                     }
                 }
             }
@@ -74,7 +74,7 @@ namespace Wd3eCore.Environment.Shell
                     foreach (var feature in AllFeaturesToEnable)
                     {
                         _logger.LogInformation("Enabling feature '{FeatureName}'", feature.Id);
-                        _logger.LogInformation("启用功能 '{FeatureName}'", feature.Id);
+                        _logger.LogInformation("启用特性 '{FeatureName}'", feature.Id);
                     }
                 }
 
@@ -93,12 +93,12 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// 启用一个功能。
+        /// 启用一个特性。
         /// </summary>
-        /// <param name="featureInfo">要启用的功能信息。</param>
-        /// <param name="enabledFeatureIds">目前启用的功能id列表。</param>
-        /// <param name="force">布尔参数，表示该功能是否应该启用它的依赖关系。</param>
-        /// <returns>枚举了要禁用的功能，如果'force'=true且依赖关系被禁用，则为空。</returns>
+        /// <param name="featureInfo">要启用的特性信息。</param>
+        /// <param name="enabledFeatureIds">目前启用的特性id列表。</param>
+        /// <param name="force">布尔参数，表示该特性是否应该启用它的依赖关系。</param>
+        /// <returns>枚举了要禁用的特性，如果'force'=true且依赖关系被禁用，则为空。</returns>
         private IEnumerable<IFeatureInfo> GetFeaturesToEnable(IFeatureInfo featureInfo, IEnumerable<string> enabledFeatureIds, bool force)
         {
             var featuresToEnable = _extensionManager
@@ -111,7 +111,7 @@ namespace Wd3eCore.Environment.Shell
                 if (_logger.IsEnabled(LogLevel.Warning))
                 {
                     _logger.LogWarning(" To enable '{FeatureId}', additional features need to be enabled.", featureInfo.Id);
-                    _logger.LogWarning(" 要启用 '{FeatureId}',需要启用附加功能。", featureInfo.Id);
+                    _logger.LogWarning(" 要启用 '{FeatureId}',需要启用附加特性。", featureInfo.Id);
                 }
                 //如果启用了{0}，那么你还需要启用{1}。
                 FeatureDependencyNotification?.Invoke("If {0} is enabled, then you'll also need to enable {1}.", featureInfo, featuresToEnable.Where(f => f.Id != featureInfo.Id));
@@ -123,12 +123,12 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// 禁用一个功能。
+        /// 禁用一个特性。
         /// </summary>
-        /// <param name="featureInfo">要禁用的功能信息。</param>
-        /// <param name="enabledFeatureIds">目前启用的功能id列表。</param>
-        /// <param name="force">布尔参数，表示该功能是否应该禁用其依赖的功能。</param>
-        /// <returns>枚举了要启用的功能，如果'force'=true，并且启用了从属关系，则为空。</returns>
+        /// <param name="featureInfo">要禁用的特性信息。</param>
+        /// <param name="enabledFeatureIds">目前启用的特性id列表。</param>
+        /// <param name="force">布尔参数，表示该特性是否应该禁用其依赖的特性。</param>
+        /// <returns>枚举了要启用的特性，如果'force'=true，并且启用了从属关系，则为空。</returns>
         private IEnumerable<IFeatureInfo> GetFeaturesToDisable(IFeatureInfo featureInfo, IEnumerable<string> enabledFeatureIds, bool force)
         {
             var featuresToDisable = _extensionManager
@@ -141,7 +141,7 @@ namespace Wd3eCore.Environment.Shell
                 if (_logger.IsEnabled(LogLevel.Warning))
                 {
                     _logger.LogWarning(" To disable '{FeatureId}', additional features need to be disabled.", featureInfo.Id);
-                    _logger.LogWarning(" 要禁用'{FeatureId}'，需要禁用附加功能。", featureInfo.Id);
+                    _logger.LogWarning(" 要禁用'{FeatureId}'，需要禁用附加特性。", featureInfo.Id);
                 }
                 //如果{0}被禁用，那么你也需要禁用{1}。
                 FeatureDependencyNotification?.Invoke("If {0} is disabled, then you'll also need to disable {1}.", featureInfo, featuresToDisable.Where(f => f.Id != featureInfo.Id));

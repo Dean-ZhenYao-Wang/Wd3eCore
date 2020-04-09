@@ -93,7 +93,7 @@ namespace Wd3eCore.Environment.Shell.Builders
         /// <returns></returns>
         private ShellDescriptor MinimumShellDescriptor()
         {
-            // 从DI中注册的ShellFeature实例列表中加载默认功能
+            // 从DI中注册的ShellFeature实例列表中加载默认特性
 
             return new ShellDescriptor
             {

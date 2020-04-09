@@ -4,27 +4,27 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// Provides local values of the current time and time zone.
+    /// 提供当前时间和时区的本地值。
     /// </summary>
     public interface ILocalClock
     {
         /// <summary>
-        /// Gets the time for the local time zone.
+        /// 获取本地时区的时间。
         /// </summary>
         Task<DateTimeOffset> LocalNowAsync { get; }
 
         /// <summary>
-        /// Returns the local time zone.
+        /// 返回本地时区。
         /// </summary>
         Task<ITimeZone> GetLocalTimeZoneAsync();
 
         /// <summary>
-        /// Converts a <see cref="DateTimeOffset" /> to the specified <see cref="ITimeZone" /> instance.
+        /// 将<see cref="DateTimeOffset" />转换为指定的<see cref="ITimeZone" />实例。
         /// </summary>
         Task<DateTimeOffset> ConvertToLocalAsync(DateTimeOffset dateTimeOffset);
 
         /// <summary>
-        /// Converts a <see cref="DateTime" /> representing a local time to the UTC value.
+        /// 将表示本地时间的<see cref="DateTime" />转换为UTC值。
         /// </summary>
         Task<DateTime> ConvertToUtcAsync(DateTime dateTime);
     }

@@ -3,38 +3,37 @@ using System;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// Provides the current Utc <see cref="DateTime"/>, and timezone related methods.
-    /// This service should be used whenever the current date and time are needed, instead of <seealso cref="DateTime"/> directly.
-    /// If local date time and timezones are needed use <see cref="ILocalClock" /> instead.
+    /// 提供当前Utc<see cref="DateTime"/>，以及与时区相关的方法。
+    /// 只要需要当前日期和时间，就应该使用此服务，而不是直接使用<seealso cref="DateTime"/>。
+    /// 如果需要本地日期时间和时区，可以使用<see cref="ILocalClock" />。
     /// </summary>
     public interface IClock
     {
         /// <summary>
-        /// Gets the current <see cref="DateTime"/> of the system, expressed in Utc.!--
+        /// 获取系统的当前<see cref="DateTime"/>，用Utc表示
         /// </summary>
         /// <remarks>
-        /// A <see cref="DateTime"/> as this property is usually used to store the current date time in UTC and a <see cref="DateTimeOffset" />
-        /// would affect usability.
+        /// <see cref="DateTime"/>作为这个属性通常用于在UTC中存储当前日期时间，<see cref="DateTimeOffset" />会影响可用性。
         /// </remarks>
         DateTime UtcNow { get; }
 
         /// <summary>
-        /// Returns the list of all available <see cref="ITimeZone" />.
+        /// 返回所有可用的<see cref="ITimeZone" />.
         /// </summary>
         ITimeZone[] GetTimeZones();
 
         /// <summary>
-        /// Returns a <see cref="ITimeZone" /> from a time zone id or the local system's one if not found.
+        ///  返回一个时区ID的 <see cref="ITimeZone" />，如果没有找到，则返回本地系统的时区ID。
         /// </summary>
         ITimeZone GetTimeZone(string timeZoneId);
 
         /// <summary>
-        /// Returns a default <see cref="ITimeZone" /> for the system.
+        /// 返回系统的默认<see cref="ITimeZone" />。
         /// </summary>
         ITimeZone GetSystemTimeZone();
 
         /// <summary>
-        /// Converts a <see cref="DateTimeOffset" /> to the specified <see cref="ITimeZone" /> instance.
+        /// 将<see cref="DateTimeOffset" />转换为指定的<see cref="ITimeZone" />实例。
         /// </summary>
         DateTimeOffset ConvertToTimeZone(DateTimeOffset dateTimeOffset, ITimeZone timeZone);
     }

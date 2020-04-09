@@ -3,28 +3,24 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Environment.Extensions.Features
 {
     /// <summary>
-    /// An implementation of this interface provide efficient access to the state
-    /// of the enabled feature in order to provide hashes used for caching.
-    /// Because its state should be cached, the instance should not have any state
-    /// thus is declared as transient.
+    /// 此接口的实现提供对启用特性状态的有效访问，以便提供用于缓存的Hash。
+    /// 因为它的状态应该被缓存，所以实例不应该有任何状态，因此被声明为瞬态。
     /// </summary>
     public interface IFeatureHash
     {
         /// <summary>
-        /// Returns a serial number representing the list of available features for the current tenant.
+        /// 返回一个序列号，该序列号表示当前租户的可用特性列表。
         /// </summary>
         /// <returns>
-        /// An <see cref="int"/> value that changes every time the list of features changes.
-        /// The implementation is efficient in order to be called frequently.
+        ///  一个<see cref="int"/>值，该值在每次特性列表更改时都会更改。
         /// </returns>
         Task<int> GetFeatureHashAsync();
 
         /// <summary>
-        /// Returns a serial number representing the list of available features for the current tenant.
+        /// 返回一个序列号，该序列号表示当前租户的可用特性列表。
         /// </summary>
         /// <returns>
-        /// A <see cref="int"/> value that changes every time a specific feature is enabled.
-        /// The implementation is efficient in order to be called frequently.
+        /// 一个<see cref="int"/>值，该值在每次启用特定特性时都会更改。
         /// </returns>
         Task<int> GetFeatureHashAsync(string featureId);
     }

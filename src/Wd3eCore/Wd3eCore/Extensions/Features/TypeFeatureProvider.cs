@@ -18,7 +18,7 @@ namespace Wd3eCore.Environment.Extensions
                 return feature;
             }
 
-            throw new InvalidOperationException($"Could not resolve feature for type {dependency.Name}/无法为类型{dependency.Name}解析功能");
+            throw new InvalidOperationException($"Could not resolve feature for type {dependency.Name}/无法为类型{dependency.Name}解析特性");
         }
 
         public void TryAdd(Type type, IFeatureInfo feature)

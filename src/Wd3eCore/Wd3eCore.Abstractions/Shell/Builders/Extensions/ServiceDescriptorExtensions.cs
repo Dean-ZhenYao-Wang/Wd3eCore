@@ -9,7 +9,7 @@ namespace Wd3eCore.Environment.Shell.Builders
         {
             if (descriptor is ClonedSingletonDescriptor cloned)
             {
-                // Use the parent descriptor as it was before being cloned.
+                // 使用被克隆之前的父描述符。
                 return cloned.Parent.GetImplementationType();
             }
 

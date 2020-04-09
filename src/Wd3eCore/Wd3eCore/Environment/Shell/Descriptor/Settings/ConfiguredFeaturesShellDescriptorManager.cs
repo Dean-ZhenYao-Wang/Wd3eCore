@@ -8,7 +8,7 @@ using Wd3eCore.Environment.Shell.Descriptor.Models;
 namespace Wd3eCore.Environment.Shell.Descriptor.Settings
 {
     /// <summary>
-    /// 通过返回配置中的功能来实现 <see cref="IShellDescriptorManager"/>。
+    /// 通过返回配置中的特性来实现 <see cref="IShellDescriptorManager"/>。
     /// </summary>
     public class ConfiguredFeaturesShellDescriptorManager : IShellDescriptorManager
     {

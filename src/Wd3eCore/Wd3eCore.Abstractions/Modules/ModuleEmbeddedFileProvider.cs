@@ -10,8 +10,7 @@ using Wd3eCore.Modules.FileProviders;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// This custom <see cref="IFileProvider"/> implementation provides the file contents
-    /// of embedded files in Module assemblies.
+    /// 这个自定义的<see cref="IFileProvider"/>实现提供模块程序集中嵌入文件的文件内容。
     /// </summary>
     public class ModuleEmbeddedFileProvider : IFileProvider
     {
@@ -35,33 +34,33 @@ namespace Wd3eCore.Modules
 
             var entries = new List<IFileInfo>();
 
-            // Under the root.
+            // 在根下。
             if (folder == "")
             {
-                // Add the virtual folder "Areas" containing all modules.
+                //添加包含所有模块的虚拟文件夹“Areas”。
                 entries.Add(new EmbeddedDirectoryInfo(Application.ModulesPath));
             }
-            // Under "Areas".
+            // 在"Areas"下.
             else if (folder == Application.ModulesPath)
             {
-                // Add virtual folders for all modules by using their assembly names (module ids).
+                //通过使用模块组件名称（module ids）为所有模块添加虚拟文件夹。
                 entries.AddRange(Application.Modules.Select(m => new EmbeddedDirectoryInfo(m.Name)));
             }
-            // Under "Areas/{ModuleId}" or "Areas/{ModuleId}/**".
+            // 在 "Areas/{ModuleId}" 或 "Areas/{ModuleId}/**"下.
             else if (folder.StartsWith(Application.ModulesRoot, StringComparison.Ordinal))
             {
-                // Skip "Areas/" from the folder path.
+                // 从文件夹路径中跳过“Areas/”。
                 var path = folder.Substring(Application.ModulesRoot.Length);
                 var index = path.IndexOf('/');
 
-                // Resolve the module id and get all its asset paths.
+                // 解析模块id并获取其所有资产路径.
                 var name = index == -1 ? path : path.Substring(0, index);
                 var paths = Application.GetModule(name).AssetPaths;
 
-                // Resolve all files and folders directly under this given folder.
+                // 直接解析此给定文件夹下的所有文件和文件夹。
                 NormalizedPaths.ResolveFolderContents(folder, paths, out var files, out var folders);
 
-                // And add them to the directory contents.
+                // 并将它们添加到目录内容中。
                 entries.AddRange(files.Select(p => GetFileInfo(p)));
                 entries.AddRange(folders.Select(n => new EmbeddedDirectoryInfo(n)));
             }
@@ -81,27 +80,27 @@ namespace Wd3eCore.Modules
             // "Areas/**/*.*".
             if (path.StartsWith(Application.ModulesRoot, StringComparison.Ordinal))
             {
-                // Skip the "Areas/" root.
+                // 跳过“Areas/”根目录。
                 path = path.Substring(Application.ModulesRoot.Length);
                 var index = path.IndexOf('/');
 
                 // "{ModuleId}/**/*.*".
                 if (index != -1)
                 {
-                    // Resolve the module id.
+                    // 解析模块id。
                     var module = path.Substring(0, index);
 
-                    // Skip the module id to resolve the subpath.
+                    //跳过模块id来解析子路径。
                     var fileSubPath = path.Substring(index + 1);
 
-                    // If it is the app's module.
+                    // 如果是应用程序的模块。
                     if (module == Application.Name)
                     {
-                        // Serve the file from the physical application root folder.
+                        // 从应用程序物理根文件夹提供文件。
                         return new PhysicalFileInfo(new FileInfo(Application.Root + fileSubPath));
                     }
 
-                    // Get the embedded file info from the module assembly.
+                    // 从模块程序集中获取嵌入的文件信息。
                     return Application.GetModule(module).GetFileInfo(fileSubPath);
                 }
             }

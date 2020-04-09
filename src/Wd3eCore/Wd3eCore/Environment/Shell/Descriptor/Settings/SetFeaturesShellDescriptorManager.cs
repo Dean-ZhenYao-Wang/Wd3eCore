@@ -6,7 +6,7 @@ using Wd3eCore.Environment.Shell.Descriptor.Models;
 namespace Wd3eCore.Environment.Shell.Descriptor.Settings
 {
     /// <summary>
-    /// 通过返回一个具有指定功能集的单一租户来实现 <see cref="IShellDescriptorManager"/>。
+    /// 通过返回一个具有指定特性集的单一租户来实现 <see cref="IShellDescriptorManager"/>。
     /// 这个类可以作为一个单例类注册，因为它的状态永远不会改变。
     /// </summary>
     public class SetFeaturesShellDescriptorManager : IShellDescriptorManager

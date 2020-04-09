@@ -6,7 +6,7 @@ namespace Wd3eCore.BackgroundTasks
     public class BackgroundTaskSettings
     {
         /// <summary>
-        /// True if the object can't be used to update the database.
+        /// 如果对象不能用于更新数据库，则为True。
         /// </summary>
         [JsonIgnore]
         public bool IsReadonly { get; set; }

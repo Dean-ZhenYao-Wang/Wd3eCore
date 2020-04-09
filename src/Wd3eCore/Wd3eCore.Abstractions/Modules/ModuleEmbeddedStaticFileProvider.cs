@@ -7,8 +7,7 @@ using Microsoft.Extensions.Primitives;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// This custom <see cref="IFileProvider"/> implementation provides the file contents
-    /// of embedded files in Module assemblies whose path is under a Module 'wwwroot' folder.
+    /// 这个自定义<see cref="IFileProvider"/>实现提供模块程序集中嵌入文件的文件内容，其路径位于模块“wwwroot”文件夹下。
     /// </summary>
     public class ModuleEmbeddedStaticFileProvider : IModuleStaticFileProvider
     {
@@ -40,24 +39,24 @@ namespace Wd3eCore.Modules
             {
                 var application = _applicationContext.Application;
 
-                // Resolve the module id.
+                // 解析模块id。
                 var module = path.Substring(0, index);
 
-                // Check if it is an existing module.
+                // 检查它是否是一个现有的模块。
                 if (application.Modules.Any(m => m.Name == module))
                 {
-                    // Resolve the embedded file subpath: "wwwroot/**/*.*"
+                    // 解析嵌入的文件子路径:“wwwroot/**/*.*”
                     var fileSubPath = Module.WebRoot + path.Substring(index + 1);
 
                     if (module != application.Name)
                     {
-                        // Get the embedded file info from the module assembly.
+                        // 从模块程序集中获取嵌入的文件信息。
                         return application.GetModule(module).GetFileInfo(fileSubPath);
                     }
 
-                    // Application static files can be still requested in a regular way "/**/*.*".
-                    // Here, it's done through the Application's module "{ApplicationName}/**/*.*".
-                    // But we still serve them from the same physical files "{WebRootPath}/**/*.*".
+                    // 应用程序静态文件仍然可以通过常规方式“/**/*.*”请求。
+                    // 在这里，它是通过应用程序的模块“{ApplicationName}/**/*.*”完成的。
+                    // 但是我们仍然从相同的物理文件“{WebRootPath}/**/*.*”中提供它们。
                     return new PhysicalFileInfo(new FileInfo(application.Root + fileSubPath));
                 }
             }

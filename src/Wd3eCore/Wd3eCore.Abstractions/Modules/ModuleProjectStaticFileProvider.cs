@@ -9,8 +9,8 @@ using Microsoft.Extensions.Primitives;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// This custom <see cref="IFileProvider"/> implementation provides the file contents of files
-    /// whose path is under a Module Project 'wwwroot' folder, and while in a development environment.
+    /// 这个自定义的<see cref="IFileProvider"/>实现提供的文件内容，
+    /// 其路径在模块项目 "wwwroot "文件夹下的文件，在开发环境中时，提供的文件内容。
     /// </summary>
     public class ModuleProjectStaticFileProvider : IModuleStaticFileProvider
     {
@@ -32,27 +32,26 @@ namespace Wd3eCore.Modules
 
                     var roots = new Dictionary<string, string>();
 
-                    // Resolve all module projects "wwwroot".
+                    // 解析所有模块项目“wwwroot”。
                     foreach (var module in application.Modules)
                     {
-                        // If the module and the application assemblies are not at the same location,
-                        // this means that the module is referenced as a package, not as a project in dev.
+                        // 如果模块和应用程序程序集不在同一位置，这意味着模块作为包引用，而不是作为dev中的项目引用。
                         if (module.Assembly == null || Path.GetDirectoryName(module.Assembly.Location)
                             != Path.GetDirectoryName(application.Assembly.Location))
                         {
                             continue;
                         }
 
-                        // Get the 1st module asset under "Areas/{ModuleId}/wwwroot/".
+                        // 在“Areas/{ModuleId}/wwwroot/”下获取第一个模块资产。
                         var asset = module.Assets.FirstOrDefault(a => a.ModuleAssetPath
                             .StartsWith(module.Root + Module.WebRoot, StringComparison.Ordinal));
 
                         if (asset != null)
                         {
-                            // Resolve "{ModuleProjectDirectory}wwwroot/" from the project asset.
+                            // 从项目资产中解析“{ModuleProjectDirectory}wwwroot/”。
                             var index = asset.ProjectAssetPath.IndexOf('/' + Module.WebRoot);
 
-                            // Add the module project "wwwroot" folder.
+                            // 添加模块项目“wwwroot”文件夹。
                             roots[module.Name] = asset.ProjectAssetPath.Substring(0, index + Module.WebRoot.Length + 1);
                         }
                     }
@@ -80,18 +79,18 @@ namespace Wd3eCore.Modules
             // "{ModuleId}/**/*.*".
             if (index != -1)
             {
-                // Resolve the module id.
+                // 解析模块id
                 var module = path.Substring(0, index);
 
-                // Get the module project "wwwroot" folder.
+                // 获取模块项目“wwwroot”文件夹。
                 if (_roots.TryGetValue(module, out var root))
                 {
-                    // Resolve "{ModuleProjectDirectory}wwwroot/**/*.*"
+                    // 解析“{ModuleProjectDirectory} wwwroot / * * / * *”。
                     var filePath = root + path.Substring(module.Length + 1);
 
                     if (File.Exists(filePath))
                     {
-                        // Serve the file from the physical file system.
+                        // 从物理文件系统提供文件。
                         return new PhysicalFileInfo(new FileInfo(filePath));
                     }
                 }
@@ -113,18 +112,18 @@ namespace Wd3eCore.Modules
             // "{ModuleId}/**/*.*".
             if (index != -1)
             {
-                // Resolve the module id.
+                // 解析模块id
                 var module = path.Substring(0, index);
 
-                // Get the module project "wwwroot" folder.
+                // 获取模块项目“wwwroot”文件夹。
                 if (_roots.TryGetValue(module, out var root))
                 {
-                    // Resolve "{ModuleProjectDirectory}wwwroot/**/*.*"
+                    // 解析“{ModuleProjectDirectory} wwwroot / * * / * *”。
                     var filePath = root + path.Substring(module.Length + 1);
 
                     if (File.Exists(filePath))
                     {
-                        // Watch the file from the physical file system.
+                        // 从物理文件系统中查看文件。
                         return new PollingFileChangeToken(new FileInfo(filePath));
                     }
                 }
