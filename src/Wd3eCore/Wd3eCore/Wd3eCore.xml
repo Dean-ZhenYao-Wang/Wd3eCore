@@ -23,15 +23,14 @@
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection.SetCurrentFeature(Wd3eCore.Environment.Extensions.Features.IFeatureInfo)">
             <summary>
-            Sets the current feature that services will be assigned when added to this collection.
+            设置添加到此集合中时,将分配给当前服务的特征。
             </summary>
-            <param name="feature">The feature for services to be assigned.</param>
+            <param name="feature">分配给当前服务的特征</param>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContextFactory.MinimumShellDescriptor">
             <summary>
-            The minimum shell descriptor is used to bootstrap the first container that will be used
-            to call all module IStartup implementation. It's composed of module names that reference
-            core components necessary for the desired scenario.
+            最小的shell描述符用于引导第一个容器，它将被用来调用所有模块IStartup实现。
+            它由模块名称组成，引用了所需场景所需的核心组件。
             </summary>
             <returns></returns>
         </member>
@@ -43,119 +42,117 @@
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.AllFeaturesShellDescriptorManager">
             <summary>
-            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by returning a single tenant with all the available
-            extensions.
+            通过返回一个包含所有可用扩展的单一租户来实现<see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> 。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.ConfiguredFeaturesShellDescriptorManager">
             <summary>
-            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by returning the features from configuration.
+            通过返回配置中的功能来实现 <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/>。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Settings.SetFeaturesShellDescriptorManager">
             <summary>
-            Implements <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/> by returning a single tenant with a specified set
-            of features. This class can be registered as a singleton as its state never changes.
+            通过返回一个具有指定功能集的单一租户来实现 <see cref="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager"/>。
+            这个类可以作为一个单例类注册，因为它的状态永远不会改变。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellDescriptorFeaturesManager.GetFeaturesToEnable(Wd3eCore.Environment.Extensions.Features.IFeatureInfo,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
             <summary>
-            Enables a feature.
+            启用一个功能。
             </summary>
-            <param name="featureInfo">The info of the feature to be enabled.</param>
-            <param name="enabledFeatureIds">The list of feature ids which are currently enabled.</param>
-            <param name="force">Boolean parameter indicating if the feature should enable it's dependencies.</param>
-            <returns>An enumeration of the features to disable, empty if 'force' = true and a dependency is disabled</returns>
+            <param name="featureInfo">要启用的功能信息。</param>
+            <param name="enabledFeatureIds">目前启用的功能id列表。</param>
+            <param name="force">布尔参数，表示该功能是否应该启用它的依赖关系。</param>
+            <returns>枚举了要禁用的功能，如果'force'=true且依赖关系被禁用，则为空。</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellDescriptorFeaturesManager.GetFeaturesToDisable(Wd3eCore.Environment.Extensions.Features.IFeatureInfo,System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
             <summary>
-            Disables a feature.
+            禁用一个功能。
             </summary>
-            <param name="featureInfo">The info of the feature to be disabled.</param>
-            <param name="enabledFeatureIds">The list of feature ids which are currently enabled.</param>
-            <param name="force">Boolean parameter indicating if the feature should disable it's dependents.</param>
-            <returns>An enumeration of the features to enable, empty if 'force' = true and a dependent is enabled</returns>
+            <param name="featureInfo">要禁用的功能信息。</param>
+            <param name="enabledFeatureIds">目前启用的功能id列表。</param>
+            <param name="force">布尔参数，表示该功能是否应该禁用其依赖的功能。</param>
+            <returns>枚举了要启用的功能，如果'force'=true，并且启用了从属关系，则为空。</returns>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.ShellHost">
             <summary>
-            All <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> object are loaded when <see cref="M:Wd3eCore.Environment.Shell.ShellHost.InitializeAsync"/> is called. They can be removed when the
-            tenant is removed, but are necessary to match an incoming request, even if they are not initialized.
-            Each <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> is activated (its service provider is built) on the first request.
+            当调用<see cref="M:Wd3eCore.Environment.Shell.ShellHost.InitializeAsync"/>时，所有的<see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>对象都会被加载。
+            当租户被移除时，它们可以被移除，但对于匹配传入的请求，即使没有初始化它们也是必要的。
+            每个<see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>都是在第一次请求时被激活（它的服务提供者被建立）。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.AddAndRegisterShell(Wd3eCore.Environment.Shell.Builders.ShellContext)">
             <summary>
-            Adds the shell and registers its settings in RunningShellTable
+            添加shell并在RunningShellTable中注册其设置
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.CanRegisterShell(Wd3eCore.Environment.Shell.Builders.ShellContext)">
             <summary>
-            Whether or not a shell can be activated and added to the running shells.
+            是否可以激活shell并将其添加到正在运行的shell中
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.RegisterShellSettings(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Registers the shell settings in RunningShellTable
+            注册RunningShellTable中的shell设置。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.CreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Creates a shell context based on shell settings
+            根据shell设置创建一个shell上下文
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.CreateSetupContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Creates a transient shell for the default tenant's setup.
+            为默认租户的设置创建一个临时shell。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.Wd3eCore#Environment#Shell#IShellDescriptorManagerEventHandler#Changed(Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor,System.String)">
             <summary>
-            A feature is enabled / disabled, the tenant needs to be restarted
+            一个功能被启用/禁用，需要重新启动租户
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.ReloadShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Marks the specific tenant as released, such that a new shell is created for subsequent requests,
-            while existing requests get flushed.
+            将特定的租户标记为释放，这样就会为后续请求创建一个新的shell，而现有的请求会被清除。
             </summary>
             <param name="settings"></param>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.TryGetSettings(System.String,Wd3eCore.Environment.Shell.ShellSettings@)">
             <summary>
-            Tries to retrieve the shell settings associated with the specified tenant.
+            尝试检索与指定租户关联的shell设置。
             </summary>
-            <returns><c>true</c> if the settings could be found, <c>false</c> otherwise.</returns>
+            <returns><c>true</c>  找到设置, <c>false</c> </returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.GetAllSettings">
             <summary>
-            Retrieves all shell settings.
+            检索所有的shell设置。
             </summary>
-            <returns>All shell settings.</returns>
+            <returns>所有的shell设置。</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.CanCreateShell(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Whether or not a shell can be added to the list of available shells.
+            是否可以将shell添加到可用的shell列表中。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHost.CanRegisterShell(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Whether or not a shell can be activated and added to the running shells.
+            是否可以激活shell并将其添加到正在运行的shell中。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.ShellOptionsSetup">
             <summary>
-            Sets up default options for <see cref="T:Wd3eCore.Environment.Shell.ShellOptions"/>.
+            为 <see cref="T:Wd3eCore.Environment.Shell.ShellOptions"/>设置默认选项
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.State.ContextState`1">
             <summary>
-            Holds some state for the current HttpContext or thread
+            保持当前HttpContext或线程的一些状态。
             </summary>
-            <typeparam name="T">The type of data to store</typeparam>
+            <typeparam name="T">要存储的数据类型</typeparam>
         </member>
         <member name="T:Wd3eCore.Environment.Cache.Signal">
             <summary>
-            This component is a singleton and holds all the existing signal token for a tenant.
+            该组件是单例的，它包含租户的所有现有信号令牌。
             </summary>
         </member>
         <member name="T:Wd3eCore.Localization.DefaultCalendarManager">
@@ -165,16 +162,16 @@
         </member>
         <member name="M:Wd3eCore.Localization.DefaultCalendarManager.#ctor(System.Collections.Generic.IEnumerable{Wd3eCore.Localization.ICalendarSelector})">
             <summary>
-            Creates a new instance of <see cref="T:Wd3eCore.Localization.DefaultCalendarManager"/>.
+            创建一个新的 <see cref="T:Wd3eCore.Localization.DefaultCalendarManager"/>实例
             </summary>
-            <param name="calendarSelectors">A list of <see cref="T:Wd3eCore.Localization.ICalendarSelector"/>.</param>
+            <param name="calendarSelectors"><see cref="T:Wd3eCore.Localization.ICalendarSelector"/>的列表</param>
         </member>
         <member name="M:Wd3eCore.Localization.DefaultCalendarManager.GetCurrentCalendar">
             <inheritdocs />
         </member>
         <member name="T:Wd3eCore.Localization.DefaultCalendarSelector">
             <summary>
-            Represents a default implementation for <see cref="T:Wd3eCore.Localization.ICalendarSelector"/>.
+            表示<see cref="T:Wd3eCore.Localization.ICalendarSelector"/>的默认实现方式
             </summary>
         </member>
         <member name="M:Wd3eCore.Localization.DefaultCalendarSelector.GetCalendarAsync">
@@ -182,7 +179,7 @@
         </member>
         <member name="T:Wd3eCore.Localization.DefaultLocalizationService">
             <summary>
-            Represents a default implementation for <see cref="T:Wd3eCore.Localization.ILocalizationService"/>.
+            表示<see cref="T:Wd3eCore.Localization.ILocalizationService"/>的默认实现
             </summary>
         </member>
         <member name="M:Wd3eCore.Localization.DefaultLocalizationService.GetDefaultCultureAsync">
@@ -192,11 +189,10 @@
             <inheritdocs />
         </member>
         <member name="T:Wd3eCore.Localization.NullHtmlLocalizerFactory">
-            Represensts a null <see cref="T:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizerFactory"/> which is used by default when the localization module is disabled.
-            <remarks>
-            LocalizedHtmlString's arguments will be HTML encoded and not the main string. So the result
-            should just contain the localized string containing the formatting placeholders {0...} as is.
-            </remarks>
+            表示空<see cref="T:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizerFactory"/>，默认情况下在禁用本地化模块时使用该空zzz。
+             <remarks>
+             LocalizedHtmlString的参数将是HTML编码的，而不是主字符串。因此，结果应该只包含包含格式化占位符{0…}。
+             </remarks>
         </member>
         <member name="M:Wd3eCore.Localization.NullHtmlLocalizerFactory.Create(System.String,System.String)">
             <inheritdocs />
@@ -205,10 +201,9 @@
             <inheritdocs />
         </member>
         <member name="T:Wd3eCore.Localization.NullStringLocalizerFactory">
-            Represents a null <see cref="T:Microsoft.Extensions.Localization.IStringLocalizerFactory"/> which is used by default when the localization module is disabled.
+            表示在禁用本地化模块时默认使用的空<see cref="T:Microsoft.Extensions.Localization.IStringLocalizerFactory"/> 
             <remarks>
-            A LocalizedString is not encoded, so it can contain the formatted string
-            including the argument values.
+            LocalizedString没有经过编码，所以它可以包含格式化的字符串，包括参数值。
             </remarks>
         </member>
         <member name="M:Wd3eCore.Localization.NullStringLocalizerFactory.Create(System.Type)">
@@ -219,92 +214,97 @@
         </member>
         <member name="T:Wd3eCore.Modules.ModularTenantContainerMiddleware">
             <summary>
-            This middleware replaces the default service provider by the one for the current tenant
+            该中间件将默认服务提供者替换为当前租户的服务提供者
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ModularTenantRouterMiddleware">
             <summary>
-            Handles a request by forwarding it to the tenant specific "IRouter" instance.
-            It also initializes the middlewares for the requested tenant on the first request.
+            通过将请求转发给特定于租户的“IRouter”实例来处理请求。
+            它还在第一个请求时为被请求的租户初始化中间件。
             </summary>
+        </member>
+        <member name="M:Wd3eCore.Modules.ModularTenantRouterMiddleware.BuildTenantPipeline">
+            <summary>
+            为当前租户构建中间件管道
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Wd3eCore.Modules.PoweredByMiddleware">
             <summary>
-            Adds the X-Powered-By header with values Wd3eCore.
+            添加带有Wd3eCore值的X-Powered-By头。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.Clock.UtcNow">
             <summary>
-            Returns a Datetime Kind.Utc that is "Now"
+            返回 "现在 "的Datetime Kind.Utc。
             </summary>
             <inheritdoc />
         </member>
         <member name="M:Wd3eCore.Modules.Clock.GetTimeZones">
             <summary>
-            Returns a list of valid timezones as a ITimeZone[], where the key is
-            the timezone id(string), and the value can be used for display. The list is filtered to contain only
-            choices that are reasonably valid for the present and near future for real places. The list is
-            also sorted first by UTC Offset and then by timezone name.
+            以ITimeZone[]的形式返回一个有效的时区列表，其中key为时区id(string)，值可用于显示。
+            该列表经过过滤，只包含对当前和近期的真实地点合理有效的选择。
+            该列表也会先按UTC偏移量排序，然后按时区名称排序。
             </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.UseWd3eCore(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder})">
             <summary>
-            Enables multi-tenant requests support for the current path.
+            启用对当前路径的多租户请求支持。
             </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.Builder.PoweredByWd3eCoreExtensions.UsePoweredByWd3eCore(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Boolean)">
             <summary>
-            Configures whether use or not the Header X-Powered-By.
-            Default value is Wd3eCore.
+            配置是否使用X-Powered-By头文件。
+            默认值是Wd3eCore。
             </summary>
-            <param name="app">The modular application builder</param>
-            <param name="enabled">Boolean indicating if the header should be included in the response or not</param>
-            <returns>The modular application builder</returns>
+            <param name="app">模块化应用程序构建器</param>
+            <param name="enabled">是否应在响应中包含标头</param>
+            <returns>模块化应用程序构建器</returns>
         </member>
         <member name="M:Microsoft.AspNetCore.Builder.PoweredByWd3eCoreExtensions.UsePoweredBy(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Boolean,System.String)">
             <summary>
-            Configures wethere use or not the Header X-Powered-By and its value.
-            Default value is Wd3eCore.
+            配置是否使用X-POWERED-BY头及其值。
+            默认值是Wd3eCore。
             </summary>
-            <param name="app">The modular application builder</param>
-            <param name="enabled">Boolean indicating if the header should be included in the response or not</param>
-            <param name="headerValue">Header's value</param>
-            <returns>The modular application builder</returns>
+            <param name="app">模块化应用程序构建器</param>
+            <param name="enabled">是否应在响应中包含标头</param>
+            <param name="headerValue">头的值</param>
+            <returns>模块化应用程序构建器</returns>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddGlobalFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            Registers at the host level a set of features which are always enabled for any tenant.
+            在主机级注册一组始终为任何租户启用的功能。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddTenantFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            Registers at the tenant level a set of features which are always enabled.
+            在租户级别注册一组始终启用的功能。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddSetupFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            Registers a default tenant with a set of features that are used to setup and configure the actual tenants.
-            For instance you can use this to add a custom Setup module.
+            使用一组用于设置和配置实际租户的功能注册默认租户。
+            例如，可以使用它来添加自定义设置模块。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.WithTenants(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
             <summary>
-            Registers tenants defined in configuration.
+            注册配置中定义的租户。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.WithFeatures(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder,System.String[])">
             <summary>
-            Registers a single tenant with the specified set of features.
+            使用指定的功能集注册单个租户。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddBackgroundService(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
             <summary>
-            Registers and configures a background hosted service to manage tenant background tasks.
+            注册并配置后台托管服务，以管理租户后台任务。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddWd3eCore(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Adds Wd3eCore services to the host service collection.
+            将Wd3eCore服务添加到主机服务集合中。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.AddWd3eCore(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder})">
