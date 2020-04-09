@@ -8,10 +8,10 @@ namespace Wd3eCore.Environment.Shell.Builders
     public static class ServiceProviderExtensions
     {
         /// <summary>
-        /// Creates a child container.
+        /// 创建一个子容器。
         /// </summary>
-        /// <param name="serviceProvider">The service provider to create a child container for.</param>
-        /// <param name="serviceCollection">The services to clone.</param>
+        /// <param name="serviceProvider">服务提供商,为其创建一个子容器.</param>
+        /// <param name="serviceCollection">克隆服务</param>
         public static IServiceCollection CreateChildContainer(this IServiceProvider serviceProvider, IServiceCollection serviceCollection)
         {
             IServiceCollection clonedCollection = new ServiceCollection();
@@ -19,43 +19,43 @@ namespace Wd3eCore.Environment.Shell.Builders
 
             foreach (var services in servicesByType)
             {
-                // Prevent hosting 'IStartupFilter' to re-add middlewares to the tenant pipeline.
+                //防止托管 "IStartupFilter "将中间件重新添加到租户管道中。
                 if (services.Key == typeof(IStartupFilter))
                 {
                 }
 
-                // A generic type definition is rather used to create other constructed generic types.
+                //一般类型的定义 是用来创建其他构造的一般类型。
                 else if (services.Key.IsGenericTypeDefinition)
                 {
-                    // So, we just need to pass the descriptor.
+                    //所以，我们只需要传递描述符就可以了。
                     foreach (var service in services)
                     {
                         clonedCollection.Add(service);
                     }
                 }
 
-                // If only one service of a given type.
+                //如果只有一种类型的服务。
                 else if (services.Count() == 1)
                 {
                     var service = services.First();
 
                     if (service.Lifetime == ServiceLifetime.Singleton)
                     {
-                        // An host singleton is shared accross tenant containers but only registered instances are not disposed
-                        // by the DI, so we check if it is disposable or if it uses a factory which may return a different type.
-
+                        //一个主机单例共享到各个租户容器中，但只有注册的实例不被DI处置，
+                        //所以我们检查它是否是一次性的，或者说它使用的工厂可能会返回不同的类型。
                         if (typeof(IDisposable).IsAssignableFrom(service.GetImplementationType()) || service.ImplementationFactory != null)
                         {
-                            // If disposable, register an instance that we resolve immediately from the main container.
+                            //如果是一次性的，注册一个实例，我们立即从主容器中解析。
                             clonedCollection.CloneSingleton(service, serviceProvider.GetService(service.ServiceType));
                         }
                         else
                         {
-                            // If not disposable, the singleton can be resolved through a factory when first requested.
+                            // 如果不是一次性的，可以在第一次申请时通过工厂解决单元。
                             clonedCollection.CloneSingleton(service, sp => serviceProvider.GetService(service.ServiceType));
 
-                            // Note: Most of the time a singleton of a given type is unique and not disposable. So,
-                            // most of the time it will be resolved when first requested through a tenant container.
+                            // Note:
+                            //  大多数情况下，特定类型的单例服务是独一无二的，不是一次性的。
+                            //  所以，大多数情况下，通过租户容器的第一次申请，就能解决。
                         }
                     }
                     else
@@ -64,20 +64,20 @@ namespace Wd3eCore.Environment.Shell.Builders
                     }
                 }
 
-                // If all services of the same type are not singletons.
+                // 如果所有同类型的服务都不是单例服务。
                 else if (services.All(s => s.Lifetime != ServiceLifetime.Singleton))
                 {
-                    // We don't need to resolve them.
+                    // 我们不需要解决。
                     foreach (var service in services)
                     {
                         clonedCollection.Add(service);
                     }
                 }
 
-                // If all services of the same type are singletons.
+                // 如果所有同类型的服务都是单例服务。
                 else if (services.All(s => s.Lifetime == ServiceLifetime.Singleton))
                 {
-                    // We can resolve them from the main container.
+                    //  我们可以从主容器中解析它们。
                     var instances = serviceProvider.GetServices(services.Key);
 
                     for (var i = 0; i < services.Count(); i++)
@@ -86,15 +86,15 @@ namespace Wd3eCore.Environment.Shell.Builders
                     }
                 }
 
-                // If singletons and scoped services are mixed.
+                //如果单例服务和范围化服务混合在一起。
                 else
                 {
-                    // We need a service scope to resolve them.
+                    // 我们需要一个服务的范围来解决。
                     using (var scope = serviceProvider.CreateScope())
                     {
                         var instances = scope.ServiceProvider.GetServices(services.Key);
 
-                        // Then we only keep singleton instances.
+                        // 那么，我们只保留单例。
                         for (var i = 0; i < services.Count(); i++)
                         {
                             if (services.ElementAt(i).Lifetime == ServiceLifetime.Singleton)

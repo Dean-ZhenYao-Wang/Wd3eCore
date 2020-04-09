@@ -28,7 +28,7 @@ namespace Wd3eCore.Environment.Shell
 
         async Task IShellDescriptorManagerEventHandler.Changed(ShellDescriptor descriptor, string tenant)
         {
-            // deduce and apply state changes involved
+            // 推断并应用所涉及的状态更改
             var shellState = await _stateManager.GetShellStateAsync();
             foreach (var feature in descriptor.Features)
             {
@@ -79,6 +79,7 @@ namespace Wd3eCore.Environment.Shell
                     if (Logger.IsEnabled(LogLevel.Information))
                     {
                         Logger.LogInformation("Adding pending task 'ApplyChanges' for tenant '{TenantName}'", _settings.Name);
+                        Logger.LogInformation("为租户'{TenantName}'添加挂起的任务'ApplyChanges'", _settings.Name);
                     }
 
                     await shellStateUpdater.ApplyChanges();

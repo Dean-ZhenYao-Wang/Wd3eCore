@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 namespace Wd3eCore.Environment.Shell
 {
     /// <summary>
-    /// Sets up default options for <see cref="ShellOptions"/>.
+    /// 为 <see cref="ShellOptions"/>设置默认选项
     /// </summary>
     public class ShellOptionsSetup : IConfigureOptions<ShellOptions>
     {

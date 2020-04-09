@@ -7,10 +7,9 @@ using Microsoft.Extensions.Localization;
 
 namespace Wd3eCore.Localization
 {
-    /// Represensts a null <see cref="IHtmlLocalizerFactory"/> which is used by default when the localization module is disabled.
+    ///表示空<see cref="IHtmlLocalizerFactory"/>，默认情况下在禁用本地化模块时使用该空zzz。
     /// <remarks>
-    /// LocalizedHtmlString's arguments will be HTML encoded and not the main string. So the result
-    /// should just contain the localized string containing the formatting placeholders {0...} as is.
+    /// LocalizedHtmlString的参数将是HTML编码的，而不是主字符串。因此，结果应该只包含包含格式化占位符{0…}。
     /// </remarks>
     public class NullHtmlLocalizerFactory : IHtmlLocalizerFactory
     {

@@ -55,7 +55,7 @@ namespace Wd3eCore.Environment.Shell.Builders
                 return;
             }
 
-            // Resolve all services
+            // 解析所有服务
 
             var parameters = _configure.GetParameters().Select(x =>
             {

@@ -183,7 +183,7 @@ namespace Wd3eCore.Environment.Extensions
                 }
             }
 
-            // Preserve the underlying order of feature infos.
+            // 保持特性信息的基本顺序。
             return _featureInfos.Where(f => dependencies.Any(d => d.Id == f.Id));
         }
 
@@ -206,7 +206,7 @@ namespace Wd3eCore.Environment.Extensions
                 }
             }
 
-            // Preserve the underlying order of feature infos.
+            // 保持特性信息的基本顺序。
             return _featureInfos.Where(f => dependencies.Any(d => d.Id == f.Id));
         }
 
@@ -253,7 +253,7 @@ namespace Wd3eCore.Environment.Extensions
                 var modules = _applicationContext.Application.Modules;
                 var loadedExtensions = new ConcurrentDictionary<string, ExtensionEntry>();
 
-                // Load all extensions in parallel
+                // 并行加载所有扩展程序
                 await modules.ForEachAsync((module) =>
                 {
                     if (!module.ModuleInfo.Exists)
@@ -281,7 +281,7 @@ namespace Wd3eCore.Environment.Extensions
 
                 var loadedFeatures = new Dictionary<string, FeatureEntry>();
 
-                // Get all valid types from any extension
+                // 从所有扩展获取所有有效类型
                 var allTypesByExtension = loadedExtensions.SelectMany(extension =>
                     extension.Value.ExportedTypes.Where(IsComponentType)
                     .Select(type => new
@@ -304,7 +304,7 @@ namespace Wd3eCore.Environment.Extensions
 
                     foreach (var feature in extension.ExtensionInfo.Features)
                     {
-                        // Features can have no types
+                        // 功能可以没有类型
                         if (typesByFeature.TryGetValue(feature.Id, out var featureTypes))
                         {
                             foreach (var type in featureTypes)
@@ -321,11 +321,11 @@ namespace Wd3eCore.Environment.Extensions
                     }
                 };
 
-                // Feature infos and entries are ordered by priority and dependencies.
+                // 功能信息和条目按优先级和依赖项排序。
                 _featureInfos = Order(loadedFeatures.Values.Select(f => f.FeatureInfo));
                 _features = _featureInfos.ToDictionary(f => f.Id, f => loadedFeatures[f.Id]);
 
-                // Extensions are also ordered according to the weight of their first features.
+                // 扩展也根据它们的第一个特性的权重排序。
                 _extensionsInfos = _featureInfos.Where(f => f.Id == f.Extension.Features.First().Id)
                     .Select(f => f.Extension);
 

@@ -46,7 +46,7 @@ namespace Wd3eCore.Environment.Shell.Builders
             tenantServiceCollection.AddSingleton(settings);
             tenantServiceCollection.AddSingleton(sp =>
             {
-                // Resolve it lazily as it's constructed lazily
+                //延迟解决，因为它的构造是延迟的
                 var shellSettings = sp.GetRequiredService<ShellSettings>();
                 return shellSettings.ShellConfiguration;
             });
@@ -56,7 +56,7 @@ namespace Wd3eCore.Environment.Shell.Builders
 
             AddCoreServices(tenantServiceCollection);
 
-            // Execute IStartup registrations
+            // 执行IStartup注册
 
             var moduleServiceCollection = _serviceProvider.CreateChildContainer(_applicationServices);
 
@@ -66,25 +66,25 @@ namespace Wd3eCore.Environment.Shell.Builders
                 tenantServiceCollection.AddSingleton(typeof(IStartup), dependency.Key);
             }
 
-            // To not trigger features loading before it is normally done by 'ShellHost',
-            // init here the application feature in place of doing it in the constructor.
+            // 为了不在由'ShellHost'完成之前，触发功能加载，
+            // 在这里启动应用程序的功能，而不是在构造函数中完成。
             EnsureApplicationFeature();
 
             foreach (var rawStartup in blueprint.Dependencies.Keys.Where(t => t.Name == "Startup"))
             {
-                // Startup classes inheriting from IStartup are already treated
+                //继承自IStartup的Startup类已被处理
                 if (typeof(IStartup).IsAssignableFrom(rawStartup))
                 {
                     continue;
                 }
 
-                // Ignore Startup class from main application
+                // 忽略主应用程序中的启动类
                 if (blueprint.Dependencies.TryGetValue(rawStartup, out var startupFeature) && startupFeature.FeatureInfo.Id == _applicationFeature.Id)
                 {
                     continue;
                 }
 
-                // Create a wrapper around this method
+                // 围绕此方法创建一个包装器
                 var configureServicesMethod = rawStartup.GetMethod(
                     nameof(IStartup.ConfigureServices),
                     BindingFlags.Public | BindingFlags.Instance,
@@ -105,8 +105,7 @@ namespace Wd3eCore.Environment.Shell.Builders
                     nameof(IStartup.ConfigureOrder),
                     BindingFlags.Public | BindingFlags.Instance);
 
-                // Add the startup class to the DI so we can instantiate it with
-                // valid ctor arguments
+                //将startup类添加到DI中，这样我们可以用有效的ctor参数实例化它
                 moduleServiceCollection.AddSingleton(rawStartup);
                 tenantServiceCollection.AddSingleton(rawStartup);
 
@@ -123,34 +122,33 @@ namespace Wd3eCore.Environment.Shell.Builders
                 });
             }
 
-            // Make shell settings available to the modules
+            // 向模块提供shell设置
             moduleServiceCollection.AddSingleton(settings);
             moduleServiceCollection.AddSingleton(sp =>
             {
-                // Resolve it lazily as it's constructed lazily
+                // 延迟解析，因为它的构造是延迟的
                 var shellSettings = sp.GetRequiredService<ShellSettings>();
                 return shellSettings.ShellConfiguration;
             });
 
             var moduleServiceProvider = moduleServiceCollection.BuildServiceProvider(true);
 
-            // Index all service descriptors by their feature id
+            // 按特征ID索引所有的服务描述符
             var featureAwareServiceCollection = new FeatureAwareServiceCollection(tenantServiceCollection);
 
             var startups = moduleServiceProvider.GetServices<IStartup>();
 
-            // IStartup instances are ordered by module dependency with an Order of 0 by default.
-            // OrderBy performs a stable sort so order is preserved among equal Order values.
+            // IStartup实例按模块依赖关系排序，默认的顺序为0。
+            // OrderBy执行一个稳定的排序，因此在相同的Order值中保留顺序。
             startups = startups.OrderBy(s => s.Order);
 
-            // Let any module add custom service descriptors to the tenant
+            // 让任何模块在租户中添加自定义服务描述符。
             foreach (var startup in startups)
             {
                 var feature = blueprint.Dependencies.FirstOrDefault(x => x.Key == startup.GetType()).Value?.FeatureInfo;
 
-                // If the startup is not coming from an extension, associate it to the application feature.
-                // For instance when Startup classes are registered with Configure<Startup>() from the application.
-
+                // 如果启动不是来自于扩展，则将其与应用功能关联起来。
+                // 例如，当Startup类在应用程序中用Configure<Startup>()注册时。
                 featureAwareServiceCollection.SetCurrentFeature(feature ?? _applicationFeature);
                 startup.ConfigureServices(featureAwareServiceCollection);
             }
@@ -159,7 +157,7 @@ namespace Wd3eCore.Environment.Shell.Builders
 
             var shellServiceProvider = tenantServiceCollection.BuildServiceProvider(true);
 
-            // Register all DIed types in ITypeFeatureProvider
+            // 在ITypeFeatureProvider中注册所有的DIed类型。
             var typeFeatureProvider = shellServiceProvider.GetRequiredService<ITypeFeatureProvider>();
 
             foreach (var featureServiceCollection in featureAwareServiceCollection.FeatureCollections)

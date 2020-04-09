@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Localization
 {
     /// <summary>
-    /// Represents a default implementation for <see cref="ICalendarSelector"/>.
+    /// 表示<see cref="ICalendarSelector"/>的默认实现方式
     /// </summary>
     public class DefaultCalendarSelector : ICalendarSelector
     {

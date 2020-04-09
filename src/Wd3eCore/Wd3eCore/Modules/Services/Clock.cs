@@ -10,16 +10,15 @@ namespace Wd3eCore.Modules
         private static Instant CurrentInstant => SystemClock.Instance.GetCurrentInstant();
 
         /// <summary>
-        /// Returns a Datetime Kind.Utc that is "Now"
+        /// 返回 "现在 "的Datetime Kind.Utc。
         /// </summary>
         /// <inheritdoc />
         public DateTime UtcNow => CurrentInstant.ToDateTimeUtc();
 
         /// <summary>
-        /// Returns a list of valid timezones as a ITimeZone[], where the key is
-        /// the timezone id(string), and the value can be used for display. The list is filtered to contain only
-        /// choices that are reasonably valid for the present and near future for real places. The list is
-        /// also sorted first by UTC Offset and then by timezone name.
+        /// 以ITimeZone[]的形式返回一个有效的时区列表，其中key为时区id(string)，值可用于显示。
+        /// 该列表经过过滤，只包含对当前和近期的真实地点合理有效的选择。
+        /// 该列表也会先按UTC偏移量排序，然后按时区名称排序。
         /// </summary>
         public ITimeZone[] GetTimeZones()
         {

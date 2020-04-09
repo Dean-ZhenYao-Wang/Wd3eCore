@@ -10,7 +10,7 @@ namespace Microsoft.AspNetCore.Builder
     public static class ApplicationBuilderExtensions
     {
         /// <summary>
-        /// Enables multi-tenant requests support for the current path.
+        /// 启用对当前路径的多租户请求支持。
         /// </summary>
         public static IApplicationBuilder UseWd3eCore(this IApplicationBuilder app, Action<IApplicationBuilder> configure = null)
         {
@@ -21,14 +21,13 @@ namespace Microsoft.AspNetCore.Builder
                 new ModuleEmbeddedFileProvider(appContext),
                 env.ContentRootFileProvider);
 
-            // Init also the web host 'ContentRootFileProvider'.
+            // 同时启动网络主机'ContentRootFileProvider'。
             app.ApplicationServices.GetRequiredService<IWebHostEnvironment>()
                 .ContentRootFileProvider = env.ContentRootFileProvider;
 
             app.UseMiddleware<PoweredByMiddleware>();
 
-            // Ensure the shell tenants are loaded when a request comes in
-            // and replaces the current service provider for the tenant's one.
+            // 确保在出现请求并替换租户的当前服务提供者时加载了shell租户。
             app.UseMiddleware<ModularTenantContainerMiddleware>();
 
             configure?.Invoke(app);

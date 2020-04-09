@@ -45,11 +45,11 @@ namespace Wd3eCore.Environment.Shell
 
         public Task<IEnumerable<IExtensionInfo>> GetEnabledExtensionsAsync()
         {
-            // enabled extensions are those which have at least one enabled feature.
+            // 启用的扩展是那些至少有一个启用的功能的扩展。
             var enabledIds = _extensionManager.GetFeatures().Where(f => _shellDescriptor
                 .Features.Any(sf => sf.Id == f.Id)).Select(f => f.Extension.Id).Distinct().ToArray();
 
-            // Extensions are still ordered according to the weight of their first features.
+            // 扩展仍然按照它们最初的功能的权重排序。
             return Task.FromResult(_extensionManager.GetExtensions().Where(e => enabledIds.Contains(e.Id)));
         }
     }

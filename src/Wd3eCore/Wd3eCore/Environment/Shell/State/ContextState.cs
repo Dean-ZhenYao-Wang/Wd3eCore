@@ -5,9 +5,9 @@ using System.Threading;
 namespace Wd3eCore.Environment.Shell.State
 {
     /// <summary>
-    /// Holds some state for the current HttpContext or thread
+    /// 保持当前HttpContext或线程的一些状态。
     /// </summary>
-    /// <typeparam name="T">The type of data to store</typeparam>
+    /// <typeparam name="T">要存储的数据类型</typeparam>
     public class ContextState<T> where T : class
     {
         private readonly string _name;

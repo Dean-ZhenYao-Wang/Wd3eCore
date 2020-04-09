@@ -32,7 +32,7 @@ namespace Wd3eCore.Localization
                 case CalendarName.UmAlQura:
                     return CalendarSystem.UmAlQura;
                 default:
-                    throw new NotSupportedException($"The calendar is not supported.");
+                    throw new NotSupportedException($"The calendar is not supported./不支持该日历。");
             }
         }
 

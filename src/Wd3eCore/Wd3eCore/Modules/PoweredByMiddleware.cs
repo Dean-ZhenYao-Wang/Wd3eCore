@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// Adds the X-Powered-By header with values Wd3eCore.
+    /// 添加带有Wd3eCore值的X-Powered-By头。
     /// </summary>
     public class PoweredByMiddleware
     {

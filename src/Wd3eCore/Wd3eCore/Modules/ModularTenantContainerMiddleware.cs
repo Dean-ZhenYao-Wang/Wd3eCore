@@ -7,7 +7,7 @@ using Wd3eCore.Environment.Shell.Models;
 namespace Wd3eCore.Modules
 {
     /// <summary>
-    /// This middleware replaces the default service provider by the one for the current tenant
+    /// 该中间件将默认服务提供者替换为当前租户的服务提供者
     /// </summary>
     public class ModularTenantContainerMiddleware
     {
@@ -27,28 +27,28 @@ namespace Wd3eCore.Modules
 
         public async Task Invoke(HttpContext httpContext)
         {
-            // Ensure all ShellContext are loaded and available.
+            // 确保所有ShellContext都已加载并可用。
             await _shellHost.InitializeAsync();
 
             var shellSettings = _runningShellTable.Match(httpContext);
 
-            // We only serve the next request if the tenant has been resolved.
+            // 只有在解决了租户的问题后，我们才会提供下一个请求。
             if (shellSettings != null)
             {
                 if (shellSettings.State == TenantState.Initializing)
                 {
                     httpContext.Response.Headers.Add(HeaderNames.RetryAfter, "10");
                     httpContext.Response.StatusCode = StatusCodes.Status503ServiceUnavailable;
-                    await httpContext.Response.WriteAsync("The requested tenant is currently initializing.");
+                    await httpContext.Response.WriteAsync("The requested tenant is currently initializing./要求的租户目前正在初始化。");
                     return;
                 }
 
-                // Makes 'RequestServices' aware of the current 'ShellScope'.
+                // 使‘RequestServices’知道当前的‘ShellScope’。
                 httpContext.UseShellScopeServices();
 
                 var shellScope = await _shellHost.GetScopeAsync(shellSettings);
 
-                // Holds the 'ShellContext' for the full request.
+                // 保存完整请求的“ShellContext”。
                 httpContext.Features.Set(new ShellContextFeature
                 {
                     ShellContext = shellScope.ShellContext,

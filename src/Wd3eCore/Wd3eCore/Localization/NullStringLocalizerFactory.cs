@@ -6,10 +6,9 @@ using Microsoft.Extensions.Localization;
 
 namespace Wd3eCore.Localization
 {
-    /// Represents a null <see cref="IStringLocalizerFactory"/> which is used by default when the localization module is disabled.
+    /// 表示在禁用本地化模块时默认使用的空<see cref="IStringLocalizerFactory"/> 
     /// <remarks>
-    /// A LocalizedString is not encoded, so it can contain the formatted string
-    /// including the argument values.
+    /// LocalizedString没有经过编码，所以它可以包含格式化的字符串，包括参数值。
     /// </remarks>
     public class NullStringLocalizerFactory : IStringLocalizerFactory
     {

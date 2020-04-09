@@ -29,6 +29,7 @@ namespace Wd3eCore.Environment.Shell.Builders
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug("Composing blueprint");
+                _logger.LogDebug("创建蓝图");
             }
 
             var featureNames = descriptor.Features.Select(x => x.Id).ToArray();
@@ -60,6 +61,7 @@ namespace Wd3eCore.Environment.Shell.Builders
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug("Done composing blueprint");
+                _logger.LogDebug("完成蓝图创建");
             }
             return result;
         }

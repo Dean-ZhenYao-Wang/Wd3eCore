@@ -7,8 +7,7 @@ using Wd3eCore.Environment.Shell.Descriptor.Models;
 namespace Wd3eCore.Environment.Shell.Descriptor.Settings
 {
     /// <summary>
-    /// Implements <see cref="IShellDescriptorManager"/> by returning a single tenant with all the available
-    /// extensions.
+    /// 通过返回一个包含所有可用扩展的单一租户来实现<see cref="IShellDescriptorManager"/> 。
     /// </summary>
     public class AllFeaturesShellDescriptorManager : IShellDescriptorManager
     {

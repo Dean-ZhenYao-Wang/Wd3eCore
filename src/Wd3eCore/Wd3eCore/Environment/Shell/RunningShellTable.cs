@@ -58,30 +58,30 @@ namespace Wd3eCore.Environment.Shell
 
         public ShellSettings Match(HostString host, PathString path, bool fallbackToDefault = true)
         {
-            // Supports IPv6 format.
+            // 支持IPv6格式。
             var hostOnly = host.Host;
 
-            // Specific match?
+            // 具体搭配？
             if (TryMatchInternal(host.Value, hostOnly, path.Value, out var result))
             {
                 return result;
             }
 
-            // Search for star mapping
-            // Optimization: only if a mapping with a '*' has been added
+            // 搜索星形图
+            // 优化:  只有在添加了带 "*"的映射的情况下才可以
 
             if (_hasStarMapping && TryMatchStarMapping(host.Value, hostOnly, path.Value, out result))
             {
                 return result;
             }
 
-            // Check if the Default tenant is a catch-all
+            // 检查默认承租人是否是包租人
             if (fallbackToDefault && DefaultIsCatchAll())
             {
                 return _default;
             }
 
-            // Search for another catch-all
+            //  寻找另一个包租人
             if (fallbackToDefault && TryMatchInternal("", "", "/", out result))
             {
                 return result;
@@ -92,23 +92,23 @@ namespace Wd3eCore.Environment.Shell
 
         private bool TryMatchInternal(StringSegment host, StringSegment hostOnly, StringSegment path, out ShellSettings result)
         {
-            // 1. Search for Host:Port + Prefix match
+            // 1. 搜索主机：端口+前缀匹配
 
             if (host.Length == 0 || !_shellsByHostAndPrefix.TryGetValue(GetHostAndPrefix(host, path), out result))
             {
-                // 2. Search for Host + Prefix match
+                // 2. 搜索主机+前缀匹配
 
                 if (host.Length == hostOnly.Length || !_shellsByHostAndPrefix.TryGetValue(GetHostAndPrefix(hostOnly, path), out result))
                 {
-                    // 3. Search for Host:Port only match
+                    // 3. 仅搜索主机:端口匹配
 
                     if (host.Length == 0 || !_shellsByHostAndPrefix.TryGetValue(GetHostAndPrefix(host, "/"), out result))
                     {
-                        // 4. Search for Host only match
+                        // 4. 仅搜索主机匹配
 
                         if (host.Length == hostOnly.Length || !_shellsByHostAndPrefix.TryGetValue(GetHostAndPrefix(hostOnly, "/"), out result))
                         {
-                            // 5. Search for Prefix only match
+                            // 5. 仅搜索前缀匹配
 
                             if (!_shellsByHostAndPrefix.TryGetValue(GetHostAndPrefix("", path), out result))
                             {
@@ -132,7 +132,7 @@ namespace Wd3eCore.Environment.Shell
 
             var index = -1;
 
-            // Take the longest subdomain and look for a mapping
+            // 取最长的子域，并寻找映射
             while (-1 != (index = host.IndexOf('.', index + 1)))
             {
                 if (TryMatchInternal("*" + host.Subsegment(index), "*" + hostOnly.Subsegment(index), path, out result))
@@ -147,7 +147,7 @@ namespace Wd3eCore.Environment.Shell
 
         private string GetHostAndPrefix(StringSegment host, StringSegment path)
         {
-            // The request path starts with a leading '/'
+            // 请求路径以前导的'/'开始。
             var firstSegmentIndex = path.Length > 0 ? path.IndexOf('/', 1) : -1;
             if (firstSegmentIndex > -1)
             {
@@ -161,7 +161,7 @@ namespace Wd3eCore.Environment.Shell
 
         private string[] GetAllHostsAndPrefix(ShellSettings shellSettings)
         {
-            // For each host entry return HOST/PREFIX
+            // 对于每个主机条目，返回HOST/PREFIX
 
             if (string.IsNullOrWhiteSpace(shellSettings.RequestUrlHost))
             {

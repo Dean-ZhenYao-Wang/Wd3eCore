@@ -14,9 +14,9 @@ using Wd3eCore.Environment.Shell.Scope;
 namespace Wd3eCore.Environment.Shell
 {
     /// <summary>
-    /// All <see cref="ShellContext"/> object are loaded when <see cref="InitializeAsync"/> is called. They can be removed when the
-    /// tenant is removed, but are necessary to match an incoming request, even if they are not initialized.
-    /// Each <see cref="ShellContext"/> is activated (its service provider is built) on the first request.
+    /// 当调用<see cref="InitializeAsync"/>时，所有的<see cref="ShellContext"/>对象都会被加载。
+    /// 当租户被移除时，它们可以被移除，但对于匹配传入的请求，即使没有初始化它们也是必要的。
+    /// 每个<see cref="ShellContext"/>都是在第一次请求时被激活（它的服务提供者被建立）。
     /// </summary>
     public class ShellHost : IShellHost, IShellDescriptorManagerEventHandler, IDisposable
     {
@@ -51,7 +51,7 @@ namespace Wd3eCore.Environment.Shell
             {
                 try
                 {
-                    // Prevent concurrent requests from creating all shells multiple times
+                    // 防止并发请求多次创建所有shell
                     await _initializingSemaphore.WaitAsync();
 
                     if (!_initialized)
@@ -96,8 +96,8 @@ namespace Wd3eCore.Environment.Shell
 
                 if (shell.Released)
                 {
-                    // If the context is released, it is removed from the dictionary so that
-                    // a new call on 'GetOrCreateShellContextAsync' will recreate a new shell context.
+                    //如果释放了上下文，则从字典中删除它，
+                    //以便对“GetOrCreateShellContextAsync”的新调用,重新创建一个新的shell上下文。
                     _shellContexts.TryRemove(settings.Name, out var value);
                     shell = null;
                 }
@@ -118,15 +118,14 @@ namespace Wd3eCore.Environment.Shell
                     shellContext = await GetOrCreateShellContextAsync(settings);
                 }
 
-                // We create a scope before checking if the shell has been released.
+                //在检查shell是否已被释放之前，我们创建一个作用域。
                 scope = shellContext.CreateScope();
 
-                // If CreateScope() returned null, the shell is released. We then remove it and
-                // retry with the hope to get one that won't be released before we create a scope.
+                // 如果CreateScope()返回null，则shell被释放。
+                // 然后我们将其删除，然后重新尝试，希望在创建一个作用域之前得到一个不会被释放的作用域。
                 if (scope == null)
                 {
-                    // If the context is released, it is removed from the dictionary so that
-                    // a new call on 'GetScope' will recreate a new shell context.
+                    // 如果释放了上下文，则从字典中删除它，以便对“GetScope”的新调用,重新创建新的shell上下文。
                     _shellContexts.TryRemove(settings.Name, out var value);
                 }
             }
@@ -147,19 +146,17 @@ namespace Wd3eCore.Environment.Shell
                 _logger.LogInformation("Start creation of shells");
             }
 
-            // Load all extensions and features so that the controllers are
-            // registered in ITypeFeatureProvider and their areas defined in the application
-            // conventions.
+            // 加载所有的扩展和功能，以便控制器在ITypeFeatureProvider中注册，并在应用程序约定中定义它们的区域。
             var features = _extensionManager.LoadFeaturesAsync();
 
-            // Is there any tenant right now?
+            // 现在有租客吗?
             var allSettings = (await _shellSettingsManager.LoadSettingsAsync()).Where(CanCreateShell).ToArray();
             var defaultSettings = allSettings.FirstOrDefault(s => s.Name == ShellHelper.DefaultShellName);
             var otherSettings = allSettings.Except(new[] { defaultSettings }).ToArray();
 
             await features;
 
-            // The 'Default' tenant is not running, run the Setup.
+            //“Default”租户没有运行，请运行安装程序。
             if (defaultSettings?.State != TenantState.Running)
             {
                 var setupContext = await CreateSetupContextAsync(defaultSettings);
@@ -169,7 +166,7 @@ namespace Wd3eCore.Environment.Shell
 
             if (allSettings.Length > 0)
             {
-                // Pre-create and register all tenant shells.
+                //预先创建并注册所有租户shell。
                 foreach (var settings in allSettings)
                 {
                     if (settings.Name == ShellHelper.DefaultShellName)
@@ -185,11 +182,12 @@ namespace Wd3eCore.Environment.Shell
             if (_logger.IsEnabled(LogLevel.Information))
             {
                 _logger.LogInformation("Done pre-creating and registering shells");
+                _logger.LogInformation("完成预创建和注册shells");
             }
         }
 
         /// <summary>
-        /// Adds the shell and registers its settings in RunningShellTable
+        /// 添加shell并在RunningShellTable中注册其设置
         /// </summary>
         private void AddAndRegisterShell(ShellContext context)
         {
@@ -200,7 +198,7 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// Whether or not a shell can be activated and added to the running shells.
+        /// 是否可以激活shell并将其添加到正在运行的shell中
         /// </summary>
         private bool CanRegisterShell(ShellContext context)
         {
@@ -209,6 +207,7 @@ namespace Wd3eCore.Environment.Shell
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug("Skipping shell context registration for tenant '{TenantName}'", context.Settings.Name);
+                    _logger.LogDebug("跳过租户'{TenantName}'的shell上下文注册", context.Settings.Name);
                 }
 
                 return false;
@@ -218,20 +217,21 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// Registers the shell settings in RunningShellTable
+        /// 注册RunningShellTable中的shell设置。
         /// </summary>
         private void RegisterShellSettings(ShellSettings settings)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug("Registering shell context for tenant '{TenantName}'", settings.Name);
+                _logger.LogDebug("为租客'{TenantName}'注册shell上下文", settings.Name);
             }
 
             _runningShellTable.Add(settings);
         }
 
         /// <summary>
-        /// Creates a shell context based on shell settings
+        /// 根据shell设置创建一个shell上下文
         /// </summary>
         public Task<ShellContext> CreateShellContextAsync(ShellSettings settings)
         {
@@ -240,6 +240,7 @@ namespace Wd3eCore.Environment.Shell
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug("Creating shell context for tenant '{TenantName}' setup", settings.Name);
+                    _logger.LogDebug("为租户“{TenantName}”设置创建shell上下文", settings.Name);
                 }
 
                 return _shellContextFactory.CreateSetupContextAsync(settings);
@@ -249,6 +250,7 @@ namespace Wd3eCore.Environment.Shell
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug("Creating disabled shell context for tenant '{TenantName}'", settings.Name);
+                    _logger.LogDebug("为租户“{TenantName}”创建禁用的shell上下文", settings.Name);
                 }
 
                 return Task.FromResult(new ShellContext { Settings = settings });
@@ -258,29 +260,31 @@ namespace Wd3eCore.Environment.Shell
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug("Creating shell context for tenant '{TenantName}'", settings.Name);
+                    _logger.LogDebug("为租户“{TenantName}”创建shell上下文", settings.Name);
                 }
 
                 return _shellContextFactory.CreateShellContextAsync(settings);
             }
             else
             {
-                throw new InvalidOperationException("Unexpected shell state for " + settings.Name);
+                throw new InvalidOperationException("Unexpected shell state for " + settings.Name+"/" + settings.Name +"的非预期的shell状态");
             }
         }
 
         /// <summary>
-        /// Creates a transient shell for the default tenant's setup.
+        /// 为默认租户的设置创建一个临时shell。
         /// </summary>
         private Task<ShellContext> CreateSetupContextAsync(ShellSettings defaultSettings)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug("Creating shell context for root setup.");
+                _logger.LogDebug("为root设置创建shell上下文。");
             }
 
             if (defaultSettings == null)
             {
-                // Creates a default shell settings based on the configuration.
+                // 根据配置创建一个默认的shell设置。
                 var shellSettings = _shellSettingsManager.CreateDefaultSettings();
                 shellSettings.Name = ShellHelper.DefaultShellName;
                 shellSettings.State = TenantState.Uninitialized;
@@ -291,7 +295,7 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// A feature is enabled / disabled, the tenant needs to be restarted
+        /// 一个功能被启用/禁用，需要重新启动租户
         /// </summary>
         Task IShellDescriptorManagerEventHandler.Changed(ShellDescriptor descriptor, string tenant)
         {
@@ -309,17 +313,16 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// Marks the specific tenant as released, such that a new shell is created for subsequent requests,
-        /// while existing requests get flushed.
+        /// 将特定的租户标记为释放，这样就会为后续请求创建一个新的shell，而现有的请求会被清除。
         /// </summary>
         /// <param name="settings"></param>
         public async Task ReloadShellContextAsync(ShellSettings settings)
         {
             if (settings.State == TenantState.Disabled)
             {
-                // If a disabled shell is still in use it will be released and then disposed by its last scope.
-                // So, we keep it in the list and don't create a new one that would have a null service provider.
-                // Knowing that it is still removed from the running shell table, so that it is no more served.
+                // 如果一个被禁用的shell还在使用中，它将被释放，然后通过最后的范围处理掉。
+                // 所以，我们把它保留在列表中，不要新建一个会为空的服务提供商。
+                // 知道它仍然从正在运行的shell表中删除，因此不再提供它。
                 if (_shellContexts.TryGetValue(settings.Name, out var value) && value.ActiveScopes > 0)
                 {
                     _runningShellTable.Remove(settings);
@@ -344,9 +347,9 @@ namespace Wd3eCore.Environment.Shell
         public IEnumerable<ShellContext> ListShellContexts() => _shellContexts.Values.ToArray();
 
         /// <summary>
-        /// Tries to retrieve the shell settings associated with the specified tenant.
+        /// 尝试检索与指定租户关联的shell设置。
         /// </summary>
-        /// <returns><c>true</c> if the settings could be found, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c>  找到设置, <c>false</c> </returns>
         public bool TryGetSettings(string name, out ShellSettings settings)
         {
             if (_shellContexts.TryGetValue(name, out var shell))
@@ -360,13 +363,13 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// Retrieves all shell settings.
+        /// 检索所有的shell设置。
         /// </summary>
-        /// <returns>All shell settings.</returns>
+        /// <returns>所有的shell设置。</returns>
         public IEnumerable<ShellSettings> GetAllSettings() => ListShellContexts().Select(s => s.Settings);
 
         /// <summary>
-        /// Whether or not a shell can be added to the list of available shells.
+        /// 是否可以将shell添加到可用的shell列表中。
         /// </summary>
         private bool CanCreateShell(ShellSettings shellSettings)
         {
@@ -378,7 +381,7 @@ namespace Wd3eCore.Environment.Shell
         }
 
         /// <summary>
-        /// Whether or not a shell can be activated and added to the running shells.
+        /// 是否可以激活shell并将其添加到正在运行的shell中。
         /// </summary>
         private bool CanRegisterShell(ShellSettings shellSettings)
         {

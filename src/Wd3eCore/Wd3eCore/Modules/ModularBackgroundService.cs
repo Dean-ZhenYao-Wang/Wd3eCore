@@ -48,6 +48,7 @@ namespace Wd3eCore.Modules
             stoppingToken.Register(() =>
             {
                 Logger.LogError("'{ServiceName}' is stopping.", nameof(ModularBackgroundService));
+                Logger.LogError("'{ServiceName}' 停止中。", nameof(ModularBackgroundService));
             });
 
             while (GetRunningShells().Count() < 1)
@@ -81,6 +82,7 @@ namespace Wd3eCore.Modules
             catch (Exception e)
             {
                 Logger.LogError(e, "Error while executing '{ServiceName}', the service is stopping.", nameof(ModularBackgroundService));
+                Logger.LogError(e, "在执行'{ServiceName}'时出现错误，服务停止。", nameof(ModularBackgroundService));
             }
         }
 
@@ -122,15 +124,18 @@ namespace Wd3eCore.Modules
                         try
                         {
                             Logger.LogInformation("Start processing background task '{TaskName}' on tenant '{TenantName}'.", taskName, tenant);
+                            Logger.LogInformation("开始处理租户'{TenantName}'上的后台任务'{TaskName}'。", taskName, tenant);
 
                             scheduler.Run();
                             await task.DoWorkAsync(scope.ServiceProvider, stoppingToken);
 
                             Logger.LogInformation("Finished processing background task '{TaskName}' on tenant '{TenantName}'.", taskName, tenant);
+                            Logger.LogInformation("完成对租户'{TenantName}'的后台任务'{TaskName}'的处理。", taskName, tenant);
                         }
                         catch (Exception e)
                         {
                             Logger.LogError(e, "Error while processing background task '{TaskName}' on tenant '{TenantName}'.", taskName, tenant);
+                            Logger.LogError(e, "在租户'{TenantName}'上处理后台任务'{TaskName}'时出错。", taskName, tenant);
                         }
                     });
                 }
@@ -200,6 +205,7 @@ namespace Wd3eCore.Modules
                         catch (Exception e)
                         {
                             Logger.LogError(e, "Error while updating settings of background task '{TaskName}' on tenant '{TenantName}'.", taskName, tenant);
+                            Logger.LogError(e, "在租户'{TenantName}'上更新后台任务'{TaskName}'的设置时出错。", taskName, tenant);
                         }
 
                         settings = settings ?? task.GetDefaultSettings();

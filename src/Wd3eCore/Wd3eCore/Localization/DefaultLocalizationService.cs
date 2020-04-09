@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Localization
 {
     /// <summary>
-    /// Represents a default implementation for <see cref="ILocalizationService"/>.
+    /// 表示<see cref="ILocalizationService"/>的默认实现
     /// </summary>
     public class DefaultLocalizationService : ILocalizationService
     {

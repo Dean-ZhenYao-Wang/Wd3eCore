@@ -24,6 +24,8 @@ namespace Wd3eCore.Environment.Shell
             {
                 Logger.LogDebug("Feature '{FeatureName}' EnableState changed from '{FeatureState}' to '{FeatureState}'",
                              featureState.Id, featureState.EnableState, value);
+                Logger.LogDebug("功能 '{FeatureName}' 启用状态从'{FeatureState}'变更为'{FeatureState}'",
+                            featureState.Id, featureState.EnableState, value);
             }
 
             return Task.CompletedTask;
@@ -34,6 +36,7 @@ namespace Wd3eCore.Environment.Shell
             if (Logger.IsEnabled(LogLevel.Debug))
             {
                 Logger.LogDebug("Feature '{FeatureName}' InstallState changed from '{FeatureState}' to '{FeatureState}'", featureState.Id, featureState.InstallState, value);
+                Logger.LogDebug("功能 '{FeatureName}' 安装状态由 '{FeatureState}' 更改为 '{FeatureState}'", featureState.Id, featureState.InstallState, value);
             }
 
             return Task.CompletedTask;

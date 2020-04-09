@@ -15,10 +15,8 @@ namespace Wd3eCore.Modules
 
             var httpRequest = httpContext.Request;
 
-            // The Host property contains the value as set from the client. It is replaced automatically
-            // to the value of X-Forwarded-Host when UseIISIntegration() is invoked.
-            // The same way .Scheme contains the protocol that the user set and not what a proxy
-            // could be using (see X-Forwarded-Proto).
+            // Host属性包含从客户端设置的值。当调用UseIISIntegration()时，它将自动替换为X-Forwarded-Host的值。
+            // 同样的方式，.Scheme方案包含用户设置的协议，而不是代理可能使用的协议（见X-Forwarded-Proto）。.
 
             return table.Match(httpRequest.Host, httpRequest.Path, true);
         }

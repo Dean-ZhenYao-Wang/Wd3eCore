@@ -7,7 +7,7 @@ using Wd3eCore.Environment.Extensions.Features;
 namespace Wd3eCore.Environment.Shell.Builders
 {
     /// <summary>
-    /// A service collection that keeps track of the <see cref="IFeatureInfo"/> for each added service.
+    /// 一个服务集合，用于跟踪每个新增服务的 <see cref="IFeatureInfo"/> 。
     /// </summary>
     public class FeatureAwareServiceCollection : IServiceCollection
     {
@@ -22,14 +22,14 @@ namespace Wd3eCore.Environment.Shell.Builders
         }
 
         /// <summary>
-        /// A collection of services grouped by their feature information.
+        /// 按其特征信息分组的服务集合。
         /// </summary>
         public IDictionary<IFeatureInfo, ServiceCollection> FeatureCollections => _featureServiceCollections;
 
         /// <summary>
-        /// Sets the current feature that services will be assigned when added to this collection.
+        /// 设置添加到此集合中时,将分配给当前服务的特征。
         /// </summary>
-        /// <param name="feature">The feature for services to be assigned.</param>
+        /// <param name="feature">分配给当前服务的特征</param>
         public void SetCurrentFeature(IFeatureInfo feature)
         {
             if (!_featureServiceCollections.TryGetValue(feature, out _currentFeatureServiceCollection))

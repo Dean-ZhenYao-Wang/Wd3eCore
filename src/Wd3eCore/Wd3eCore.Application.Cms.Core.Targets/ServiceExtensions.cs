@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class ServiceExtensions
     {
         /// <summary>
-        /// Adds Wd3e CMS services to the application.
+        /// 在应用程序中添加Wd3e CMS服务。
         /// </summary>
         public static Wd3eCoreBuilder AddWd3eCms(this IServiceCollection services)
         {
@@ -34,8 +34,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 //.AddLiquidViews()
                 .AddCaching();
 
-            // Wd3eCoreBuilder is not available in Wd3eCore.ResourceManagement as it has to
-            // remain independent from Wd3eCore.
+            // Wd3eCoreBuilder不在Wd3eCore.ResourceManagement中，因为它必须独立于Wd3eCore。
             builder.ConfigureServices(s =>
             {
                 s.AddResourceManagement();
@@ -51,8 +50,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         /// <summary>
-        /// Adds Wd3e CMS services to the application and let the app change the
-        /// default tenant behavior and set of features through a configure action.
+        ///  在应用程序中添加Wd3e CMS服务，让应用程序通过configure动作改变默认的租户行为和功能集。
         /// </summary>
         public static IServiceCollection AddWd3eCms(this IServiceCollection services, Action<Wd3eCoreBuilder> configure)
         {

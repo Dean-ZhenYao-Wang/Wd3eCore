@@ -32,7 +32,7 @@ namespace Wd3eCore.Environment.Extensions.Features
                 return serial;
             }
 
-            // Calculate a hash of all enabled features' id
+            // 计算出所有已启用的功能ID的哈希值
             var enabledFeatures = await _featureManager.GetEnabledFeaturesAsync();
             serial = enabledFeatures
                 .OrderBy(x => x.Id)

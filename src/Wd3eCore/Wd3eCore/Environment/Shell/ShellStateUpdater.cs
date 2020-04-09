@@ -42,13 +42,14 @@ namespace Wd3eCore.Environment.Shell
             if (Logger.IsEnabled(LogLevel.Information))
             {
                 Logger.LogInformation("Applying changes for for tenant '{TenantName}'", _settings.Name);
+                Logger.LogInformation("为租户'{TenantName}'应用更改", _settings.Name);
             }
 
             var loadedFeatures = await _extensionManager.LoadFeaturesAsync();
 
             var shellState = await _stateManager.GetShellStateAsync();
 
-            // merge feature state into ordered list
+            // 将功能状态合并到有序列表中
             var loadedEntries = loadedFeatures
                 .Select(fe => new
                 {
@@ -59,10 +60,10 @@ namespace Wd3eCore.Environment.Shell
                 .Where(entry => entry.FeatureState != null)
                 .ToArray();
 
-            // find feature state that is beyond what's currently available from modules
+            // 查找当前模块中不可用的功能状态
             var additionalState = shellState.Features.Except(loadedEntries.Select(entry => entry.FeatureState));
 
-            // create additional stub entries for the sake of firing state change events on missing features
+            // 创建额外的存根条目，以便在丢失的功能上触发状态更改事件
             var allEntries = loadedEntries.Concat(additionalState.Select(featureState =>
             {
                 var featureDescriptor = new InternalFeatureInfo(
@@ -78,12 +79,13 @@ namespace Wd3eCore.Environment.Shell
                 };
             })).ToArray();
 
-            // lower enabled states in reverse order
+            // 相反的顺序禁用
             foreach (var entry in allEntries.Reverse().Where(entry => entry.FeatureState.EnableState == ShellFeatureState.State.Falling))
             {
                 if (Logger.IsEnabled(LogLevel.Information))
                 {
                     Logger.LogInformation("Disabling feature '{FeatureName}'", entry.Feature.FeatureInfo.Id);
+                    Logger.LogInformation("禁用功能 '{FeatureName}'", entry.Feature.FeatureInfo.Id);
                 }
 
                 await _featureEventHandlers.InvokeAsync((handler, featureInfo) => handler.DisablingAsync(featureInfo), entry.Feature.FeatureInfo, Logger);
@@ -91,12 +93,13 @@ namespace Wd3eCore.Environment.Shell
                 await _featureEventHandlers.InvokeAsync((handler, featureInfo) => handler.DisabledAsync(featureInfo), entry.Feature.FeatureInfo, Logger);
             }
 
-            // lower installed states in reverse order
+            // 以相反的顺序卸载
             foreach (var entry in allEntries.Reverse().Where(entry => entry.FeatureState.InstallState == ShellFeatureState.State.Falling))
             {
                 if (Logger.IsEnabled(LogLevel.Information))
                 {
                     Logger.LogInformation("Uninstalling feature '{FeatureName}'", entry.Feature.FeatureInfo.Id);
+                    Logger.LogInformation("卸载功能'{FeatureName}'", entry.Feature.FeatureInfo.Id);
                 }
 
                 await _featureEventHandlers.InvokeAsync((handler, featureInfo) => handler.UninstallingAsync(featureInfo), entry.Feature.FeatureInfo, Logger);
@@ -104,7 +107,7 @@ namespace Wd3eCore.Environment.Shell
                 await _featureEventHandlers.InvokeAsync((handler, featureInfo) => handler.UninstalledAsync(featureInfo), entry.Feature.FeatureInfo, Logger);
             }
 
-            // raise install and enabled states in order
+            // 按顺序启动安装和启用
             foreach (var entry in allEntries.Where(entry => IsRising(entry.FeatureState)))
             {
                 if (entry.FeatureState.InstallState == ShellFeatureState.State.Rising)
@@ -112,6 +115,7 @@ namespace Wd3eCore.Environment.Shell
                     if (Logger.IsEnabled(LogLevel.Information))
                     {
                         Logger.LogInformation("Installing feature '{FeatureName}'", entry.Feature.FeatureInfo.Id);
+                        Logger.LogInformation("安装功能 '{FeatureName}'", entry.Feature.FeatureInfo.Id);
                     }
 
                     await _featureEventHandlers.InvokeAsync((handler, featureInfo) => handler.InstallingAsync(featureInfo), entry.Feature.FeatureInfo, Logger);
@@ -123,6 +127,7 @@ namespace Wd3eCore.Environment.Shell
                     if (Logger.IsEnabled(LogLevel.Information))
                     {
                         Logger.LogInformation("Enabling feature '{FeatureName}'", entry.Feature.FeatureInfo.Id);
+                        Logger.LogInformation("启用功能 '{FeatureName}'", entry.Feature.FeatureInfo.Id);
                     }
 
                     await _featureEventHandlers.InvokeAsync((handler, featureInfo) => handler.EnablingAsync(featureInfo), entry.Feature.FeatureInfo, Logger);

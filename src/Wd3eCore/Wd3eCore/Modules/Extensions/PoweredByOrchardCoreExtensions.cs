@@ -6,12 +6,12 @@ namespace Microsoft.AspNetCore.Builder
     public static class PoweredByWd3eCoreExtensions
     {
         /// <summary>
-        /// Configures whether use or not the Header X-Powered-By.
-        /// Default value is Wd3eCore.
+        /// 配置是否使用X-Powered-By头文件。
+        /// 默认值是Wd3eCore。
         /// </summary>
-        /// <param name="app">The modular application builder</param>
-        /// <param name="enabled">Boolean indicating if the header should be included in the response or not</param>
-        /// <returns>The modular application builder</returns>
+        /// <param name="app">模块化应用程序构建器</param>
+        /// <param name="enabled">是否应在响应中包含标头</param>
+        /// <returns>模块化应用程序构建器</returns>
         public static IApplicationBuilder UsePoweredByWd3eCore(this IApplicationBuilder app, bool enabled)
         {
             var options = app.ApplicationServices.GetRequiredService<IPoweredByMiddlewareOptions>();
@@ -21,13 +21,13 @@ namespace Microsoft.AspNetCore.Builder
         }
 
         /// <summary>
-        /// Configures wethere use or not the Header X-Powered-By and its value.
-        /// Default value is Wd3eCore.
+        /// 配置是否使用X-POWERED-BY头及其值。
+        /// 默认值是Wd3eCore。
         /// </summary>
-        /// <param name="app">The modular application builder</param>
-        /// <param name="enabled">Boolean indicating if the header should be included in the response or not</param>
-        /// <param name="headerValue">Header's value</param>
-        /// <returns>The modular application builder</returns>
+        /// <param name="app">模块化应用程序构建器</param>
+        /// <param name="enabled">是否应在响应中包含标头</param>
+        /// <param name="headerValue">头的值</param>
+        /// <returns>模块化应用程序构建器</returns>
         public static IApplicationBuilder UsePoweredBy(this IApplicationBuilder app, bool enabled, string headerValue)
         {
             var options = app.ApplicationServices.GetRequiredService<IPoweredByMiddlewareOptions>();

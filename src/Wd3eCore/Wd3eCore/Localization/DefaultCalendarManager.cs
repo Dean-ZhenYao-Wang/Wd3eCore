@@ -14,9 +14,9 @@ namespace Wd3eCore.Localization
         private CalendarName? _calendarName;
 
         /// <summary>
-        /// Creates a new instance of <see cref="DefaultCalendarManager"/>.
+        /// 创建一个新的 <see cref="DefaultCalendarManager"/>实例
         /// </summary>
-        /// <param name="calendarSelectors">A list of <see cref="ICalendarSelector"/>.</param>
+        /// <param name="calendarSelectors"><see cref="ICalendarSelector"/>的列表</param>
         public DefaultCalendarManager(IEnumerable<ICalendarSelector> calendarSelectors)
         {
             _calendarSelectors = calendarSelectors;

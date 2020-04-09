@@ -27,7 +27,7 @@ namespace Wd3eCore.Environment.Extensions.Features
         {
             var featuresInfos = new List<IFeatureInfo>();
 
-            // Features and Dependencies live within this section
+            // 功能和依赖项包含在本节中
             var features = manifestInfo.ModuleInfo.Features.ToList();
             if (features.Count > 0)
             {
@@ -36,7 +36,7 @@ namespace Wd3eCore.Environment.Extensions.Features
                     if (String.IsNullOrWhiteSpace(feature.Id))
                     {
                         throw new ArgumentException(
-                            $"A feature is missing a mandatory 'Id' property in the Module '{extensionInfo.Id}'");
+                            $"A feature is missing a mandatory 'Id' property in the Module '{extensionInfo.Id}'/在模块“{extensionInfo.Id}”中缺少一个强制的“Id”属性");
                     }
 
                     var featureId = feature.Id;

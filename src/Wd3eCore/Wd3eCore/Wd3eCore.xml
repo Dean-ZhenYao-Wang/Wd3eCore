@@ -6,19 +6,19 @@
     <members>
         <member name="M:Wd3eCore.Environment.Shell.Builders.ServiceProviderExtensions.CreateChildContainer(System.IServiceProvider,Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Creates a child container.
+            创建一个子容器。
             </summary>
-            <param name="serviceProvider">The service provider to create a child container for.</param>
-            <param name="serviceCollection">The services to clone.</param>
+            <param name="serviceProvider">服务提供商,为其创建一个子容器.</param>
+            <param name="serviceCollection">克隆服务</param>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection">
             <summary>
-            A service collection that keeps track of the <see cref="T:Wd3eCore.Environment.Extensions.Features.IFeatureInfo"/> for each added service.
+            一个服务集合，用于跟踪每个新增服务的 <see cref="T:Wd3eCore.Environment.Extensions.Features.IFeatureInfo"/> 。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection.FeatureCollections">
             <summary>
-            A collection of services grouped by their feature information.
+            按其特征信息分组的服务集合。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.FeatureAwareServiceCollection.SetCurrentFeature(Wd3eCore.Environment.Extensions.Features.IFeatureInfo)">

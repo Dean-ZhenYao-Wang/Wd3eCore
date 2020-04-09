@@ -12,13 +12,13 @@ namespace Wd3eCore.Environment.Shell
     {
         public static IServiceCollection AddHostingShellServices(this IServiceCollection services)
         {
-            // Register the type as it's implementing two interfaces which can be resolved independently
+            // 注册该类型，因为它实现了两个接口，可以独立解析。
             services.AddSingleton<ShellHost>();
             services.AddSingleton<IShellHost>(sp => sp.GetRequiredService<ShellHost>());
             services.AddSingleton<IShellDescriptorManagerEventHandler>(sp => sp.GetRequiredService<ShellHost>());
 
             {
-                // Use a single default site by default, i.e. if WithTenants hasn't been called before
+                // 默认使用单一的默认站点，即如果之前没有调用过WithTenants，就使用一个默认站点
                 services.TryAddSingleton<IShellSettingsManager, SingleShellSettingsManager>();
                 services.AddTransient<IConfigureOptions<ShellOptions>, ShellOptionsSetup>();
 

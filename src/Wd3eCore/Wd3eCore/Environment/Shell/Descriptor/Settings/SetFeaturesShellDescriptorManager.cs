@@ -6,8 +6,8 @@ using Wd3eCore.Environment.Shell.Descriptor.Models;
 namespace Wd3eCore.Environment.Shell.Descriptor.Settings
 {
     /// <summary>
-    /// Implements <see cref="IShellDescriptorManager"/> by returning a single tenant with a specified set
-    /// of features. This class can be registered as a singleton as its state never changes.
+    /// 通过返回一个具有指定功能集的单一租户来实现 <see cref="IShellDescriptorManager"/>。
+    /// 这个类可以作为一个单例类注册，因为它的状态永远不会改变。
     /// </summary>
     public class SetFeaturesShellDescriptorManager : IShellDescriptorManager
     {

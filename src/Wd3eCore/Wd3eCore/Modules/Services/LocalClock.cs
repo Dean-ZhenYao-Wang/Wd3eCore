@@ -35,7 +35,7 @@ namespace Wd3eCore.Modules
 
         public async Task<ITimeZone> GetLocalTimeZoneAsync()
         {
-            // Caching the result per request
+            // 缓存每个请求的结果
             if (_timeZone == null)
             {
                 _timeZone = await LoadLocalTimeZoneAsync();

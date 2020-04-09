@@ -11,13 +11,12 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.ServiceExtensions.AddWd3eCms(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Adds Wd3e CMS services to the application.
+            在应用程序中添加Wd3e CMS服务。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.ServiceExtensions.AddWd3eCms(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder})">
             <summary>
-            Adds Wd3e CMS services to the application and let the app change the
-            default tenant behavior and set of features through a configure action.
+             在应用程序中添加Wd3e CMS服务，让应用程序通过configure动作改变默认的租户行为和功能集。
             </summary>
         </member>
     </members>

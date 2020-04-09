@@ -5,7 +5,7 @@ using Microsoft.Extensions.Primitives;
 namespace Wd3eCore.Environment.Cache
 {
     /// <summary>
-    /// This component is a singleton and holds all the existing signal token for a tenant.
+    /// 该组件是单例的，它包含租户的所有现有信号令牌。
     /// </summary>
     public class Signal : ISignal
     {

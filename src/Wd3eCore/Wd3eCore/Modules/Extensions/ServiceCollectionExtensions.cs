@@ -33,7 +33,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Adds Wd3eCore services to the host service collection.
+        /// 将Wd3eCore服务添加到主机服务集合中。
         /// </summary>
         public static Wd3eCoreBuilder AddWd3eCore(this IServiceCollection services)
         {
@@ -42,8 +42,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 throw new ArgumentNullException(nameof(services));
             }
 
-            // If an instance of Wd3eCoreBuilder exists reuse it,
-            // so we can call AddWd3eCore several times.
+            // 如果Wd3eCoreBuilder的实例存在，可以重用它，因此我们可以多次调用AddWd3eCore。
             var builder = services
                 .LastOrDefault(d => d.ServiceType == typeof(Wd3eCoreBuilder))?
                 .ImplementationInstance as Wd3eCoreBuilder;

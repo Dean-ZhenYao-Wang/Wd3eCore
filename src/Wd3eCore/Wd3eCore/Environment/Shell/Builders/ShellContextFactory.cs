@@ -31,6 +31,7 @@ namespace Wd3eCore.Environment.Shell.Builders
             if (_logger.IsEnabled(LogLevel.Information))
             {
                 _logger.LogInformation("Creating shell context for tenant '{TenantName}'", settings.Name);
+                _logger.LogInformation("为租户'{TenantName}'创建shell上下文", settings.Name);
             }
 
             var describedContext = await CreateDescribedContextAsync(settings, MinimumShellDescriptor());
@@ -51,12 +52,13 @@ namespace Wd3eCore.Environment.Shell.Builders
             return describedContext;
         }
 
-        // TODO: This should be provided by a ISetupService that returns a set of ShellFeature instances.
+        // TODO: 这应该由一个ISetupService提供，它返回一组ShellFeature实例。
         async Task<ShellContext> IShellContextFactory.CreateSetupContextAsync(ShellSettings settings)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug("No shell settings available. Creating shell context for setup");
+                _logger.LogDebug("No shell settings available. Creating shell context for setup", settings.Name);
+                _logger.LogDebug("没有可用的shell设置。为设置创建shell上下文", settings.Name);
             }
             var descriptor = MinimumShellDescriptor();
 
@@ -68,6 +70,7 @@ namespace Wd3eCore.Environment.Shell.Builders
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogDebug("Creating described context for tenant '{TenantName}'", settings.Name);
+                _logger.LogDebug("为租户 '{TenantName_cn}' 创建描述的上下文", settings.Name);
             }
 
             await settings.EnsureConfigurationAsync();
@@ -84,14 +87,13 @@ namespace Wd3eCore.Environment.Shell.Builders
         }
 
         /// <summary>
-        /// The minimum shell descriptor is used to bootstrap the first container that will be used
-        /// to call all module IStartup implementation. It's composed of module names that reference
-        /// core components necessary for the desired scenario.
+        /// 最小的shell描述符用于引导第一个容器，它将被用来调用所有模块IStartup实现。
+        /// 它由模块名称组成，引用了所需场景所需的核心组件。
         /// </summary>
         /// <returns></returns>
         private ShellDescriptor MinimumShellDescriptor()
         {
-            // Load default features from the list of registered ShellFeature instances in the DI
+            // 从DI中注册的ShellFeature实例列表中加载默认功能
 
             return new ShellDescriptor
             {
