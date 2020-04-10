@@ -8,60 +8,61 @@ namespace Wd3eCore.Environment.Shell
     public interface IShellHost
     {
         /// <summary>
-        /// Ensure that all the <see cref="ShellContext"/> are pre-created and available to process requests.
+        /// 确保所有的<see cref="ShellContext"/>都是预先创建的，并且可用来处理请求。
         /// </summary>
         Task InitializeAsync();
 
         /// <summary>
-        /// Returns an existing <see cref="ShellContext"/> or creates a new one if necessary.
+        /// 返回一个现有的<see cref="ShellContext"/>，或者在必要时创建一个新的。
         /// </summary>
-        /// <param name="settings">The <see cref="ShellSettings"/> object representing the shell to get.</param>
+        /// <param name="settings"><see cref="ShellSettings"/>对象代表要获取的shell。</param>
         /// <returns></returns>
         Task<ShellContext> GetOrCreateShellContextAsync(ShellSettings settings);
 
         /// <summary>
-        /// Creates a standalone service scope that can be used to resolve local services.
+        /// 创建一个独立的服务作用域，可用于解析本地服务。
         /// </summary>
-        /// <param name="settings">The <see cref="ShellSettings"/> object representing the shell to get.</param>
+        /// <param name="settings"><see cref="ShellSettings"/>对象代表要获取的shell。</param>
         Task<ShellScope> GetScopeAsync(ShellSettings settings);
 
         /// <summary>
-        /// Updates an existing shell configuration.
+        /// 更新现有的shell配置。
         /// </summary>
         /// <param name="settings"></param>
         Task UpdateShellSettingsAsync(ShellSettings settings);
 
         /// <summary>
-        /// Reloads a shell.
+        /// 重载shell.
         /// </summary>
         /// <param name="settings"></param>
         Task ReloadShellContextAsync(ShellSettings settings);
 
         /// <summary>
-        /// Creates a new <see cref="ShellContext"/>.
+        /// 创建一个新的 <see cref="ShellContext"/>。
         /// </summary>
-        /// <param name="settings">The <see cref="ShellSettings"/> object representing the shell to create.</param>
+        /// <param name="settings"><see cref="ShellSettings"/>对象代表要创建的shell。</param>
         /// <returns></returns>
         Task<ShellContext> CreateShellContextAsync(ShellSettings settings);
 
         /// <summary>
-        /// Lists all available <see cref="ShellContext"/> instances.
-        /// A shell might have been released or not yet built, if so 'shell.Released' is true and
-        /// 'shell.CreateScope()' return null, but you can still use 'GetScopeAsync(shell.Settings)'.
+        /// 列出所有可用的 <see cref="ShellContext"/>实例。
+        /// 一个shell可能已经被发布或尚未构建，
+        /// 如果是这样，'shell.Released'为true，'shell.CreateScope()'返回null，
+        /// 但仍然可以使用'GetScopeAsync(shell.Settings)'。
         /// </summary>
-        /// <remarks>A shell might not be listed if it hasn't been created yet, for instance if it has been removed and not yet recreated.</remarks>
+        /// <remarks>如果一个shell还没有被创建，比如说它已经被删除了，还没有被重新创建，可能就不会被列出。</remarks>
         IEnumerable<ShellContext> ListShellContexts();
 
         /// <summary>
-        /// Tries to retrieve the shell settings associated with the specified tenant.
+        /// 尝试检索与指定租户相关的shell设置。
         /// </summary>
-        /// <returns><c>true</c> if the settings could be found, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c> 如果可以找到设置,则为true <c>false</c> 否则为false.</returns>
         bool TryGetSettings(string name, out ShellSettings settings);
 
         /// <summary>
-        /// Retrieves all shell settings.
+        /// 检索所有的shell设置。
         /// </summary>
-        /// <returns>All shell settings.</returns>
+        /// <returns>所有的shell设置。</returns>
         IEnumerable<ShellSettings> GetAllSettings();
     }
 }

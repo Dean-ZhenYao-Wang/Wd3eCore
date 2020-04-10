@@ -1,32 +1,32 @@
 namespace Wd3eCore.Environment.Shell.Models
 {
     /// <summary>
-    /// The different states of a Tenant.
+    /// 租户的不同状态。
     /// </summary>
     public enum TenantState
     {
         /// <summary>
-        /// The tenant is not yet intialized.
+        /// 租户还没有登记。
         /// </summary>
         Uninitialized,
 
         /// <summary>
-        /// The tenant is being initialized.
+        /// 正在初始化租户。
         /// </summary>
         Initializing,
 
         /// <summary>
-        /// The tenant is initialized and running.
+        /// 租户已初始化并正在运行。
         /// </summary>
         Running,
 
         /// <summary>
-        /// The tenant is initialized and disabled.
+        /// 已初始化并禁用了租户。
         /// </summary>
         Disabled,
 
         /// <summary>
-        /// The tenant settings are invalid.
+        /// 租户设置无效。
         /// </summary>
         Invalid
     }

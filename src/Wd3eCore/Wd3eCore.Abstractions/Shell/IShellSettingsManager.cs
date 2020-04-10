@@ -6,26 +6,26 @@ namespace Wd3eCore.Environment.Shell
     public interface IShellSettingsManager
     {
         /// <summary>
-        /// Creates a default shell settings based on the configuration.
+        /// 根据配置创建一个默认的shell设置。
         /// </summary>
         ShellSettings CreateDefaultSettings();
 
         /// <summary>
-        /// Retrieves all shell settings stored.
+        /// 检索存储的所有shell设置。
         /// </summary>
-        /// <returns>All shell settings.</returns>
+        /// <returns>所有shell设置</returns>
         Task<IEnumerable<ShellSettings>> LoadSettingsAsync();
 
         /// <summary>
-        /// Retrieves the settings of a given tenant
+        /// 检索给定租户的设置。
         /// </summary>
-        /// <returns>The shell settings.</returns>
+        /// <returns>shell设置</returns>
         Task<ShellSettings> LoadSettingsAsync(string tenant);
 
         /// <summary>
-        /// Persists shell settings to the storage.
+        /// 将shell设置保存到存储中。
         /// </summary>
-        /// <param name="settings">The shell settings to store.</param>
+        /// <param name="settings">要存储的shell设置。</param>
         Task SaveSettingsAsync(ShellSettings settings);
     }
 }

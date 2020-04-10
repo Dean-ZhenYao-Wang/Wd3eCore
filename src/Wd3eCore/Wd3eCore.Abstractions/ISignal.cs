@@ -13,7 +13,7 @@ namespace Wd3eCore.Environment.Cache
     public static class SignalExtensions
     {
         /// <summary>
-        /// Adds a Signal (if not already present) to be sent at the end of the shell scope.
+        /// 添加一个信号（如果还没有的话），将在shell作用域的末尾发送。
         /// </summary>
         public static void DeferredSignalToken(this ISignal signal, string key)
         {

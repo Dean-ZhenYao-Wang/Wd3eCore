@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 namespace Wd3eCore.Environment.Shell.State
 {
     /// <summary>
-    /// Represents the state of a feature in a tenant.
+    /// 表示租户中某个特性的状态。
     /// </summary>
     public class ShellFeatureState
     {

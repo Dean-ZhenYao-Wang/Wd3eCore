@@ -13,7 +13,7 @@ using Wd3eCore.Modules;
 namespace Wd3eCore.Environment.Shell.Scope
 {
     /// <summary>
-    /// Custom 'IServiceScope' managing the shell state and the execution flow.
+    /// 管理shell状态和执行流的自定义'IServiceScope'。
     /// </summary>
     public class ShellScope : IServiceScope
     {
@@ -33,17 +33,16 @@ namespace Wd3eCore.Environment.Shell.Scope
 
         public ShellScope(ShellContext shellContext)
         {
-            // Prevent the context from being disposed until the end of the scope
+            // 防止在作用域结束之前释放上下文
             Interlocked.Increment(ref shellContext._refCount);
 
             ShellContext = shellContext;
 
-            // The service provider is null if we try to create
-            // a scope on a disabled shell or already disposed.
+            // 如果我们试图在禁用的shell上创建作用域或已经设置了作用域，则服务提供程序为null。
             if (shellContext.ServiceProvider == null)
             {
                 throw new ArgumentNullException(nameof(shellContext.ServiceProvider),
-                    $"Can't resolve a scope on tenant: {shellContext.Settings.Name}");
+                    $"Can't resolve a scope on tenant: {shellContext.Settings.Name}/无法解决租户的作用域:{shellContext.Settings.Name}");
             }
 
             _serviceScope = shellContext.ServiceProvider.CreateScope();
@@ -54,37 +53,37 @@ namespace Wd3eCore.Environment.Shell.Scope
         public IServiceProvider ServiceProvider { get; }
 
         /// <summary>
-        /// Retrieve the 'ShellContext' of the current shell scope.
+        /// 检索当前shell作用域的“ShellContext”。
         /// </summary>
         public static ShellContext Context => Current?.ShellContext;
 
         /// <summary>
-        /// Retrieve the 'IServiceProvider' of the current shell scope.
+        /// 检索当前shell作用域的“IServiceProvider”。
         /// </summary>
         public static IServiceProvider Services => Current?.ServiceProvider;
 
         /// <summary>
-        /// Retrieve the current shell scope from the async flow.
+        /// 从异步流检索当前shell的作用域。
         /// </summary>
         public static ShellScope Current => _current.Value;
 
         /// <summary>
-        /// Sets a shared item to the current shell scope.
+        /// 将共享项设置为当前shell的作用域。
         /// </summary>
         public static void Set(object key, object value) => Current._items[key] = value;
 
         /// <summary>
-        /// Gets a shared item from the current shell scope.
+        /// 从当前shell的作用域获取共享项。
         /// </summary>
         public static object Get(object key) => Current._items.TryGetValue(key, out var value) ? value : null;
 
         /// <summary>
-        /// Gets a shared item of a given type from the current shell scope.
+        /// 从当前shell的作用域获取给定类型的共享项。
         /// </summary>
         public static T Get<T>(object key) => Current._items.TryGetValue(key, out var value) ? value is T item ? item : default : default;
 
         /// <summary>
-        /// Gets (or creates) a shared item of a given type from the current shell scope.
+        /// 从当前shell的作用域获取(或创建)给定类型的共享项。
         /// </summary>
         public static T GetOrCreate<T>(object key, Func<T> factory)
         {
@@ -97,7 +96,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Gets (or creates) a shared item of a given type from the current shell scope.
+        /// 从当前shell的作用域获取(或创建)给定类型的共享项。
         /// </summary>
         public static T GetOrCreate<T>(object key) where T : class, new()
         {
@@ -110,27 +109,27 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Sets a shared feature to the current shell scope.
+        /// 将共享功能设置为当前shell的作用域。
         /// </summary>
         public static void SetFeature<T>(T value) => Set(typeof(T), value);
 
         /// <summary>
-        /// Gets a shared feature from the current shell scope.
+        /// 从当前shell的作用域获取共享特性。
         /// </summary>
         public static T GetFeature<T>() => Get<T>(typeof(T));
 
         /// <summary>
-        /// Gets (or creates) a shared feature from the current shell scope.
+        /// 从当前shell的作用域获取(或创建)共享特性。
         /// </summary>
         public static T GetOrCreateFeature<T>(Func<T> factory) => GetOrCreate(typeof(T), factory);
 
         /// <summary>
-        /// Gets (or creates) a shared feature from the current shell scope.
+        ///从当前shell的作用域获取(或创建)共享特性。
         /// </summary>
         public static T GetOrCreateFeature<T>() where T : class, new() => GetOrCreate<T>(typeof(T));
 
         /// <summary>
-        /// Creates a child scope from the current one.
+        /// 从当前shell的作用域创建子作用域。
         /// </summary>
         public static Task<ShellScope> CreateChildScopeAsync()
         {
@@ -139,7 +138,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Creates a child scope from the current one.
+        /// 从当前shell的作用域创建子作用域。
         /// </summary>
         public static Task<ShellScope> CreateChildScopeAsync(ShellSettings settings)
         {
@@ -148,7 +147,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Creates a child scope from the current one.
+        /// 从当前shell的作用域创建子作用域。
         /// </summary>
         public static Task<ShellScope> CreateChildScopeAsync(string tenant)
         {
@@ -157,7 +156,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Execute a delegate using a child scope created from the current one.
+        /// 使用从当前作用域创建的子作用域执行委托。
         /// </summary>
         public static async Task UsingChildScopeAsync(Func<ShellScope, Task> execute)
         {
@@ -165,7 +164,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Execute a delegate using a child scope created from the current one.
+        /// 使用从当前作用域创建的子作用域执行委托。
         /// </summary>
         public static async Task UsingChildScopeAsync(ShellSettings settings, Func<ShellScope, Task> execute)
         {
@@ -173,7 +172,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Execute a delegate using a child scope created from the current one.
+        /// 使用从当前作用域创建的子作用域执行委托。
         /// </summary>
         public static async Task UsingChildScopeAsync(string tenant, Func<ShellScope, Task> execute)
         {
@@ -181,12 +180,12 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Start holding this shell scope along the async flow.
+        /// 开始在异步流中保持这个shell作用域。
         /// </summary>
         public void StartAsyncFlow() => _current.Value = this;
 
         /// <summary>
-        /// Execute a delegate using this shell scope.
+        /// 使用此shell作用域执行委托。
         /// </summary>
         public async Task UsingAsync(Func<ShellScope, Task> execute)
         {
@@ -209,7 +208,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Activate the shell, if not yet done, by calling the related tenant event handlers.
+        /// 如果尚未完成，则通过调用相关的租户事件处理程序来激活shell。
         /// </summary>
         public async Task ActivateShellAsync()
         {
@@ -232,7 +231,7 @@ namespace Wd3eCore.Environment.Shell.Scope
 
             try
             {
-                // The tenant gets activated here.
+                // 租户在这里被激活。
                 if (!ShellContext.IsActivated)
                 {
                     using (var scope = ShellContext.CreateScope())
@@ -277,32 +276,32 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Registers a delegate to be invoked when 'BeforeDisposeAsync()' is called on this scope.
+        /// 在此作用域上调用“BeforeDisposeAsync()”时，注册要调用的委托。
         /// </summary>
         private void BeforeDispose(Func<ShellScope, Task> callback) => _beforeDispose.Insert(0, callback);
 
         /// <summary>
-        /// Adds a Signal (if not already present) to be sent just after 'BeforeDisposeAsync()'.
+        /// 在'BeforeDisposeAsync()'之后添加一个信号（如果还没有的话）。
         /// </summary>
         private void DeferredSignal(string key) => _deferredSignals.Add(key);
 
         /// <summary>
-        /// Adds a Task to be executed in a new scope after 'BeforeDisposeAsync()'.
+        ///在“BeforeDisposeAsync()”之后添加要在新作用域内执行的任务。
         /// </summary>
         private void DeferredTask(Func<ShellScope, Task> task) => _deferredTasks.Add(task);
 
         /// <summary>
-        /// Registers a delegate to be invoked before the current shell scope will be disposed.
+        /// 注册要在当前shell作用域被释放之前调用的委托。
         /// </summary>
         public static void RegisterBeforeDispose(Func<ShellScope, Task> callback) => Current?.BeforeDispose(callback);
 
         /// <summary>
-        /// Adds a Signal (if not already present) to be sent just before the current shell scope will be disposed.
+        /// 添加一个信号(如果还没有出现)，在当前shell作用域被释放之前发送。
         /// </summary>
         public static void AddDeferredSignal(string key) => Current?.DeferredSignal(key);
 
         /// <summary>
-        /// Adds a Task to be executed in a new scope once the current shell scope has been disposed.
+        /// 在当前shell作用域被释放后，添加要在新作用域内执行的任务。
         /// </summary>
         public static void AddDeferredTask(Func<ShellScope, Task> task) => Current?.DeferredTask(task);
 
@@ -327,18 +326,18 @@ namespace Wd3eCore.Environment.Shell.Scope
 
             var deferredTasks = _deferredTasks.ToArray();
 
-            // Check if there are pending tasks.
+            // 检查是否有未完成的任务。
             if (deferredTasks.Any())
             {
                 _deferredTasks.Clear();
 
-                // Resolve 'IShellHost' before disposing the scope which may dispose the shell.
+                // 解析'IShellHost'，然后再处置可能会释放的shell作用域。
                 var shellHost = ShellContext.ServiceProvider.GetRequiredService<IShellHost>();
 
-                // Dispose this scope.
+                // 释放这个作用域.
                 await DisposeAsync();
 
-                // Then create a new scope (maybe based on a new shell) to execute tasks.
+                // 然后创建一个新的作用域(可能基于一个新的shell)来执行任务。
                 using (var scope = await shellHost.GetScopeAsync(ShellContext.Settings))
                 {
                     scope.StartAsyncFlow();
@@ -358,6 +357,9 @@ namespace Wd3eCore.Environment.Shell.Scope
                             logger?.LogError(e,
                                 "Error while processing deferred task '{TaskName}' on tenant '{TenantName}'.",
                                 task.GetType().FullName, ShellContext.Settings.Name);
+                            logger?.LogError(e,
+                               "在租户“{TenantName}”上处理延迟任务“{TaskName}”时出错",
+                               task.GetType().FullName, ShellContext.Settings.Name);
                         }
                     }
 
@@ -367,12 +369,12 @@ namespace Wd3eCore.Environment.Shell.Scope
         }
 
         /// <summary>
-        /// Terminate the shell, if released and in its last scope, by calling the related event handlers.
-        /// Returns true if the shell context should be disposed consequently to this scope being released.
+        ///  通过调用相关的事件处理程序来终止shell，如果shell被释放并处于其最后的作用域内，则调用相关的事件处理程序。
+        ///  如果在这个作用域被释放，shell上下文应该被处理掉，且返回true。
         /// </summary>
         private async Task<bool> TerminateShellAsync()
         {
-            // A disabled shell still in use is released by its last scope.
+            // 仍然在使用的禁用shell，将由其最后一个作用域释放。
             if (ShellContext.Settings.State == TenantState.Disabled)
             {
                 if (Interlocked.CompareExchange(ref ShellContext._refCount, 1, 1) == 1)
@@ -381,8 +383,8 @@ namespace Wd3eCore.Environment.Shell.Scope
                 }
             }
 
-            // If the context is still being released, it will be disposed if the ref counter is equal to 0.
-            // To prevent this while executing the terminating events, the ref counter is not decremented here.
+            // 如果上下文仍然在释放，如果ref计数器等于0，那么它将被释放。
+            // 为了防止在执行终止事件时发生这种情况，这里不减少ref计数器。
             if (ShellContext._released && Interlocked.CompareExchange(ref ShellContext._refCount, 1, 1) == 1)
             {
                 var tenantEvents = _serviceScope.ServiceProvider.GetServices<IModularTenantEvents>();
@@ -419,7 +421,7 @@ namespace Wd3eCore.Environment.Shell.Scope
                 ShellContext.Dispose();
             }
 
-            // Decrement the counter at the very end of the scope
+            // 在作用域的最末端递减计数器
             Interlocked.Decrement(ref ShellContext._refCount);
 
             _disposed = true;

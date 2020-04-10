@@ -54,7 +54,7 @@ namespace Wd3eCore.Environment.Shell.Builders
 
             var scope = new ShellScope(this);
 
-            // 新范围只能在未发布的shell上使用。
+            // 新作用域只能在未发布的shell上使用。
             if (!_released)
             {
                 return scope;
@@ -71,7 +71,7 @@ namespace Wd3eCore.Environment.Shell.Builders
         public bool Released => _released;
 
         /// <summary>
-        /// 返回此租户上活动范围的数量。
+        /// 返回此租户上活动作用域的数量。
         /// </summary>
         public int ActiveScopes => _refCount;
 

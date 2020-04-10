@@ -86,10 +86,10 @@ namespace Wd3eCore.Environment.Shell.Builders
                     }
                 }
 
-                //如果单例服务和范围化服务混合在一起。
+                //如果单例服务和作用域化服务混合在一起。
                 else
                 {
-                    // 我们需要一个服务的范围来解决。
+                    // 我们需要一个服务的作用域来解决。
                     using (var scope = serviceProvider.CreateScope())
                     {
                         var instances = scope.ServiceProvider.GetServices(services.Key);

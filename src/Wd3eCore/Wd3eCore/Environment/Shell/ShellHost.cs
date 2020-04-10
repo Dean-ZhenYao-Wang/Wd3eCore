@@ -320,7 +320,7 @@ namespace Wd3eCore.Environment.Shell
         {
             if (settings.State == TenantState.Disabled)
             {
-                // 如果一个被禁用的shell还在使用中，它将被释放，然后通过最后的范围处理掉。
+                // 如果一个被禁用的shell还在使用中，它将被释放，然后通过最后的作用域处理掉。
                 // 所以，我们把它保留在列表中，不要新建一个会为空的服务提供商。
                 // 知道它仍然从正在运行的shell表中删除，因此不再提供它。
                 if (_shellContexts.TryGetValue(settings.Name, out var value) && value.ActiveScopes > 0)

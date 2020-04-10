@@ -3,12 +3,12 @@ namespace Wd3eCore.Environment.Shell
     public class ShellOptions
     {
         /// <summary>
-        /// The root container
+        /// 根容器
         /// </summary>
         public string ShellsApplicationDataPath { get; set; }
 
         /// <summary>
-        /// The container for shells
+        /// shells的容器
         /// </summary>
         public string ShellsContainerName { get; set; }
     }

@@ -469,6 +469,70 @@
             <param name="size">The size of the pool.</param>
             <returns></returns>
         </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.New">
+            <summary>
+            Gets a dynamic shape factory to create new shapes.
+            </summary>
+            <example>
+            Usage:
+            <code>
+            await New.MyShape()
+            await New.MyShape(A: 1, B: "Some text")
+            (await New.MyShape()).A(1).B("Some text")
+            </code>
+            </example>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.Factory">
+            <summary>
+            Gets an <see cref="T:Wd3eCore.DisplayManagement.IShapeFactory"/> to create new shapes.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.DisplayAsync(System.Object)">
+            <summary>
+            Renders a shape.
+            </summary>
+            <param name="shape">The shape.</param>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.T">
+            <summary>
+            The <see cref="T:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer"/> instance for the current view.
+            </summary>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.RenderTitleSegments(Microsoft.AspNetCore.Html.IHtmlContent,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Adds a segment to the title and returns all segments.
+            </summary>
+            <param name="segment">The segment to add to the title.</param>
+            <param name="position">Optional. The position of the segment in the title.</param>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.RenderTitleSegments(System.String,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
+            <summary>
+            Adds a segment to the title and returns all segments.
+            </summary>
+            <param name="segment">The segment to add to the title.</param>
+            <param name="position">Optional. The position of the segment in the title.</param>
+            <param name="separator">The html string that should separate all segments.</param>
+            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
+        </member>
+        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.Tag(System.Object)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/> to render a shape.
+            </summary>
+            <param name="shape">The shape.</param>
+            <returns>A new <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/>.</returns>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.FullRequestPath">
+            <summary>
+            Returns the full escaped path of the current request.
+            </summary>
+        </member>
+        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.Site">
+            <summary>
+            Gets the <see cref="T:Wd3eCore.Settings.ISite"/> instance.
+            </summary>
+        </member>
         <member name="P:Wd3eCore.DisplayManagement.Razor.RazorPage`1.New">
             <summary>
             Gets a dynamic shape factory to create new shapes.
@@ -601,70 +665,6 @@
         <member name="P:Wd3eCore.DisplayManagement.Razor.RazorViewFeature.Theme">
             <summary>
             The current theme.
-            </summary>
-        </member>
-        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.New">
-            <summary>
-            Gets a dynamic shape factory to create new shapes.
-            </summary>
-            <example>
-            Usage:
-            <code>
-            await New.MyShape()
-            await New.MyShape(A: 1, B: "Some text")
-            (await New.MyShape()).A(1).B("Some text")
-            </code>
-            </example>
-        </member>
-        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.Factory">
-            <summary>
-            Gets an <see cref="T:Wd3eCore.DisplayManagement.IShapeFactory"/> to create new shapes.
-            </summary>
-        </member>
-        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.DisplayAsync(System.Object)">
-            <summary>
-            Renders a shape.
-            </summary>
-            <param name="shape">The shape.</param>
-        </member>
-        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.T">
-            <summary>
-            The <see cref="T:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer"/> instance for the current view.
-            </summary>
-        </member>
-        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.RenderTitleSegments(Microsoft.AspNetCore.Html.IHtmlContent,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
-            <summary>
-            Adds a segment to the title and returns all segments.
-            </summary>
-            <param name="segment">The segment to add to the title.</param>
-            <param name="position">Optional. The position of the segment in the title.</param>
-            <param name="separator">The html string that should separate all segments.</param>
-            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
-        </member>
-        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.RenderTitleSegments(System.String,System.String,Microsoft.AspNetCore.Html.IHtmlContent)">
-            <summary>
-            Adds a segment to the title and returns all segments.
-            </summary>
-            <param name="segment">The segment to add to the title.</param>
-            <param name="position">Optional. The position of the segment in the title.</param>
-            <param name="separator">The html string that should separate all segments.</param>
-            <returns>And <see cref="T:Microsoft.AspNetCore.Html.IHtmlContent"/> instance representing the full title.</returns>
-        </member>
-        <member name="M:Wd3eCore.DisplayManagement.RazorPages.Page.Tag(System.Object)">
-            <summary>
-            Creates a <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/> to render a shape.
-            </summary>
-            <param name="shape">The shape.</param>
-            <returns>A new <see cref="T:Microsoft.AspNetCore.Mvc.Rendering.TagBuilder"/>.</returns>
-        </member>
-        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.FullRequestPath">
-            <summary>
-            Returns the full escaped path of the current request.
-            </summary>
-        </member>
-        <member name="P:Wd3eCore.DisplayManagement.RazorPages.Page.Site">
-            <summary>
-            Gets the <see cref="T:Wd3eCore.Settings.ISite"/> instance.
             </summary>
         </member>
         <member name="T:Wd3eCore.DisplayManagement.Shapes.AlternatesCollection">

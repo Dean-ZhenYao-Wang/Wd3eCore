@@ -1,7 +1,7 @@
-﻿namespace Wd3eCore.Environment.Shell.Descriptor.Models
+namespace Wd3eCore.Environment.Shell.Descriptor.Models
 {
     /// <summary>
-    /// A shell parameter is a custom value that can be assigned to a specific component in a shell.
+    /// shell参数是可以分配给shell中特定组件的自定义值。
     /// </summary>
     public class ShellParameter
     {

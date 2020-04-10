@@ -76,10 +76,10 @@ namespace Wd3eCore.Users.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
         {
-            if (HttpContext.User != null && HttpContext.User.Identity.IsAuthenticated)
-            {
-                returnUrl = null;
-            }
+            //if (HttpContext.User != null && HttpContext.User.Identity.IsAuthenticated)
+            //{
+            //    returnUrl = null;
+            //}
 
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);

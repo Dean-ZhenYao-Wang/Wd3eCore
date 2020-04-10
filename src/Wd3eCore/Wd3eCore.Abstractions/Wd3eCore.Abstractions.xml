@@ -6,67 +6,62 @@
     <members>
         <member name="P:Wd3eCore.BackgroundTasks.BackgroundTaskSettings.IsReadonly">
             <summary>
-            True if the object can't be used to update the database.
+            如果对象不能用于更新数据库，则为True。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Extensions.Features.IFeatureHash">
             <summary>
-            An implementation of this interface provide efficient access to the state
-            of the enabled feature in order to provide hashes used for caching.
-            Because its state should be cached, the instance should not have any state
-            thus is declared as transient.
+            此接口的实现提供对启用特性状态的有效访问，以便提供用于缓存的Hash。
+            因为它的状态应该被缓存，所以实例不应该有任何状态，因此被声明为瞬态。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Extensions.Features.IFeatureHash.GetFeatureHashAsync">
             <summary>
-            Returns a serial number representing the list of available features for the current tenant.
+            返回一个序列号，该序列号表示当前租户的可用特性列表。
             </summary>
             <returns>
-            An <see cref="T:System.Int32"/> value that changes every time the list of features changes.
-            The implementation is efficient in order to be called frequently.
+             一个<see cref="T:System.Int32"/>值，该值在每次特性列表更改时都会更改。
             </returns>
         </member>
         <member name="M:Wd3eCore.Environment.Extensions.Features.IFeatureHash.GetFeatureHashAsync(System.String)">
             <summary>
-            Returns a serial number representing the list of available features for the current tenant.
+            返回一个序列号，该序列号表示当前租户的可用特性列表。
             </summary>
             <returns>
-            A <see cref="T:System.Int32"/> value that changes every time a specific feature is enabled.
-            The implementation is efficient in order to be called frequently.
+            一个<see cref="T:System.Int32"/>值，该值在每次启用特定特性时都会更改。
             </returns>
         </member>
         <member name="T:Wd3eCore.Environment.Extensions.ITypeFeatureProvider">
             <summary>
-            An implementation of this service is able to provide the "Feature" that
-            any services was harvested from.
+            此服务的实现能够提供任何服务的"Feature"。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.Id">
             <summary>
-            The id of the extension
+            扩展的id
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.SubPath">
             <summary>
-            The path to the extension
+            扩展的路径
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.Manifest">
             <summary>
-            The manifest info of the extension
+            扩展的清单信息
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Extensions.IExtensionInfo.Features">
             <summary>
-            List of features in extension
+            扩展中的特性列表
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Extensions.Utility.DependencyOrdering.OrderByDependenciesAndPriorities``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,System.Boolean},System.Func{``0,System.Int32})">
             <summary>
-            Linearizes a dependency graph so that items are positioned after their dependencies.
-            This by using a function which determines if an item has a direct dependency on another.
-            Then, items are moved up whenever it is possible without breaking the dependency graph.
-            This by using a function which gives for each item a priority used as an order value.
+            将依赖关系图线性化，使项的位置在其依赖关系之后。
+            这是通过使用一个函数来确定一个项目是否直接依赖于另一个项目。
+            然后，在不破坏依赖关系图的情况下，只要有可能，项目就会向上移动。
+            这是通过使用一个函数来实现的，该函数为每个项目提供一个优先级作为一个订单值。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.SignalExtensions.DeferredSignalToken(Wd3eCore.Environment.Cache.ISignal,System.String)">
@@ -76,160 +71,152 @@
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Builders.ICompositionStrategy">
             <summary>
-            Service at the host level to transform the cachable descriptor into the loadable blueprint.
+            服务在主机级将可缓存的描述符转化为可加载的蓝图。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.ICompositionStrategy.ComposeAsync(Wd3eCore.Environment.Shell.ShellSettings,Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor)">
             <summary>
-            Using information from the IExtensionManager, transforms and populates all of the
-            blueprint model the shell builders will need to correctly initialize a tenant IoC container.
+            使用来自 IExtensionManager 的信息，转换并填充 shell 构建者,正确初始化租户 IoC 容器所需的所有蓝图模型。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Builders.IShellContextFactory">
             <summary>
-            High-level coordinator that exercises other component capabilities to
-            build all of the artifacts for a running shell given a tenant settings.
+            高级协调器，它使用其他组件功能，在给定租户设置的情况下为正在运行的shell构建所有构件。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.IShellContextFactory.CreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Builds a shell context given a specific tenant settings structure
+            根据特定的租户设置结构构建shell上下文
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.IShellContextFactory.CreateSetupContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Builds a shell context for an uninitialized Wd3e instance. Needed
-            to display setup user interface.
+            为未初始化的Wd3e实例构建shell上下文。需要显示设置用户界面。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.IShellContextFactory.CreateDescribedContextAsync(Wd3eCore.Environment.Shell.ShellSettings,Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor)">
             <summary>
-            Builds a shell context given a specific description of features and parameters.
-            Shell's actual current descriptor has no effect. Does not use or update descriptor cache.
+            给定特性和参数的特定描述，构建shell上下文。
+            Shell当前的实际描述符没有作用。不使用或更新描述符缓存。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.IShellPipeline.Invoke(System.Object)">
             <summary>
-            Executes this shell pipeline.
+            执行这个shell管道。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Builders.Models.ShellBlueprint">
             <summary>
-            Contains the information necessary to initialize an IoC container
-            for a particular tenant. This model is created by the ICompositionStrategy
-            and is passed into the IShellContainerFactory.
+            包含为特定租户初始化IoC容器所需的信息。
+            这个模型由ICompositionStrategy创建，并传递到IShellContainerFactory。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Builders.ShellContext">
             <summary>
-            The shell context represents the shell's state that is kept alive
-            for the whole life of the application
+            shell上下文代表了shell的状态，在应用的整个生命周期内，shell的状态都是保持的
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.IsActivated">
             <summary>
-            Whether the shell is activated.
+            shell是否被激活。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.Pipeline">
             <summary>
-            The Pipeline built for this shell.
+            为这个shell建造的管道。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContext.PlaceHolder.#ctor">
             <summary>
-            Used as a place holder for a shell that will be lazily created.
+            用作将被延迟创建的shell的占位符。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.Released">
             <summary>
-            Whether the <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> instance is not yet built or has been released, for instance when a tenant is changed.
+            是否尚未构建<see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>实例或是否已释放该实例(例如，当租户发生更改时)。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Builders.ShellContext.ActiveScopes">
             <summary>
-            Returns the number of active scopes on this tenant.
+            返回此租户上活动作用域的数量。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContext.Release">
             <summary>
-            Mark the <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> has a candidate to be released.
+            标志着<see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>有一个候选者被释放。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Builders.ShellContext.AddDependentShell(Wd3eCore.Environment.Shell.Builders.ShellContext)">
             <summary>
-            Registers the specified shellContext as a dependency such that they are also reloaded when the current shell context is reloaded.
+            将指定的Shell上下文注册为依赖项，以便在重新加载当前Shell上下文时也重新加载它们。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Configuration.ShellConfiguration">
             <summary>
-            Holds the tenant <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> which is lazily built
-            from the application configuration 'appsettings.json', the 'App_Data/appsettings.json'
-            file and then the 'App_Data/Sites/{tenant}/appsettings.json' file.
+            持有租户<see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> ，
+            它是由应用程序配置 "appsettings.json"、"App_Data/appsettings.json "文件
+            和 "App_Data/Sites/{tenant}/appsettings.json "文件延迟建立的。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Configuration.ShellConfiguration.Configuration">
             <summary>
-            The tenant lazily built <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            租户延迟建立<see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager">
             <summary>
-            Service resolved out of the shell container. Primarily used by host.
+            服务从shell容器中解析出来。主要由主机使用。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager.GetShellDescriptorAsync">
             <summary>
-            Uses shell-specific database or other resources to return
-            the current "correct" configuration. The host will use this information
-            to reinitialize the shell.
+            使用shell特定的数据库或其他资源来返回当前的 "正确 "配置。
+            主机将使用这些信息来重新初始化shell。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Descriptor.IShellDescriptorManager.UpdateShellDescriptorAsync(System.Int32,System.Collections.Generic.IEnumerable{Wd3eCore.Environment.Shell.Descriptor.Models.ShellFeature},System.Collections.Generic.IEnumerable{Wd3eCore.Environment.Shell.Descriptor.Models.ShellParameter})">
             <summary>
-            Alters databased information to match information passed as arguments.
-            Prior SerialNumber used for optimistic concurrency, and an exception
-            should be thrown if the number in storage doesn't match what's provided.
+            修改数据库信息以匹配作为参数传递的信息。
+            以前的SerialNumber用于乐观并发，如果存储中的数字与提供的数字不匹配，应该抛出异常。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor">
             <summary>
-            Contains a snapshot of a tenant's enabled features.
-            The information is drawn out of the shell via IShellDescriptorManager
-            and is passed to the ICompositionStrategy to build the ShellBlueprint.
+            包含租户启用的特性的快照。
+            信息通过IShellDescriptorManager从shell中提取出来，并传递给ICompositionStrategy来构建shell蓝图
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor.SerialNumber">
             <summary>
-            Gets or sets the version number of the shell descriptor.
+            获取或设置shell描述符的版本号。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor.Features">
             <summary>
-            Gets or sets the list of features in the shell.
+            获取或设置shell中的特性列表。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor.Parameters">
             <summary>
-            Gets or sets the list of parameters specific to this shell.
+            获取或设置特定于此shell的参数列表。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Descriptor.Models.ShellParameter">
             <summary>
-            A shell parameter is a custom value that can be assigned to a specific component in a shell.
+            shell参数是可以分配给shell中特定组件的自定义值。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHostExtensions.GetSettings(Wd3eCore.Environment.Shell.IShellHost,System.String)">
             <summary>
-            Retrieves the shell settings associated with the specified tenant.
+            检索与指定租户关联的shell设置。
             </summary>
-            <returns>The shell settings associated with the tenant.</returns>
+            <returns>与租户关联的shell设置。</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.ShellHostExtensions.GetScopeAsync(Wd3eCore.Environment.Shell.IShellHost,System.String)">
             <summary>
-            Creates a standalone service scope that can be used to resolve local services.
+            创建可用于解析本地服务的独立服务作用域。
             </summary>
-            <param name="tenant">The tenant name related to the service scope to get.</param>
+            <param name="tenant">与要获取的服务作用域相关的租户名称。</param>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.IShellDescriptorManagerEventHandler">
             <summary>
@@ -323,172 +310,172 @@
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Models.TenantState">
             <summary>
-            The different states of a Tenant.
+            租户的不同状态。
             </summary>
         </member>
         <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Uninitialized">
             <summary>
-            The tenant is not yet intialized.
+            租户还没有登记。
             </summary>
         </member>
         <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Initializing">
             <summary>
-            The tenant is being initialized.
+            正在初始化租户。
             </summary>
         </member>
         <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Running">
             <summary>
-            The tenant is initialized and running.
+            租户已初始化并正在运行。
             </summary>
         </member>
         <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Disabled">
             <summary>
-            The tenant is initialized and disabled.
+            已初始化并禁用了租户。
             </summary>
         </member>
         <member name="F:Wd3eCore.Environment.Shell.Models.TenantState.Invalid">
             <summary>
-            The tenant settings are invalid.
+            租户设置无效。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Scope.ShellScope">
             <summary>
-            Custom 'IServiceScope' managing the shell state and the execution flow.
+            管理shell状态和执行流的自定义'IServiceScope'。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Scope.ShellScope.Context">
             <summary>
-            Retrieve the 'ShellContext' of the current shell scope.
+            检索当前shell作用域的“ShellContext”。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Scope.ShellScope.Services">
             <summary>
-            Retrieve the 'IServiceProvider' of the current shell scope.
+            检索当前shell作用域的“IServiceProvider”。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.Scope.ShellScope.Current">
             <summary>
-            Retrieve the current shell scope from the async flow.
+            从异步流检索当前shell的作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.Set(System.Object,System.Object)">
             <summary>
-            Sets a shared item to the current shell scope.
+            将共享项设置为当前shell的作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.Get(System.Object)">
             <summary>
-            Gets a shared item from the current shell scope.
+            从当前shell的作用域获取共享项。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.Get``1(System.Object)">
             <summary>
-            Gets a shared item of a given type from the current shell scope.
+            从当前shell的作用域获取给定类型的共享项。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreate``1(System.Object,System.Func{``0})">
             <summary>
-            Gets (or creates) a shared item of a given type from the current shell scope.
+            从当前shell的作用域获取(或创建)给定类型的共享项。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreate``1(System.Object)">
             <summary>
-            Gets (or creates) a shared item of a given type from the current shell scope.
+            从当前shell的作用域获取(或创建)给定类型的共享项。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.SetFeature``1(``0)">
             <summary>
-            Sets a shared feature to the current shell scope.
+            将共享功能设置为当前shell的作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetFeature``1">
             <summary>
-            Gets a shared feature from the current shell scope.
+            从当前shell的作用域获取共享特性。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreateFeature``1(System.Func{``0})">
             <summary>
-            Gets (or creates) a shared feature from the current shell scope.
+            从当前shell的作用域获取(或创建)共享特性。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.GetOrCreateFeature``1">
-            <summary>
-            Gets (or creates) a shared feature from the current shell scope.
-            </summary>
+             <summary>
+            从当前shell的作用域获取(或创建)共享特性。
+             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.CreateChildScopeAsync">
             <summary>
-            Creates a child scope from the current one.
+            从当前shell的作用域创建子作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.CreateChildScopeAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Creates a child scope from the current one.
+            从当前shell的作用域创建子作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.CreateChildScopeAsync(System.String)">
             <summary>
-            Creates a child scope from the current one.
+            从当前shell的作用域创建子作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingChildScopeAsync(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Execute a delegate using a child scope created from the current one.
+            使用从当前作用域创建的子作用域执行委托。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingChildScopeAsync(Wd3eCore.Environment.Shell.ShellSettings,System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Execute a delegate using a child scope created from the current one.
+            使用从当前作用域创建的子作用域执行委托。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingChildScopeAsync(System.String,System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Execute a delegate using a child scope created from the current one.
+            使用从当前作用域创建的子作用域执行委托。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.StartAsyncFlow">
             <summary>
-            Start holding this shell scope along the async flow.
+            开始在异步流中保持这个shell作用域。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.UsingAsync(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Execute a delegate using this shell scope.
+            使用此shell作用域执行委托。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.ActivateShellAsync">
             <summary>
-            Activate the shell, if not yet done, by calling the related tenant event handlers.
+            如果尚未完成，则通过调用相关的租户事件处理程序来激活shell。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.BeforeDispose(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Registers a delegate to be invoked when 'BeforeDisposeAsync()' is called on this scope.
+            在此作用域上调用“BeforeDisposeAsync()”时，注册要调用的委托。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.DeferredSignal(System.String)">
             <summary>
-            Adds a Signal (if not already present) to be sent just after 'BeforeDisposeAsync()'.
+            在'BeforeDisposeAsync()'之后添加一个信号（如果还没有的话）。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.DeferredTask(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
-            <summary>
-            Adds a Task to be executed in a new scope after 'BeforeDisposeAsync()'.
-            </summary>
+             <summary>
+            在“BeforeDisposeAsync()”之后添加要在新作用域内执行的任务。
+             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.RegisterBeforeDispose(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Registers a delegate to be invoked before the current shell scope will be disposed.
+            注册要在当前shell作用域被释放之前调用的委托。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.AddDeferredSignal(System.String)">
             <summary>
-            Adds a Signal (if not already present) to be sent just before the current shell scope will be disposed.
+            添加一个信号(如果还没有出现)，在当前shell作用域被释放之前发送。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.AddDeferredTask(System.Func{Wd3eCore.Environment.Shell.Scope.ShellScope,System.Threading.Tasks.Task})">
             <summary>
-            Adds a Task to be executed in a new scope once the current shell scope has been disposed.
+            在当前shell作用域被释放后，添加要在新作用域内执行的任务。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.TerminateShellAsync">
@@ -553,147 +540,146 @@
         </member>
         <member name="T:Wd3eCore.Localization.CalendarName">
             <summary>
-            Represents an enum for calendar names
+            表示用于日历名称的枚举
             </summary>
         </member>
         <member name="T:Wd3eCore.Localization.CalendarSelectorResult">
             <summary>
-            Represents a result for the selected calendar.
+            表示所选日历的结果。
             </summary>
         </member>
         <member name="P:Wd3eCore.Localization.CalendarSelectorResult.Priority">
             <summary>
-            Gets or sets the priority.
+            获取或设置优先级。
             </summary>
         </member>
         <member name="P:Wd3eCore.Localization.CalendarSelectorResult.CalendarName">
             <summary>
-            Gets or sets a calendar name.
+            获取或设置日历名称。
             </summary>
         </member>
         <member name="T:Wd3eCore.Localization.ICalendarManager">
             <summary>
-            Represents a contract for manage calendars.
+            表示用于管理日历的契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Localization.ICalendarManager.GetCurrentCalendar">
             <summary>
-            Gets the current calendar.
+            获取当前日历。
             </summary>
-            <returns>The current calendar name.</returns>
+            <returns>当前日历名。</returns>
         </member>
         <member name="T:Wd3eCore.Localization.ICalendarSelector">
             <summary>
-            Represents a contract for selection a calendar.
+            表示用于选择日历的契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Localization.ICalendarSelector.GetCalendarAsync">
             <summary>
-            Gets a calendar.
+            一个日历。
             </summary>
-            <returns>The selected calendar.</returns>
+            <returns>选择的日历。</returns>
         </member>
         <member name="T:Wd3eCore.Localization.ILocalizationService">
             <summary>
-            Represents a contract for a localization service.
+            表示本地化服务的契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Localization.ILocalizationService.GetDefaultCultureAsync">
             <summary>
-            Returns the default culture of the site.
+            返回站点的默认文化。
             </summary>
         </member>
         <member name="M:Wd3eCore.Localization.ILocalizationService.GetSupportedCulturesAsync">
             <summary>
-            Returns all the supported cultures of the site. It also contains the default culture.
+            返回站点支持的所有文化。它还包含默认的区域性。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.StartupActionsStartup">
             <summary>
-            Represents a fake Startup class that is composed of Configure and ConfigureServices lambdas.
+             代表一个由Configure和ConfigureServices lambdas组成的伪Startup 类。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.HttpContextExtensions.UseShellScopeServices(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
-            Makes <see cref="P:Microsoft.AspNetCore.Http.HttpContext.RequestServices"/> aware of the current <see cref="T:Wd3eCore.Environment.Shell.Scope.ShellScope"/>.
+            使 <see cref="P:Microsoft.AspNetCore.Http.HttpContext.RequestServices"/> 取到当前的 <see cref="T:Wd3eCore.Environment.Shell.Scope.ShellScope"/>.
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.Invoke``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.Invoke``2(System.Collections.Generic.IEnumerable{``0},System.Action{``0,``1},``1,Microsoft.Extensions.Logging.ILogger)">
-            <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
-            </summary>
+             <summary>
+            通过捕获非致命异常并记录它们来安全地调用方法
+             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task},Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,System.Threading.Tasks.Task},``1,Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``3(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,System.Threading.Tasks.Task},``1,``2,Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``4(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,``3,System.Threading.Tasks.Task},``1,``2,``3,Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``5(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,``3,``4,System.Threading.Tasks.Task},``1,``2,``3,``4,Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.InvokeExtensions.InvokeAsync``6(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1,``2,``3,``4,``5,System.Threading.Tasks.Task},``1,``2,``3,``4,``5,Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Safely invoke methods by catching non fatal exceptions and logging them
+            通过捕获非致命异常并记录它们来安全地调用方法
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.FeatureAttribute">
             <summary>
-            An attribute that can associate a service or component with
-            a specific feature by its name. This component will only
-            be used if the feature is enabled.
+            可以通过名称将服务或组件的属性与特定特性关联。
+            该组件只有在该特性被启用时才会被使用。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.FeatureAttribute.FeatureName">
             <summary>
-            The name of the feaure to assign the component to.
+            要分配组件的属性的名称。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo">
             <summary>
-            Represents a directory on a physical filesystem
+            表示物理文件系统上的目录
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.#ctor(System.String)">
             <summary>
-            Initializes an instance of <see cref="T:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo"/>
+            初始化<see cref="T:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo"/>的一个实例
             </summary>
-            <param name="name">The directory</param>
+            <param name="name">目录</param>
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Exists">
             <summary>
-            Always true.
+            总是true。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Length">
             <summary>
-            Always equals -1.
+            总是等于-1。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.PhysicalPath">
             <summary>
-            Always null.
+            总是null。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.Name">
@@ -701,65 +687,61 @@
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.LastModified">
             <summary>
-            The time when the directory was last written to.
+            最后写入目录的时间。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.IsDirectory">
             <summary>
-            Always true.
+            总是true。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.FileProviders.EmbeddedDirectoryInfo.CreateReadStream">
             <summary>
-            Always throws an exception because read streams are not support on directories.
+            总是抛出异常，因为目录上不支持读流。
             </summary>
-            <exception cref="T:System.InvalidOperationException">Always thrown</exception>
-            <returns>Never returns</returns>
+            <exception cref="T:System.InvalidOperationException">总是被</exception>
+            <returns>从来没有返回</returns>
         </member>
         <member name="T:Wd3eCore.Modules.FileProviders.IStaticFileProvider">
             <summary>
-            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides Di registration identification
-            for IStaticFileProviders that should be served via UseStaticFiles.
+            这个自定义<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实现为istaticfileprovider提供Di注册标识，该标识应该通过UseStaticFiles提供。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.FileProviders.NormalizedPaths.ResolveFolderContents(System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String}@,System.Collections.Generic.IEnumerable{System.String}@)">
             <summary>
-            Use a collection of file paths to resolve files and subfolders directly under a given folder.
-            Paths need to be normalized by using '/' for the directory separator and with no leading '/'.
+            使用一组文件路径来直接解析给定文件夹下的文件和子文件夹。
+            路径需要用'/'作为目录分隔符，并且没有前导的'/'。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.IModuleStaticFileProvider">
             <summary>
-            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides Di registration identification
-            for IStaticFileProviders that should be served via UseStaticFiles.
+            这个自定义<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实现为IStaticFileProviders提供Di注册标识，该标识应该通过UseStaticFiles提供。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.IStartup">
             <summary>
-            An implementation of this interface is used to initialize the services and HTTP request
-            pipeline of a module.
+            此接口的实现用于初始化模块的服务和HTTP请求管道。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.IStartup.Order">
-            <summary>
-            Get the value to use to order startups to configure services. The default is 0.
-            </summary>
+             <summary>
+            获取用于命令启动程序配置服务的值。默认值为0。
+             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.IStartup.ConfigureOrder">
             <summary>
-            Get the value to use to order startups to build the pipeline. The default is the 'Order' property.
+            获取用于命令启动器构建管道的值。默认值为 "Order "属性。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.IStartup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            This method gets called by the runtime. Use this method to add services to the container.
-            For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+            此方法由运行时调用。使用此方法将服务添加到容器中。
             </summary>
-            <param name="services">The collection of service descriptors.</param>
+            <param name="services">服务描述符的集合。</param>
         </member>
         <member name="M:Wd3eCore.Modules.IStartup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.IServiceProvider)">
             <summary>
-            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            此方法由运行时调用。使用此方法配置HTTP请求管道。
             </summary>
             <param name="builder"></param>
             <param name="routes"></param>
@@ -767,47 +749,47 @@
         </member>
         <member name="T:Wd3eCore.Modules.Manifest.FeatureAttribute">
             <summary>
-            Defines a Feature in a Module, can be used multiple times.
-            If at least one Feature is defined, the Module default feature is ignored.
+            在模块中定义一个特性，可以多次使用。
+            如果至少定义了一个特性，则忽略模块默认特性。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Id">
-            <Summary>The identifier of the feature.</Summary>
+            <Summary>特性的标识符</Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Name">
             <Summary>
-            Human-readable name of the feature. If not provided, the identifier will be used.
+            可读的特性名称。如果没有提供，将使用标识符。
             </Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Description">
-            <Summary>A brief summary of what the feature does.</Summary>
+            <Summary>简要总结一下这个特性。</Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Dependencies">
             <Summary>
-            A list of features that the feature depends on.
-            So that its drivers / handlers are invoked after those of dependencies.
+            特性所依赖的特性列表
+            它的驱动程序/处理程序会在依赖关系的驱动/处理程序之后调用。
             </Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Priority">
             <Summary>
-            The priority of the feature without breaking the dependencies order.
-            higher is the priority, later the drivers / handlers are invoked.
+            不破坏依赖顺序的特性的优先级。
+            高者为先 后面的驱动/处理程序被调用。
             </Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.Category">
             <Summary>
-            The group (by category) that the feature belongs.
-            If not provided, defaults to 'Uncategorized'.
+            特性所属的组(按类别)。
+            如果没有提供，默认为“Uncategorized”。
             </Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.DefaultTenantOnly">
-            <summary>
-            Set to <c>true</c> to only allow the Default tenant to enable / disable the feature.
-            </summary>
+             <summary>
+            设置为<c>true</c>，只允许默认租户启用/禁用该特性。
+             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.FeatureAttribute.IsAlwaysEnabled">
             <summary>
-            Once enabled, check whether the feature can't be disabled. Defaults to false.
+            启用后，检查是否不能禁用该特性。默认值为false。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.Manifest.ModuleAssetAttribute">
@@ -822,157 +804,151 @@
         </member>
         <member name="T:Wd3eCore.Modules.Manifest.ModuleAttribute">
             <summary>
-            Defines a Module which is composed of features.
-            If the Module has only one default feature, it may be defined there.
+            定义一个由特性组成的模块。
+            如果模块只有一个默认功能，可以在这里定义。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Id">
             <Summary>
-            Logical id allowing a module project to change its 'AssemblyName' without
-            having to update the code. If not provided, the assembly name will be used.
+            允许模块项目更改其“AssemblyName”而无需更新代码的逻辑id。如果没有提供，则使用程序集名称。
             </Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Author">
-            <Summary>The name of the developer.</Summary>
+            <Summary>开发者的名字。</Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Website">
-            <Summary>The URL for the website of the developer.</Summary>
+            <Summary>开发人员网站的URL。</Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Version">
-            <Summary>The version number in SemVer format.</Summary>
+            <Summary>SemVer格式的版本号。</Summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.ModuleAttribute.Tags">
-            <Summary>A list of tags.</Summary>
+            <Summary>标签列表。</Summary>
         </member>
         <member name="T:Wd3eCore.Modules.Manifest.ModuleMarkerAttribute">
             <summary>
-            Marks an assembly as a module of a given type, auto generated on building.
+            将一个程序集标记为指定类型的模块，在构建时自动生成。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.Manifest.ModuleNameAttribute">
             <summary>
-            Enlists the package or project name of a referenced module, auto generated on building.
+            列出引用模块的包或项目名，在构建时自动生成。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.Manifest.ModuleNameAttribute.Name">
             <Summary>
-            The package or project name of the referenced module.
+            引用模块的包或项目名。
             </Summary>
         </member>
         <member name="T:Wd3eCore.Modules.ITimeZone">
             <summary>
-            Represents a time zone.
+            表示一个时区。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ModuleCompositeStaticFileProvider">
             <summary>
-            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides Di registration identification
-            for IStaticFileProviders that should be served via UseStaticFiles.
+            这个自定义<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实现为IStaticFileProviders提供Di注册标识，该标识应该通过UseStaticFiles提供。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ModuleEmbeddedFileProvider">
             <summary>
-            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides the file contents
-            of embedded files in Module assemblies.
+            这个自定义的<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实现提供模块程序集中嵌入文件的文件内容。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ModuleEmbeddedStaticFileProvider">
             <summary>
-            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides the file contents
-            of embedded files in Module assemblies whose path is under a Module 'wwwroot' folder.
+            这个自定义<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实现提供模块程序集中嵌入文件的文件内容，其路径位于模块“wwwroot”文件夹下。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ModuleProjectStaticFileProvider">
             <summary>
-            This custom <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> implementation provides the file contents of files
-            whose path is under a Module Project 'wwwroot' folder, and while in a development environment.
+            这个自定义的<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实现提供的文件内容，
+            其路径在模块项目 "wwwroot "文件夹下的文件，在开发环境中时，提供的文件内容。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.RequireFeaturesAttribute">
             <summary>
-            When used on a class, it will include the service only
-            if the specific features are enabled.
+            当在一个类上使用时，只有在特定的特性被启用时，它才会包含服务。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.RequireFeaturesAttribute.RequiredFeatureNames">
             <summary>
-            The names of the required features.
+            所需特性的名称。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.ClockExtensions.ConvertToTimeZone(Wd3eCore.Modules.IClock,System.DateTime,Wd3eCore.Modules.ITimeZone)">
             <summary>
-            Converts a <see cref="T:System.DateTime" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            将<see cref="T:System.DateTime" />转换为指定的<see cref="T:Wd3eCore.Modules.ITimeZone" />实例。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.ClockExtensions.ConvertToLocalAsync(Wd3eCore.Modules.ILocalClock,System.DateTime)">
             <summary>
-            Converts a <see cref="T:System.DateTime" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            将<see cref="T:System.DateTime" />转换为指定的<see cref="T:Wd3eCore.Modules.ITimeZone" />实例。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.IClock">
             <summary>
-            Provides the current Utc <see cref="T:System.DateTime"/>, and timezone related methods.
-            This service should be used whenever the current date and time are needed, instead of <seealso cref="T:System.DateTime"/> directly.
-            If local date time and timezones are needed use <see cref="T:Wd3eCore.Modules.ILocalClock" /> instead.
+            提供当前Utc<see cref="T:System.DateTime"/>，以及与时区相关的方法。
+            只要需要当前日期和时间，就应该使用此服务，而不是直接使用<seealso cref="T:System.DateTime"/>。
+            如果需要本地日期时间和时区，可以使用<see cref="T:Wd3eCore.Modules.ILocalClock" />。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.IClock.UtcNow">
             <summary>
-            Gets the current <see cref="T:System.DateTime"/> of the system, expressed in Utc.!--
+            获取系统的当前<see cref="T:System.DateTime"/>，用Utc表示
             </summary>
             <remarks>
-            A <see cref="T:System.DateTime"/> as this property is usually used to store the current date time in UTC and a <see cref="T:System.DateTimeOffset" />
-            would affect usability.
+            <see cref="T:System.DateTime"/>作为这个属性通常用于在UTC中存储当前日期时间，<see cref="T:System.DateTimeOffset" />会影响可用性。
             </remarks>
         </member>
         <member name="M:Wd3eCore.Modules.IClock.GetTimeZones">
             <summary>
-            Returns the list of all available <see cref="T:Wd3eCore.Modules.ITimeZone" />.
+            返回所有可用的<see cref="T:Wd3eCore.Modules.ITimeZone" />.
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.IClock.GetTimeZone(System.String)">
             <summary>
-            Returns a <see cref="T:Wd3eCore.Modules.ITimeZone" /> from a time zone id or the local system's one if not found.
+             返回一个时区ID的 <see cref="T:Wd3eCore.Modules.ITimeZone" />，如果没有找到，则返回本地系统的时区ID。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.IClock.GetSystemTimeZone">
             <summary>
-            Returns a default <see cref="T:Wd3eCore.Modules.ITimeZone" /> for the system.
+            返回系统的默认<see cref="T:Wd3eCore.Modules.ITimeZone" />。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.IClock.ConvertToTimeZone(System.DateTimeOffset,Wd3eCore.Modules.ITimeZone)">
             <summary>
-            Converts a <see cref="T:System.DateTimeOffset" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            将<see cref="T:System.DateTimeOffset" />转换为指定的<see cref="T:Wd3eCore.Modules.ITimeZone" />实例。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ILocalClock">
             <summary>
-            Provides local values of the current time and time zone.
+            提供当前时间和时区的本地值。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.ILocalClock.LocalNowAsync">
             <summary>
-            Gets the time for the local time zone.
+            获取本地时区的时间。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.ILocalClock.GetLocalTimeZoneAsync">
             <summary>
-            Returns the local time zone.
+            返回本地时区。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.ILocalClock.ConvertToLocalAsync(System.DateTimeOffset)">
             <summary>
-            Converts a <see cref="T:System.DateTimeOffset" /> to the specified <see cref="T:Wd3eCore.Modules.ITimeZone" /> instance.
+            将<see cref="T:System.DateTimeOffset" />转换为指定的<see cref="T:Wd3eCore.Modules.ITimeZone" />实例。
             </summary>
         </member>
         <member name="M:Wd3eCore.Modules.ILocalClock.ConvertToUtcAsync(System.DateTime)">
             <summary>
-            Converts a <see cref="T:System.DateTime" /> representing a local time to the UTC value.
+            将表示本地时间的<see cref="T:System.DateTime" />转换为UTC值。
             </summary>
         </member>
         <member name="T:Wd3eCore.Modules.ITimeZoneSelector">
             <summary>
-            Provides the timezone for the current request.
+            为当前请求提供时区。
             </summary>
         </member>
         <member name="P:Wd3eCore.Modules.StartupBase.Order">
@@ -989,50 +965,48 @@
         </member>
         <member name="T:Wd3eCore.Routing.IShellRouteValuesAddressScheme">
             <summary>
-            Marker interface to retrieve tenant 'RouteValuesAddress' schemes used for link generation.
+            标记接口，用于检索用于链接生成的租户 "RouteValuesAddress "方案。
             </summary>
         </member>
         <member name="T:Wd3eCore.Routing.ShellRouteValuesAddressScheme">
             <summary>
-            Allows a tenant to add its own 'RouteValuesAddress' schemes used for link generation.
+            允许租户添加自己的“RouteValuesAddress”方案，用于生成链接。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.ConfigureServices(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection,System.IServiceProvider},System.Int32)">
             <summary>
-            This method gets called for each tenant. Use this method to add services to the container.
-            For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+            为每个租户调用此方法。使用此方法将服务添加到容器中。
             </summary>
-            <param name="configure">The action to execute when configuring the services for a tenant.</param>
-            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+            <param name="configure">为租户配置服务时要执行的操作.</param>
+            <param name="order">执行动作的顺序。较低的值将首先执行。</param>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.ConfigureServices(System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Int32)">
             <summary>
-            This method gets called for each tenant. Use this method to add services to the container.
-            For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+            为每个租户调用此方法。使用此方法将服务添加到容器中。
             </summary>
-            <param name="configure">The action to execute when configuring the services for a tenant.</param>
-            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+            <param name="configure">为租户配置服务时要执行的操作。</param>
+            <param name="order">执行动作的顺序。较低的值将首先执行。</param>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.Configure(System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.IServiceProvider},System.Int32)">
             <summary>
-            This method gets called for each tenant. Use this method to configure the request's pipeline.
+            为每个租户调用此方法。使用此方法配置请求的管道。
             </summary>
-            <param name="configure">The action to execute when configuring the request's pipeling for a tenant.</param>
-            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+            <param name="configure">为租户配置请求的管道时要执行的操作。</param>
+            <param name="order">执行动作的顺序。较低的值将首先执行。</param>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.Configure(System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Routing.IEndpointRouteBuilder},System.Int32)">
             <summary>
-            This method gets called for each tenant. Use this method to configure the request's pipeline.
+            为每个租户调用此方法。使用此方法配置请求的管道。
             </summary>
-            <param name="configure">The action to execute when configuring the request's pipeling for a tenant.</param>
-            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+            <param name="configure">为租户配置请求的管道时要执行的操作。</param>
+            <param name="order">执行动作的顺序。较低的值将首先执行。</param>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder.Configure(System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder},System.Int32)">
             <summary>
-            This method gets called for each tenant. Use this method to configure the request's pipeline.
+            为每个租户调用此方法。使用此方法配置请求的管道。
             </summary>
-            <param name="configure">The action to execute when configuring the request's pipeling for a tenant.</param>
-            <param name="order">The order of the action to execute. Lower values will be executed first.</param>
+            <param name="configure">为租户配置请求的管道时要执行的操作。</param>
+            <param name="order">执行动作的顺序。较低的值将首先执行。</param>
         </member>
     </members>
 </doc>

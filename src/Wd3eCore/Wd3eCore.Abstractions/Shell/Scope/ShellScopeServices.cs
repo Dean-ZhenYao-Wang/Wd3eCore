@@ -7,7 +7,7 @@ namespace Wd3eCore.Environment.Shell.Scope
         private readonly IServiceProvider _services;
 
         /// <summary>
-        /// Makes an 'IServiceProvider' aware of the current 'ShellScope'.
+        /// 使“IServiceProvider”知道当前的“ShellScope”。
         /// </summary>
         public ShellScopeServices(IServiceProvider services) => _services = services;
 

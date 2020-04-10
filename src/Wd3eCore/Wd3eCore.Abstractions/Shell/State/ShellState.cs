@@ -3,9 +3,9 @@ using System.Collections.Generic;
 namespace Wd3eCore.Environment.Shell.State
 {
     /// <summary>
-    /// Represents the transitive list of features a tenant is made of at a specific moment.
-    /// It's used to differentiate new features from existing ones in order to trigger events like
-    /// Installed/Unistalled compared to only Enabled/Disabled.
+    /// 表示租户在特定时刻构成的可用特性列表。
+    /// 代表了特定时刻的租户所构成的可用特性。
+    /// 它用于区分新功能和现有功能，以便触发像安装/解锁这样的事件，而不是只启用/禁用。
     /// </summary>
     public class ShellState
     {

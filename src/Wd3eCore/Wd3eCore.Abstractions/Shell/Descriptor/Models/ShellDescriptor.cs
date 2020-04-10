@@ -3,24 +3,23 @@ using System.Collections.Generic;
 namespace Wd3eCore.Environment.Shell.Descriptor.Models
 {
     /// <summary>
-    /// Contains a snapshot of a tenant's enabled features.
-    /// The information is drawn out of the shell via IShellDescriptorManager
-    /// and is passed to the ICompositionStrategy to build the ShellBlueprint.
+    /// 包含租户启用的特性的快照。
+    /// 信息通过IShellDescriptorManager从shell中提取出来，并传递给ICompositionStrategy来构建shell蓝图
     /// </summary>
     public class ShellDescriptor
     {
         /// <summary>
-        /// Gets or sets the version number of the shell descriptor.
+        /// 获取或设置shell描述符的版本号。
         /// </summary>
         public int SerialNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of features in the shell.
+        /// 获取或设置shell中的特性列表。
         /// </summary>
         public IList<ShellFeature> Features { get; set; } = new List<ShellFeature>();
 
         /// <summary>
-        /// Gets or sets the list of parameters specific to this shell.
+        /// 获取或设置特定于此shell的参数列表。
         /// </summary>
         public IList<ShellParameter> Parameters { get; set; } = new List<ShellParameter>();
     }

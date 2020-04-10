@@ -8,9 +8,9 @@ using Wd3eCore.Environment.Shell.Models;
 namespace Wd3eCore.Environment.Shell
 {
     /// <summary>
-    /// Represents the minimalistic set of fields stored for each tenant. This model
-    /// is obtained from the 'IShellSettingsManager', which by default reads this
-    /// from the 'App_Data/tenants.json' file.
+    /// 代表每个租户存储的最小化字段集。
+    /// 这个模型从'IShellSettingsManager'中获得，
+    /// 默认情况下，它从'App_Data/tenants.json'文件中读取。
     /// </summary>
     public class ShellSettings
     {

@@ -7,26 +7,24 @@ namespace Wd3eCore.Environment.Shell
     public static class ShellHostExtensions
     {
         /// <summary>
-        /// Retrieves the shell settings associated with the specified tenant.
+        /// 检索与指定租户关联的shell设置。
         /// </summary>
-        /// <returns>The shell settings associated with the tenant.</returns>
+        /// <returns>与租户关联的shell设置。</returns>
         public static ShellSettings GetSettings(this IShellHost shellHost, string tenant)
         {
             if (!shellHost.TryGetSettings(tenant, out var settings))
             {
-                throw new ArgumentException("The specified tenant name is not valid.", nameof(tenant));
+                throw new ArgumentException("The specified tenant name is not valid./指定的租户名称无效。", nameof(tenant));
             }
 
             return settings;
         }
 
         /// <summary>
-        /// Creates a standalone service scope that can be used to resolve local services.
+        /// 创建可用于解析本地服务的独立服务作用域。
         /// </summary>
-        /// <param name="tenant">The tenant name related to the service scope to get.</param>
-#pragma warning disable CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
+        /// <param name="tenant">与要获取的服务作用域相关的租户名称。</param>
         public static Task<ShellScope> GetScopeAsync(this IShellHost shellHost, string tenant)
-#pragma warning restore CS1573 // 参数在 XML 注释中没有匹配的 param 标记(但其他参数有)
         {
             return shellHost.GetScopeAsync(shellHost.GetSettings(tenant));
         }
