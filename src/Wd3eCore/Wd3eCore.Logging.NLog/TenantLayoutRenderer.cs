@@ -8,7 +8,7 @@ using Wd3eCore.Environment.Shell.Scope;
 namespace Wd3eCore.Logging
 {
     /// <summary>
-    /// Print the tenant name
+    /// 输出租户名称
     /// </summary>
     [LayoutRenderer(LayoutRendererName)]
     public class TenantLayoutRenderer : AspNetLayoutRendererBase
@@ -21,7 +21,7 @@ namespace Wd3eCore.Logging
 
             if (tenantName == null)
             {
-                // If there is no ShellContext in the Features then the log is rendered from the Host.
+                // 如果特征中没有ShellContext，那么将从Host日志中呈现。
                 tenantName = HttpContextAccessor.HttpContext.Features.Get<ShellContextFeature>()?.ShellContext.Settings.Name ?? "None";
             }
 

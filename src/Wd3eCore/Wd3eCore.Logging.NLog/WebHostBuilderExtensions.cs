@@ -26,7 +26,7 @@ namespace Wd3eCore.Logging
         }
     }
 
-    // Waiting for NLog to use `IHostEnvironment`.
+    // 等待NLog使用“IHostEnvironment”。
     internal static class AspNetExtensions
     {
         public static LoggingConfiguration ConfigureNLog(this IHostEnvironment env, string configFileRelativePath)
