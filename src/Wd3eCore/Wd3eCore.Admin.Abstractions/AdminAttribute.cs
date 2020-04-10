@@ -25,7 +25,7 @@ namespace Wd3eCore.Admin
 
         public static void Apply(HttpContext context)
         {
-            // The value isn't important, it's just a marker object
+            // 这个值并不重要，它只是一个标记对象
             context.Items[typeof(AdminAttribute)] = null;
         }
 
