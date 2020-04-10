@@ -4,27 +4,27 @@ using Microsoft.Extensions.Primitives;
 namespace Wd3eCore.Settings
 {
     /// <summary>
-    /// Provides services to manage the sites settings.
+    /// 提供管理站点设置的服务。
     /// </summary>
     public interface ISiteService
     {
         /// <summary>
-        /// Returns the site settings for udpate.
+        /// 返回udpate的站点设置。
         /// </summary>
         Task<ISite> LoadSiteSettingsAsync();
 
         /// <summary>
-        /// Return the site settings for the current tenant in read-only.
+        /// 以只读形式返回当前租户的站点设置。
         /// </summary>
         Task<ISite> GetSiteSettingsAsync();
 
         /// <summary>
-        /// Persists the changes to the site settings.
+        /// 保存对站点设置的更改。
         /// </summary>
         Task UpdateSiteSettingsAsync(ISite site);
 
         /// <summary>
-        /// Gets a change token that is set when site settings have changed.
+        /// 获取在站点设置更改时设置的更改令牌。
         /// </summary>
         IChangeToken ChangeToken { get; }
     }

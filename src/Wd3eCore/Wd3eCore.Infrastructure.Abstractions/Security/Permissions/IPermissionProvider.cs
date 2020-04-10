@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Security.Permissions
 {
     /// <summary>
-    /// Implemented by modules to enumerate the types of permissions
-    /// the which may be granted
+    /// 由模块实现，用于枚举可能被授予的权限类型。
     /// </summary>
     public interface IPermissionProvider
     {

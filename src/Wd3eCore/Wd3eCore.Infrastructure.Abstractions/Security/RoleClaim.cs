@@ -1,19 +1,19 @@
-﻿using System.Security.Claims;
+using System.Security.Claims;
 
 namespace Wd3eCore.Security
 {
     /// <summary>
-    /// Represents a claim that is granted to all users within a role.
+    /// 表示授予角色内所有用户的claim
     /// </summary>
     public class RoleClaim
     {
         /// <summary>
-        /// Gets or sets the claim type for this claim.
+        /// 获取或设置此claim的claim类型。
         /// </summary>
         public string ClaimType { get; set; }
 
         /// <summary>
-        /// Gets or sets the claim value for this claim.
+        /// 获取或设置此claim的claim值。
         /// </summary>
         public string ClaimValue { get; set; }
 

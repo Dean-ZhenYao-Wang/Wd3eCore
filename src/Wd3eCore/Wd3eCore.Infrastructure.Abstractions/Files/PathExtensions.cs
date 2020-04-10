@@ -11,7 +11,7 @@ namespace System.IO
         private const string ParentDirectoryToken = "..";
 
         /// <summary>
-        /// Combines two path parts
+        /// 合并两个路径部分
         /// </summary>
         public static string Combine(string path, string other = null)
         {
@@ -22,7 +22,7 @@ namespace System.IO
 
             if (other.StartsWith('/') || other.StartsWith('\\'))
             {
-                // "other" is already an app-rooted path. Return it as-is.
+                // "other "已经是一个应用程序的根路径。按原样返回。
                 return other;
             }
 
@@ -32,7 +32,7 @@ namespace System.IO
 
             if (index != path.Length - 1)
             {
-                // If the first ends in a trailing slash e.g. "/Home/", assume it's a directory.
+                // 如果第一个以斜线结尾，例如"/Home/"，则假定它是一个目录。
                 result = path + "/" + other;
             }
             else
@@ -44,7 +44,7 @@ namespace System.IO
         }
 
         /// <summary>
-        /// Combines multiple path parts
+        /// 组合多个路径部件
         /// </summary>
         public static string Combine(string path, params string[] others)
         {
@@ -59,14 +59,14 @@ namespace System.IO
         }
 
         /// <summary>
-        /// Resolves relative segments in a path
+        /// 解析路径中的相关段
         /// </summary>
         public static string ResolvePath(string path)
         {
             var pathSegment = new StringSegment(path);
             if (path[0] == PathSeparators[0] || path[0] == PathSeparators[1])
             {
-                // Leading slashes (e.g. "/Views/Index.cshtml") always generate an empty first token. Ignore these
+                // 前导斜线（例如"/Views/Index.cshtml"）总是会产生一个空的第一个令牌。忽略这些
                 // for purposes of resolution.
                 pathSegment = pathSegment.Subsegment(1);
             }
@@ -75,8 +75,8 @@ namespace System.IO
             var requiresResolution = false;
             foreach (var segment in tokenizer)
             {
-                // Determine if we need to do any path resolution.
-                // We need to resolve paths with multiple path separators (e.g "//" or "\\") or, directory traversals e.g. ("../" or "./").
+                // 确定是否需要进行路径解析。
+                // 我们需要用多个路径分隔符(如"//"或"\\\")或目录遍历，如(".../"或"./")来解析路径。
                 if (segment.Length == 0 ||
                     segment.Equals(ParentDirectoryToken) ||
                     segment.Equals(CurrentDirectoryToken))
@@ -96,22 +96,21 @@ namespace System.IO
             {
                 if (segment.Length == 0)
                 {
-                    // Ignore multiple directory separators
+                    // 忽略多个目录分隔符
                     continue;
                 }
                 if (segment.Equals(ParentDirectoryToken))
                 {
                     if (pathSegments.Count == 0)
                     {
-                        // Don't resolve the path if we ever escape the file system root. We can't reason about it in a
-                        // consistent way.
+                        //如果我们要转义文件系统根目录，请不要解析该路径。我们无法以一致的方式进行推理。
                         return path;
                     }
                     pathSegments.RemoveAt(pathSegments.Count - 1);
                 }
                 else if (segment.Equals(CurrentDirectoryToken))
                 {
-                    // We already have the current directory
+                    // 我们已经拥有了当前的目录
                     continue;
                 }
                 else

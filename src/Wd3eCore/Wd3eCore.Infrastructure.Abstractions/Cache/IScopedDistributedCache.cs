@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Infrastructure.Cache
 {
     /// <summary>
-    /// Provides a distributed cache service that can return existing references in the current scope.
+    /// 提供分布式缓存服务，可以返回当前范围内的现有引用。
     /// </summary>
     public interface IScopedDistributedCache
     {

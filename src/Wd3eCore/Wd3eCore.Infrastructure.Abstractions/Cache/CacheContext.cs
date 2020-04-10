@@ -15,8 +15,8 @@ namespace Wd3eCore.Environment.Cache
         }
 
         /// <summary>
-        /// Defines the absolute time the value should be cached for.
-        /// If not called a sliding value will be used.
+        /// 定义应该缓存值的绝对时间。
+        /// 如果不调用，将使用滑动值。
         /// </summary>
         public CacheContext WithExpiryOn(DateTimeOffset expiry)
         {
@@ -25,8 +25,8 @@ namespace Wd3eCore.Environment.Cache
         }
 
         /// <summary>
-        /// Defines the absolute time (relative from now) the value should be cached for.
-        /// If not called a sliding value will be used.
+        /// 定义应该为其缓存的绝对时间(相对于现在)。
+        /// 如果不调用，将使用滑动值。
         /// </summary>
         public CacheContext WithExpiryAfter(TimeSpan duration)
         {
@@ -35,8 +35,8 @@ namespace Wd3eCore.Environment.Cache
         }
 
         /// <summary>
-        /// Defines the sliding expiry time the value should be cached for.
-        /// If not called a default sliding value will be used (unless an absolute expiry time has been specified).
+        /// 定义值应该缓存的滑动过期时间。
+        /// 如果没有调用，将使用默认的滑动值(除非指定了绝对失效时间)。
         /// </summary>
         public CacheContext WithExpirySliding(TimeSpan window)
         {
@@ -45,8 +45,7 @@ namespace Wd3eCore.Environment.Cache
         }
 
         /// <summary>
-        /// Defines a dimension to cache the shape for. For instance by using <code>"user"</code>
-        /// each user will get a different value.
+        /// 定义用于缓存形态的维度。例如，通过使用<code>"user"</code>，每个用户将得到不同的值。
         /// </summary>
         public CacheContext AddContext(params string[] contexts)
         {
@@ -64,7 +63,7 @@ namespace Wd3eCore.Environment.Cache
         }
 
         /// <summary>
-        /// Removes a specific context.
+        /// 删除特定上下文。
         /// </summary>
         public CacheContext RemoveContext(string context)
         {

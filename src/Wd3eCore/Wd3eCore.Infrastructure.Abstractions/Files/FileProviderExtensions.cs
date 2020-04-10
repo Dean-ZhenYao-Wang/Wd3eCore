@@ -5,7 +5,7 @@ namespace Microsoft.Extensions.FileProviders
     public static class FileProviderExtensions
     {
         /// <summary>
-        /// Locate a file at the give relative paths
+        /// 在给定的相对路径上定位文件
         /// </summary>
         public static IFileInfo GetRelativeFileInfo(this IFileProvider provider, string path, string other = null)
         {

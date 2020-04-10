@@ -4,31 +4,29 @@ using Microsoft.Extensions.FileProviders;
 namespace Wd3eCore.Scripting
 {
     /// <summary>
-    /// An implementation of <see cref="IScriptingManager"/> provides services to evaluate
-    /// custom scripts.
+    /// <see cref="IScriptingManager"/>的一个实现提供了评估自定义脚本的服务。
     /// </summary>
     public interface IScriptingManager
     {
         /// <summary>
-        /// Gets the scripting engine with the specified prefix.
+        /// 获取指定前缀的脚本引擎。
         /// </summary>
-        /// <param name="prefix">A string representing the engine to return.</param>
-        /// <returns>A scripting engine or <code>null</code> if it couldn't be found.</returns>
+        /// <param name="prefix">代表要返回的引擎的字符串。</param>
+        /// <returns>脚本引擎或<code>null</code>(如果找不到的话)。</returns>
         IScriptingEngine GetScriptingEngine(string prefix);
 
         /// <summary>
-        /// Executes some prefixed script by looking for a matching scripting engine.
+        /// 通过寻找匹配的脚本引擎，执行一些前缀脚本。
         /// </summary>
-        /// <param name="directive">The directive to execute. A directive is made of a </param>
-        /// <param name="fileProvider">An optional <see cref="IFileProvider"/> instance.</param>
+        /// <param name="directive">要执行的指令。</param>
+        /// <param name="fileProvider">一个可选的<see cref="IFileProvider"/>实例。</param>
         /// <param name="basePath"></param>
-        /// <param name="scopedMethodProviders">A list of method providers scoped to the script evaluation.</param>
+        /// <param name="scopedMethodProviders">作用域为脚本评估的方法提供程序的列表。</param>
         /// <returns>The result of the script if any.</returns>
         object Evaluate(string directive, IFileProvider fileProvider, string basePath, IEnumerable<IGlobalMethodProvider> scopedMethodProviders);
 
         /// <summary>
-        /// The list of available method providers for this <see cref="IScriptingManager"/>
-        /// instance.
+        /// 这个<see cref="IScriptingManager"/>实例的可用方法提供程序列表。
         /// </summary>
         IList<IGlobalMethodProvider> GlobalMethodProviders { get; }
     }

@@ -3,15 +3,14 @@ using System.Collections.Generic;
 namespace Wd3eCore.Scripting
 {
     /// <summary>
-    /// An implementation of <see cref="IGlobalMethodProvider"/> provides custom methods for
-    /// an <see cref="IScriptingManager"/> intance.
+    /// <see cref="IGlobalMethodProvider"/>的一个实现为<see cref="IScriptingManager"/>实例提供了自定义方法。
     /// </summary>
     public interface IGlobalMethodProvider
     {
         /// <summary>
-        /// Gets the list of methods to provide to the <see cref="IScriptingManager"/>.
+        /// 获取要提供给<see cref="IScriptingManager"/>的方法列表。
         /// </summary>
-        /// <returns>A list of <see cref="GlobalMethod"/> instances.</returns>
+        /// <returns><see cref="GlobalMethod"/>实例的列表。</returns>
         IEnumerable<GlobalMethod> GetMethods();
     }
 }

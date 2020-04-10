@@ -6,8 +6,7 @@ namespace Wd3eCore.Environment.Cache
     public interface ICacheContextManager
     {
         /// <summary>
-        /// Provides the discriminator for a specific cache context by requesting all <see cref="ICacheContextProvider"/>
-        /// implementations.
+        /// 通过请求所有<see cref="ICacheContextProvider"/>实现为特定的缓存上下文提供鉴别器。
         /// </summary>
         Task<IEnumerable<CacheContextEntry>> GetDiscriminatorsAsync(IEnumerable<string> contexts);
     }
