@@ -6,7 +6,7 @@ using YesSql;
 namespace Wd3eCore.Data
 {
     /// <summary>
-    /// Represents a class that provides helper methods for the <see cref="ISession"/>.
+    /// 表示为<see cref="ISession"/>提供辅助方法的类。
     /// </summary>
     public class SessionHelper : ISessionHelper
     {
@@ -15,7 +15,7 @@ namespace Wd3eCore.Data
         private readonly Dictionary<Type, object> _loaded = new Dictionary<Type, object>();
 
         /// <summary>
-        /// Creates a new instance of <see cref="SessionHelper"/>.
+        /// 创建一个<see cref="SessionHelper"/>的新实例。
         /// </summary>
         /// <param name="session">The <see cref="ISession"/>.</param>
         public SessionHelper(ISession session)

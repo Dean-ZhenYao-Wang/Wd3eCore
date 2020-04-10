@@ -19,14 +19,14 @@ using YesSql.Provider.SqlServer;
 namespace Microsoft.Extensions.DependencyInjection
 {
     /// <summary>
-    /// Provides extension methods for <see cref="Wd3eCoreBuilder"/> to add database access functionality.
+    /// 为<see cref="Wd3eCoreBuilder"/>提供扩展方法来添加数据库访问功能。
     /// </summary>
     public static class Wd3eCoreBuilderExtensions
     {
         /// <summary>
-        /// Adds tenant level data access services.
+        /// 添加租户级数据访问服务。
         /// </summary>
-        /// <param name="builder">The <see cref="Wd3eCoreBuilder"/>.</param>
+        /// <param name="builder"><see cref="Wd3eCoreBuilder"/></param>
         public static Wd3eCoreBuilder AddDataAccess(this Wd3eCoreBuilder builder)
         {
             builder.ConfigureServices(services =>
@@ -34,19 +34,19 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.AddScoped<IDataMigrationManager, DataMigrationManager>();
                 services.AddScoped<IModularTenantEvents, AutomaticDataMigrations>();
 
-                // Adding supported databases
+                // 添加支持数据库
                 services.TryAddDataProvider(name: "Sql Server", value: "SqlConnection", hasConnectionString: true, sampleConnectionString: "Server=localhost;Database=Wd3e;User Id=username;Password=password", hasTablePrefix: true, isDefault: false);
                 services.TryAddDataProvider(name: "Sqlite", value: "Sqlite", hasConnectionString: false, hasTablePrefix: false, isDefault: true);
                 services.TryAddDataProvider(name: "MySql", value: "MySql", hasConnectionString: true, sampleConnectionString: "Server=localhost;Database=Wd3e;Uid=username;Pwd=password", hasTablePrefix: true, isDefault: false);
                 services.TryAddDataProvider(name: "Postgres", value: "Postgres", hasConnectionString: true, sampleConnectionString: "Server=localhost;Port=5432;Database=Wd3e;User Id=username;Password=password", hasTablePrefix: true, isDefault: false);
 
-                // Configuring data access
+                // 配置数据访问
 
                 services.AddSingleton<IStore>(sp =>
                 {
                     var shellSettings = sp.GetService<ShellSettings>();
 
-                    // Before the setup a 'DatabaseProvider' may be configured without a required 'ConnectionString'.
+                    // 在设置之前，可以在不需要“ConnectionString”的情况下配置“DatabaseProvider”。
                     if (shellSettings.State == TenantState.Uninitialized || shellSettings["DatabaseProvider"] == null)
                     {
                         return null;

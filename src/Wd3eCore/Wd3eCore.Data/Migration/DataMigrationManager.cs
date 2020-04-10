@@ -13,7 +13,7 @@ using YesSql.Sql;
 namespace Wd3eCore.Data.Migration
 {
     /// <summary>
-    /// Represents a class that manages the database migrations.
+    /// 代表一个管理数据库迁移的类。
     /// </summary>
     public class DataMigrationManager : IDataMigrationManager
     {
@@ -28,14 +28,14 @@ namespace Wd3eCore.Data.Migration
         private DataMigrationRecord _dataMigrationRecord;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="DataMigrationManager"/>.
+        /// 创建一个新的<see cref="DataMigrationManager"/>实例。
         /// </summary>
-        /// <param name="typeFeatureProvider">The <see cref="ITypeFeatureProvider"/>.</param>
-        /// <param name="dataMigrations">A list of <see cref="IDataMigration"/>.</param>
-        /// <param name="session">The <see cref="ISession"/>.</param>
-        /// <param name="store">The <see cref="IStore"/>.</param>
-        /// <param name="extensionManager">The <see cref="IExtensionManager"/>.</param>
-        /// <param name="logger">The <see cref="ILogger"/>.</param>
+        /// <param name="typeFeatureProvider"><see cref="ITypeFeatureProvider"/></param>
+        /// <param name="dataMigrations"><see cref="IDataMigration"/>的列表。</param>
+        /// <param name="session"><see cref="ISession"/></param>
+        /// <param name="store"><see cref="IStore"/></param>
+        /// <param name="extensionManager"><see cref="IExtensionManager"/></param>
+        /// <param name="logger"><see cref="ILogger"/></param>
         public DataMigrationManager(
             ITypeFeatureProvider typeFeatureProvider,
             IEnumerable<IDataMigration> dataMigrations,
@@ -94,16 +94,17 @@ namespace Wd3eCore.Data.Migration
             if (_logger.IsEnabled(LogLevel.Information))
             {
                 _logger.LogInformation("Uninstalling feature '{FeatureName}'.", feature);
+                _logger.LogInformation("卸载特性'{FeatureName}'。", feature);
             }
             var migrations = GetDataMigrations(feature);
 
-            // apply update methods to each migration class for the module
+            // 为模块的每个迁移类应用更新方法
             foreach (var migration in migrations)
             {
-                // copy the object for the Linq query
+                // 复制Linq查询对象
                 var tempMigration = migration;
 
-                // get current version for this migration
+                // 获取本次迁移的最新版本
                 var dataMigrationRecord = await GetDataMigrationRecordAsync(tempMigration);
 
                 var uninstallMethod = GetUninstallMethod(migration);
@@ -150,9 +151,10 @@ namespace Wd3eCore.Data.Migration
             if (_logger.IsEnabled(LogLevel.Information))
             {
                 _logger.LogInformation("Updating feature '{FeatureName}'", featureId);
+                _logger.LogInformation("更新特性 '{FeatureName}'", featureId);
             }
 
-            // proceed with dependent features first, whatever the module it's in
+            // 先处理相关的特性，不管它在哪个模块中
             var dependencies = _extensionManager
                 .GetFeatureDependencies(
                     featureId)
@@ -163,22 +165,22 @@ namespace Wd3eCore.Data.Migration
 
             var migrations = GetDataMigrations(featureId);
 
-            // apply update methods to each migration class for the module
+            // 为模块的每个迁移类应用更新方法
             foreach (var migration in migrations)
             {
                 var schemaBuilder = new SchemaBuilder(_store.Configuration, await _session.DemandAsync());
                 migration.SchemaBuilder = schemaBuilder;
 
-                // copy the object for the Linq query
+                // 复制Linq查询的对象
                 var tempMigration = migration;
 
-                // get current version for this migration
+                // 获取此迁移的当前版本
                 var dataMigrationRecord = await GetDataMigrationRecordAsync(tempMigration);
 
                 var current = 0;
                 if (dataMigrationRecord != null)
                 {
-                    // This can be null if a failed create migration has occured and the data migration record was saved.
+                    // 如果创建迁移失败并保存了数据迁移记录，则该值可以为空。
                     current = dataMigrationRecord.Version.HasValue ? dataMigrationRecord.Version.Value : current;
                 }
                 else
@@ -189,10 +191,10 @@ namespace Wd3eCore.Data.Migration
 
                 try
                 {
-                    // do we need to call Create() ?
+                    //我们需要调用Create()吗?
                     if (current == 0)
                     {
-                        // try to resolve a Create method
+                        // 尝试解析一个创建方法
 
                         var createMethod = GetCreateMethod(migration);
                         if (createMethod != null)
@@ -200,7 +202,7 @@ namespace Wd3eCore.Data.Migration
                             current = (int)createMethod.Invoke(migration, new object[0]);
                         }
 
-                        // try to resolve a CreateAsync method
+                        // 尝试解析一个CreateAsync方法
 
                         var createAsyncMethod = GetCreateAsyncMethod(migration);
                         if (createAsyncMethod != null)
@@ -216,6 +218,7 @@ namespace Wd3eCore.Data.Migration
                         if (_logger.IsEnabled(LogLevel.Information))
                         {
                             _logger.LogInformation("Applying migration for '{FeatureName}' from version {Version}.", featureId, current);
+                            _logger.LogInformation("从版本{Version}中为'{FeatureName}'应用迁移。", featureId, current);
                         }
 
                         var isAwaitable = methodInfo.ReturnType.GetMethod(nameof(Task.GetAwaiter)) != null;
@@ -229,7 +232,7 @@ namespace Wd3eCore.Data.Migration
                         }
                     }
 
-                    // if current is 0, it means no upgrade/create method was found or succeeded
+                    // 如果当前值为0，则表示没有找到或成功升级/创建方法
                     if (current == 0)
                     {
                         return;
@@ -240,12 +243,13 @@ namespace Wd3eCore.Data.Migration
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Error while running migration version {Version} for '{FeatureName}'.", current, featureId);
+                    _logger.LogError(ex, "为“{FeatureName}”运行迁移版本{version}时出错。", current, featureId);
 
                     _session.Cancel();
                 }
                 finally
                 {
-                    // Persist data migrations
+                    // 保存数据迁移
                     _session.Save(_dataMigrationRecord);
                 }
             }
@@ -260,7 +264,7 @@ namespace Wd3eCore.Data.Migration
         }
 
         /// <summary>
-        /// Returns all the available IDataMigration instances for a specific module, and inject necessary builders
+        /// 返回特定模块的所有可用IDataMigration实例，并注入必要的构建器
         /// </summary>
         private IEnumerable<IDataMigration> GetDataMigrations(string featureId)
         {
@@ -272,7 +276,7 @@ namespace Wd3eCore.Data.Migration
         }
 
         /// <summary>
-        /// Create a list of all available Update methods from a data migration class, indexed by the version number
+        /// 从数据迁移类创建所有可用更新方法的列表，按版本号建立索引
         /// </summary>
         private static Dictionary<int, MethodInfo> CreateUpgradeLookupTable(IDataMigration dataMigration)
         {
@@ -305,7 +309,7 @@ namespace Wd3eCore.Data.Migration
         }
 
         /// <summary>
-        /// Returns the Create method from a data migration class if it's found
+        /// 如果找到数据迁移类，则从该类返回Create方法
         /// </summary>
         private static MethodInfo GetCreateMethod(IDataMigration dataMigration)
         {
@@ -319,7 +323,7 @@ namespace Wd3eCore.Data.Migration
         }
 
         /// <summary>
-        /// Returns the CreateAsync method from a data migration class if it's found
+        /// 如果找到数据迁移类，则从该类返回CreateAsync方法
         /// </summary>
         private static MethodInfo GetCreateAsyncMethod(IDataMigration dataMigration)
         {
@@ -333,7 +337,7 @@ namespace Wd3eCore.Data.Migration
         }
 
         /// <summary>
-        /// Returns the Uninstall method from a data migration class if it's found
+        /// 如果找到数据迁移类，则从该类返回卸载方法
         /// </summary>
         private static MethodInfo GetUninstallMethod(IDataMigration dataMigration)
         {
@@ -347,7 +351,7 @@ namespace Wd3eCore.Data.Migration
         }
 
         /// <summary>
-        /// Returns the UninstallAsync method from a data migration class if it's found
+        /// 如果找到UninstallAsync方法，则从数据迁移类返回该方法
         /// </summary>
         private static MethodInfo GetUninstallAsyncMethod(IDataMigration dataMigration)
         {
@@ -378,6 +382,8 @@ namespace Wd3eCore.Data.Migration
                     }
 
                     _logger.LogError(ex, "Could not run migrations automatically on '{FeatureName}'", featureId);
+                    _logger.LogError(ex, "无法在“{FeatureName}”上自动运行迁移。", featureId);
+
                 }
             }
         }

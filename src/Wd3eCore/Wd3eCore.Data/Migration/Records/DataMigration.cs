@@ -1,17 +1,17 @@
 namespace Wd3eCore.Data.Migration.Records
 {
     /// <summary>
-    /// Represents a database migration.
+    /// 代表数据库的迁移。
     /// </summary>
     public class DataMigration
     {
         /// <summary>
-        /// Gets or sets a class for the database migration.
+        /// 获取或设置数据库迁移的类。
         /// </summary>
         public string DataMigrationClass { get; set; }
 
         /// <summary>
-        /// Gets or sets the version of the database migration.
+        /// 获取或设置数据库迁移的版本。
         /// </summary>
         public int? Version { get; set; }
     }

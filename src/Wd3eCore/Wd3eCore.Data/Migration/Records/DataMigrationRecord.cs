@@ -3,12 +3,12 @@ using System.Collections.Generic;
 namespace Wd3eCore.Data.Migration.Records
 {
     /// <summary>
-    /// Represents a record in the database migration.
+    /// 代表数据库迁移中的一条记录。
     /// </summary>
     public class DataMigrationRecord
     {
         /// <summary>
-        /// Creates a new instance of the <see cref="DataMigrationRecord"/>.
+        /// 创建一个新的<see cref="DataMigrationRecord"/>实例。
         /// </summary>
         public DataMigrationRecord()
         {
@@ -16,12 +16,12 @@ namespace Wd3eCore.Data.Migration.Records
         }
 
         /// <summary>
-        /// Gete or sets the record Id.
+        /// 获取或设定记录的ID。
         /// </summary>
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the database migrations.
+        /// 获取或设置数据库迁移。
         /// </summary>
         public List<DataMigration> DataMigrations { get; set; }
     }

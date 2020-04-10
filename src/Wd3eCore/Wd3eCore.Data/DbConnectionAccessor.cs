@@ -5,14 +5,14 @@ using YesSql;
 namespace Wd3eCore.Data
 {
     /// <summary>
-    /// Represents an accessor to the database connection.
+    /// 表示数据库连接的访问器。
     /// </summary>
     public class DbConnectionAccessor : IDbConnectionAccessor
     {
         private readonly IStore _store;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="DbConnectionAccessor"/>.
+        /// 创建一个<see cref="DbConnectionAccessor"/>的新实例。
         /// </summary>
         /// <param name="store">The <see cref="IStore"/>.</param>
         public DbConnectionAccessor(IStore store)

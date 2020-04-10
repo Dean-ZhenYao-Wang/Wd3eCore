@@ -8,7 +8,7 @@ using Wd3eCore.Modules;
 namespace Wd3eCore.Data.Migration
 {
     /// <summary>
-    /// Represents a tenant event that will be registered to Wd3eShell.Activated in order to run migrations automatically.
+    /// 代表将被注册到Wd3eShell.Activated的租户事件，以便自动运行迁移。
     /// </summary>
     public class AutomaticDataMigrations : ModularTenantEvents
     {
@@ -17,11 +17,11 @@ namespace Wd3eCore.Data.Migration
         private readonly IServiceProvider _serviceProvider;
 
         /// <summary>
-        /// Creates a new instance of the <see cref="AutomaticDataMigrations"/>.
+        /// 创建一个新的<see cref="AutomaticDataMigrations"/>实例。
         /// </summary>
-        /// <param name="serviceProvider">The <see cref="IServiceProvider"/>.</param>
-        /// <param name="shellSettings">The <see cref="ShellSettings"/>.</param>
-        /// <param name="logger">The <see cref="ILogger"/>.</param>
+        /// <param name="serviceProvider"><see cref="IServiceProvider"/></param>
+        /// <param name="shellSettings"><see cref="ShellSettings"/></param>
+        /// <param name="logger"><see cref="ILogger"/></param>
         public AutomaticDataMigrations(
             IServiceProvider serviceProvider,
             ShellSettings shellSettings,
@@ -38,6 +38,7 @@ namespace Wd3eCore.Data.Migration
             if (_shellSettings.State != Environment.Shell.Models.TenantState.Uninitialized)
             {
                 _logger.LogDebug("Executing data migrations");
+                _logger.LogDebug("执行数据迁移");
 
                 var dataMigrationManager = _serviceProvider.GetService<IDataMigrationManager>();
                 return dataMigrationManager.UpdateAllFeaturesAsync();
