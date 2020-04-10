@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Wd3eCore.Environment.Cache
 {
-    // todo: does this belong in dynamic cache?
+    // todo: 这个属于动态缓存吗?
     public class CacheScopeManager : ICacheScopeManager
     {
         private readonly Stack<CacheContext> _scopes;

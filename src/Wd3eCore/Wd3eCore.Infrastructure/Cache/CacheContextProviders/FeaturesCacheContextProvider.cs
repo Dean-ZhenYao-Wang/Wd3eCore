@@ -22,7 +22,7 @@ namespace Wd3eCore.Environment.Cache.CacheContextProviders
         {
             if (contexts.Any(ctx => string.Equals(ctx, "features", StringComparison.OrdinalIgnoreCase)))
             {
-                // Add a hash of the enabled features
+                // 添加启用特性的hash
                 var hash = await _featureHash.GetFeatureHashAsync();
                 entries.Add(new CacheContextEntry("features", hash.ToString(CultureInfo.InvariantCulture)));
             }

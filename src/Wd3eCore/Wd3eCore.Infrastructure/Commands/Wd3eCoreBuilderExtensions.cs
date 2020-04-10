@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static partial class Wd3eCoreBuilderExtensions
     {
         /// <summary>
-        /// Adds host level services to provide CLI commands.
+        /// 添加主机级服务以提供CLI命令。
         /// </summary>
         public static Wd3eCoreBuilder AddCommands(this Wd3eCoreBuilder builder)
         {

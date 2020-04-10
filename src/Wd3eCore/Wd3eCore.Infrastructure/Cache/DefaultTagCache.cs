@@ -22,8 +22,7 @@ namespace Wd3eCore.Environment.Cache
             IMemoryCache memoryCache,
             ILogger<DefaultTagCache> logger)
         {
-            // We use the memory cache as the state holder and keep this class transient as it has
-            // dependencies on non-singletons
+            // 我们使用内存缓存作为状态容器，并保持这个类是临时的，因为它依赖于非单例对象
 
             if (!memoryCache.TryGetValue(CacheKey, out _dictionary))
             {

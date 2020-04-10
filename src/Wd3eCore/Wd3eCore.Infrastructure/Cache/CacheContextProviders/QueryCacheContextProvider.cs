@@ -29,7 +29,7 @@ namespace Wd3eCore.Environment.Cache.CacheContextProviders
                         value: query[x].ToString().ToLowerInvariant())
                     ));
 
-                // If we track any query value, we don't need to look into specific ones
+                // 如果我们跟踪任何查询值，我们不需要查看特定的查询值
                 return Task.CompletedTask;
             }
 

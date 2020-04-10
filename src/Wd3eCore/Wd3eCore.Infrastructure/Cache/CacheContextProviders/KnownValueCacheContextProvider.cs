@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Environment.Cache.CacheContextProviders
 {
     /// <summary>
-    /// Adds all context values as they are to the cache entries. This allows for known value variation
+    /// 将所有上下文值按原样添加到缓存项中。这允许已知的值变化
     /// </summary>
     public class KnownValueCacheContextProvider : ICacheContextProvider
     {

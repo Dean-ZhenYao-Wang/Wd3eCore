@@ -66,7 +66,7 @@ namespace Wd3eCore.Environment.Commands
                 if (ex is TargetInvocationException &&
                     ex.InnerException != null)
                 {
-                    // If this is an exception coming from reflection and there is an innerexception which is the actual one, redirect
+                    // 如果这是一个来自反射的异常，并且有一个内部异常，也就是实际的异常，则重定向
                     ex = ex.InnerException;
                 }
                 await OutputExceptionAsync(output, S["Error executing command \"{0}\"", string.Join(" ", args)], ex);
@@ -76,18 +76,18 @@ namespace Wd3eCore.Environment.Commands
 
         private async Task OutputExceptionAsync(TextWriter output, LocalizedString title, Exception exception)
         {
-            // Display header
+            // 显示 header
             await output.WriteLineAsync();
             await output.WriteLineAsync(title);
 
-            // Push exceptions in a stack so we display from inner most to outer most
+            // 在堆栈中推送异常，这样我们就可以从最内部显示到最外部
             var errors = new Stack<Exception>();
             for (var scan = exception; scan != null; scan = scan.InnerException)
             {
                 errors.Push(scan);
             }
 
-            // Display inner most exception details
+            // 显示内部大部分异常细节
             exception = errors.Peek();
             await output.WriteLineAsync("--------------------------------------------------------------------------------");
             await output.WriteLineAsync();
@@ -110,14 +110,14 @@ namespace Wd3eCore.Environment.Commands
                 }
             }
 
-            // Display footer
+            // 显示 footer
             await output.WriteLineAsync("--------------------------------------------------------------------------------");
             await output.WriteLineAsync();
         }
 
         private async Task<ShellContext> CreateStandaloneEnvironmentAsync(string tenant)
         {
-            // Retrieve settings for speficified tenant.
+            //检索指定租户的设置。
             var settingsList = await _shellSettingsManager.LoadSettingsAsync();
             if (settingsList.Any())
             {
@@ -131,7 +131,7 @@ namespace Wd3eCore.Environment.Commands
             }
             else
             {
-                // In case of an uninitialized site (no default settings yet), we create a default settings instance.
+                // 对于未初始化的站点(还没有默认设置)，我们创建一个默认设置实例。
                 var settings = new ShellSettings { Name = ShellHelper.DefaultShellName, State = TenantState.Uninitialized };
                 return await _Wd3eHost.CreateShellContextAsync(settings);
             }

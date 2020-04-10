@@ -50,8 +50,7 @@ namespace Wd3eCore.Environment.Commands
 
         private IEnumerable<Match> MatchCommands(CommandParameters parameters)
         {
-            // Commands are matched with arguments. first argument
-            // is the command others are arguments to the command.
+            // 命令与参数匹配。第一个参数是命令，其他参数是命令的参数。
             return _commandHandlers.SelectMany(h =>
                     MatchCommands(parameters, parameters.Arguments.Count(), _builder.Build(h.GetType()), h)).ToList();
         }
@@ -64,9 +63,7 @@ namespace Wd3eCore.Environment.Commands
                 {
                     var names = name.Split(' ');
                     var namesCount = names.Count();
-                    // We check here number of arguments a command can recieve against
-                    // arguments provided for the command to identify the correct command
-                    // and avoid matching multiple commands.
+                    // 我们在这里检查命令可以接收到的参数数量，这些参数是针对命令提供的参数来识别正确的命令并避免匹配多个命令。
                     if (name == string.Join(" ", parameters.Arguments.Take(namesCount)) && commandDescriptor.MethodInfo.GetParameters().Length == argCount - namesCount)
                     {
                         names = parameters.Arguments.ToArray();

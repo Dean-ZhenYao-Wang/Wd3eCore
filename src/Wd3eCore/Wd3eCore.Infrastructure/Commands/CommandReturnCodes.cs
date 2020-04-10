@@ -1,7 +1,7 @@
 namespace Wd3eCore.Environment.Commands
 {
     /// <summary>
-    /// Different return codes for a command execution.
+    /// 命令执行的不同返回代码。
     /// </summary>
     public enum CommandReturnCodes
     {

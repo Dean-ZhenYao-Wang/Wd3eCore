@@ -48,7 +48,7 @@ namespace Wd3eCore.Infrastructure.Cache
         {
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value, Formatting.None));
 
-            // TODO: serialize as binary
+            // TODO: 序列化为二进制
             // return MessagePackSerializer.Typeless.Serialize(value, MessagePack.Resolvers.ContractlessStandardResolver.Options);
         }
 
@@ -56,7 +56,7 @@ namespace Wd3eCore.Infrastructure.Cache
         {
             return JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(data));
 
-            // TODO: serialize as binary
+            // TODO: 序列化为二进制
             // return (T) MessagePackSerializer.Typeless.Deserialize(data, MessagePack.Resolvers.ContractlessStandardResolver.Options);
         }
     }

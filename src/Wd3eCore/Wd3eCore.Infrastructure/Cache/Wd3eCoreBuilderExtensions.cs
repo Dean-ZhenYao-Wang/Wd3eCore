@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static partial class Wd3eCoreBuilderExtensions
     {
         /// <summary>
-        /// Adds tenant level caching services.
+        /// 添加租户级缓存服务。
         /// </summary>
         public static Wd3eCoreBuilder AddCaching(this Wd3eCoreBuilder builder)
         {
@@ -27,13 +27,13 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.AddScoped<ICacheContextProvider, UserCacheContextProvider>();
                 services.AddScoped<ICacheContextProvider, KnownValueCacheContextProvider>();
 
-                // IMemoryCache is registered at the tenant level so that there is one instance for each tenant.
+                // IMemoryCache在租户级别注册，因此每个租户都有一个实例。
                 services.AddSingleton<IMemoryCache, MemoryCache>();
 
-                // MemoryDistributedCache needs to be registered as a singleton as it owns a MemoryCache instance.
+                // MemoryDistributedCache需要注册为单例，因为它拥有一个MemoryCache实例。
                 services.AddSingleton<IDistributedCache, MemoryDistributedCache>();
 
-                // Provides a distributed cache service that can return existing references in the current scope.
+                // 提供分布式缓存服务，可以返回当前作用域内的现有引用。
                 services.AddScoped<IScopedDistributedCache, ScopedDistributedCache>();
             });
 
