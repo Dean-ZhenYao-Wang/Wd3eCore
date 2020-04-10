@@ -9,7 +9,7 @@ using Wd3eCore.Recipes.Models;
 namespace Wd3eCore.Deployment
 {
     /// <summary>
-    /// The state of a deployment plan built by sources.
+    /// 由源代码构建的部署计划的状态。
     /// </summary>
     public class DeploymentPlanResult
     {
@@ -36,7 +36,7 @@ namespace Wd3eCore.Deployment
         {
             Recipe["steps"] = new JArray(Steps);
 
-            // Add the recipe steps as its own file content
+            // 将配方步骤作为其自己的文件内容添加
             await FileBuilder.SetFileAsync("Recipe.json", Encoding.UTF8.GetBytes(Recipe.ToString(Formatting.Indented)));
         }
     }

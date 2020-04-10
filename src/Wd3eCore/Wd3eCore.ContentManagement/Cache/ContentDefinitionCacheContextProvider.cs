@@ -25,7 +25,7 @@ namespace Wd3eCore.ContentManagement.Cache
             {
                 var hash = await _contentDefinitionManager.GetTypesHashAsync();
 
-                // Add a hash based on the content definition record serial number.
+                // 根据内容定义记录序列号添加hash 。
                 entries.Add(new CacheContextEntry("types", hash.ToString(CultureInfo.InvariantCulture)));
 
                 return;

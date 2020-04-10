@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace Wd3eCore.Deployment
 {
     /// <summary>
-    /// Interprets steps from a deployment plan to build the result package.
+    /// 解析从部署计划到构建结果包的步骤。
     /// </summary>
     public interface IDeploymentSource
     {

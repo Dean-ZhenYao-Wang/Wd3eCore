@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Wd3eCore.Deployment
 {
     /// <summary>
-    /// The state of a deployment plan built by sources.
+    /// 由源代码构建的部署计划的状态。
     /// </summary>
     public class DeploymentPlan
     {

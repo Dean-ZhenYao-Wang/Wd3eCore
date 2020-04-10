@@ -8,7 +8,7 @@ using Wd3eCore.Modules;
 namespace Wd3eCore.ContentManagement.Handlers
 {
     /// <summary>
-    /// This component coordinates how parts are affecting content items.
+    /// 此组件协调各部分如何影响内容项。
     /// </summary>
     public class ContentPartHandlerCoordinator : ContentHandlerBase
     {
