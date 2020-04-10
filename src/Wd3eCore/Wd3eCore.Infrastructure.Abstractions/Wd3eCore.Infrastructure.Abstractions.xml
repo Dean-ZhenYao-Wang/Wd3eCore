@@ -6,217 +6,212 @@
     <members>
         <member name="M:Wd3eCore.Environment.Cache.CacheContext.WithExpiryOn(System.DateTimeOffset)">
             <summary>
-            Defines the absolute time the value should be cached for.
-            If not called a sliding value will be used.
+            定义应该缓存值的绝对时间。
+            如果不调用，将使用滑动值。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.CacheContext.WithExpiryAfter(System.TimeSpan)">
             <summary>
-            Defines the absolute time (relative from now) the value should be cached for.
-            If not called a sliding value will be used.
+            定义应该为其缓存的绝对时间(相对于现在)。
+            如果不调用，将使用滑动值。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.CacheContext.WithExpirySliding(System.TimeSpan)">
             <summary>
-            Defines the sliding expiry time the value should be cached for.
-            If not called a default sliding value will be used (unless an absolute expiry time has been specified).
+            定义值应该缓存的滑动过期时间。
+            如果没有调用，将使用默认的滑动值(除非指定了绝对失效时间)。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.CacheContext.AddContext(System.String[])">
             <summary>
-            Defines a dimension to cache the shape for. For instance by using <code>"user"</code>
-            each user will get a different value.
+            定义用于缓存形态的维度。例如，通过使用<code>"user"</code>，每个用户将得到不同的值。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.CacheContext.RemoveContext(System.String)">
             <summary>
-            Removes a specific context.
+            删除特定上下文。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.ICacheContextManager.GetDiscriminatorsAsync(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            Provides the discriminator for a specific cache context by requesting all <see cref="T:Wd3eCore.Environment.Cache.ICacheContextProvider"/>
-            implementations.
+            通过请求所有<see cref="T:Wd3eCore.Environment.Cache.ICacheContextProvider"/>实现为特定的缓存上下文提供鉴别器。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Cache.ICacheContextProvider">
             <summary>
-            Returns a set of values describing the discriminators of the context and a value
-            which changes whenever the state of the discriminator changes, for instance a serial
-            number of a timestamp.
+            返回一组值，这些值描述上下文的鉴别器，并返回一个值，每当鉴别器的状态发生变化时，该值就会变化，例如时间戳的序列号。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.ICacheScopeManager.AddDependencies(System.String[])">
             <summary>
-            Adds the given dependencies to the current innermost cache context
+            将给定的依赖项添加到当前最内层缓存上下文
             </summary>
-            <param name="dependencies">The dependencies to add</param>
+            <param name="dependencies">要添加的依赖项</param>
         </member>
         <member name="M:Wd3eCore.Environment.Cache.ICacheScopeManager.AddContexts(System.String[])">
             <summary>
-            Adds the given contexts to the current innermost cache context
+            将给定的上下文添加到当前最内层缓存上下文
             </summary>
-            <param name="contexts">The contexts to add</param>
+            <param name="contexts">要添加的上下文</param>
         </member>
         <member name="T:Wd3eCore.Infrastructure.Cache.IScopedDistributedCache">
             <summary>
-            Provides a distributed cache service that can return existing references in the current scope.
+            提供分布式缓存服务，可以返回当前范围内的现有引用。
             </summary>
         </member>
         <member name="T:Wd3eCore.Email.IEmailAddressValidator">
             <summary>
-            Contract for e-mail address validation service.
+            电子邮件地址验证服务契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Email.IEmailAddressValidator.Validate(System.String)">
             <summary>
-            Validates an e-mail address.
+            验证电子邮件地址。
             </summary>
-            <param name="emailAddress">The e-mail address to be validated.</param>
-            <returns><c>true</c> if the email is valid, otherwise <c>false</c>.</returns>
+            <param name="emailAddress">要验证的电子邮件地址。</param>
+            <returns>如果邮件有效，<c>true</c>，否则<c>false</c>。</returns>
         </member>
         <member name="M:Wd3eCore.Entities.EntityExtensions.As``1(Wd3eCore.Entities.IEntity)">
             <summary>
-            Extracts the specified type of property.
+            提取指定类型的属性。
             </summary>
-            <typeparam name="T">The type of the property to extract.</typeparam>
-            <returns>A new instance of the requested type if the property was not found.</returns>
+            <typeparam name="T">要提取的属性的类型。</typeparam>
+            <returns>如果没有找到属性，则为请求类型的新实例。</returns>
         </member>
         <member name="M:Wd3eCore.Entities.EntityExtensions.As``1(Wd3eCore.Entities.IEntity,System.String)">
             <summary>
-            Extracts the specified named property.
+            提取指定名称的属性。
             </summary>
-            <typeparam name="T">The type of the property to extract.</typeparam>
-            <param name="name">The name of the property to extract.</param>
-            <returns>A new instance of the requested type if the property was not found.</returns>
+            <typeparam name="T">要提取的属性的类型。</typeparam>
+            <param name="entity"></param>
+            <param name="name">要提取的属性的名称。</param>
+            <returns>如果没有找到属性，则为请求类型的新实例。</returns>
         </member>
         <member name="M:Wd3eCore.Entities.EntityExtensions.Has``1(Wd3eCore.Entities.IEntity)">
             <summary>
-            Indicates if the specified type of property is attached to the <see cref="T:Wd3eCore.Entities.IEntity"/> instance.
+            指示指定的属性类型是否附加到<see cref="T:Wd3eCore.Entities.IEntity"/>实例。
             </summary>
-            <typeparam name="T">The type of the property to check.</typeparam>
-            <returns>True if the property was found, otherwise false.</returns>
+            <typeparam name="T">要检查的属性的类型。</typeparam>
+            <returns>如果发现属性则为true，否则为false。</returns>
         </member>
         <member name="M:Wd3eCore.Entities.EntityExtensions.Has(Wd3eCore.Entities.IEntity,System.String)">
             <summary>
-            Indicates if the specified property is attached to the <see cref="T:Wd3eCore.Entities.IEntity"/> instance.
+            指示指定的属性是否附加到<see cref="T:Wd3eCore.Entities.IEntity"/>实例。
             </summary>
-            <param name="name">The name of the property to check.</param>
-            <returns>True if the property was found, otherwise false.</returns>
+            <param name="entity"></param>
+            <param name="name">要检查的属性的名称。</param>
+            <returns>如果发现属性则为true，否则为false。</returns>
         </member>
         <member name="M:Wd3eCore.Entities.EntityExtensions.Alter``1(Wd3eCore.Entities.IEntity,System.String,System.Action{``0})">
             <summary>
-            Modifies or create an aspect.
+            修改或创建 aspect.
             </summary>
-            <param name="name">The name of the aspect.</param>
-            <param name="action">An action to apply on the aspect.</param>
-            <returns>The current <see cref="T:Wd3eCore.Entities.IEntity"/> instance.</returns>
+            <param name="entity"></param>
+            <param name="name">aspect的名称。</param>
+            <param name="action">要应用于aspect的Action</param>
+            <returns>当前 <see cref="T:Wd3eCore.Entities.IEntity"/> 实例。</returns>
         </member>
         <member name="T:Wd3eCore.Scripting.IGlobalMethodProvider">
             <summary>
-            An implementation of <see cref="T:Wd3eCore.Scripting.IGlobalMethodProvider"/> provides custom methods for
-            an <see cref="T:Wd3eCore.Scripting.IScriptingManager"/> intance.
+            <see cref="T:Wd3eCore.Scripting.IGlobalMethodProvider"/>的一个实现为<see cref="T:Wd3eCore.Scripting.IScriptingManager"/>实例提供了自定义方法。
             </summary>
         </member>
         <member name="M:Wd3eCore.Scripting.IGlobalMethodProvider.GetMethods">
             <summary>
-            Gets the list of methods to provide to the <see cref="T:Wd3eCore.Scripting.IScriptingManager"/>.
+            获取要提供给<see cref="T:Wd3eCore.Scripting.IScriptingManager"/>的方法列表。
             </summary>
-            <returns>A list of <see cref="T:Wd3eCore.Scripting.GlobalMethod"/> instances.</returns>
+            <returns><see cref="T:Wd3eCore.Scripting.GlobalMethod"/>实例的列表。</returns>
         </member>
         <member name="T:Wd3eCore.Scripting.IScriptingManager">
             <summary>
-            An implementation of <see cref="T:Wd3eCore.Scripting.IScriptingManager"/> provides services to evaluate
-            custom scripts.
+            <see cref="T:Wd3eCore.Scripting.IScriptingManager"/>的一个实现提供了评估自定义脚本的服务。
             </summary>
         </member>
         <member name="M:Wd3eCore.Scripting.IScriptingManager.GetScriptingEngine(System.String)">
             <summary>
-            Gets the scripting engine with the specified prefix.
+            获取指定前缀的脚本引擎。
             </summary>
-            <param name="prefix">A string representing the engine to return.</param>
-            <returns>A scripting engine or <code>null</code> if it couldn't be found.</returns>
+            <param name="prefix">代表要返回的引擎的字符串。</param>
+            <returns>脚本引擎或<code>null</code>(如果找不到的话)。</returns>
         </member>
         <member name="M:Wd3eCore.Scripting.IScriptingManager.Evaluate(System.String,Microsoft.Extensions.FileProviders.IFileProvider,System.String,System.Collections.Generic.IEnumerable{Wd3eCore.Scripting.IGlobalMethodProvider})">
             <summary>
-            Executes some prefixed script by looking for a matching scripting engine.
+            通过寻找匹配的脚本引擎，执行一些前缀脚本。
             </summary>
-            <param name="directive">The directive to execute. A directive is made of a </param>
-            <param name="fileProvider">An optional <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/> instance.</param>
+            <param name="directive">要执行的指令。</param>
+            <param name="fileProvider">一个可选的<see cref="T:Microsoft.Extensions.FileProviders.IFileProvider"/>实例。</param>
             <param name="basePath"></param>
-            <param name="scopedMethodProviders">A list of method providers scoped to the script evaluation.</param>
+            <param name="scopedMethodProviders">作用域为脚本评估的方法提供程序的列表。</param>
             <returns>The result of the script if any.</returns>
         </member>
         <member name="P:Wd3eCore.Scripting.IScriptingManager.GlobalMethodProviders">
             <summary>
-            The list of available method providers for this <see cref="T:Wd3eCore.Scripting.IScriptingManager"/>
-            instance.
+            这个<see cref="T:Wd3eCore.Scripting.IScriptingManager"/>实例的可用方法提供程序列表。
             </summary>
         </member>
         <member name="T:Wd3eCore.Security.Permissions.IPermissionProvider">
             <summary>
-            Implemented by modules to enumerate the types of permissions
-            the which may be granted
+            由模块实现，用于枚举可能被授予的权限类型。
             </summary>
         </member>
         <member name="T:Wd3eCore.Security.RoleClaim">
             <summary>
-            Represents a claim that is granted to all users within a role.
+            表示授予角色内所有用户的claim
             </summary>
         </member>
         <member name="P:Wd3eCore.Security.RoleClaim.ClaimType">
             <summary>
-            Gets or sets the claim type for this claim.
+            获取或设置此claim的claim类型。
             </summary>
         </member>
         <member name="P:Wd3eCore.Security.RoleClaim.ClaimValue">
             <summary>
-            Gets or sets the claim value for this claim.
+            获取或设置此claim的claim值。
             </summary>
         </member>
         <member name="T:Wd3eCore.Settings.ISiteService">
             <summary>
-            Provides services to manage the sites settings.
+            提供管理站点设置的服务。
             </summary>
         </member>
         <member name="M:Wd3eCore.Settings.ISiteService.LoadSiteSettingsAsync">
             <summary>
-            Returns the site settings for udpate.
+            返回udpate的站点设置。
             </summary>
         </member>
         <member name="M:Wd3eCore.Settings.ISiteService.GetSiteSettingsAsync">
             <summary>
-            Return the site settings for the current tenant in read-only.
+            以只读形式返回当前租户的站点设置。
             </summary>
         </member>
         <member name="M:Wd3eCore.Settings.ISiteService.UpdateSiteSettingsAsync(Wd3eCore.Settings.ISite)">
             <summary>
-            Persists the changes to the site settings.
+            保存对站点设置的更改。
             </summary>
         </member>
         <member name="P:Wd3eCore.Settings.ISiteService.ChangeToken">
             <summary>
-            Gets a change token that is set when site settings have changed.
+            获取在站点设置更改时设置的更改令牌。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.FileProviders.FileProviderExtensions.GetRelativeFileInfo(Microsoft.Extensions.FileProviders.IFileProvider,System.String,System.String)">
             <summary>
-            Locate a file at the give relative paths
+            在给定的相对路径上定位文件
             </summary>
         </member>
         <member name="M:System.IO.PathExtensions.Combine(System.String,System.String)">
             <summary>
-            Combines two path parts
+            合并两个路径部分
             </summary>
         </member>
         <member name="M:System.IO.PathExtensions.Combine(System.String,System.String[])">
             <summary>
-            Combines multiple path parts
+            组合多个路径部件
             </summary>
         </member>
         <member name="M:System.IO.PathExtensions.ResolvePath(System.String)">
             <summary>
-            Resolves relative segments in a path
+            解析路径中的相关段
             </summary>
         </member>
     </members>

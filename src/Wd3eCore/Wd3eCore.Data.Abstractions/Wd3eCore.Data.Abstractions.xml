@@ -6,7 +6,7 @@
     <members>
         <member name="T:Wd3eCore.Data.Migration.DataMigration">
             <summary>
-            Represents a database migration.
+            代表数据库的迁移。
             </summary>
         </member>
         <member name="P:Wd3eCore.Data.Migration.DataMigration.SchemaBuilder">
@@ -14,101 +14,101 @@
         </member>
         <member name="T:Wd3eCore.Data.Migration.IDataMigration">
             <summary>
-            Represents a contract for a database migration.
+            表示数据库迁移的契约。
             </summary>
         </member>
         <member name="P:Wd3eCore.Data.Migration.IDataMigration.SchemaBuilder">
             <summary>
-            Gets or sets the database schema builder.
+            获取或设置数据库架构生成器。
             </summary>
         </member>
         <member name="T:Wd3eCore.Data.Migration.IDataMigrationManager">
             <summary>
-            Represents a contract to manage database migrations.
+            表示管理数据库迁移的契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.GetFeaturesThatNeedUpdateAsync">
             <summary>
-            Returns the features which have at least one Data Migration class with a corresponding Upgrade method to be called
+            返回至少有一个数据迁移类的特性，并调用相应的升级方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.UpdateAllFeaturesAsync">
             <summary>
-            Run all migrations that need to be updated.
+            运行所有需要更新的迁移。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.UpdateAsync(System.String)">
             <summary>
-            Updates the database to the latest version for the specified feature
+            将数据库更新为指定特性的最新版本
             </summary>
-            <param name="feature">The feature to be uninstalled.</param>
+            <param name="feature">要卸载的特性。</param>
         </member>
         <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.UpdateAsync(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            Updates the database to the latest version for the specified features
+            将数据库更新为指定特性的最新版本
             </summary>
-            <param name="features">The features to be updated.</param>
+            <param name="features">需要更新的特性。</param>
         </member>
         <member name="M:Wd3eCore.Data.Migration.IDataMigrationManager.Uninstall(System.String)">
             <summary>
-            Execute a script to delete any information relative to the feature
+            执行脚本删除与该特性相关的任何信息
             </summary>
-            <param name="feature">The feature to be uninstalled.</param>
+            <param name="feature">要卸载的特性。</param>
         </member>
         <member name="T:Wd3eCore.Data.IDbConnectionAccessor">
             <summary>
-            Represents a contract to access the <see cref="T:System.Data.Common.DbConnection"/>.
+            表示访问<see cref="T:System.Data.Common.DbConnection"/>的契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.IDbConnectionAccessor.CreateConnection">
             <summary>
-            Creats a database connection.
+            创建数据库连接。
             </summary>
         </member>
         <member name="T:Wd3eCore.Data.IScopedIndexProvider">
             <summary>
-            Represents a contract that used to denote an <see cref="T:YesSql.Indexes.IIndexProvider"/> that needs to be resolved by the DI and registered
-            at the <see cref="T:YesSql.ISession"/> level.
+            代表一个契约
+            该契约表示需要由DI解析并在<see cref="T:YesSql.ISession"/>层注册的<see cref="T:YesSql.ISession"/>的<see cref="T:YesSql.Indexes.IIndexProvider"/>。
             </summary>
         </member>
         <member name="T:Wd3eCore.Data.ISessionHelper">
             <summary>
-            Represents a contract that provides helper methods for <see cref="T:YesSql.ISession"/>.
+            代表一个为<see cref="T:YesSql.ISession"/>提供帮助方法的契约。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.ISessionHelper.LoadForUpdateAsync``1(System.Func{``0})">
             <summary>
-            Loads a single document (or create a new one) for updating and that should not be cached.
-            For a full isolation, it needs to be used in pair with <see cref="M:Wd3eCore.Data.ISessionHelper.GetForCachingAsync``1(System.Func{``0})"/>.
+            载入单个文档（或创建一个新的文档）进行更新，并且不应该被缓存。
+            对于完全隔离，它需要与<see cref="M:Wd3eCore.Data.ISessionHelper.GetForCachingAsync``1(System.Func{``0})"/>配对使用。
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="factory">A factory methods to load or create a document.</param>
+            <param name="factory">一个工厂的方法来加载或创建一个文档。</param>
         </member>
         <member name="M:Wd3eCore.Data.ISessionHelper.GetForCachingAsync``1(System.Func{``0})">
             <summary>
-            Gets a single document (or create a new one) for caching and that should not be updated.
-            For a full isolation, it needs to be used in pair with <see cref="M:Wd3eCore.Data.ISessionHelper.LoadForUpdateAsync``1(System.Func{``0})"/>.
+            获取单个文档（或创建一个新的文档）进行缓存，该文档不应该被更新。
+            要完全隔离，需要与<see cref="M:Wd3eCore.Data.ISessionHelper.LoadForUpdateAsync``1(System.Func{``0})"/>配对使用。
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="factory">A factory method to get or create a document for caching.</param>
+            <param name="factory">一种获取或创建文档的工厂方法，用于缓存文档。</param>
             <returns></returns>
         </member>
         <member name="T:Wd3eCore.Data.ServiceCollectionExtensions">
             <summary>
-            Provides extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to add YesSQL <see cref="T:Wd3eCore.Data.DatabaseProvider"/>s.
+            为<see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>提供了扩展方法，以添加YesSQL <see cref="T:Wd3eCore.Data.DatabaseProvider"/>s。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.ServiceCollectionExtensions.TryAddDataProvider(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String)">
              <summary>
             
              </summary>
-             <param name="services">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.</param>
-             <param name="name">The database provider name.</param>
-             <param name="value">The database provider value, i.e. SQL Server, MySQL.</param>
-             <param name="hasConnectionString">Whether the database contains a connection string.</param>
-             <param name="hasTablePrefix">The table prefix.</param>
-             <param name="isDefault">Whether the data provider is the default one.</param>
-             <param name="sampleConnectionString">A sample connection string, e.g. Server={Server Name};Database={Database Name};IntegratedSecurity=true</param>
+             <param name="services"><see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
+             <param name="name">数据库提供者的名称。</param>
+             <param name="value">数据库提供者值，即SQL Server、MySQL。</param>
+             <param name="hasConnectionString">数据库中是否包含连接字符串。</param>
+             <param name="hasTablePrefix">表的前缀。</param>
+             <param name="isDefault">数据提供者是否为默认的数据提供者</param>
+             <param name="sampleConnectionString">连接字符串示例，例如：Server={Server Name};Database={Database Name};IntegratedSecurity=true</param>
              <returns></returns>
         </member>
     </members>

@@ -20,8 +20,8 @@
     <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.DisplayManagement\Wd3eCore.DisplayManagement.csproj" />
     <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Navigation.Core\Wd3eCore.Navigation.Core.csproj" />
     <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Email.Abstractions\Wd3eCore.Email.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj" />
     <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.ResourceManagement\Wd3eCore.ResourceManagement.csproj" />
+    <ProjectReference Include="..\..\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -84,19 +84,19 @@ namespace Wd3eCore.Email.Drivers
                 var previousPassword = section.Password;
                 await context.Updater.TryUpdateModelAsync(section, Prefix);
 
-                // Restore password if the input is empty, meaning that it has not been reset.
+                // 如果输入为空，则恢复密码，这意味着没有重置密码。
                 if (string.IsNullOrWhiteSpace(section.Password))
                 {
                     section.Password = previousPassword;
                 }
                 else
                 {
-                    // encrypt the password
+                    // 加密的密码
                     var protector = _dataProtectionProvider.CreateProtector(nameof(SmtpSettingsConfiguration));
                     section.Password = protector.Protect(section.Password);
                 }
 
-                // Reload the tenant to apply the settings
+                // 重新加载租户以应用设置
                 await _Wd3eHost.ReloadShellContextAsync(_currentShellSettings);
             }
 

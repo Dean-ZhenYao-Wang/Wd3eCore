@@ -66,7 +66,7 @@
         </member>
         <member name="M:Wd3eCore.Environment.Cache.SignalExtensions.DeferredSignalToken(Wd3eCore.Environment.Cache.ISignal,System.String)">
             <summary>
-            Adds a Signal (if not already present) to be sent at the end of the shell scope.
+            添加一个信号（如果还没有的话），将在shell作用域的末尾发送。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Builders.ICompositionStrategy">
@@ -220,93 +220,94 @@
         </member>
         <member name="T:Wd3eCore.Environment.Shell.IShellDescriptorManagerEventHandler">
             <summary>
-            Represent an event handler for shell descriptor.
+            表示shell描述符的事件处理程序。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellDescriptorManagerEventHandler.Changed(Wd3eCore.Environment.Shell.Descriptor.Models.ShellDescriptor,System.String)">
             <summary>
-            Triggered whenever a shell descriptor has changed.
+            当shell描述符发生变化时触发。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.InitializeAsync">
             <summary>
-            Ensure that all the <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> are pre-created and available to process requests.
+            确保所有的<see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>都是预先创建的，并且可用来处理请求。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.GetOrCreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Returns an existing <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> or creates a new one if necessary.
+            返回一个现有的<see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>，或者在必要时创建一个新的。
             </summary>
-            <param name="settings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/> object representing the shell to get.</param>
+            <param name="settings"><see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/>对象代表要获取的shell。</param>
             <returns></returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.GetScopeAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Creates a standalone service scope that can be used to resolve local services.
+            创建一个独立的服务作用域，可用于解析本地服务。
             </summary>
-            <param name="settings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/> object representing the shell to get.</param>
+            <param name="settings"><see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/>对象代表要获取的shell。</param>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.UpdateShellSettingsAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Updates an existing shell configuration.
+            更新现有的shell配置。
             </summary>
             <param name="settings"></param>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.ReloadShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Reloads a shell.
+            重载shell.
             </summary>
             <param name="settings"></param>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.CreateShellContextAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Creates a new <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>.
+            创建一个新的 <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>。
             </summary>
-            <param name="settings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/> object representing the shell to create.</param>
+            <param name="settings"><see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/>对象代表要创建的shell。</param>
             <returns></returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.ListShellContexts">
             <summary>
-            Lists all available <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/> instances.
-            A shell might have been released or not yet built, if so 'shell.Released' is true and
-            'shell.CreateScope()' return null, but you can still use 'GetScopeAsync(shell.Settings)'.
+            列出所有可用的 <see cref="T:Wd3eCore.Environment.Shell.Builders.ShellContext"/>实例。
+            一个shell可能已经被发布或尚未构建，
+            如果是这样，'shell.Released'为true，'shell.CreateScope()'返回null，
+            但仍然可以使用'GetScopeAsync(shell.Settings)'。
             </summary>
-            <remarks>A shell might not be listed if it hasn't been created yet, for instance if it has been removed and not yet recreated.</remarks>
+            <remarks>如果一个shell还没有被创建，比如说它已经被删除了，还没有被重新创建，可能就不会被列出。</remarks>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.TryGetSettings(System.String,Wd3eCore.Environment.Shell.ShellSettings@)">
             <summary>
-            Tries to retrieve the shell settings associated with the specified tenant.
+            尝试检索与指定租户相关的shell设置。
             </summary>
-            <returns><c>true</c> if the settings could be found, <c>false</c> otherwise.</returns>
+            <returns><c>true</c> 如果可以找到设置,则为true <c>false</c> 否则为false.</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellHost.GetAllSettings">
             <summary>
-            Retrieves all shell settings.
+            检索所有的shell设置。
             </summary>
-            <returns>All shell settings.</returns>
+            <returns>所有的shell设置。</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.CreateDefaultSettings">
             <summary>
-            Creates a default shell settings based on the configuration.
+            根据配置创建一个默认的shell设置。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.LoadSettingsAsync">
             <summary>
-            Retrieves all shell settings stored.
+            检索存储的所有shell设置。
             </summary>
-            <returns>All shell settings.</returns>
+            <returns>所有shell设置</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.LoadSettingsAsync(System.String)">
             <summary>
-            Retrieves the settings of a given tenant
+            检索给定租户的设置。
             </summary>
-            <returns>The shell settings.</returns>
+            <returns>shell设置</returns>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.IShellSettingsManager.SaveSettingsAsync(Wd3eCore.Environment.Shell.ShellSettings)">
             <summary>
-            Persists shell settings to the storage.
+            将shell设置保存到存储中。
             </summary>
-            <param name="settings">The shell settings to store.</param>
+            <param name="settings">要存储的shell设置。</param>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.Models.TenantState">
             <summary>
@@ -480,62 +481,62 @@
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScope.TerminateShellAsync">
             <summary>
-            Terminate the shell, if released and in its last scope, by calling the related event handlers.
-            Returns true if the shell context should be disposed consequently to this scope being released.
+             通过调用相关的事件处理程序来终止shell，如果shell被释放并处于其最后的作用域内，则调用相关的事件处理程序。
+             如果在这个作用域被释放，shell上下文应该被处理掉，且返回true。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Shell.Scope.ShellScopeServices.#ctor(System.IServiceProvider)">
             <summary>
-            Makes an 'IServiceProvider' aware of the current 'ShellScope'.
+            使“IServiceProvider”知道当前的“ShellScope”。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.ShellContextFeature">
             <summary>
-            Used to capture the shell context and original path infos.
+            用于捕捉shell上下文和原始路径信息。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.ShellContextFeature.ShellContext">
             <summary>
-            The current shell context.
+            当前shell的上下文。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.ShellContextFeature.OriginalPathBase">
             <summary>
-            The original path base.
+            原有的路径基础。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.ShellContextFeature.OriginalPath">
             <summary>
-            The original path.
+            原有的路径。
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.ShellOptions.ShellsApplicationDataPath">
             <summary>
-            The root container
+            根容器
             </summary>
         </member>
         <member name="P:Wd3eCore.Environment.Shell.ShellOptions.ShellsContainerName">
             <summary>
-            The container for shells
+            shells的容器
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.ShellSettings">
             <summary>
-            Represents the minimalistic set of fields stored for each tenant. This model
-            is obtained from the 'IShellSettingsManager', which by default reads this
-            from the 'App_Data/tenants.json' file.
+            代表每个租户存储的最小化字段集。
+            这个模型从'IShellSettingsManager'中获得，
+            默认情况下，它从'App_Data/tenants.json'文件中读取。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.State.ShellFeatureState">
             <summary>
-            Represents the state of a feature in a tenant.
+            表示租户中某个特性的状态。
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Shell.State.ShellState">
             <summary>
-            Represents the transitive list of features a tenant is made of at a specific moment.
-            It's used to differentiate new features from existing ones in order to trigger events like
-            Installed/Unistalled compared to only Enabled/Disabled.
+            表示租户在特定时刻构成的可用特性列表。
+            代表了特定时刻的租户所构成的可用特性。
+            它用于区分新功能和现有功能，以便触发像安装/解锁这样的事件，而不是只启用/禁用。
             </summary>
         </member>
         <member name="T:Wd3eCore.Localization.CalendarName">

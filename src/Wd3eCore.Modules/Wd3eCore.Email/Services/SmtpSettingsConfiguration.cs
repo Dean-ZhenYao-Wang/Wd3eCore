@@ -40,7 +40,7 @@ namespace Wd3eCore.Email.Services
             options.UseDefaultCredentials = settings.UseDefaultCredentials;
             options.UserName = settings.UserName;
 
-            // Decrypt the password
+            // 解密密码
             if (!String.IsNullOrWhiteSpace(settings.Password))
             {
                 try
@@ -51,6 +51,7 @@ namespace Wd3eCore.Email.Services
                 catch
                 {
                     _logger.LogError("The Smtp password could not be decrypted. It may have been encrypted using a different key.");
+                    _logger.LogError("无法解密Smtp密码。它可能是使用不同的密钥加密的。");
                 }
             }
         }

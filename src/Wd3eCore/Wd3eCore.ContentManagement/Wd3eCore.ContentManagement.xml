@@ -55,7 +55,7 @@
         </member>
         <member name="T:Wd3eCore.ContentManagement.Handlers.ContentPartHandlerCoordinator">
             <summary>
-            This component coordinates how parts are affecting content items.
+            此组件协调各部分如何影响内容项。
             </summary>
         </member>
     </members>

@@ -6,32 +6,32 @@
     <members>
         <member name="T:Wd3eCore.Apis.GraphQL.ISchemaBuilder">
             <summary>
-            Implementations of this interface can participate in building the <see cref="T:GraphQL.Types.ISchema"/> instance that is used for GraphQL requests.
+            该接口的实现可以参与构建用于GraphQL请求的<see cref="T:GraphQL.Types.ISchema"/>实例。
             </summary>
         </member>
         <member name="M:Wd3eCore.Apis.GraphQL.ISchemaBuilder.BuildAsync(GraphQL.Types.ISchema)">
             <summary>
-            Updates <paramref name="schema"/>.
+            更新<paramref name="schema"/>。
             </summary>
-            <param name="schema">The <see cref="T:GraphQL.Types.ISchema"/> instance to update.</param>
-            <returns>A <see cref="T:Microsoft.Extensions.Primitives.IChangeToken"/> instance that is invalidated when the data that is used in the <see cref="T:GraphQL.Types.ISchema"/>
-            instance has changed, or <c>null</c> if it has no dependencies.</returns>
+            <param name="schema"><see cref="T:GraphQL.Types.ISchema"/>要更新的实例。</param>
+            <returns>当 <see cref="T:Microsoft.Extensions.Primitives.IChangeToken"/>中使用的数据被无效时，一个<see cref="T:GraphQL.Types.ISchema"/>的实例被无效。
+            实例已经改变，如果没有依赖关系，则为<c>null</c>。</returns>
         </member>
         <member name="T:Wd3eCore.Apis.GraphQL.ISchemaFactory">
             <summary>
-            Represents a service that provides the <see cref="T:GraphQL.Types.ISchema"/> instance that is used in a GraphQL request.
-            The result should be cached and reused when possible.
+            代表提供在GraphQL请求中使用的<see cref="T:GraphQL.Types.ISchema"/>实例的服务。
+            结果应该在可能的情况下缓存和重用。
             </summary>
         </member>
         <member name="M:Wd3eCore.Apis.ServiceCollectionExtensions.AddInputObjectGraphType``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Registers a type describing input arguments
+            注册一个描述输入参数的类型
             </summary>
             <param name="services"></param>
         </member>
         <member name="M:Wd3eCore.Apis.ServiceCollectionExtensions.AddObjectGraphType``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Registers a type describing output arguments
+            注册一个描述输出参数的类型
             </summary>
             <typeparam name="TInput"></typeparam>
             <typeparam name="TInputType"></typeparam>

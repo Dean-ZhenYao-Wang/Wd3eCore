@@ -6,17 +6,17 @@
     <members>
         <member name="T:Wd3eCore.Deployment.DeploymentPlan">
             <summary>
-            The state of a deployment plan built by sources.
+            由源代码构建的部署计划的状态。
             </summary>
         </member>
         <member name="T:Wd3eCore.Deployment.DeploymentPlanResult">
             <summary>
-            The state of a deployment plan built by sources.
+            由源代码构建的部署计划的状态。
             </summary>
         </member>
         <member name="T:Wd3eCore.Deployment.IDeploymentSource">
             <summary>
-            Interprets steps from a deployment plan to build the result package.
+            解析从部署计划到构建结果包的步骤。
             </summary>
         </member>
     </members>

@@ -6,12 +6,12 @@
     <members>
         <member name="T:Wd3eCore.Data.DbConnectionAccessor">
             <summary>
-            Represents an accessor to the database connection.
+            表示数据库连接的访问器。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.DbConnectionAccessor.#ctor(YesSql.IStore)">
             <summary>
-            Creates a new instance of the <see cref="T:Wd3eCore.Data.DbConnectionAccessor"/>.
+            创建一个<see cref="T:Wd3eCore.Data.DbConnectionAccessor"/>的新实例。
             </summary>
             <param name="store">The <see cref="T:YesSql.IStore"/>.</param>
         </member>
@@ -20,112 +20,112 @@
         </member>
         <member name="T:Wd3eCore.Data.Migration.AutomaticDataMigrations">
             <summary>
-            Represents a tenant event that will be registered to Wd3eShell.Activated in order to run migrations automatically.
+            代表将被注册到Wd3eShell.Activated的租户事件，以便自动运行迁移。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.AutomaticDataMigrations.#ctor(System.IServiceProvider,Wd3eCore.Environment.Shell.ShellSettings,Microsoft.Extensions.Logging.ILogger{Wd3eCore.Data.Migration.AutomaticDataMigrations})">
             <summary>
-            Creates a new instance of the <see cref="T:Wd3eCore.Data.Migration.AutomaticDataMigrations"/>.
+            创建一个新的<see cref="T:Wd3eCore.Data.Migration.AutomaticDataMigrations"/>实例。
             </summary>
-            <param name="serviceProvider">The <see cref="T:System.IServiceProvider"/>.</param>
-            <param name="shellSettings">The <see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/>.</param>
-            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="serviceProvider"><see cref="T:System.IServiceProvider"/></param>
+            <param name="shellSettings"><see cref="T:Wd3eCore.Environment.Shell.ShellSettings"/></param>
+            <param name="logger"><see cref="T:Microsoft.Extensions.Logging.ILogger"/></param>
         </member>
         <member name="M:Wd3eCore.Data.Migration.AutomaticDataMigrations.ActivatingAsync">
             <inheritdocs />
         </member>
         <member name="T:Wd3eCore.Data.Migration.DataMigrationManager">
             <summary>
-            Represents a class that manages the database migrations.
+            代表一个管理数据库迁移的类。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.#ctor(Wd3eCore.Environment.Extensions.ITypeFeatureProvider,System.Collections.Generic.IEnumerable{Wd3eCore.Data.Migration.IDataMigration},YesSql.ISession,YesSql.IStore,Wd3eCore.Environment.Extensions.IExtensionManager,Microsoft.Extensions.Logging.ILogger{Wd3eCore.Data.Migration.DataMigrationManager})">
             <summary>
-            Creates a new instance of the <see cref="T:Wd3eCore.Data.Migration.DataMigrationManager"/>.
+            创建一个新的<see cref="T:Wd3eCore.Data.Migration.DataMigrationManager"/>实例。
             </summary>
-            <param name="typeFeatureProvider">The <see cref="T:Wd3eCore.Environment.Extensions.ITypeFeatureProvider"/>.</param>
-            <param name="dataMigrations">A list of <see cref="T:Wd3eCore.Data.Migration.IDataMigration"/>.</param>
-            <param name="session">The <see cref="T:YesSql.ISession"/>.</param>
-            <param name="store">The <see cref="T:YesSql.IStore"/>.</param>
-            <param name="extensionManager">The <see cref="T:Wd3eCore.Environment.Extensions.IExtensionManager"/>.</param>
-            <param name="logger">The <see cref="T:Microsoft.Extensions.Logging.ILogger"/>.</param>
+            <param name="typeFeatureProvider"><see cref="T:Wd3eCore.Environment.Extensions.ITypeFeatureProvider"/></param>
+            <param name="dataMigrations"><see cref="T:Wd3eCore.Data.Migration.IDataMigration"/>的列表。</param>
+            <param name="session"><see cref="T:YesSql.ISession"/></param>
+            <param name="store"><see cref="T:YesSql.IStore"/></param>
+            <param name="extensionManager"><see cref="T:Wd3eCore.Environment.Extensions.IExtensionManager"/></param>
+            <param name="logger"><see cref="T:Microsoft.Extensions.Logging.ILogger"/></param>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetDataMigrationRecordAsync">
             <inheritdocs />
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetDataMigrations(System.String)">
             <summary>
-            Returns all the available IDataMigration instances for a specific module, and inject necessary builders
+            返回特定模块的所有可用IDataMigration实例，并注入必要的构建器
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.CreateUpgradeLookupTable(Wd3eCore.Data.Migration.IDataMigration)">
             <summary>
-            Create a list of all available Update methods from a data migration class, indexed by the version number
+            从数据迁移类创建所有可用更新方法的列表，按版本号建立索引
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetCreateMethod(Wd3eCore.Data.Migration.IDataMigration)">
             <summary>
-            Returns the Create method from a data migration class if it's found
+            如果找到数据迁移类，则从该类返回Create方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetCreateAsyncMethod(Wd3eCore.Data.Migration.IDataMigration)">
             <summary>
-            Returns the CreateAsync method from a data migration class if it's found
+            如果找到数据迁移类，则从该类返回CreateAsync方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetUninstallMethod(Wd3eCore.Data.Migration.IDataMigration)">
             <summary>
-            Returns the Uninstall method from a data migration class if it's found
+            如果找到数据迁移类，则从该类返回卸载方法
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.DataMigrationManager.GetUninstallAsyncMethod(Wd3eCore.Data.Migration.IDataMigration)">
             <summary>
-            Returns the UninstallAsync method from a data migration class if it's found
+            如果找到UninstallAsync方法，则从数据迁移类返回该方法
             </summary>
         </member>
         <member name="T:Wd3eCore.Data.Migration.Records.DataMigration">
             <summary>
-            Represents a database migration.
+            代表数据库的迁移。
             </summary>
         </member>
         <member name="P:Wd3eCore.Data.Migration.Records.DataMigration.DataMigrationClass">
             <summary>
-            Gets or sets a class for the database migration.
+            获取或设置数据库迁移的类。
             </summary>
         </member>
         <member name="P:Wd3eCore.Data.Migration.Records.DataMigration.Version">
             <summary>
-            Gets or sets the version of the database migration.
+            获取或设置数据库迁移的版本。
             </summary>
         </member>
         <member name="T:Wd3eCore.Data.Migration.Records.DataMigrationRecord">
             <summary>
-            Represents a record in the database migration.
+            代表数据库迁移中的一条记录。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.Migration.Records.DataMigrationRecord.#ctor">
             <summary>
-            Creates a new instance of the <see cref="T:Wd3eCore.Data.Migration.Records.DataMigrationRecord"/>.
+            创建一个新的<see cref="T:Wd3eCore.Data.Migration.Records.DataMigrationRecord"/>实例。
             </summary>
         </member>
         <member name="P:Wd3eCore.Data.Migration.Records.DataMigrationRecord.Id">
             <summary>
-            Gete or sets the record Id.
+            获取或设定记录的ID。
             </summary>
         </member>
         <member name="P:Wd3eCore.Data.Migration.Records.DataMigrationRecord.DataMigrations">
             <summary>
-            Gets or sets the database migrations.
+            获取或设置数据库迁移。
             </summary>
         </member>
         <member name="T:Wd3eCore.Data.SessionHelper">
             <summary>
-            Represents a class that provides helper methods for the <see cref="T:YesSql.ISession"/>.
+            表示为<see cref="T:YesSql.ISession"/>提供辅助方法的类。
             </summary>
         </member>
         <member name="M:Wd3eCore.Data.SessionHelper.#ctor(YesSql.ISession)">
             <summary>
-            Creates a new instance of <see cref="T:Wd3eCore.Data.SessionHelper"/>.
+            创建一个<see cref="T:Wd3eCore.Data.SessionHelper"/>的新实例。
             </summary>
             <param name="session">The <see cref="T:YesSql.ISession"/>.</param>
         </member>
@@ -137,14 +137,14 @@
         </member>
         <member name="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions">
             <summary>
-            Provides extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/> to add database access functionality.
+            为<see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/>提供扩展方法来添加数据库访问功能。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddDataAccess(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
             <summary>
-            Adds tenant level data access services.
+            添加租户级数据访问服务。
             </summary>
-            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/>.</param>
+            <param name="builder"><see cref="T:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder"/></param>
         </member>
     </members>
 </doc>

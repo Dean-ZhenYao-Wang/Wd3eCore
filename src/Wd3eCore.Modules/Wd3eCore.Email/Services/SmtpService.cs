@@ -43,7 +43,7 @@ namespace Wd3eCore.Email.Services
 
             try
             {
-                // Set the MailMessage.From, to avoid the confusion between _options.DefaultSender (Author) and submittor (Sender)
+                // 设置MailMessage.From，以避免_options.DefaultSender(Author)和submittor(Sender)之间的混淆。
                 message.From = String.IsNullOrWhiteSpace(message.From)
                     ? _options.DefaultSender
                     : message.From;
@@ -143,6 +143,10 @@ namespace Wd3eCore.Email.Services
                 "is considered invalid with {SslPolicyErrors} policy errors"),
                 certificate.Subject, certificate.Issuer, certificate.GetCertHashString(),
                 certificate.GetExpirationDateString(), sslPolicyErrors);
+            _logger.LogError(string.Concat("SMTP服务器的证书{CertificateSubject}由{CertificateIssuer}签发的证书{CertificateSubject}，其指纹为{CertificateThumbprint}，到期日为{CertificateExpirationDate}，被认为是无效的{SslPolicyErrors}策略错误。"),
+               certificate.Subject, certificate.Issuer, certificate.GetCertHashString(),
+               certificate.GetExpirationDateString(), sslPolicyErrors);
+
 
             if (sslPolicyErrors.HasFlag(SslPolicyErrors.RemoteCertificateChainErrors) && chain?.ChainStatus != null)
             {
@@ -185,7 +189,7 @@ namespace Wd3eCore.Email.Services
                 {
                     if (_options.UseDefaultCredentials)
                     {
-                        // There's no notion of 'UseDefaultCredentials' in MailKit, so empty credentials is passed in
+                        // MailKit中没有'UseDefaultCredentials'的概念，因此传递的是空凭证
                         await client.AuthenticateAsync(String.Empty, String.Empty);
                     }
                     else if (!String.IsNullOrWhiteSpace(_options.UserName))

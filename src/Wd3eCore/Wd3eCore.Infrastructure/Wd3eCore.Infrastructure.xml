@@ -6,12 +6,12 @@
     <members>
         <member name="T:Wd3eCore.Environment.Cache.CacheContextProviders.KnownValueCacheContextProvider">
             <summary>
-            Adds all context values as they are to the cache entries. This allows for known value variation
+            将所有上下文值按原样添加到缓存项中。这允许已知的值变化
             </summary>
         </member>
         <member name="T:Wd3eCore.Environment.Commands.CommandReturnCodes">
             <summary>
-            Different return codes for a command execution.
+            命令执行的不同返回代码。
             </summary>
         </member>
         <member name="M:Wd3eCore.Environment.Commands.Parameters.CommandParser.SplitArgs(System.String)">
@@ -84,12 +84,12 @@
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddCaching(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
             <summary>
-            Adds tenant level caching services.
+            添加租户级缓存服务。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddCommands(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">
             <summary>
-            Adds host level services to provide CLI commands.
+            添加主机级服务以提供CLI命令。
             </summary>
         </member>
         <member name="M:Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilderExtensions.AddEmailAddressValidator(Microsoft.Extensions.DependencyInjection.Wd3eCoreBuilder)">

@@ -42,7 +42,7 @@ namespace Wd3eCore.Email.Workflows.Activities
             set => SetProperty(value);
         }
 
-        // TODO: Add support for the following format: Jack Bauer<jack@ctu.com>, ...
+        // TODO: 添加对以下格式的支持:Jack Bauer<jack@ctu.com>，…
         public WorkflowExpression<string> Recipients
         {
             get => GetProperty(() => new WorkflowExpression<string>());
@@ -82,7 +82,7 @@ namespace Wd3eCore.Email.Workflows.Activities
 
             var message = new MailMessage
             {
-                // Author and Sender are both not required fields.
+                //Author和Sender都不是必需字段。
                 From = author?.Trim() ?? sender?.Trim(),
                 To = recipients.Trim(),
                 Subject = subject.Trim(),
