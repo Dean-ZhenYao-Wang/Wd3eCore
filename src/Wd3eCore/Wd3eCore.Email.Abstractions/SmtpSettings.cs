@@ -7,62 +7,65 @@ using Microsoft.Extensions.Localization;
 namespace Wd3eCore.Email
 {
     /// <summary>
-    /// Represents a settings for SMTP.
+    /// 表示SMTP的设置。
     /// </summary>
     public class SmtpSettings : IValidatableObject
     {
         /// <summary>
-        /// Gets or sets the default sender mail.
+        /// 获取或设置默认发件人邮件。
         /// </summary>
         [Required(AllowEmptyStrings = false), EmailAddress]
         public string DefaultSender { get; set; }
 
         /// <summary>
-        /// Gets or sets the mail delivery method.
+        /// 获取或设置邮件传递方法。
         /// </summary>
         [Required]
         public SmtpDeliveryMethod DeliveryMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets the mailbox directory, this used for <see cref="SmtpDeliveryMethod.SpecifiedPickupDirectory"/> option.
+        /// 获取或设置邮箱目录，此目录用于<see cref="SmtpDeliveryMethod.SpecifiedPickupDirectory"/>选项。
         /// </summary>
         public string PickupDirectoryLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the SMTP server/host.
+        /// 获取或设置SMTP服务器/主机。
         /// </summary>
         public string Host { get; set; }
-        ///Gets or sets the SMTP port number. Defaults to <c>5</c>.
+        /// <summary>
+        /// 获取或设置SMTP端口号。默认为<c>25</c>.
+        /// 0-65535
+        /// </summary>
         [Range(0, 65535)]        
         public int Port { get; set; } = 25;
 
         /// <summary>
-        /// Gets or sets whether the encryption is automatically selected.
+        /// 获取或设置是否自动选择加密。
         /// </summary>
         public bool AutoSelectEncryption { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the user credentials is required.
+        /// 获取或设置是否需要用户凭据。
         /// </summary>
         public bool RequireCredentials { get; set; }
 
         /// <summary>
-        /// Gets or sets whether to use the default user credentials.
+        /// 获取或设置是否使用默认用户凭据。
         /// </summary>
         public bool UseDefaultCredentials { get; set; }
 
         /// <summary>
-        /// Gets or sets the mail encryption method.
+        /// 获取或设置邮件加密方法。
         /// </summary>
         public SmtpEncryptionMethod EncryptionMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets the user name.
+        /// 获取或设置用户名。
         /// </summary>
         public string UserName { get; set; }
 
         /// <summary>
-        /// Gets or sets the user password
+        /// 获取或设置用户密码
         /// </summary>
         public string Password { get; set; }
 

@@ -3,7 +3,7 @@ using System;
 namespace Wd3eCore.Email
 {
     /// <summary>
-    /// Represents an enumeration for mail encryption methods.
+    /// 表示邮件加密方法的枚举。
     /// </summary>
     public enum SmtpEncryptionMethod
     {

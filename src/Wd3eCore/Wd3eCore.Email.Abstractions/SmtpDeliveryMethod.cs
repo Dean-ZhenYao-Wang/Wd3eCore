@@ -1,7 +1,7 @@
 namespace Wd3eCore.Email
 {
     /// <summary>
-    /// Represents an enumeration for the mail delivery methods.
+    /// 表示邮件传递方法的枚举。
     /// </summary>
     public enum SmtpDeliveryMethod
     {

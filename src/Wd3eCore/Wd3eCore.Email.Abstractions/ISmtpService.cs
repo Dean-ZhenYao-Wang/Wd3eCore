@@ -3,15 +3,15 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Email
 {
     /// <summary>
-    /// Represents a contract for SMTP service.
+    /// 表示SMTP服务的契约。
     /// </summary>
     public interface ISmtpService
     {
         /// <summary>
-        /// Sends the specified message to an SMTP server for delivery.
+        /// 将指定的消息发送到SMTP服务器进行传递。
         /// </summary>
-        /// <param name="message">The message to be sent.</param>
-        /// <returns>A <see cref="SmtpResult"/> that holds information about the sent message, for instance if it has sent successfully or if it has failed.</returns>
+        /// <param name="message">要发送的消息。</param>
+        /// <returns>一个<see cref="SmtpResult"/>，它保存关于发送消息的信息，例如它是否成功发送或是否失败。</returns>
         Task<SmtpResult> SendAsync(MailMessage message);
     }
 }
