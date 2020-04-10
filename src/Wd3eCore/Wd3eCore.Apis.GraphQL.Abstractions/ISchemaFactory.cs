@@ -4,8 +4,8 @@ using GraphQL.Types;
 namespace Wd3eCore.Apis.GraphQL
 {
     /// <summary>
-    /// Represents a service that provides the <see cref="ISchema"/> instance that is used in a GraphQL request.
-    /// The result should be cached and reused when possible.
+    /// 代表提供在GraphQL请求中使用的<see cref="ISchema"/>实例的服务。
+    /// 结果应该在可能的情况下缓存和重用。
     /// </summary>
     public interface ISchemaFactory
     {

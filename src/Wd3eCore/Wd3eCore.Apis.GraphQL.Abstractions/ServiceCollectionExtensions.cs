@@ -6,22 +6,21 @@ namespace Wd3eCore.Apis
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Registers a type describing input arguments
+        /// 注册一个描述输入参数的类型
         /// </summary>
         /// <param name="services"></param>
         public static void AddInputObjectGraphType<TObject, TObjectType>(this IServiceCollection services)
             where TObject : class
             where TObjectType : InputObjectGraphType<TObject>
         {
-            // Instances are registered as singletons as their constructor holds the logic to configure the type
-            // and doesn't need to run everytime
+            // 实例被注册为单例，因为它们的构造函数掌握着配置类型的逻辑，不需要每次都运行
             services.AddSingleton<TObjectType>();
             services.AddSingleton<InputObjectGraphType<TObject>, TObjectType>(s => s.GetRequiredService<TObjectType>());
             services.AddSingleton<IInputObjectGraphType, TObjectType>(s => s.GetRequiredService<TObjectType>());
         }
 
         /// <summary>
-        /// Registers a type describing output arguments
+        /// 注册一个描述输出参数的类型
         /// </summary>
         /// <typeparam name="TInput"></typeparam>
         /// <typeparam name="TInputType"></typeparam>
@@ -30,8 +29,7 @@ namespace Wd3eCore.Apis
             where TInput : class
             where TInputType : ObjectGraphType<TInput>
         {
-            // Instances are registered as singletons as their constructor holds the logic to configure the type
-            // and doesn't need to run everytime
+            // 实例被注册为单例，因为它们的构造函数掌握着配置类型的逻辑，不需要每次都运行
             services.AddSingleton<TInputType>();
             services.AddSingleton<ObjectGraphType<TInput>, TInputType>(s => s.GetRequiredService<TInputType>());
             services.AddSingleton<IObjectGraphType, TInputType>(s => s.GetRequiredService<TInputType>());

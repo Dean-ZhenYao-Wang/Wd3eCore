@@ -5,16 +5,16 @@ using Microsoft.Extensions.Primitives;
 namespace Wd3eCore.Apis.GraphQL
 {
     /// <summary>
-    /// Implementations of this interface can participate in building the <see cref="ISchema"/> instance that is used for GraphQL requests.
+    /// 该接口的实现可以参与构建用于GraphQL请求的<see cref="ISchema"/>实例。
     /// </summary>
     public interface ISchemaBuilder
     {
         /// <summary>
-        /// Updates <paramref name="schema"/>.
+        /// 更新<paramref name="schema"/>。
         /// </summary>
-        /// <param name="schema">The <see cref="ISchema"/> instance to update.</param>
-        /// <returns>A <see cref="IChangeToken"/> instance that is invalidated when the data that is used in the <see cref="ISchema"/>
-        /// instance has changed, or <c>null</c> if it has no dependencies.</returns>
+        /// <param name="schema"><see cref="ISchema"/>要更新的实例。</param>
+        /// <returns>当 <see cref="IChangeToken"/>中使用的数据被无效时，一个<see cref="ISchema"/>的实例被无效。
+        /// 实例已经改变，如果没有依赖关系，则为<c>null</c>。</returns>
         Task<IChangeToken> BuildAsync(ISchema schema);
     }
 }

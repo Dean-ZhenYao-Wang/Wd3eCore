@@ -10,21 +10,21 @@ namespace Wd3eCore.Apis.GraphQL.Queries
 
     public class WhereInputObjectGraphType<TSourceType> : InputObjectGraphType<TSourceType>
     {
-        // Applies to all types
+        // 适用于所有类型
         public static Dictionary<string, string> EqualityOperators = new Dictionary<string, string>
         {
             { "", "is equal to" },
             { "_not", "is not equal to" }
         };
 
-        // Applies to all types
+        // 适用于所有类型
         public static Dictionary<string, string> MultiValueComparisonOperators = new Dictionary<string, string>
         {
             { "_in", "is in collection" },
             { "_not_in", "is not in collection" }
         };
 
-        // Applies to non strings
+        // 适用于非字符串
         public static Dictionary<string, string> NonStringValueComparisonOperators = new Dictionary<string, string>
         {
             { "_gt", "is greater than" },
@@ -33,7 +33,7 @@ namespace Wd3eCore.Apis.GraphQL.Queries
             { "_lte", "is less than or equal" }
         };
 
-        // Applies to strings
+        // 适用于字符串
         public static Dictionary<string, string> StringComparisonOperators = new Dictionary<string, string>
         {
             {"_contains", "contains the string"},
