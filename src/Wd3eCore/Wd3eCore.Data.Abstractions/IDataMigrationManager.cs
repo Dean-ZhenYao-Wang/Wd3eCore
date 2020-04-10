@@ -4,36 +4,36 @@ using System.Threading.Tasks;
 namespace Wd3eCore.Data.Migration
 {
     /// <summary>
-    /// Represents a contract to manage database migrations.
+    /// 表示管理数据库迁移的契约。
     /// </summary>
     public interface IDataMigrationManager
     {
         /// <summary>
-        /// Returns the features which have at least one Data Migration class with a corresponding Upgrade method to be called
+        /// 返回至少有一个数据迁移类的特性，并调用相应的升级方法
         /// </summary>
         Task<IEnumerable<string>> GetFeaturesThatNeedUpdateAsync();
 
         /// <summary>
-        /// Run all migrations that need to be updated.
+        /// 运行所有需要更新的迁移。
         /// </summary>
         Task UpdateAllFeaturesAsync();
 
         /// <summary>
-        /// Updates the database to the latest version for the specified feature
+        /// 将数据库更新为指定特性的最新版本
         /// </summary>
-        /// <param name="feature">The feature to be uninstalled.</param>
+        /// <param name="feature">要卸载的特性。</param>
         Task UpdateAsync(string feature);
 
         /// <summary>
-        /// Updates the database to the latest version for the specified features
+        /// 将数据库更新为指定特性的最新版本
         /// </summary>
-        /// <param name="features">The features to be updated.</param>
+        /// <param name="features">需要更新的特性。</param>
         Task UpdateAsync(IEnumerable<string> features);
 
         /// <summary>
-        /// Execute a script to delete any information relative to the feature
+        /// 执行脚本删除与该特性相关的任何信息
         /// </summary>
-        /// <param name="feature">The feature to be uninstalled.</param>
+        /// <param name="feature">要卸载的特性。</param>
         Task Uninstall(string feature);
     }
 }

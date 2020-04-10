@@ -3,12 +3,12 @@ using YesSql.Sql;
 namespace Wd3eCore.Data.Migration
 {
     /// <summary>
-    /// Represents a contract for a database migration.
+    /// 表示数据库迁移的契约。
     /// </summary>
     public interface IDataMigration
     {
         /// <summary>
-        /// Gets or sets the database schema builder.
+        /// 获取或设置数据库架构生成器。
         /// </summary>
         ISchemaBuilder SchemaBuilder { get; set; }
     }

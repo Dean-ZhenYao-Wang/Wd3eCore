@@ -4,20 +4,20 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Wd3eCore.Data
 {
     /// <summary>
-    /// Provides extension methods for <see cref="IServiceCollection"/> to add YesSQL <see cref="DatabaseProvider"/>s.
+    /// 为<see cref="IServiceCollection"/>提供了扩展方法，以添加YesSQL <see cref="DatabaseProvider"/>s。
     /// </summary>
     public static class ServiceCollectionExtensions
     {
         /// <summary>
         ///
         /// </summary>
-        /// <param name="services">The <see cref="IServiceCollection"/>.</param>
-        /// <param name="name">The database provider name.</param>
-        /// <param name="value">The database provider value, i.e. SQL Server, MySQL.</param>
-        /// <param name="hasConnectionString">Whether the database contains a connection string.</param>
-        /// <param name="hasTablePrefix">The table prefix.</param>
-        /// <param name="isDefault">Whether the data provider is the default one.</param>
-        /// <param name="sampleConnectionString">A sample connection string, e.g. Server={Server Name};Database={Database Name};IntegratedSecurity=true</param>
+        /// <param name="services"><see cref="IServiceCollection"/></param>
+        /// <param name="name">数据库提供者的名称。</param>
+        /// <param name="value">数据库提供者值，即SQL Server、MySQL。</param>
+        /// <param name="hasConnectionString">数据库中是否包含连接字符串。</param>
+        /// <param name="hasTablePrefix">表的前缀。</param>
+        /// <param name="isDefault">数据提供者是否为默认的数据提供者</param>
+        /// <param name="sampleConnectionString">连接字符串示例，例如：Server={Server Name};Database={Database Name};IntegratedSecurity=true</param>
         /// <returns></returns>
         public static IServiceCollection TryAddDataProvider(this IServiceCollection services, string name, string value, bool hasConnectionString, bool hasTablePrefix, bool isDefault, string sampleConnectionString = "")
         {

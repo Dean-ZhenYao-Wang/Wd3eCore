@@ -3,12 +3,12 @@ using System.Data.Common;
 namespace Wd3eCore.Data
 {
     /// <summary>
-    /// Represents a contract to access the <see cref="DbConnection"/>.
+    /// 表示访问<see cref="DbConnection"/>的契约。
     /// </summary>
     public interface IDbConnectionAccessor
     {
         /// <summary>
-        /// Creats a database connection.
+        /// 创建数据库连接。
         /// </summary>
         DbConnection CreateConnection();
     }

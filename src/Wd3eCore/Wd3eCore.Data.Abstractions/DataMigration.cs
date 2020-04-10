@@ -3,7 +3,7 @@ using YesSql.Sql;
 namespace Wd3eCore.Data.Migration
 {
     /// <summary>
-    /// Represents a database migration.
+    /// 代表数据库的迁移。
     /// </summary>
     public abstract class DataMigration : IDataMigration
     {
