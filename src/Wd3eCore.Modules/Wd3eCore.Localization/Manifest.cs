@@ -7,5 +7,6 @@ using Wd3eCore.Modules.Manifest;
     Version = "2.0.0",
     Description = "Provides support for UI localization.",
     Category = "Internationalization",
-    Dependencies = new[] { "Wd3eCore.Settings" }
+    Dependencies = new[] { "Wd3eCore.Settings" },
+    IsAlwaysEnabled = true
 )]

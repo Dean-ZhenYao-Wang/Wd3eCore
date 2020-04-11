@@ -7,5 +7,6 @@ using Wd3eCore.Modules.Manifest;
     Version = "2.0.0",
     Description = "Themes.",
     Dependencies = new[] { "Wd3eCore.Admin" },
-    Category = "Theming"
+    Category = "Theming",
+    IsAlwaysEnabled = true
 )]

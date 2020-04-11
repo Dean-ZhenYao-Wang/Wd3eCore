@@ -152,7 +152,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wd3eCore.Email", "src\Wd3eC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wd3eCore.Workflows.Abstractions", "src\Wd3eCore\Wd3eCore.Workflows.Abstractions\Wd3eCore.Workflows.Abstractions.csproj", "{2CE685EE-0332-4EC0-A78D-66474A05E2EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CVMDesktop", "CVMDesktop\CVMDesktop.csproj", "{71CA7069-45F8-4D8A-92E2-AC7069023B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wd3eCore.CVMDesktop", "CVMDesktop\Wd3eCore.CVMDesktop.csproj", "{71CA7069-45F8-4D8A-92E2-AC7069023B35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

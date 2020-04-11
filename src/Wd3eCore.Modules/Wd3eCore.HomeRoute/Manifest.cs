@@ -10,5 +10,6 @@ using Wd3eCore.Modules.Manifest;
     Id = "Wd3eCore.HomeRoute",
     Name = "Home Route",
     Description = "Provides a way to set the route corresponding to the homepage of the site",
-    Category = "Infrastructure"
+    Category = "Infrastructure",
+    IsAlwaysEnabled = true
 )]

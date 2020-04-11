@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Wd3eCore.Data;
 using Wd3eCore.Data.Migration;
@@ -124,6 +125,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.AddScoped<ISessionHelper, SessionHelper>();
 
                 services.AddTransient<IDbConnectionAccessor, DbConnectionAccessor>();
+
             });
 
             return builder;

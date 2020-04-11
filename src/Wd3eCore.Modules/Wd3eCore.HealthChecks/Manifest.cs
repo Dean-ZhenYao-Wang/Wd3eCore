@@ -6,5 +6,6 @@ using Wd3eCore.Modules.Manifest;
     Website = "https://Wd3eproject.net",
     Version = "2.0.0",
     Description = "This module provides health check for the website.",
-    Category = "Infrastructure"
+    Category = "Infrastructure",
+    IsAlwaysEnabled = true
 )]

@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.SqlTypes;
 using System.Text;
-using CVMDesktop.dbModel;
+using Wd3eCore.CVMDesktop.dbModel;
 using Wd3eCore.Data.Migration;
 
-namespace CVMDesktop
+namespace Wd3eCore.CVMDesktop
 {
     public class Migratons : DataMigration
     {
@@ -15,7 +17,7 @@ namespace CVMDesktop
         public int Create()
         {
             SchemaBuilder.CreateTable(nameof(SwaggerUi), table => table
-             .Column<Guid>("SID")
+             .Column<Guid>("SID", c => c.PrimaryKey())
              .Column<string>("SwaggerUI_Name"));
             SchemaBuilder.CreateTable(nameof(SwaggerUiIndex), table => table
              .Column<Guid>("SID")

@@ -10,7 +10,8 @@ using Wd3eCore.Modules.Manifest;
     Id = "Wd3eCore.Users",
     Name = "Users",
     Description = "The users module enables authentication UI and user management.",
-    Category = "Security"
+    Category = "Security",
+    IsAlwaysEnabled = true
 )]
 //[assembly: Feature(
 //    Id = "Wd3eCore.Users.ChangeEmail",

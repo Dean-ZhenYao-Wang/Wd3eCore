@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="YesSql.Abstractions" Version="2.0.0-beta-1460" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
-    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Data\Wd3eCore.Data.csproj" />
     <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
     <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
     <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Mvc.Core\Wd3eCore.Mvc.Core.csproj" />

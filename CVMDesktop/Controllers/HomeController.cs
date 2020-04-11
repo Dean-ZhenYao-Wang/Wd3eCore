@@ -1,22 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using CVMDesktop.dbModel;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using YesSql;
+using Wd3eCore.CVMDesktop.UnitOfWorks;
 
-namespace CVMDesktop.Controllers
+namespace Wd3eCore.CVMDesktop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ISession _session;
-        public HomeController(ISession session)
+        private readonly UnitOfWork db;
+        public HomeController(CVMDesktop_Context session)
         {
-            _session = session;
+            db = new UnitOfWork(session);
         }
         public IActionResult Index()
         {
+            var tt = db.SwaggerUiRepository.Get().FirstOrDefault();
             //var swaggerui = await _session.Query<SwaggerUi,SwaggerUiIndex>().FirstOrDefaultAsync();
             //if (swaggerui == null)
             //{
@@ -26,7 +23,7 @@ namespace CVMDesktop.Controllers
             //        SwaggerUI_Name = "SwaggerUi"
             //    };
             //    _session.Save(swaggerui);
-               
+
             //}
             return Ok();
         }

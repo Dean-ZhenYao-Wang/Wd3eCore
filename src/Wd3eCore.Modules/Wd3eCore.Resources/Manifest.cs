@@ -6,5 +6,6 @@ using Wd3eCore.Modules.Manifest;
     Website = "https://Wd3eproject.net",
     Version = "2.0.0",
     Description = "Resources.",
-    Category = "Theming"
+    Category = "Theming",
+    IsAlwaysEnabled = true
 )]

@@ -7,5 +7,6 @@ using Wd3eCore.Modules.Manifest;
     Version = "2.0.0",
     Description = "Provides email settings configuration and a default email service based on SMTP.",
     Dependencies = new[] { "Wd3eCore.Resources" },
-    Category = "Messaging"
+    Category = "Messaging",
+    IsAlwaysEnabled = true
 )]

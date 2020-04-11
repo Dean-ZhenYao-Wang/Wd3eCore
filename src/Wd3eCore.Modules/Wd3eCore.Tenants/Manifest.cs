@@ -12,7 +12,8 @@ using Wd3eCore.Modules.Manifest;
     Name = "Tenants",
     Description = "Provides a way to manage tenants from the admin.",
     Category = "Infrastructure",
-    DefaultTenantOnly = true
+    DefaultTenantOnly = true,
+    IsAlwaysEnabled = true
 )]
 
 [assembly: Feature(
@@ -20,5 +21,6 @@ using Wd3eCore.Modules.Manifest;
     Name = "Static File Provider",
     Description = "Provides a way to serve independent static files for each tenant.",
     Category = "Infrastructure",
-    DefaultTenantOnly = false
+    DefaultTenantOnly = false,
+    IsAlwaysEnabled = true
 )]

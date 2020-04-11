@@ -10,5 +10,6 @@ using Wd3eCore.Modules.Manifest;
     Dependencies = new[]
     {
         "Wd3eCore.Settings"
-    }
+    },
+    IsAlwaysEnabled = true
 )]
