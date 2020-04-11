@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="YesSql.Abstractions" Version="2.0.0-beta-1460" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Data.Abstractions\Wd3eCore.Data.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Infrastructure.Abstractions\Wd3eCore.Infrastructure.Abstractions.csproj" />
+    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.csproj" />
+    <ProjectReference Include="..\src\Wd3eCore\Wd3eCore.Mvc.Core\Wd3eCore.Mvc.Core.csproj" />
+  </ItemGroup>
+  <Import Project="..\src\Wd3eCore.Build\Wd3eCore.Commons.props" />
+  <Import Project="..\src\Wd3eCore.Build\Wd3eCore.Commons.targets" />
+  <Import Project="..\src\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.props" />
+  <Import Project="..\src\Wd3eCore\Wd3eCore.Module.Targets\Wd3eCore.Module.Targets.targets" />
+
+  <PropertyGroup>
+    <DebugType>embedded</DebugType>
+    <EmbedAllSources>true</EmbedAllSources>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+</Project>
