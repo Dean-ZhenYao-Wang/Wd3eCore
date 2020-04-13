@@ -21,15 +21,20 @@ namespace Wd3eCore.CVMDesktop
 {
     public class Startup : StartupBase
     {
+        private readonly ShellSettings shellSettings;
+        public Startup(ShellSettings shellSettings)
+        {
+            this.shellSettings = shellSettings;
+        }
         public override void Configure(IApplicationBuilder app, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
         {
-            var accountControllerName = typeof(HomeController).ControllerName();
+            var homeControllerName = typeof(HomeController).ControllerName();
 
             routes.MapAreaControllerRoute(
                 name: "CVMDesktop",
                 areaName: "Wd3eCore.CVMDesktop",
                 pattern: "CVMDesktop",
-                defaults: new { controller = accountControllerName, action = nameof(HomeController.Index) }
+                defaults: new { controller = homeControllerName, action = nameof(HomeController.Index) }
             );
             base.Configure(app, routes, serviceProvider);
         }
@@ -39,15 +44,13 @@ namespace Wd3eCore.CVMDesktop
             services.AddScoped<IDataMigration, Migratons>();
             services.AddDbContext<CVMDesktop_Context>(options =>
             {
-                IServiceProvider serviceProvider = services.BuildServiceProvider();
-
-                var shellSettings = serviceProvider.GetService<ShellSettings>();
-                switch (shellSettings["DatabaseProvider"])
+                switch (this.shellSettings["DatabaseProvider"])
                 {
                     case "SqlConnection":
-                        options.UseSqlServer(shellSettings["ConnectionString"]);
+                        options.UseSqlServer(this.shellSettings["ConnectionString"]);
                         break;
                     case "Sqlite":
+                        IServiceProvider serviceProvider = services.BuildServiceProvider();
                         var shellOptions = serviceProvider.GetService<IOptions<ShellOptions>>();
                         var option = shellOptions.Value;
                         var databaseFolder = Path.Combine(option.ShellsApplicationDataPath, option.ShellsContainerName, shellSettings.Name);
@@ -56,13 +59,13 @@ namespace Wd3eCore.CVMDesktop
                         options.UseSqlite($"Data Source={databaseFile};Cache=Shared");
                         break;
                     case "MySql":
-                        options.UseMySQL(shellSettings["ConnectionString"]);
+                        options.UseMySQL(this.shellSettings["ConnectionString"]);
                         break;
                     case "Postgres":
-                        options.UseNpgsql(shellSettings["ConnectionString"]);
+                        options.UseNpgsql(this.shellSettings["ConnectionString"]);
                         break;
                     default:
-                        throw new ArgumentException("Unknown database provider: " + shellSettings["DatabaseProvider"]);
+                        throw new ArgumentException("Unknown database provider: " + this.shellSettings["DatabaseProvider"]);
                 }
             });
         }
