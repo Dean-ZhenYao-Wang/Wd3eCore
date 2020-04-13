@@ -1,0 +1,18 @@
+select.form-control {
+  cursor: pointer;
+}
+
+.multiple-select {
+  select {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  .form-control {
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .dropdown-menu {
+    min-width: 100%;
+  }
+}

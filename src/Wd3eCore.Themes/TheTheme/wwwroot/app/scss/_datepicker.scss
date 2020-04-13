@@ -1,0 +1,15 @@
+.layui-laydate.laydate-theme-bs {
+  .layui-laydate-header {
+    background-color: $info;
+    i,
+    span {
+      color: $white;
+    }
+  }
+  .layui-this {
+    background-color: $info !important;
+  }
+  .layui-laydate-content td.laydate-selected {
+    background-color: $gray-500;
+  }
+}

@@ -1,0 +1,399 @@
+$header-height:40px;
+$side-width:40px;
+$side-expand-width:100px;
+$subnav-width:200px;
+
+/**
+
+**/
+html {
+  font-size: 12px;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+a,
+button {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+pre {
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+[v-cloak] {
+  opacity: 0;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: $gray-200;
+  overflow: hidden;
+}
+
+.app-sidebar {
+  flex: none;
+  width: $side-width;
+  background-color: $brand;
+  transition: width 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  z-index: 10;
+
+  .side-toggle {
+    flex: none;
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgba($white, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    color: rgba($white, 0.6);
+    padding: 1rem 0;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.active {
+      color: $white;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .icon {
+    font-size: 18px;
+  }
+
+  .main-nav {
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    position: relative;
+
+    >.nav-item {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    .main-text {
+      font-size: 1.2rem;
+      margin-left: 0.5rem;
+      display: none;
+    }
+  }
+
+  .sub-nav {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+    background-color: $info;
+    width: $subnav-width;
+    padding: 1rem 0;
+
+    .nav-link {
+      padding: 0.75rem 2rem;
+      justify-content: flex-start;
+      position: relative;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 1.25rem;
+        top: 0;
+        bottom: 0;
+        border-left: 1px solid #fff;
+        opacity: 0.2;
+      }
+    }
+
+    .nav-split {
+      padding: 0.5rem 1rem;
+      color: $white;
+      opacity: 0.6;
+    }
+  }
+
+  .main-nav>.nav-item:hover {
+    >.nav-link {
+      color: $white;
+    }
+
+    .sub-nav {
+      display: block;
+    }
+  }
+
+  &.is-expand {
+    width: $side-expand-width;
+
+    .main-text {
+      display: block;
+    }
+
+    .main-nav>.nav-item>.nav-link {
+      justify-content: flex-start;
+      padding: 1rem;
+    }
+  }
+}
+
+.app-container {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: 40px;
+  background-color: $white;
+  border-bottom: 2px solid $primary;
+  padding: 0 1rem;
+
+  .app-logo {
+    flex: none;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 1.5rem;
+    }
+
+    span {
+      font-size: 1.5rem;
+      margin-left: 0.5rem;
+      font-weight: 600;
+    }
+  }
+
+  .nav-menu {
+    flex: auto;
+    height: 38px;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    .nav {
+      position: absolute;
+      top: 4px;
+      z-index: 0;
+      flex-wrap: nowrap;
+      transition: transform 0.3s;
+      transform: translate(0, 0);
+    }
+
+    .nav-item {
+      display: inline-flex;
+      background-color: $gray-300;
+      margin: 0 1px;
+      height: 30px;
+
+      &.active {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+
+    .nav-link {
+      padding-right: 0;
+      white-space: nowrap;
+    }
+  }
+
+  .nav-end {
+    flex: none;
+    margin-left: auto;
+  }
+}
+
+.app-body {
+  height: calc(100vh - #{$header-height});
+
+  .app-mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($white, 0.85);
+    z-index: 100;
+    display: none;
+
+    &.is-loading {
+      display: block;
+
+      &::after {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $gray-200;
+}
+
+.content {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-tbar {
+  flex: none;
+  padding-bottom: 0.5rem;
+
+  .field {
+    display: flex;
+    align-items: center;
+    margin-right: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    .label {
+      margin: 0 0.5rem 0 0;
+      white-space: nowrap;
+      flex: none;
+      text-align: right;
+    }
+
+    &.d-block {
+      .label {
+        display: block;
+        text-align: left;
+      }
+    }
+  }
+
+  .split {
+    width: 0;
+    margin: 0 1rem;
+    border-left: 1px solid $gray-400;
+  }
+
+  .alert {
+    margin: 0;
+    padding: $btn-padding-y $btn-padding-x;
+  }
+}
+
+.content-body {
+  flex: auto;
+
+  &.is-flex {
+    display: flex;
+    justify-content: stretch;
+  }
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  +.content-body {
+    margin-top: 0.5rem;
+  }
+}
+
+.content-footer {
+  flex: none;
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid $border-color;
+}
+
+#notifyAlert {
+  position: absolute;
+  right: 0;
+  top: $header-height;
+  transform: translate(120%, 0);
+  opacity: 0;
+  transition: all 0.3s ease;
+
+  &.show {
+    display: block;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.card-header {
+  padding: 0 1.25rem;
+  height: 30px;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.nav-tabs {
+  .nav-link {
+    padding: 0 1rem;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+.welcome {
+  color: $white;
+  padding: 3rem;
+  background-color: $primary;
+
+  .nav-link {
+    color: $white;
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+    width: 180px;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .metro {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,18 @@
+.cell-check {
+  width: 30px;
+  text-align: center;
+  .checkbox {
+    margin-top: 1px;
+  }
+}
+
+.table-fixed {
+  flex: auto;
+  overflow-y: auto;
+}
+
+.table {
+  thead tr {
+    background-color: #eff2f5;
+  }
+}

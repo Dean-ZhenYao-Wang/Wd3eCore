@@ -1,0 +1,13 @@
+.report-link {
+  display: block;
+  font-size: 14px;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  background-color: #fff;
+  margin: 0.5rem;
+  border: 1px solid #ddd;
+
+  &:hover {
+    background-color: #eee;
+  }
+}

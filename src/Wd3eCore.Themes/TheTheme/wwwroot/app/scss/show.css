@@ -1,0 +1,42 @@
+html, body{
+    margin:0px;
+    padding:0px;
+    height:100%;
+    overflow:hidden;
+}
+.gantt_task_progress{
+    text-align: left;
+}
+.gantt_task_content{
+    padding-left:30px;
+}
+.gantt_task_progress span{
+    color: #FFF;
+    position: relative;
+    z-index: 20;
+    padding: 3px; margin-left:3px;
+    border-radius: 3px;
+}
+
+.owner_1{
+    background:#d4faff;
+    border-color:#64b2bc;
+}
+.owner_1 .gantt_task_progress{
+    background:#91d1d9;
+}
+.owner_2, .owner_4{
+    background:#e8d4ff;
+    border-color:#8b64bc;
+}
+.owner_2 .gantt_task_progress, .owner_4 .gantt_task_progress{
+    background:#b191d9;
+}
+
+.owner_3{
+    background:#d4dfff;
+    border-color:#647bbc;
+}
+.owner_3 .gantt_task_progress{
+    background:#91a4d9;
+}

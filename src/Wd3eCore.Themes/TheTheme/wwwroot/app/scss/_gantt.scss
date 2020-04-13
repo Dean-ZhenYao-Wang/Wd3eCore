@@ -1,0 +1,92 @@
+$cell-size:28px;
+$header-bg-color:$gray-100;
+
+.gantt {
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: $white;
+  width: 100%;
+  overflow: scroll;
+}
+
+.gantt-side {
+  flex: none;
+  box-shadow: 1px 0 4px $gray-400;
+  background-color: $white;
+  z-index: 10;
+  position: relative;
+}
+
+.gantt-main {
+  flex: auto;
+  position: relative;
+}
+
+.gantt-header {
+  z-index: 5;
+  position: relative;
+}
+
+.gantt-table {
+  width: 100%;
+  table-layout: fixed;
+  background-color: $white;
+
+  th,
+  td {
+    height: $cell-size;
+    border: 1px solid $border-color;
+    padding: 0 0.5rem;
+  }
+
+  th {
+    background-color: $header-bg-color;
+  }
+
+  .weekend {
+    background-color: $gray-500;
+    color: #fff;
+  }
+
+  .gantt-cell {
+    padding: 0;
+    vertical-align: top;
+
+    &:nth-child(even) {
+      background-color: $gray-100;
+    }
+
+    &.editable {
+      cursor: pointer;
+
+      &:hover {
+        background-color: $table-hover-bg;
+      }
+
+      .item-bar {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.ganntt-item {
+  position: relative;
+
+  .item-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    height: $cell-size;
+    line-height: $cell-size;
+    padding: 0 0.25rem;
+    z-index: 1;
+    color: $white !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: 1px solid $white;
+    opacity: 0.75;
+  }
+}

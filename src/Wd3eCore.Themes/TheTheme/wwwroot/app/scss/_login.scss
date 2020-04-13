@@ -1,0 +1,54 @@
+.login {
+  background-image: url('../images/app-bg.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.login-body {
+  background-color: rgba($primary, 0.85);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .logo {
+    display: flex;
+    align-items: center;
+    color: $white;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    img {
+      width: 160px;
+      margin-right: 0.5rem;
+    }
+  }
+  .form {
+    width: 260px;
+    color: $white;
+    .form-control {
+      color: $white;
+      border-color: $white;
+      background-color: rgba(255, 255, 255, 0.3);
+      &::placeholder {
+        color: $gray-400;
+      }
+      &:-webkit-autofill {
+        background-color: rgba(255, 255, 255, 0.3) !important;
+      }
+      outline:none;
+    }
+    .icon {
+      color: $white;
+    }
+    .invalid-tooltip.is-invalid {
+      font-size: 12px;
+      left: 100%;
+      top: 0.5rem;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+  }
+}

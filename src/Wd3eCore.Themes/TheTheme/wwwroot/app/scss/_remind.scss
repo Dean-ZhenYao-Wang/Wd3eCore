@@ -1,0 +1,19 @@
+.remind[data-remind] {
+  position: relative;
+  &::after {
+    content: attr(data-remind);
+    position: absolute;
+    top: 0;
+    right: -0.5rem;
+    color: #fff;
+    background-color: $red;
+    min-height: 1rem;
+    min-width: 1rem;
+    padding: 0 0.5rem;
+    border-radius: 50%;
+  }
+}
+
+.remind.is-hidden::after {
+  content: none;
+}

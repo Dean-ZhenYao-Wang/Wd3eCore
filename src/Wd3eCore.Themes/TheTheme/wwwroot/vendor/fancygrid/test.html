@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="fancy.min.css" rel="stylesheet">
+    <script src="fancy.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        Fancy.DEBUG = true;
+        Fancy.MODULESDIR = '/assets/vendor/fancygrid/modules/';
+
+        var data = [{
+            name: 'North America',
+            type: 'Territory',
+            expanded: false,
+            child: []
+        }];
+
+        var grid = new FancyGrid({
+            renderTo: 'container',
+            width: 600,
+            height: 600,
+            data: {
+                items: data,
+                fields: ['name', 'type', 'population']
+            },
+            selModel: 'rows',
+            trackOver: true,
+            theme: 'gray',
+            defaults: {
+                type: 'string',
+                sortable: true,
+                resizable: true
+            },
+            columns: [{
+                type: 'tree',
+                title: 'Name',
+                width: 200,
+                index: 'name'
+            }, {
+                index: 'type',
+                title: 'Territory',
+                width: 100
+            }, {
+                index: 'population',
+                title: 'Population(mlns)',
+                format: 'number',
+                type: 'number',
+                width: 120
+            }],
+            events: [{
+                rowexpand: function (grid, o) {
+                    if (!o.loaded) {
+                        o.loaded = true;
+                        loadChildren(o);
+                    }
+                }
+            }]
+        });
+
+
+        function loadChildren(parent) {
+            for (i = 0; i < 10; i++) {
+                grid.addChild(parent, {
+                    name: 'Spain',
+                    population: 46354321,
+                    type: 'Country',
+                    leaf: false
+                });
+            }
+        }
+    </script>
+</body>
+</html>
