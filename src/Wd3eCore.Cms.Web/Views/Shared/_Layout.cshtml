@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="TBEA MES">
+
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/TheTheme/vendor/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="~/TheTheme/vendor/fancygrid/fancy.min.css" />
+    <link rel="stylesheet" href="~/TheTheme/app/css/app.css" />
+
+    @RenderSection("styles", false)
+    <script src="~/TheTheme/vendor/vue/vue.min.js"></script>
+    <script src="~/TheTheme/vendor/jquery/jquery.min.js"></script>
+    <script src="~/TheTheme/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/TheTheme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/TheTheme/vendor/fancygrid/fancy.js"></script>
+    <script src="~/TheTheme/vendor/laydate/laydate.js"></script>
+    <script src="~/TheTheme/app/js/app.js"></script>
+    <script src="~/TheTheme/vendor/linq/linq.js"></script>
+    <script src="~/TheTheme/app/js/attchfileview.js"></script>
+    <script src="~/TheTheme/app/js/PictureView.js"></script>
+</head>
+<body>
+    @User.Identity.Name;
+    @await RenderBodyAsync()
+    <script>
+        var menulist = window.parent.appMain.tabs;
+        var menu = null;
+        for (var i = 0; i < menulist.length; i++) {
+            if (menulist[i].active == true) {
+                menu = menulist[i];
+                break;
+            }
+        }
+        var buttons = $app.storage.get('Identity').ButtonList[menu.id];
+
+        $('[data-permission]').each(function () {
+            var value = $(this).attr('data-permission');
+
+            if (buttons == null) {
+                $(this).remove();
+            }
+            else {
+                if (buttons.indexOf(value) == -1) {
+                    $(this).remove();
+                }
+            }
+        });
+
+        function openMenu(menuId) {
+            parent.appMain.openMenu(menuId);
+        }
+
+        function openUrl(id, title, url, refresh) {
+            parent.appMain.openUrl(id, title, url, refresh);
+        }
+    </script>
+</body>
+</html>

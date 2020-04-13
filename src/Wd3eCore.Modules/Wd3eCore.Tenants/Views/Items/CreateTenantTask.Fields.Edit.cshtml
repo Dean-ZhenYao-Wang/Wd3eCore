@@ -16,13 +16,13 @@
 <div class="form-group" asp-validation-class-for="RequestUrlPrefixExpression">
     <label asp-for="RequestUrlPrefixExpression">@T["Url Prefix"] <span asp-validation-for="RequestUrlPrefixExpression"></span></label>
     <input type="text" asp-for="RequestUrlPrefixExpression" class="form-control code" />
-    <span class="hint">@T["(Optional) Example: If prefix is \"site1\", the tenant URL prefix is \"http://Wd3eproject.net/site1\""]</span>
+    <span class="hint">@T["(Optional) Example: If prefix is \"site1\", the tenant URL prefix is \"http://www.wd3e.com/site1\""]</span>
 </div>
 
 <div class="form-group" asp-validation-class-for="RequestUrlHostExpression">
     <label asp-for="RequestUrlHostExpression">@T["Host name"] <span asp-validation-for="RequestUrlHostExpression"></span></label>
     <input type="text" asp-for="RequestUrlHostExpression" class="form-control code" />
-    <span class="hint">@T["Example: If host is \"Wd3eproject.net\", the tenant site URL is \"http://Wd3eproject.net/\". With Liquid support."]</span>
+    <span class="hint">@T["Example: If host is \"www.wd3e.com\", the tenant site URL is \"http://www.wd3e.com/\". With Liquid support."]</span>
 </div>
 
 <div class="form-group" asp-validation-class-for="DatabaseProviderExpression">

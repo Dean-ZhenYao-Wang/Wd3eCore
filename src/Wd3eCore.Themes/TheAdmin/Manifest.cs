@@ -3,7 +3,7 @@ using Wd3eCore.DisplayManagement.Manifest;
 [assembly: Theme(
     Name = "TheAdmin Theme",
     Author = "The Wd3e Team",
-    Website = "https://Wd3eproject.net",
+    Website = "https://www.wd3e.com",
     Version = "2.0.0",
     Description = "The default Admin theme.",
     Tags = new [] { "admin" }

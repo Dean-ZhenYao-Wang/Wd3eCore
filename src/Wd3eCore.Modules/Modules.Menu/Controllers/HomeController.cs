@@ -1,15 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using YesSql;
 
-namespace Wd3eCore.TheTheme.Controllers
+namespace Modules.Menu.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Welcome()
         {
             return View();
         }

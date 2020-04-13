@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CVMDesktop\Wd3eCore.CVMDesktop.csproj" />
+    <ProjectReference Include="..\Wd3eCore.Modules\Modules.Menu\Modules.MenuManagement.csproj" />
     <ProjectReference Include="..\Wd3eCore\Wd3eCore.Application.Cms.Targets\Wd3eCore.Application.Cms.Targets.csproj" />
     <ProjectReference Include="..\Wd3eCore\Wd3eCore.Logging.NLog\Wd3eCore.Logging.NLog.csproj" />
   </ItemGroup>
